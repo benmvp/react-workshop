@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "date": "01/01/2016 12:13:14",
+        "unread": false,
+        "to": "me@abcdef.com",
+        "from": "jane@abcdef.com",
+        "subject": "Happy new year!",
+        "message": "Just wanted to welcome you into 2016!"
+    },
+    {
+        "id": 2,
+        "date": "01/15/2016 19:18:17",
+        "unread": true,
+        "to": "me@abcdef.com",
+        "from": "kobe@bryant.com",
+        "subject": "Retirement party!",
+        "message": "<p>Hello,</p><p>After 20 years in the NBA, I've decided to hang up my shoes and call it a career. I've enjoyed watching you watch me play and I would like to formally invite you to my retirement party next week. Hope you can make it!</p><p>Mamba out</p>"
+    },
+    {
+        "id": 3,
+        "date": "02/03/2016 15:24:58",
+        "unread": false,
+        "to": "me@abcdef.com",
+        "from": "potus@us.gov",
+        "subject": "New owner of this account",
+        "message": "In January 2017, my time in office will be over and there will be a new owner of this account"
+    },
+    {
+        "id": 4,
+        "date": "03/19/2016 08:50:14",
+        "unread": true,
+        "to": "me@abcdef.com",
+        "from": "info@reactrally.org",
+        "subject": "One free ticket to React Rally!",
+        "message": "<p>Hey you!</p><p>Have you ever been to Utah before? No? Well, here's your opportunity! React Rally is taken place once again in the great state of Utah and you've won one free ticket to attend! Come learn about the whole React ecosystem and the new libraries popping up!</p><p>Have a great day,<br>React Rally Team</p>"
+    },
+    {
+        "id": 5,
+        "date": "03/20/2016 23:23:23",
+        "unread": true,
+        "to": "me@abcdef.com",
+        "from": "billing@sprint.com",
+        "subject": "Account alert: Data usage overage",
+        "message": "This email is to inform you that account #XXXXX3824 has passed its 10GB for this billing cycle. Each additional MB that you spend will be $1. We suggest you stop stream cat videos from YouTube."
+    },
+    {
+        "id": 6,
+        "date": "04/01/2016 11:11:11",
+        "unread": false,
+        "to": "me@abcdef.com",
+        "from": "jillian@abcdef.com",
+        "subject": "Pay rent",
+        "message": "Just wanted to remind you to pay your rent today!"
+    }
+]
