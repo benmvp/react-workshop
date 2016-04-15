@@ -1,10 +1,10 @@
 # /node_modules and /bower_components ignored by default
 
 # Ignore built files
-/build/
+public/build/
 
 # Ignore configuration files
-/webpack.config.js
+webpack.config.js
 
 # Ignore the server for now
 server.js
