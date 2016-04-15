@@ -2,7 +2,12 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --progress --colors",
+    "build:watch": "webpack --progress --colors --watch --devtool source-map",
+    "eslint": "eslint .",
+    "lint": "npm run scss-lint && npm run eslint",
+    "scss-lint": "scss-lint .",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -48,5 +53,12 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ]
   }
 }
