@@ -3,6 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(
-    <App />,
+    <App pollInterval={5000} />,
     document.getElementById('app')
 );
