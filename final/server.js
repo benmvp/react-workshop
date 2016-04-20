@@ -14,7 +14,7 @@ var fs = require('fs'),
     // Using a JSON file as our "database"
     EMAILS_FILE = path.join(__dirname, 'data/emails.json'),
 
-    port = process.env.PORT || 8080;
+    port = process.env.PORT || 9090;
 
 function getEmails(callback) {
     fs.readFile(EMAILS_FILE, function(err, fileContents) {
@@ -42,7 +42,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // pass through all non-API request to files in the public folder
-app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, 'src')));
 
 // routes that end in /api/emails
 router.route('/emails')

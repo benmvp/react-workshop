@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "start": "node server.js",
+    "start": "webpack-dev-server --content-base src/ --hot --inline --open",
+    "start:server": "node server.js",
     "build": "webpack --progress --colors",
-    "build:watch": "webpack --progress --colors --watch --devtool source-map",
     "eslint": "eslint .",
     "lint": "npm run scss-lint && npm run eslint",
     "scss-lint": "scss-lint .",
