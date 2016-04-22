@@ -14,7 +14,8 @@ export default class App extends React.Component {
     }
 
     state = {
-        emails: []
+        emails: [],
+        selectedEmailId: -1
     }
 
     componentDidMount() {
@@ -37,11 +38,25 @@ export default class App extends React.Component {
             .catch((ex) => console.error(ex));
     }
 
+    _handleItemSelected(selectedEmailId) {
+        this.setState({selectedEmailId});
+    }
+
     render() {
+        let {emails, selectedEmailId} = this.state;
+        let selectedEmail = emails.find((email) => email.id === selectedEmailId);
+        let emailView;
+
+        if (selectedEmail) {
+            emailView = (<EmailView email={selectedEmail} />);
+        }
+
         return (
             <div>
-                <EmailList emails={this.state.emails} />
-                <EmailView />
+                <EmailList emails={emails}
+                    onItemSelected={this._handleItemSelected.bind(this)}
+                />
+                {emailView}
                 <EmailForm />
             </div>
         );

@@ -1,19 +1,21 @@
 import classNames from 'classnames';
+import {EMAIL_PROP_TYPE} from './constants';
 import React from 'react';
 
 export default class EmailListItem extends React.Component {
     static propTypes = {
-        from: React.PropTypes.string.isRequired,
-        subject: React.PropTypes.string.isRequired,
-        unread: React.PropTypes.bool
+        email: EMAIL_PROP_TYPE.isRequired,
+        onSelected: React.PropTypes.func.isRequired
     }
 
-    static defaultProps = {
-        unread: false
+    _handleClick() {
+        this.props.onSelected(this.props.email.id);
     }
 
     render() {
-        let {from, subject, unread} = this.props;
+        let {
+            email: {from, subject, unread}
+        } = this.props;
         let className = classNames(
             'email-list-item',
             {
@@ -22,7 +24,7 @@ export default class EmailListItem extends React.Component {
         );
 
         return (
-            <li className={className}>
+            <li className={className} onClick={this._handleClick.bind(this)}>
                 {from} - {subject}
             </li>
         );

@@ -1,31 +1,22 @@
+import {EMAIL_PROP_TYPE} from './constants';
 import EmailListItem from './EmailListItem';
 import React from 'react';
 
 export default class EmailList extends React.Component {
     static propTypes = {
-        emails: React.PropTypes.arrayOf(
-            React.PropTypes.shape({
-                id: React.PropTypes.number.isRequired,
-                from: React.PropTypes.string.isRequired,
-                subject: React.PropTypes.string.isRequired,
-                message: React.PropTypes.string.isRequired,
-                unread: React.PropTypes.bool
-            })
-        ).isRequired
-    }
-
-    _renderItems(emails) {
-        return emails.map((emailInfo) => (
-            <EmailListItem key={emailInfo.id} from={emailInfo.from} subject={emailInfo.subject} unread={emailInfo.unread}>
-                {emailInfo.message}
-            </EmailListItem>
-        ));
+        emails: React.PropTypes.arrayOf(EMAIL_PROP_TYPE).isRequired,
+        onItemSelected: React.PropTypes.func.isRequired
     }
 
     render() {
+        let {emails, onItemSelected} = this.props;
+        let emailComponents = emails.map((email) => (
+            <EmailListItem key={email.id} email={email} onSelected={onItemSelected} />
+        ));
+
         return (
             <ul className="email-list">
-                {this._renderItems(this.props.emails)}
+                {emailComponents}
             </ul>
         );
     }
