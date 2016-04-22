@@ -42,6 +42,10 @@ export default class App extends React.Component {
         this.setState({selectedEmailId});
     }
 
+    _handleItemMarkedUnread(emailId) {
+        console.log(emailId, 'marked unread');
+    }
+
     render() {
         let {emails, selectedEmailId} = this.state;
         let selectedEmail = emails.find((email) => email.id === selectedEmailId);
@@ -54,7 +58,9 @@ export default class App extends React.Component {
         return (
             <div>
                 <EmailList emails={emails}
+                    selectedEmailId={selectedEmailId}
                     onItemSelected={this._handleItemSelected.bind(this)}
+                    onItemMarkedUnread={this._handleItemMarkedUnread.bind(this)}
                 />
                 {emailView}
                 <EmailForm />
