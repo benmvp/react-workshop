@@ -53,6 +53,11 @@ export default class App extends React.Component {
         });
     }
 
+    _handleFormSubmit(newEmail) {
+        // TODO: Submit POST
+        console.log(newEmail);
+    }
+
     render() {
         let {emails, selectedEmailId} = this.state;
         let selectedEmail = emails.find((email) => email.id === selectedEmailId);
@@ -74,7 +79,7 @@ export default class App extends React.Component {
                     onItemMarkedUnread={this._handleItemMarkedUnread.bind(this)}
                 />
                 {emailView}
-                <EmailForm />
+                <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />
             </div>
         );
     }
