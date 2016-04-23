@@ -1,16 +1,18 @@
 import React from 'react';
 
+const DEFAULT_FORM_VALUES = {
+    from: '',
+    to: 'me@abcdef.com',
+    subject: '',
+    message: ''
+};
+
 export default class EmailForm extends React.Component {
     static propTypes = {
         onSubmit: React.PropTypes.func.isRequired
     }
 
-    state = {
-        from: 'me@abcdef.com',
-        to: '',
-        subject: '',
-        message: ''
-    }
+    state = DEFAULT_FORM_VALUES
 
     _updateFormFieldState(name, e) {
         this.setState({[name]: e.target.value});
@@ -46,6 +48,7 @@ export default class EmailForm extends React.Component {
                 subject,
                 message
             });
+            this.setState(DEFAULT_FORM_VALUES);
         }
         else {
             alert('fill out the form!');

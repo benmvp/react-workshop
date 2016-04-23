@@ -28,11 +28,14 @@ export default class App extends React.Component {
     }
 
     componentWillUnmount() {
+        // Need to remember to clearInterval when the component gets
+        // removed from the DOM, otherwise the interval will keep going
+        // forever and leak memory
         clearInterval(this._pollId);
     }
 
     _getUpdateEmails() {
-        fetch('/api/emails')
+        return fetch('/api/emails')
             .then((res) => res.json())
             .then((emails) => this.setState({emails}))
             .catch((ex) => console.error(ex));
@@ -54,8 +57,25 @@ export default class App extends React.Component {
     }
 
     _handleFormSubmit(newEmail) {
-        // TODO: Submit POST
-        console.log(newEmail);
+        // Make a JSON POST with the new email
+        fetch('/api/emails', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newEmail)
+        })
+            .then((res) => res.json())
+            .then(({success}) => {
+                if (success) {
+                    // on success retrieve new emails
+                    this._getUpdateEmails();
+                }
+                else {
+                    console.error('Unable to send email!');
+                }
+            });
     }
 
     render() {
