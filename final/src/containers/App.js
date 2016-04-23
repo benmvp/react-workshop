@@ -46,13 +46,24 @@ export default class App extends React.Component {
         console.log(emailId, 'marked unread');
     }
 
+    _handleEmailViewClose() {
+        // We close the email view by resetting the selected email
+        this.setState({
+            selectedEmailId: -1
+        });
+    }
+
     render() {
         let {emails, selectedEmailId} = this.state;
         let selectedEmail = emails.find((email) => email.id === selectedEmailId);
         let emailView;
 
         if (selectedEmail) {
-            emailView = (<EmailView email={selectedEmail} />);
+            emailView = (
+                <EmailView email={selectedEmail}
+                    onClose={this._handleEmailViewClose.bind(this)}
+                />
+            );
         }
 
         return (
