@@ -48,6 +48,8 @@ export default class EmailForm extends React.Component {
                 subject,
                 message
             });
+
+            // reset the form to initial values
             this.setState(DEFAULT_FORM_VALUES);
         }
         else {
