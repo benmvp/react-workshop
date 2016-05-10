@@ -2,11 +2,35 @@ import classNames from 'classnames';
 import {EMAIL_PROP_TYPE} from './constants';
 import React from 'react';
 
+const EmailListItemStatus = ({isSelected, unread, onDelete, onMarkUnread}) => {
+    let component = null;
+
+    if (isSelected) {
+        let markUnreadButton;
+
+        if (!unread) {
+            markUnreadButton = (
+                <button onClick={onMarkUnread}>Mark unread</button>
+            );
+        }
+
+        component = (
+            <span>
+                {markUnreadButton}
+                <button onClick={onDelete}>Delete</button>
+            </span>
+        );
+    }
+
+    return component;
+};
+
 export default class EmailListItem extends React.Component {
     static propTypes = {
         email: EMAIL_PROP_TYPE.isRequired,
-        onSelected: React.PropTypes.func.isRequired,
-        onMarkedUnread: React.PropTypes.func.isRequired,
+        onSelect: React.PropTypes.func.isRequired,
+        onDelete: React.PropTypes.func.isRequired,
+        onMarkUnread: React.PropTypes.func.isRequired,
 
         isSelected: React.PropTypes.bool
     }
@@ -15,8 +39,9 @@ export default class EmailListItem extends React.Component {
         let {
             email: {from, subject, unread},
             isSelected,
-            onSelected,
-            onMarkedUnread
+            onSelect,
+            onDelete,
+            onMarkUnread
         } = this.props;
         let className = classNames(
             'email-list-item',
@@ -24,19 +49,16 @@ export default class EmailListItem extends React.Component {
                 'email-list-item--unread': unread
             }
         );
-        let status;
-
-        if (isSelected && !unread) {
-            status = (
-                <button onClick={onMarkedUnread}>Mark unread</button>
-            );
-        }
 
         return (
-            <li className={className} onClick={onSelected}>
+            <li className={className} onClick={onSelect}>
                 {from} - {subject}
 
-                {status}
+                <EmailListItemStatus isSelected={isSelected}
+                    unread={unread}
+                    onDelete={onDelete}
+                    onMarkUnread={onMarkUnread}
+                />
             </li>
         );
     }

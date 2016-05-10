@@ -1,4 +1,5 @@
 import React from 'react';
+import remove from 'lodash/remove';
 import 'whatwg-fetch';
 
 import EmailForm from '../components/EmailForm';
@@ -42,11 +43,29 @@ export default class App extends React.Component {
             .catch((ex) => console.error(ex));
     }
 
-    _handleItemSelected(selectedEmailId) {
+    _handleItemSelect(selectedEmailId) {
         this.setState({selectedEmailId});
     }
 
-    _handleItemMarkedUnread(emailId) {
+    _handleItemDelete(emailIdToDelete) {
+        fetch(`/api/emails/${emailIdToDelete}`, {
+            method: 'DELETE'
+        })
+            .then((res) => res.json())
+            .then(({success}) => {
+                if (success) {
+                    // optimistic updating (see _handleFormSubmit for more info)
+                    this.setState({
+                        emails: remove(this.state.emails, (emailInfo) => emailInfo.id === emailIdToDelete)
+                    });
+
+                    // on success retrieve new emails
+                    this._getUpdateEmails();
+                }
+            });
+    }
+
+    _handleItemMarkUnread(emailId) {
         console.log(emailId, 'marked unread');
     }
 
@@ -114,8 +133,9 @@ export default class App extends React.Component {
             <div>
                 <EmailList emails={emails}
                     selectedEmailId={selectedEmailId}
-                    onItemSelected={this._handleItemSelected.bind(this)}
-                    onItemMarkedUnread={this._handleItemMarkedUnread.bind(this)}
+                    onItemSelect={this._handleItemSelect.bind(this)}
+                    onItemDelete={this._handleItemDelete.bind(this)}
+                    onItemMarkUnread={this._handleItemMarkUnread.bind(this)}
                 />
                 {emailView}
                 <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />

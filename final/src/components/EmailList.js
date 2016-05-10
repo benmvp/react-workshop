@@ -5,8 +5,9 @@ import React from 'react';
 export default class EmailList extends React.Component {
     static propTypes = {
         emails: React.PropTypes.arrayOf(EMAIL_PROP_TYPE).isRequired,
-        onItemSelected: React.PropTypes.func.isRequired,
-        onItemMarkedUnread: React.PropTypes.func.isRequired,
+        onItemSelect: React.PropTypes.func.isRequired,
+        onItemDelete: React.PropTypes.func.isRequired,
+        onItemMarkUnread: React.PropTypes.func.isRequired,
 
         selectedEmailId: React.PropTypes.number
     }
@@ -15,15 +16,17 @@ export default class EmailList extends React.Component {
         let {
             emails,
             selectedEmailId,
-            onItemSelected,
-            onItemMarkedUnread
+            onItemSelect,
+            onItemDelete,
+            onItemMarkUnread
         } = this.props;
         let emailComponents = emails.map((email) => (
             <EmailListItem key={email.id}
                 email={email}
                 isSelected={email.id === selectedEmailId}
-                onSelected={onItemSelected.bind(null, email.id)}
-                onMarkedUnread={onItemMarkedUnread.bind(null, email.id)}
+                onSelect={onItemSelect.bind(null, email.id)}
+                onDelete={onItemDelete.bind(null, email.id)}
+                onMarkUnread={onItemMarkUnread.bind(null, email.id)}
             />
         ));
 
