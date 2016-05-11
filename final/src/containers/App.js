@@ -1,7 +1,8 @@
 import React from 'react';
 import map from 'lodash/map';
 import remove from 'lodash/remove';
-import 'whatwg-fetch';
+
+import {addEmail, deleteEmail, getEmails, setUnread} from '../api';
 
 import EmailForm from '../components/EmailForm';
 import EmailList from '../components/EmailList';
@@ -38,36 +39,27 @@ export default class App extends React.Component {
     }
 
     _getUpdateEmails() {
-        return fetch('/api/emails')
-            .then((res) => res.json())
+        return getEmails()
             .then((emails) => this.setState({emails}))
             .catch((ex) => console.error(ex));
     }
 
-    _handleItemSelect(selectedEmailId) {
-        if (this.state.selectedEmailId !== selectedEmailId) {
+    _handleItemSelect(emailId) {
+        if (this.state.selectedEmailId !== emailId) {
+            let unread = false;
+
             // update state (so that the EmailView will show)
-            this.setState({selectedEmailId});
+            this.setState({selectedEmailId: emailId});
 
             // also mark the email as read
-            fetch(`/api/emails/${selectedEmailId}`, {
-                method: 'PUT',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    unread: false
-                })
-            })
-                .then((res) => res.json())
+            setUnread(emailId, unread)
                 .then(({success}) => {
                     if (success) {
                         // optimistic updating (see _handleFormSubmit for more info)
                         this.setState({
                             emails: map(this.state.emails, (emailInfo) => (
-                                emailInfo === selectedEmailId
-                                    ? {...emailInfo, unread: false}
+                                emailInfo === emailId
+                                    ? {...emailInfo, unread}
                                     : emailInfo
                             ))
                         });
@@ -76,54 +68,43 @@ export default class App extends React.Component {
                         this._getUpdateEmails();
                     }
                     else {
-                        throw new Error(`Unable to mark email ID #${selectedEmailId} as read.`);
+                        throw new Error(`Unable to mark email ID# ${emailId} as read.`);
                     }
                 })
                 .catch((ex) => console.error(ex));
         }
     }
 
-    _handleItemDelete(emailIdToDelete) {
-        fetch(`/api/emails/${emailIdToDelete}`, {
-            method: 'DELETE'
-        })
-            .then((res) => res.json())
+    _handleItemDelete(emailId) {
+        deleteEmail(emailId)
             .then(({success}) => {
                 if (success) {
                     // optimistic updating (see _handleFormSubmit for more info)
                     this.setState({
-                        emails: remove(this.state.emails, (emailInfo) => emailInfo.id === emailIdToDelete)
+                        emails: remove(this.state.emails, (emailInfo) => emailInfo.id === emailId)
                     });
 
                     // on success retrieve new emails
                     this._getUpdateEmails();
                 }
                 else {
-                    throw new Error(`Unable to delete email ID ${emailIdToDelete}.`);
+                    throw new Error(`Unable to delete email ID# ${emailId}.`);
                 }
             })
             .catch((ex) => console.error(ex));
     }
 
     _handleItemMarkUnread(emailId) {
-        fetch(`/api/emails/${emailId}`, {
-            method: 'PUT',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                unread: true
-            })
-        })
-            .then((res) => res.json())
+        let unread = true;
+
+        setUnread(emailId, unread)
             .then(({success}) => {
                 if (success) {
                     // optimistic updating (see _handleFormSubmit for more info)
                     this.setState({
                         emails: map(this.state.emails, (emailInfo) => (
                             emailInfo === emailId
-                                ? {...emailInfo, unread: true}
+                                ? {...emailInfo, unread}
                                 : emailInfo
                         ))
                     });
@@ -132,7 +113,7 @@ export default class App extends React.Component {
                     this._getUpdateEmails();
                 }
                 else {
-                    throw new Error(`Unable to mark email ID ${emailId} unread.`);
+                    throw new Error(`Unable to mark email ID# ${emailId} unread.`);
                 }
             })
             .catch((ex) => console.error(ex));
@@ -146,16 +127,7 @@ export default class App extends React.Component {
     }
 
     _handleFormSubmit(newEmail) {
-        // Make a JSON POST with the new email
-        fetch('/api/emails', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newEmail)
-        })
-            .then((res) => res.json())
+        addEmail(newEmail)
             .then(({success}) => {
                 if (success) {
                     // if the email was successfully updated, we have to make
