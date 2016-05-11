@@ -1,4 +1,5 @@
 import React from 'react';
+import map from 'lodash/map';
 import remove from 'lodash/remove';
 import 'whatwg-fetch';
 
@@ -44,7 +45,42 @@ export default class App extends React.Component {
     }
 
     _handleItemSelect(selectedEmailId) {
-        this.setState({selectedEmailId});
+        if (this.state.selectedEmailId !== selectedEmailId) {
+            // update state (so that the EmailView will show)
+            this.setState({selectedEmailId});
+
+            // also mark the email as read
+            fetch(`/api/emails/${selectedEmailId}`, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    unread: false
+                })
+            })
+                .then((res) => res.json())
+                .then(({success}) => {
+                    if (success) {
+                        // optimistic updating (see _handleFormSubmit for more info)
+                        this.setState({
+                            emails: map(this.state.emails, (emailInfo) => (
+                                emailInfo === selectedEmailId
+                                    ? {...emailInfo, unread: false}
+                                    : emailInfo
+                            ))
+                        });
+
+                        // on success retrieve new emails
+                        this._getUpdateEmails();
+                    }
+                    else {
+                        throw new Error(`Unable to mark email ID #${selectedEmailId} as read.`);
+                    }
+                })
+                .catch((ex) => console.error(ex));
+        }
     }
 
     _handleItemDelete(emailIdToDelete) {
@@ -62,11 +98,44 @@ export default class App extends React.Component {
                     // on success retrieve new emails
                     this._getUpdateEmails();
                 }
-            });
+                else {
+                    throw new Error(`Unable to delete email ID ${emailIdToDelete}.`);
+                }
+            })
+            .catch((ex) => console.error(ex));
     }
 
     _handleItemMarkUnread(emailId) {
-        console.log(emailId, 'marked unread');
+        fetch(`/api/emails/${emailId}`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                unread: true
+            })
+        })
+            .then((res) => res.json())
+            .then(({success}) => {
+                if (success) {
+                    // optimistic updating (see _handleFormSubmit for more info)
+                    this.setState({
+                        emails: map(this.state.emails, (emailInfo) => (
+                            emailInfo === emailId
+                                ? {...emailInfo, unread: true}
+                                : emailInfo
+                        ))
+                    });
+
+                    // on success retrieve new emails
+                    this._getUpdateEmails();
+                }
+                else {
+                    throw new Error(`Unable to mark email ID ${emailId} unread.`);
+                }
+            })
+            .catch((ex) => console.error(ex));
     }
 
     _handleEmailViewClose() {
@@ -111,9 +180,10 @@ export default class App extends React.Component {
                     this._getUpdateEmails();
                 }
                 else {
-                    console.error('Unable to send email!');
+                    throw new Error('Unable to send email!');
                 }
-            });
+            })
+            .catch((ex) => console.error(ex));
     }
 
     render() {

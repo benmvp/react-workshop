@@ -110,7 +110,7 @@ router.route('/emails/:emailId')
                     .concat(emails.slice(emailIndexToUpdate + 1));
 
             saveEmails(updatedEmails, function() {
-                res.json({susccess: true});
+                res.json({success: true});
             });
         });
     })
