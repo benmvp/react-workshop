@@ -1,8 +1,6 @@
 import React from 'react';
-import map from 'lodash/map';
-import remove from 'lodash/remove';
 
-import {addEmail, deleteEmail, getEmails, setUnread} from '../api';
+import {addEmail, deleteEmail, getEmails, markRead, markUnread} from '../action-reducers';
 
 import EmailForm from '../components/EmailForm';
 import EmailList from '../components/EmailList';
@@ -40,83 +38,40 @@ export default class App extends React.Component {
 
     _getUpdateEmails() {
         return getEmails()
-            .then((emails) => this.setState({emails}))
-            .catch((ex) => console.error(ex));
+            .then((emails) => this.setState({emails}));
     }
 
     _handleItemSelect(emailId) {
         if (this.state.selectedEmailId !== emailId) {
-            let unread = false;
-
             // update state (so that the EmailView will show)
             this.setState({selectedEmailId: emailId});
 
             // also mark the email as read
-            setUnread(emailId, unread)
-                .then(({success}) => {
-                    if (success) {
-                        // optimistic updating (see _handleFormSubmit for more info)
-                        this.setState({
-                            emails: map(this.state.emails, (emailInfo) => (
-                                emailInfo === emailId
-                                    ? {...emailInfo, unread}
-                                    : emailInfo
-                            ))
-                        });
+            markRead(this.state.emails, emailId)
+                // optimistic updating (see _handleFormSubmit for more info)
+                .then((emails) => this.setState({emails}))
 
-                        // on success retrieve new emails
-                        this._getUpdateEmails();
-                    }
-                    else {
-                        throw new Error(`Unable to mark email ID# ${emailId} as read.`);
-                    }
-                })
-                .catch((ex) => console.error(ex));
+                // actually retrieve new emails from server
+                .then(() => this._getUpdateEmails());
         }
     }
 
     _handleItemDelete(emailId) {
-        deleteEmail(emailId)
-            .then(({success}) => {
-                if (success) {
-                    // optimistic updating (see _handleFormSubmit for more info)
-                    this.setState({
-                        emails: remove(this.state.emails, (emailInfo) => emailInfo.id === emailId)
-                    });
+        deleteEmail(this.state.emails, emailId)
+            // optimistic updating (see _handleFormSubmit for more info)
+            .then((emails) => this.setState({emails}))
 
-                    // on success retrieve new emails
-                    this._getUpdateEmails();
-                }
-                else {
-                    throw new Error(`Unable to delete email ID# ${emailId}.`);
-                }
-            })
-            .catch((ex) => console.error(ex));
+            // actually retrieve new emails from server
+            .then(() => this._getUpdateEmails());
     }
 
     _handleItemMarkUnread(emailId) {
-        let unread = true;
+        markUnread(this.state.emails, emailId)
+            // optimistic updating (see _handleFormSubmit for more info)
+            .then((emails) => this.setState({emails}))
 
-        setUnread(emailId, unread)
-            .then(({success}) => {
-                if (success) {
-                    // optimistic updating (see _handleFormSubmit for more info)
-                    this.setState({
-                        emails: map(this.state.emails, (emailInfo) => (
-                            emailInfo === emailId
-                                ? {...emailInfo, unread}
-                                : emailInfo
-                        ))
-                    });
-
-                    // on success retrieve new emails
-                    this._getUpdateEmails();
-                }
-                else {
-                    throw new Error(`Unable to mark email ID# ${emailId} unread.`);
-                }
-            })
-            .catch((ex) => console.error(ex));
+            // actually retrieve new emails from server
+            .then(() => this._getUpdateEmails());
     }
 
     _handleEmailViewClose() {
@@ -127,35 +82,17 @@ export default class App extends React.Component {
     }
 
     _handleFormSubmit(newEmail) {
-        addEmail(newEmail)
-            .then(({success}) => {
-                if (success) {
-                    // if the email was successfully updated, we have to make
-                    // a request to get the new list of emails, but we'll have
-                    // to wait for the response of that request, so let's add to
-                    // our state immediately and then later when the response
-                    // comes back, the server-side list will update. This is mainly
-                    // here to demonstrate immutable updating of data structures
-                    this.setState({
-                        emails: [
-                            ...this.state.emails,
-                            {
-                                ...newEmail,
-                                id: Date.now(),
-                                date: `${new Date()}`,
-                                unread: true
-                            }
-                        ]
-                    });
+        addEmail(this.state.emails, newEmail)
+            // if the email was successfully updated, we have to make
+            // a request to get the new list of emails, but we'll have
+            // to wait for the response of that request, so let's add to
+            // our state immediately and then later when the response
+            // comes back, the server-side list will update. This is mainly
+            // here to demonstrate immutable updating of data structures
+            .then((emails) => this.setState({emails}))
 
-                    // on success retrieve new emails
-                    this._getUpdateEmails();
-                }
-                else {
-                    throw new Error('Unable to send email!');
-                }
-            })
-            .catch((ex) => console.error(ex));
+            // actually retrieve new emails from server
+            .then(() => this._getUpdateEmails());
     }
 
     render() {
