@@ -6,6 +6,8 @@ import EmailForm from '../components/EmailForm';
 import EmailList from '../components/EmailList';
 import EmailView from '../components/EmailView';
 
+import './App.scss';
+
 export default class App extends React.Component {
     static propTypes = {
         pollInterval: React.PropTypes.number
@@ -102,22 +104,32 @@ export default class App extends React.Component {
 
         if (selectedEmail) {
             emailView = (
-                <EmailView email={selectedEmail}
-                    onClose={this._handleEmailViewClose.bind(this)}
-                />
+                <article className="app_view">
+                    <EmailView email={selectedEmail}
+                        onClose={this._handleEmailViewClose.bind(this)}
+                    />
+                </article>
             );
         }
 
         return (
-            <div>
-                <EmailList emails={emails}
-                    selectedEmailId={selectedEmailId}
-                    onItemSelect={this._handleItemSelect.bind(this)}
-                    onItemDelete={this._handleItemDelete.bind(this)}
-                    onItemMarkUnread={this._handleItemMarkUnread.bind(this)}
-                />
-                {emailView}
-                <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />
+            <div className="app">
+                <div className="app__page">
+                    <section className="app__list">
+                        <EmailList emails={emails}
+                            selectedEmailId={selectedEmailId}
+                            onItemSelect={this._handleItemSelect.bind(this)}
+                            onItemDelete={this._handleItemDelete.bind(this)}
+                            onItemMarkUnread={this._handleItemMarkUnread.bind(this)}
+                        />
+                    </section>
+
+                    {emailView}
+
+                    <aside className="app__form">
+                        <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />
+                    </aside>
+                </div>
             </div>
         );
     }

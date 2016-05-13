@@ -2,27 +2,23 @@ import classNames from 'classnames';
 import {EMAIL_PROP_TYPE} from './constants';
 import React from 'react';
 
+import './EmailListItem.scss';
+
 const EmailListItemStatus = ({isSelected, unread, onDelete, onMarkUnread}) => {
-    let component = null;
+    let markUnreadButton;
 
-    if (isSelected) {
-        let markUnreadButton;
-
-        if (!unread) {
-            markUnreadButton = (
-                <button onClick={onMarkUnread}>Mark unread</button>
-            );
-        }
-
-        component = (
-            <span>
-                {markUnreadButton}
-                <button onClick={onDelete}>Delete</button>
-            </span>
+    if (isSelected && !unread) {
+        markUnreadButton = (
+            <button onClick={onMarkUnread}>Mark unread</button>
         );
     }
 
-    return component;
+    return (
+        <span>
+            {markUnreadButton}
+            <button onClick={onDelete}>Delete</button>
+        </span>
+    );
 };
 
 export default class EmailListItem extends React.Component {
@@ -46,20 +42,25 @@ export default class EmailListItem extends React.Component {
         let className = classNames(
             'email-list-item',
             {
+                'email-list-item--selected': isSelected,
                 'email-list-item--unread': unread
             }
         );
 
         return (
-            <li className={className} onClick={onSelect}>
-                {from} - {subject}
+            <div className={className} onClick={onSelect}>
+                <span className="email-list-item__from">{from}</span>
 
-                <EmailListItemStatus isSelected={isSelected}
-                    unread={unread}
-                    onDelete={onDelete}
-                    onMarkUnread={onMarkUnread}
-                />
-            </li>
+                <span className="email-list-item__subject">{subject}</span>
+
+                <span className="email-list-item__status">
+                    <EmailListItemStatus isSelected={isSelected}
+                        unread={unread}
+                        onDelete={onDelete}
+                        onMarkUnread={onMarkUnread}
+                    />
+                </span>
+            </div>
         );
     }
 }

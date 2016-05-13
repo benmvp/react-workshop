@@ -1,0 +1,26 @@
+// Global stuff
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.app {
+    background: #f2f2f2;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+
+// Component stuff
+
+.app__page {
+    margin: 0 auto;
+    max-width: 1080px;
+    overflow: hidden;
+}
+
+.app__list {
+    max-height: 50vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}

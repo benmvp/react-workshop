@@ -15,13 +15,13 @@ export default class EmailView extends React.Component {
         let rawMessage = {__html: message};
 
         return (
-            <article>
+            <div>
                 <button onClick={onClose}>Close</button>
                 <h1>{subject}</h1>
                 <h2>From: {from}</h2>
                 <h2>To: {to}</h2>
                 <div dangerouslySetInnerHTML={rawMessage} />
-            </article>
+            </div>
         );
     }
 }

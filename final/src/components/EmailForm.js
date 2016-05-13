@@ -61,7 +61,7 @@ export default class EmailForm extends React.Component {
         let {from, to, subject, message} = this.state;
 
         return (
-            <aside>
+            <div>
                 <h1>Compose</h1>
 
                 <form onSubmit={this._handleSubmit.bind(this)}>
@@ -84,7 +84,7 @@ export default class EmailForm extends React.Component {
 
                     <button type="submit">Send email</button>
                 </form>
-            </aside>
+            </div>
         );
     }
 }
