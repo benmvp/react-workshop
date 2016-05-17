@@ -31,13 +31,25 @@ export default class EmailListItem extends React.Component {
         isSelected: React.PropTypes.bool
     }
 
+    _handleDelete(e) {
+        e.stopPropagation();
+        this.props.onDelete();
+    }
+
+    _handleMarkUnread(e) {
+        e.stopPropagation();
+        this.props.onMarkUnread();
+    }
+
+    _handleSelect(e) {
+        e.stopPropagation();
+        this.props.onSelect();
+    }
+
     render() {
         let {
             email: {from, subject, unread},
-            isSelected,
-            onSelect,
-            onDelete,
-            onMarkUnread
+            isSelected
         } = this.props;
         let className = classNames(
             'email-list-item',
@@ -48,15 +60,15 @@ export default class EmailListItem extends React.Component {
         );
 
         return (
-            <div className={className} onClick={onSelect}>
+            <div className={className} onClick={this._handleSelect.bind(this)}>
                 <span className="email-list-item__from">{from}</span>
 
                 <span className="email-list-item__subject">{subject}</span>
 
                 <EmailListItemStatus isSelected={isSelected}
                     unread={unread}
-                    onDelete={onDelete}
-                    onMarkUnread={onMarkUnread}
+                    onDelete={this._handleDelete.bind(this)}
+                    onMarkUnread={this._handleMarkUnread.bind(this)}
                 />
             </div>
         );

@@ -1,13 +1,10 @@
-import map from 'lodash/map';
-import remove from 'lodash/remove';
-
 import * as api from '../api';
 
 const setUnread = (emails, emailId, unread) => (
     api.setUnread(emailId, unread)
         .then(({success}) => {
             if (success) {
-                return map(emails, (emailInfo) => (
+                return emails.map((emailInfo) => (
                     emailInfo === emailId
                         ? {...emailInfo, unread: false}
                         : emailInfo
@@ -32,7 +29,7 @@ export const deleteEmail = (emails, emailId) => (
     api.deleteEmail(emailId)
         .then(({success}) => {
             if (success) {
-                return remove(emails, (emailInfo) => emailInfo.id === emailId);
+                return emails.filter((emailInfo) => emailInfo.id !== emailId);
             }
 
             throw new Error(`Unable to delete email ID# ${emailId}.`);

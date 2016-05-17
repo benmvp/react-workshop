@@ -6,7 +6,6 @@ var fs = require('fs'),
     assign = require('lodash/assign'),
     find = require('lodash/find'),
     findIndex = require('lodash/findIndex'),
-    filter = require('lodash/filter'),
 
     app = express(),
     router = express.Router(),
@@ -50,15 +49,12 @@ router.route('/emails')
     // create an email (accessed via POST to http://localhost:8080/api/emails)
     .post(function(req, res) {
         getEmails(function(emails) {
-            var newEmails = emails.concat(),
-                newEmail = assign({
+            var newEmail = assign({
                     id: Date.now(),
                     date: new Date() + '',
                     unread: true
-                }, req.body);
-
-            // add newly created email
-            newEmails.push(newEmail);
+                }, req.body),
+                newEmails = emails.concat(newEmail);
 
             // write out file back to disk
             saveEmails(newEmails, function() {
@@ -72,7 +68,7 @@ router.route('/emails')
         getEmails(function(emails) {
             // Return back the full list of emails
             res.setHeader('Cache-Control', 'no-cache');
-            res.json(emails);
+            res.json(emails.filter(function(email) { return !email.deleted; }));
         });
     });
 
@@ -82,9 +78,9 @@ router.route('/emails/:emailId')
     // get the email with this id (accessed via GET from http://localhost:8080/api/emails/:emailId)
     .get(function(req, res) {
         getEmails(function(emails) {
-            var emailIdToGet = req.params.emailId,
+            var emailIdToGet = +req.params.emailId,
                 emailToGet = find(emails, function(email) {
-                    return email.id == emailIdToGet;
+                    return email.id === emailIdToGet;
                 });
 
             res.json(emailToGet);
@@ -94,20 +90,19 @@ router.route('/emails/:emailId')
     // update the email this id (accessed via PUT on http://localhost:8080/api/emails/:emailId)
     .put(function(req, res) {
         getEmails(function(emails) {
-            var emailIdToUpdate = req.params.emailId,
-                emailIndexToUpdate = findIndex(emails, function(email) {
-                    return email.id == emailIdToUpdate
-                }),
+            var emailIdToUpdate = +req.params.emailId,
 
-                // make a new copy of the emails list, updated the appropriate email
-                updatedEmails = emails.slice(0, emailIndexToUpdate)
-                    .concat([
-                        // make a cpy of the email to update before updating
-                        assign({}, emails[emailIndexToUpdate], {
+                // make a new copy of the emails list, updating the appropriate email
+                updatedEmails = emails.map(function(email) {
+                    if (email.id === emailIdToUpdate) {
+                        // make a copy of the email to update before updating
+                        return assign({}, email, {
                             unread: !!req.body.unread
-                        })
-                    ])
-                    .concat(emails.slice(emailIndexToUpdate + 1));
+                        });
+                    }
+
+                    return email;
+                });
 
             saveEmails(updatedEmails, function() {
                 res.json({success: true});
@@ -118,13 +113,21 @@ router.route('/emails/:emailId')
     // delete the email this id (accessed via PUT on http://localhost:8080/api/emails/:emailId)
     .delete(function(req, res) {
         getEmails(function(emails) {
-            var emailIdToDelete = req.params.emailId,
+            var emailIdToDelete = +req.params.emailId,
 
-                filteredEmails = filter(emails, function(email) {
-                    return email.id != emailIdToDelete
+                // make a new copy of the emails list, marking the appropriate email as deleted
+                updatedEmails = emails.map(function(email) {
+                    if (email.id === emailIdToDelete) {
+                        // make a copy of the email to update before updating
+                        return assign({}, email, {
+                            deleted: true
+                        });
+                    }
+
+                    return email;
                 });
 
-            saveEmails(filteredEmails, function() {
+            saveEmails(updatedEmails, function() {
                 res.json({success: true});
             });
         });
