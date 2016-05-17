@@ -104,7 +104,7 @@ export default class App extends React.Component {
 
         if (selectedEmail) {
             emailView = (
-                <article className="app_view">
+                <article className="app__view">
                     <EmailView email={selectedEmail}
                         onClose={this._handleEmailViewClose.bind(this)}
                     />

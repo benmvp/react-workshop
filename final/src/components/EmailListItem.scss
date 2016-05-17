@@ -24,11 +24,13 @@
 }
 
 .email-list-item__from {
-    flex: 0 0 250px;
+    flex: 0 0 25%;
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: flex-basis 150ms;
 
     .email-list-item--selected & {
-        flex-basis: 235px;
+        flex-basis: calc(25% - 15px);
     }
 }
 
@@ -38,7 +40,10 @@
 }
 
 .email-list-item__status {
-    flex: 0 0 150px;
+    display: flex;
+    flex: 0 0 25%;
+    flex-direction: column;
+    justify-content: center;
     margin-left: 10px;
     text-align: right;
 }

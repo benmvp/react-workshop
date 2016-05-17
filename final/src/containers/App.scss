@@ -7,20 +7,40 @@ body {
 .app {
     background: #f2f2f2;
     box-sizing: border-box;
-    padding: 20px;
 }
 
 
 // Component stuff
 
 .app__page {
+    box-sizing: border-box;
+    display: flex;
+    height: 100vh;
     margin: 0 auto;
     max-width: 1080px;
     overflow: hidden;
+    padding: 20px;
 }
 
 .app__list {
-    max-height: 50vh;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.app__view {
+    border: 1px solid #222;
+    box-sizing: border-box;
+    flex-basis: 55%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-left: 20px;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.app__form {
+    display: none;
+    position: absolute;
 }

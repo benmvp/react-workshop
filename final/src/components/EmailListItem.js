@@ -14,7 +14,7 @@ const EmailListItemStatus = ({isSelected, unread, onDelete, onMarkUnread}) => {
     }
 
     return (
-        <span>
+        <span className="email-list-item__status">
             {markUnreadButton}
             <button onClick={onDelete}>Delete</button>
         </span>
@@ -53,13 +53,11 @@ export default class EmailListItem extends React.Component {
 
                 <span className="email-list-item__subject">{subject}</span>
 
-                <span className="email-list-item__status">
-                    <EmailListItemStatus isSelected={isSelected}
-                        unread={unread}
-                        onDelete={onDelete}
-                        onMarkUnread={onMarkUnread}
-                    />
-                </span>
+                <EmailListItemStatus isSelected={isSelected}
+                    unread={unread}
+                    onDelete={onDelete}
+                    onMarkUnread={onMarkUnread}
+                />
             </div>
         );
     }
