@@ -11,7 +11,7 @@ export default class EmailView extends React.Component {
 
     render() {
         let {
-            email: {subject, from, message},
+            email: {subject, from, date, message},
             onClose
         } = this.props;
         let rawMessage = {__html: message};
@@ -20,6 +20,7 @@ export default class EmailView extends React.Component {
             <div className="email-view">
                 <h1>{subject}</h1>
                 <h2>From: <a href={`mailto:${from}`}>{from}</a></h2>
+                <h3>{date}</h3>
                 <div dangerouslySetInnerHTML={rawMessage} />
                 <button className="email-view__close" onClick={onClose}>Close</button>
             </div>

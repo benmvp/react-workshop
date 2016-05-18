@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './EmailForm.scss';
+
 const DEFAULT_FORM_VALUES = {
     from: '',
     to: 'me@abcdef.com',
@@ -68,29 +70,52 @@ export default class EmailForm extends React.Component {
         let {from, to, subject, message} = this.state;
 
         return (
-            <div>
-                <h1>Compose</h1>
-
+            <div className="email-form">
                 <form onSubmit={this._handleSubmit.bind(this)}>
-                    <div>
-                        <label htmlFor="from">From:</label>
-                        <input type="email" id="from" value={from} onChange={this._handleFromChanged.bind(this)} />
+                    <div className="email-form__field">
+                        <label className="email-form__label" htmlFor="from">From:</label>
+                        <input type="email"
+                            id="from"
+                            className="email-form__input"
+                            value={from}
+                            onChange={this._handleFromChanged.bind(this)}
+                            placeholder="jill@me.com"
+                        />
                     </div>
-                    <div>
-                        <label htmlFor="to">To:</label>
-                        <input type="email" id="to" value={to} onChange={this._handleToChanged.bind(this)} />
+                    <div className="email-form__field">
+                        <label className="email-form__label" htmlFor="to">To:</label>
+                        <input type="email"
+                            id="to"
+                            className="email-form__input"
+                            value={to}
+                            onChange={this._handleToChanged.bind(this)}
+                            placeholder="me@me.com"
+                        />
                     </div>
-                    <div>
-                        <label htmlFor="subject">Subject:</label>
-                        <input type="text" id="subject" value={subject} onChange={this._handleSubjectChanged.bind(this)} />
+                    <div className="email-form__field">
+                        <label className="email-form__label" htmlFor="subject">Subject:</label>
+                        <input type="text"
+                            id="subject"
+                            className="email-form__input"
+                            value={subject}
+                            onChange={this._handleSubjectChanged.bind(this)}
+                            placeholder="Awesome React workshop!"
+                        />
                     </div>
-                    <div>
-                        <label htmlFor="message">Message:</label>
-                        <textarea id="message" value={message} onChange={this._handleMessageChanged.bind(this)} />
+                    <div className="email-form__field">
+                        <label className="email-form__label" htmlFor="message">Message:</label>
+                        <textarea id="message"
+                        className="email-form__input email-form__input-message"
+                            value={message}
+                            onChange={this._handleMessageChanged.bind(this)}
+                            placeholder="[Insert message here]"
+                        />
                     </div>
 
-                    <button type="submit">Send email</button>
-                    <button type="button" onClick={this._handleCancel.bind(this)}>Cancel</button>
+                    <div className="email-form__button-bar">
+                        <button type="submit">Send email</button>
+                        <button type="button" onClick={this._handleCancel.bind(this)}>Cancel</button>
+                    </div>
                 </form>
             </div>
         );
