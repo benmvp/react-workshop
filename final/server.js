@@ -68,7 +68,11 @@ router.route('/emails')
         getEmails(function(emails) {
             // Return back the full list of emails
             res.setHeader('Cache-Control', 'no-cache');
-            res.json(emails.filter(function(email) { return !email.deleted; }));
+            res.json(
+                emails
+                    .filter(function(email) { return !email.deleted; })
+                    .sort(function(emailA, emailB) { return new Date(emailB.date) - new Date(emailA.date); })
+            );
         });
     });
 

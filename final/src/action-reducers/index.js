@@ -42,13 +42,13 @@ export const addEmail = (emails, newEmail) => (
         .then(({success}) => {
             if (success) {
                 return [
-                    ...emails,
                     {
                         ...newEmail,
                         id: Date.now(),
                         date: `${new Date()}`,
                         unread: true
-                    }
+                    },
+                    ...emails
                 ];
             }
 
