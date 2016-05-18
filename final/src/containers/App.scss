@@ -29,7 +29,9 @@ body {
 }
 
 .app__view {
+    background: white;
     border: 1px solid #222;
+    border-radius: 10px;
     box-sizing: border-box;
     flex-basis: 55%;
     flex-grow: 0;
@@ -38,7 +40,7 @@ body {
     max-height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 5px;
+    padding: 10px;
 }
 
 .app__form-wrapper {
