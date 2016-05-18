@@ -19,7 +19,8 @@ body {
     margin: 0 auto;
     max-width: 1080px;
     overflow: hidden;
-    padding: 20px;
+    padding: 20px 50px 20px 20px;
+    position: relative;
 }
 
 .app__list {
@@ -40,7 +41,32 @@ body {
     padding: 5px;
 }
 
-.app__form {
-    display: none;
+.app__form-wrapper {
+    align-items: center;
+    background: rgba(255, 255, 255, .75);
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    justify-content: center;
+    height: 100%;
     position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.app__form {
+    background: white;
+    border: 1px solid #000;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
+    box-sizing: border-box;
+    min-width: 300px;
+    padding: 20px;
+    width: 50%;
+}
+
+.app__new-email {
+    bottom: 10px;
+    font-size: 1.5em;
+    position: absolute;
+    right: 10px;
 }

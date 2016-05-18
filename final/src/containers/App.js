@@ -8,6 +8,36 @@ import EmailView from '../components/EmailView';
 
 import './App.scss';
 
+const EmailViewWrapper = ({selectedEmail, onClose}) => {
+    let component = null;
+
+    if (selectedEmail) {
+        component = (
+            <article className="app__view">
+                <EmailView email={selectedEmail} onClose={onClose} />
+            </article>
+        );
+    }
+
+    return component;
+};
+
+const EmailFormWrapper = ({showForm, onSubmit, onCancel}) => {
+    let component = null;
+
+    if (showForm) {
+        component = (
+            <div className="app__form-wrapper">
+                <div className="app__form">
+                    <EmailForm onSubmit={onSubmit} onCancel={onCancel} />
+                </div>
+            </div>
+        );
+    }
+
+    return component;
+};
+
 export default class App extends React.Component {
     static propTypes = {
         pollInterval: React.PropTypes.number
@@ -19,7 +49,8 @@ export default class App extends React.Component {
 
     state = {
         emails: [],
-        selectedEmailId: -1
+        selectedEmailId: -1,
+        showForm: false
     }
 
     componentDidMount() {
@@ -78,9 +109,7 @@ export default class App extends React.Component {
 
     _handleEmailViewClose() {
         // We close the email view by resetting the selected email
-        this.setState({
-            selectedEmailId: -1
-        });
+        this.setState({selectedEmailId: -1});
     }
 
     _handleFormSubmit(newEmail) {
@@ -91,26 +120,25 @@ export default class App extends React.Component {
             // our state immediately and then later when the response
             // comes back, the server-side list will update. This is mainly
             // here to demonstrate immutable updating of data structures
-            .then((emails) => this.setState({emails}))
+            .then((emails) => this.setState({emails, showForm: false}))
 
             // actually retrieve new emails from server
             .then(() => this._getUpdateEmails());
     }
 
-    render() {
-        let {emails, selectedEmailId} = this.state;
-        let selectedEmail = emails.find((email) => email.id === selectedEmailId);
-        let emailView;
+    _handleShowForm() {
+        // Show email form overlay by setting state to true
+        this.setState({showForm: true});
+    }
 
-        if (selectedEmail) {
-            emailView = (
-                <article className="app__view">
-                    <EmailView email={selectedEmail}
-                        onClose={this._handleEmailViewClose.bind(this)}
-                    />
-                </article>
-            );
-        }
+    _handleHideForm() {
+        // Hide email form overlay by setting state to false
+        this.setState({showForm: false});
+    }
+
+    render() {
+        let {emails, selectedEmailId, showForm} = this.state;
+        let selectedEmail = emails.find((email) => email.id === selectedEmailId);
 
         return (
             <div className="app">
@@ -124,11 +152,14 @@ export default class App extends React.Component {
                         />
                     </section>
 
-                    {emailView}
-
-                    <aside className="app__form">
-                        <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />
-                    </aside>
+                    <EmailViewWrapper selectedEmail={selectedEmail}
+                        onClose={this._handleEmailViewClose.bind(this)}
+                    />
+                    <button className="app__new-email" onClick={this._handleShowForm.bind(this)}>+</button>
+                    <EmailFormWrapper showForm={showForm}
+                        onSubmit={this._handleFormSubmit.bind(this)}
+                        onCancel={this._handleHideForm.bind(this)}
+                    />
                 </div>
             </div>
         );
