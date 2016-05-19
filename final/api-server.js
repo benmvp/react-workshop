@@ -40,8 +40,13 @@ function saveEmails(emails, callback) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-// pass through all non-API request to files in the public folder
-app.use('/', express.static(path.join(__dirname, 'src')));
+// allow for cross-origin API requests
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
+    next();
+});
 
 // routes that end in /api/emails
 router.route('/emails')

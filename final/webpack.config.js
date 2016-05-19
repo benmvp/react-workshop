@@ -23,10 +23,5 @@ module.exports = {
                 loaders: ['style', 'css', 'sass']
             }
         ]
-    },
-    devServer:{
-        proxy: {
-            '*': 'http://localhost:9090'
-        }
     }
 };

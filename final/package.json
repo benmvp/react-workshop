@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --content-base src/ --hot --inline --open",
-    "start:server": "node server.js",
+    "start:server": "webpack-dev-server --content-base src/ --hot --inline --open",
+    "start:api": "node api-server.js",
     "build": "webpack --progress --colors",
     "eslint": "eslint .",
     "lint": "npm run scss-lint && npm run eslint",
