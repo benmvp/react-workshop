@@ -5,6 +5,3 @@ public/build/
 
 # Ignore configuration files
 webpack.config.js
-
-# Ignore the api server for now
-api-server.js

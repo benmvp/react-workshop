@@ -1,5 +1,3 @@
 {
-    "extends": [
-        "benmvp"
-    ]
+    "extends": "benmvp/legacy"
 }
