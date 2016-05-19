@@ -48,10 +48,10 @@ app.use(function(req, res, next) {
     next();
 });
 
-// routes that end in /api/emails
+// routes that end in /emails
 router.route('/emails')
 
-    // create an email (accessed via POST to http://localhost:8080/api/emails)
+    // create an email (accessed via POST to http://localhost:9090/emails)
     .post(function(req, res) {
         getEmails(function(emails) {
             var newEmail = assign({
@@ -68,7 +68,7 @@ router.route('/emails')
         });
     })
 
-    // get all the emails (access via GET from http://localhost:8080/api/emails)
+    // get all the emails (access via GET from http://localhost:9090/emails)
     .get(function(req, res) {
         getEmails(function(emails) {
             // Return back the full list of emails
@@ -81,10 +81,10 @@ router.route('/emails')
         });
     });
 
-// routes that end in api/emails/:emailId
+// routes that end in emails/:emailId
 router.route('/emails/:emailId')
 
-    // get the email with this id (accessed via GET from http://localhost:8080/api/emails/:emailId)
+    // get the email with this id (accessed via GET from http://localhost:9090/emails/:emailId)
     .get(function(req, res) {
         getEmails(function(emails) {
             var emailIdToGet = +req.params.emailId,
@@ -96,7 +96,7 @@ router.route('/emails/:emailId')
         });
     })
 
-    // update the email this id (accessed via PUT on http://localhost:8080/api/emails/:emailId)
+    // update the email this id (accessed via PUT on http://localhost:9090/emails/:emailId)
     .put(function(req, res) {
         getEmails(function(emails) {
             var emailIdToUpdate = +req.params.emailId,
@@ -119,7 +119,7 @@ router.route('/emails/:emailId')
         });
     })
 
-    // delete the email this id (accessed via PUT on http://localhost:8080/api/emails/:emailId)
+    // delete the email this id (accessed via PUT on http://localhost:9090/emails/:emailId)
     .delete(function(req, res) {
         getEmails(function(emails) {
             var emailIdToDelete = +req.params.emailId,
@@ -143,8 +143,11 @@ router.route('/emails/:emailId')
     });
 
 // Register the routes
-// All routes are prefixed with /api
-app.use('/api', router);
+app.use('/', router);
+
+app.get('/ping', function(req, res) {
+    res.json({success: true});
+});
 
 app.listen(port, function() {
   console.log('Server started: http://localhost:' + port + '/');
