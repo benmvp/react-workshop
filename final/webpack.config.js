@@ -1,4 +1,5 @@
-var path = require('path');
+var webpack = require('webpack'),
+    path = require('path');
 
 module.exports = {
     entry: [
@@ -23,5 +24,10 @@ module.exports = {
                 loaders: ['style', 'css', 'sass']
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+        })
+    ]
 };
