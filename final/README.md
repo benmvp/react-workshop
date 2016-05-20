@@ -1,8 +1,4 @@
-# React Fundamentals Workshop by Ben Ilegbodu
-
-A step-by-step workshop for learning React fundamentals.
-
-## To run completed app
+# Completed App
 
 Assuming you have node installed, [install `nvm`](https://github.com/creationix/nvm#install-script) and then close & reopen your terminal.
 
@@ -43,7 +39,3 @@ npm run start:server
 ```
 
 Once the initial bundle is built, visit [http://localhost:8080/](http://localhost:8080/).
-
-## Exercises
-
-Each step in the workshop builds on top of the previous one. You can begin at the [Start](https://github.com/benmvp/react-workshop/tree/master/00-start). Afterwards follow these steps:
