@@ -1,5 +1,7 @@
 # Step 0 - Start
 
+## TODO
+
 If you haven't done so already, clone this [`react-workshop`](https://github.com/benmvp/react-workshop) repo:
 
 ```sh
@@ -25,3 +27,7 @@ Run `serve` on port `8080` in [`src`](src/) directory:
 ```
 
 Visit [http://localhost:8080/](http://localhost:8080/) and you should see an empty page.
+
+## Next
+
+Go to [Step 1 - Add core components](https://github.com/benmvp/react-workshop/tree/master/01-core-components).

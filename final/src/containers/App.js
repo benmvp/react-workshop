@@ -141,7 +141,7 @@ export default class App extends React.Component {
         let selectedEmail = emails.find((email) => email.id === selectedEmailId);
 
         return (
-            <div className="app">
+            <main className="app">
                 <div className="app__page">
                     <section className="app__list">
                         <EmailList emails={emails}
@@ -161,7 +161,7 @@ export default class App extends React.Component {
                         onCancel={this._handleHideForm.bind(this)}
                     />
                 </div>
-            </div>
+            </main>
         );
     }
 }
