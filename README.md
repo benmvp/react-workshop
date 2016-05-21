@@ -49,3 +49,4 @@ Once the initial bundle is built, visit [http://localhost:8080/](http://localhos
 Each step in the workshop builds on top of the previous one. You can begin at the [Start](https://github.com/benmvp/react-workshop/tree/master/00-start). Afterwards follow these steps:
 
 1. [Add core components](https://github.com/benmvp/react-workshop/tree/master/01-core-components)
+2. [Environment setup](https://github.com/benmvp/react-workshop/tree/master/02-env-setup)

@@ -1,7 +1,0 @@
-# /node_modules and /bower_components ignored by default
-
-# Ignore built files
-public/build/
-
-# Ignore configuration files
-webpack.config.js

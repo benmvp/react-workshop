@@ -1,56 +1,8 @@
-class EmailListItem extends React.Component {
-    render() {
-        let {id, from, subject, children} = this.props;
-        let rawMessage = {__html: children};
+import React from 'react';
 
-        return (
-            <li>
-                <span>{id}</span> -
-                <span>{from}</span> -
-                <span>{subject}</span>
-                <span dangerouslySetInnerHTML={rawMessage} />
-            </li>
-        );
-    }
-}
-
-class EmailList extends React.Component {
-    render() {
-        let {emails} = this.props;
-        let emailComponents = emails.map((email) => (
-            <EmailListItem
-                key={email.id}
-                id={email.id}
-                from={email.from}
-                subject={email.subject}
-            >
-              {email.message}
-            </EmailListItem>
-        ));
-
-        return (
-            <ul>
-                {emailComponents}
-            </ul>
-        );
-    }
-}
-
-class EmailView extends React.Component {
-    render() {
-        return (
-            <div>View selected email</div>
-        );
-    }
-}
-
-class EmailForm extends React.Component {
-    render() {
-        return (
-            <div>Add a new email</div>
-        );
-    }
-}
+import EmailList from '../components/EmailList';
+import EmailView from '../components/EmailView';
+import EmailForm from '../components/EmailForm';
 
 const emails = [
     {
@@ -82,7 +34,7 @@ const emails = [
     }
 ];
 
-class EmailApp extends React.Component {
+export default class EmailApp extends React.Component {
     render() {
         return (
             <main>
@@ -93,8 +45,3 @@ class EmailApp extends React.Component {
         );
     }
 }
-
-ReactDOM.render(
-    <EmailApp />,
-    document.getElementById('app')
-);

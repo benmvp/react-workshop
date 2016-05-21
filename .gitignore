@@ -34,3 +34,4 @@ node_modules
 
 # Webpack build folders
 **/build/
+**/dist

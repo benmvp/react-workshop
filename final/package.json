@@ -9,16 +9,6 @@
     "scss-lint": "scss-lint .",
     "test": "npm run lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/benmvp/react-workshop.git"
-  },
-  "author": "Ben Ilegbodu <ben@benmvp.com> (http://www.benmvp.com/)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/benmvp/react-workshop/issues"
-  },
-  "homepage": "https://github.com/benmvp/react-workshop#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
     "classnames": "^2.2.5",
@@ -27,7 +17,6 @@
     "lodash": "^4.9.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-router": "^2.0.1",
     "whatwg-fetch": "^0.11.0"
   },
   "devDependencies": {

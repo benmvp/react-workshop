@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "scripts": {
+      "build": "webpack --progress --colors --devtool source-map",
+      "build:watch": "webpack --watch --progress --colors --devtool source-map",
+      "eslint": "eslint .",
+      "lint": "npm run eslint",
+      "test": "npm run lint"
+  },
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^2.10.2",
+    "eslint-config-benmvp": "^3.1.2",
+    "eslint-plugin-react": "^5.1.1",
+    "webpack": "^1.13.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ]
+  }
+}
