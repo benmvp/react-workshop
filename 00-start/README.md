@@ -1,6 +1,6 @@
 # Step 0 - Start
 
-## TODO
+## Setup
 
 If you haven't done so already, clone this [`react-workshop`](https://github.com/benmvp/react-workshop) repo:
 
@@ -17,16 +17,18 @@ cd react-workshop/00-start
 Install [`serve`](https://github.com/tj/serve):
 
 ```sh
-npm install serve
+npm install -g serve
 ```
 
 Run `serve` on port `8080` in [`src`](src/) directory:
 
 ```sh
-./node_modules/.bin/serve src --port 8080
+serve src --port 8080
 ```
 
-Visit [http://localhost:8080/](http://localhost:8080/) and you should see an empty page.
+## Task
+
+- Visit [http://localhost:8080/](http://localhost:8080/) and you should see an empty page
 
 ## Next
 

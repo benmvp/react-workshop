@@ -1,6 +1,6 @@
 # Step 2 - Environment setup
 
-## TODO
+## Setup
 
 Create a [package.json](https://docs.npmjs.com/files/package.json) to manage dependencies:
 
@@ -89,56 +89,20 @@ Create a simple [.eslintrc.json](src/.eslintrc.json) that uses [`eslint-config-b
 }
 ```
 
-Don't lint the bundle by adding [.eslintignore](.eslintignore) in root directory:
+Don't accidentally lint the bundle by adding [.eslintignore](.eslintignore) in root directory:
 
 ```bash
 # Ignore built files
 /src/dist/
 ```
 
-Add React dependencies to the top of [index.js](src/index.js):
-
-```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-class EmailListItem extends React.Component {
-```
-
-Replace the `<script>` tags in [index.html](src/index.html) to point to Webpack bundle:
-
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>React Email</title>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="css/index.css">
-    </head>
-    <body>
-        <div id="app"></div>
-        <script src="dist/bundle.js"></script>
-    </body>
-</html>
-```
-
-Build bundle with Webpack (including a source map):
+Build a one-time bundle with Webpack (including a source map):
 
 ```sh
 ./node_modules/.bin/webpack --progress --colors --devtool source-map
 ```
 
-Run `serve` on port `8080` in [`src`](src/) directory:
-
-```sh
-./node_modules/.bin/serve src --port 8080
-```
-
-Visit [http://localhost:8080/](http://localhost:8080/) and you should see the components.
-
-Separate the components into their own files: [index.js](src/index.js), [App.js](src/containers/App.js), [EmailForm.js](src/components/EmailForm.js), [EmailView.js](src/components/EmailView.js), [EmailList.js](src/components/EmailList.js) & [EmailListItem.js](src/components/EmailListItem.js).
-
-In a separate console window/tab, set Webpack to watch on file changes for continuous building:
+Or instead, set Webpack to watch on file changes for continuous building:
 
 ```sh
 ./node_modules/.bin/webpack --watch --progress --colors --devtool source-map
@@ -158,7 +122,7 @@ Add scripts to [package.json](package.json) to make building and linting easier:
 }
 ```
 
-Run `build:watch` script:
+Run `build:watch` script for Webpack continuous building:
 
 ```sh
 npm run build:watch
@@ -170,7 +134,12 @@ Run `test` script to lint:
 npm test
 ```
 
-Lastly, add [`propTypes`](https://facebook.github.io/react/docs/reusable-components.html) to each of the components.
+## Tasks
+
+- Add React dependencies to the top of [index.js](src/index.js)
+- Replace the `<script>` tags in [index.html](src/index.html) to point to Webpack bundle
+- Separate the components into their own files ([index.js](src/index.js), [App.js](src/containers/App.js), [EmailForm.js](src/components/EmailForm.js), [EmailView.js](src/components/EmailView.js), [EmailList.js](src/components/EmailList.js) & [EmailListItem.js](src/components/EmailListItem.js)), and use [ES6 imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) to pull in dependencies
+- Add [`propTypes`](https://facebook.github.io/react/docs/reusable-components.html) to each of the components
 
 ## Next
 

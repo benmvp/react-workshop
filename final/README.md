@@ -8,10 +8,10 @@ Install the latest stable version of node:
 nvm install node
 ```
 
-Clone this [`react-workshop`](https://github.com/benmvp/react-workshop) repo:
+[Fork](https://help.github.com/articles/fork-a-repo/) this [`react-workshop`](https://github.com/benmvp/react-workshop) repo and create a local clone (be sure to replace `YOUR-USERNAME` with your own):
 
 ```sh
-git clone https://github.com/benmvp/react-workshop.git
+git clone https://github.com/YOUR-USERNAME/react-workshop.git
 ```
 
 Change to [`final`](https://github.com/benmvp/react-workshop/tree/master/final) directory:
