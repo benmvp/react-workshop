@@ -1,4 +1,5 @@
-var path = require('path');
+var webpack = require('webpack'),
+    path = require('path');
 
 module.exports = {
     // Entry point for the bundle
@@ -18,5 +19,12 @@ module.exports = {
                 loader: 'babel'
             }
         ]
-    }
+    },
+
+    // Shim fetch API with whatwg-fetch
+    plugins: [
+        new webpack.ProvidePlugin({
+            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+        })
+    ]
 };

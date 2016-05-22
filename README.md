@@ -50,3 +50,4 @@ Each step in the workshop builds on top of the previous one. You can begin at th
 
 1. [Add core components](https://github.com/benmvp/react-workshop/tree/master/01-core-components)
 2. [Environment setup](https://github.com/benmvp/react-workshop/tree/master/02-env-setup)
+3. [Fetching from server](https://github.com/benmvp/react-workshop/tree/master/03-fetch)

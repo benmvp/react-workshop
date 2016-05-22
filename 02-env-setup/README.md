@@ -136,11 +136,11 @@ npm test
 
 ## Tasks
 
-- Add React dependencies to the top of [index.js](src/index.js)
 - Replace the `<script>` tags in [index.html](src/index.html) to point to Webpack bundle
+- Add React dependencies to the top of [index.js](src/index.js)
 - Separate the components into their own files ([index.js](src/index.js), [App.js](src/containers/App.js), [EmailForm.js](src/components/EmailForm.js), [EmailView.js](src/components/EmailView.js), [EmailList.js](src/components/EmailList.js) & [EmailListItem.js](src/components/EmailListItem.js)), and use [ES6 imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) to pull in dependencies
 - Add [`propTypes`](https://facebook.github.io/react/docs/reusable-components.html) to each of the components
 
 ## Next
 
-Coming soon...
+Go to [Step 3 - Fetching from server](https://github.com/benmvp/react-workshop/tree/master/03-fetch).

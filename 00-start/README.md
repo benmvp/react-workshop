@@ -26,7 +26,7 @@ Run `serve` on port `8080` in [`src`](src/) directory:
 serve src --port 8080
 ```
 
-## Task
+## Tasks
 
 - Visit [http://localhost:8080/](http://localhost:8080/) and you should see an empty page
 
