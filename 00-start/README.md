@@ -2,10 +2,10 @@
 
 ## Setup
 
-If you haven't done so already, clone this [`react-workshop`](https://github.com/benmvp/react-workshop) repo:
+If you haven't done so already, [fork](https://help.github.com/articles/fork-a-repo/) this [`react-workshop`](https://github.com/benmvp/react-workshop) repo and create a local clone (be sure to replace `YOUR-USERNAME` with your own):
 
 ```sh
-git clone https://github.com/benmvp/react-workshop.git
+git clone https://github.com/YOUR-USERNAME/react-workshop.git
 ```
 
 Change to [`00-start`](https://github.com/benmvp/react-workshop/tree/master/00-start) directory:

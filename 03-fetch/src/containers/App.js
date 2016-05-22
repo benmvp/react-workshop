@@ -11,9 +11,11 @@ export default class EmailApp extends React.Component {
     }
 
     componentDidMount() {
+        // Retrieve emails from server once we know DOM exists
         fetch('http://localhost:9090/emails')
             .then((res) => res.json())
-            .then((emails) => this.setState({emails}));
+            .then((emails) => this.setState({emails}))
+            .catch((ex) => console.error(ex));
     }
 
     render() {

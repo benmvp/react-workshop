@@ -54,8 +54,10 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
+        // Retrieve emails from server once we know DOM exists
         this._getUpdateEmails();
 
+        // Set up long-polling to continuously get new data
         this._pollId = setInterval(
             () => this._getUpdateEmails(),
             this.props.pollInterval
