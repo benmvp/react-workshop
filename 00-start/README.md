@@ -33,3 +33,8 @@ serve src --port 8080
 ## Next
 
 Go to [Step 1 - Add core components](https://github.com/benmvp/react-workshop/tree/master/01-core-components).
+
+## Resources
+
+- [Fork A Repo on Github](https://help.github.com/articles/fork-a-repo/)
+- [`git-clone`](https://git-scm.com/docs/git-clone)

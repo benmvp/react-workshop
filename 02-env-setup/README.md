@@ -23,7 +23,7 @@ Install React dependencies:
 npm install --save react react-dom
 ```
 
-Install [Webpack](https://webpack.github.io/) module builder:
+Install [webpack](https://webpack.github.io/) module builder:
 
 ```sh
 npm install --save-dev webpack
@@ -96,13 +96,13 @@ Don't accidentally lint the bundle by adding [.eslintignore](.eslintignore) in r
 /src/dist/
 ```
 
-Build a one-time bundle with Webpack (including a source map):
+Build a one-time bundle with webpack (including a source map):
 
 ```sh
 ./node_modules/.bin/webpack --progress --colors --devtool source-map
 ```
 
-Or instead, set Webpack to watch on file changes for continuous building:
+Or instead, set webpack to watch on file changes for continuous building:
 
 ```sh
 ./node_modules/.bin/webpack --watch --progress --colors --devtool source-map
@@ -122,7 +122,7 @@ Add scripts to [package.json](package.json) to make building and linting easier:
 }
 ```
 
-Run `build:watch` script for Webpack continuous building:
+Run `build:watch` script for webpack continuous building:
 
 ```sh
 npm run build:watch
@@ -136,7 +136,7 @@ npm test
 
 ## Tasks
 
-- Replace the `<script>` tags in [index.html](src/index.html) to point to Webpack bundle
+- Replace the `<script>` tags in [index.html](src/index.html) to point to webpack bundle
 - Add React dependencies to the top of [index.js](src/index.js)
 - Separate the components into their own files ([index.js](src/index.js), [App.js](src/containers/App.js), [EmailForm.js](src/components/EmailForm.js), [EmailView.js](src/components/EmailView.js), [EmailList.js](src/components/EmailList.js) & [EmailListItem.js](src/components/EmailListItem.js)), and use [ES6 imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) to pull in dependencies
 - Add [`propTypes`](https://facebook.github.io/react/docs/reusable-components.html) to each of the components
@@ -144,3 +144,13 @@ npm test
 ## Next
 
 Go to [Step 3 - Fetching from server](https://github.com/benmvp/react-workshop/tree/master/03-fetch).
+
+## Resources
+
+- [React Developer Tools](https://github.com/facebook/react-devtools)
+- [Reusable Components](https://facebook.github.io/react/docs/reusable-components.html)
+- [ES6 imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+- [Getting Started with webpack](http://webpack.github.io/docs/tutorials/getting-started/)
+- [Babel](http://babeljs.io/)
+- [ESLint](http://eslint.org/)
+- [package.json](https://docs.npmjs.com/files/package.json) & [`npm init`](https://docs.npmjs.com/cli/init)
