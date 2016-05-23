@@ -4,7 +4,7 @@ A step-by-step workshop for learning React fundamentals.
 
 ## To run completed app
 
-Assuming you have node installed, [install `nvm`](https://github.com/creationix/nvm#install-script) and then close & reopen your terminal.
+Assuming you have a version of [node](https://nodejs.org/en/) installed, [install `nvm`](https://github.com/creationix/nvm#install-script) and then close & reopen your terminal.
 
 Install the latest stable version of node:
 

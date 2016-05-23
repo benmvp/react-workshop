@@ -2,7 +2,15 @@
 
 ## Setup
 
-If you haven't done so already, [fork](https://help.github.com/articles/fork-a-repo/) this [`react-workshop`](https://github.com/benmvp/react-workshop) repo and create a local clone (be sure to replace `YOUR-USERNAME` with your own):
+Assuming you have a version of [node](https://nodejs.org/en/) installed, [install `nvm`](https://github.com/creationix/nvm#install-script) and then close & reopen your terminal.
+
+Install the latest stable version of node:
+
+```sh
+nvm install node
+```
+
+[Fork](https://help.github.com/articles/fork-a-repo/) this [`react-workshop`](https://github.com/benmvp/react-workshop) repo and create a local clone (be sure to replace `YOUR-USERNAME` with your own):
 
 ```sh
 git clone https://github.com/YOUR-USERNAME/react-workshop.git
