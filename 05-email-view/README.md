@@ -65,7 +65,7 @@ Add `start:server` script to [package.json](package.json):
 
 ## Next
 
-Coming soon...
+Go to [Step 6 - Email Form](https://github.com/benmvp/react-workshop/tree/master/06-email-form).
 
 ## Resources
 
