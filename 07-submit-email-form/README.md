@@ -16,3 +16,4 @@ Coming soon...
 ## Resources
 
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) & Github's [`fetch` polyfill](https://github.com/github/fetch)
+- [Learning ES6: Promises](http://www.benmvp.com/learning-es6-promises/)

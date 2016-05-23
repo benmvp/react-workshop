@@ -87,6 +87,7 @@ Go to [Step 4 - Long polling](https://github.com/benmvp/react-workshop/tree/mast
 ## Resources
 
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) & Github's [`fetch` polyfill](https://github.com/github/fetch)
+- [Learning ES6: Promises](http://www.benmvp.com/learning-es6-promises/)
 - [Interactivity and Dynamic UIs](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html)
 - [Lifecycle Methods](https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods)
 - [Using webpack with shims and polyfills](http://mts.io/2015/04/08/webpack-shims-polyfills/)

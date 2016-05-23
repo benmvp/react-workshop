@@ -17,6 +17,7 @@ Go to [Step 2 - Environment setup](https://github.com/benmvp/react-workshop/tree
 - [Display Data](https://facebook.github.io/react/docs/displaying-data.html)
 - [JSX in Depth](https://facebook.github.io/react/docs/jsx-in-depth.html)
 - [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html)
+- [Dynamic Children](https://facebook.github.io/react/docs/multiple-components.html#dynamic-children)
 - [JS Bin](http://jsbin.com/)
 - [Mockaroo](https://www.mockaroo.com/)
 - [Babel REPL](http://babeljs.io/repl/)

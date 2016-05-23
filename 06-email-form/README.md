@@ -15,3 +15,4 @@ Go to [Step 7 - Submit email form](https://github.com/benmvp/react-workshop/tree
 ## Resources
 
 - [Forms](https://facebook.github.io/react/docs/forms.html)
+- [DOM Differences](https://facebook.github.io/react/docs/dom-differences.html)
