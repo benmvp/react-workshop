@@ -10,7 +10,7 @@ None
 
 ## Next
 
-Coming soon...
+Go to [Step 7 - Submit email form](https://github.com/benmvp/react-workshop/tree/master/07-submit-email-form).
 
 ## Resources
 

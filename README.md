@@ -54,3 +54,4 @@ Each step in the workshop builds on top of the previous one. You can begin at th
 1. [Long polling](https://github.com/benmvp/react-workshop/tree/master/04-polling)
 1. [Email View](https://github.com/benmvp/react-workshop/tree/master/05-email-view)
 1. [Email Form](https://github.com/benmvp/react-workshop/tree/master/06-email-form)
+1. [Submit email form](https://github.com/benmvp/react-workshop/tree/master/07-submit-email-form)
