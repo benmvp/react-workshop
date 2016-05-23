@@ -1,31 +1,27 @@
 class EmailListItem extends React.Component {
     render() {
-        let {id, from, subject, children} = this.props;
-        let rawMessage = {__html: children};
+        let {
+            email: {from, subject}
+        } = this.props;
 
         return (
-            <li>
-                <span>{id}</span> -
-                <span>{from}</span> -
+            <div>
+                <span>{from}</span>
                 <span>{subject}</span>
-                <span dangerouslySetInnerHTML={rawMessage} />
-            </li>
+            </div>
         );
     }
 }
 
 class EmailList extends React.Component {
     render() {
-        let {emails} = this.props;
+        let {emails, onItemSelect} = this.props;
         let emailComponents = emails.map((email) => (
-            <EmailListItem
-                key={email.id}
-                id={email.id}
-                from={email.from}
-                subject={email.subject}
-            >
-              {email.message}
-            </EmailListItem>
+            <li key={email.id}>
+                <EmailListItem
+                    email={email}
+                />
+            </li>
         ));
 
         return (

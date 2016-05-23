@@ -17,7 +17,6 @@ Go to [Step 2 - Environment setup](https://github.com/benmvp/react-workshop/tree
 - [Display Data](https://facebook.github.io/react/docs/displaying-data.html)
 - [JSX in Depth](https://facebook.github.io/react/docs/jsx-in-depth.html)
 - [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html)
-- [Dangerously Set innerHTML](https://facebook.github.io/react/tips/dangerously-set-inner-html.html)
 - [JS Bin](http://jsbin.com/)
 - [Mockaroo](https://www.mockaroo.com/)
 - [Babel REPL](http://babeljs.io/repl/)

@@ -1,24 +1,21 @@
 import React from 'react';
+import {EMAIL_PROP_TYPE} from './constants';
 
 export default class EmailListItem extends React.Component {
     static propTypes = {
-        id: React.PropTypes.number.isRequired,
-        from: React.PropTypes.string.isRequired,
-        subject: React.PropTypes.string.isRequired,
-        children: React.PropTypes.node.isRequired
+        email: EMAIL_PROP_TYPE.isRequired
     }
 
     render() {
-        let {id, from, subject, children} = this.props;
-        let rawMessage = {__html: children};
+        let {
+            email: {from, subject}
+        } = this.props;
 
         return (
-            <li>
-                <span>{id}</span> -
-                <span>{from}</span> -
+            <div>
+                <span>{from}</span>
                 <span>{subject}</span>
-                <span dangerouslySetInnerHTML={rawMessage} />
-            </li>
+            </div>
         );
     }
 }
