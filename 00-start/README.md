@@ -8,10 +8,12 @@ If you haven't done so already, [fork](https://help.github.com/articles/fork-a-r
 git clone https://github.com/YOUR-USERNAME/react-workshop.git
 ```
 
-Change to [`00-start`](https://github.com/benmvp/react-workshop/tree/master/00-start) directory:
+Copy the [`00-start`](https://github.com/benmvp/react-workshop/tree/master/00-start) directory, name it `workshop`, and change to it:
 
 ```sh
-cd react-workshop/00-start
+cd react-workshop
+cp -r 00-start workshop
+cd workshop
 ```
 
 Install [`serve`](https://github.com/tj/serve):
