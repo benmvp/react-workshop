@@ -11,7 +11,7 @@ None
 
 ## Next
 
-Coming soon...
+Go to [Step 8 - Optimistic updating](https://github.com/benmvp/react-workshop/tree/master/08-optimistic-updating).
 
 ## Resources
 
