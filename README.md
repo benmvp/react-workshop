@@ -52,3 +52,4 @@ Each step in the workshop builds on top of the previous one. You can begin at th
 1. [Environment setup](https://github.com/benmvp/react-workshop/tree/master/02-env-setup)
 1. [Fetching from server](https://github.com/benmvp/react-workshop/tree/master/03-fetch)
 1. [Long polling](https://github.com/benmvp/react-workshop/tree/master/04-polling)
+1. [Email View](https://github.com/benmvp/react-workshop/tree/master/05-email-view)

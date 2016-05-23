@@ -11,27 +11,23 @@ module.exports = {
 
     // Bundle location
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, 'src/dist'),
         publicPath: '/dist/',
         filename: 'bundle.js'
     },
 
     // Pass all *.js files through Babel transpiling & React hot reloading
-    // Pass all *.scss files through SASS transpiling & include via <style> tag
     module: {
         loaders: [
             {
                 test: /\.js?$/,
                 loaders: ['react-hot', 'babel'],
                 include: path.join(__dirname, 'src')
-            },
-            {
-                test: /\.scss$/,
-                loaders: ['style', 'css', 'sass'],
-                include: path.join(__dirname, 'src')
             }
         ]
     },
+
+    // Shim fetch API with whatwg-fetch
     plugins: [
         new webpack.ProvidePlugin({
             'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'

@@ -24,26 +24,30 @@ const EmailListItemStatus = ({isSelected, unread, onDelete, onMarkUnread}) => {
 export default class EmailListItem extends React.Component {
     static propTypes = {
         email: EMAIL_PROP_TYPE.isRequired,
-        onSelect: React.PropTypes.func.isRequired,
         onDelete: React.PropTypes.func.isRequired,
         onMarkUnread: React.PropTypes.func.isRequired,
+        onSelect: React.PropTypes.func,
 
         isSelected: React.PropTypes.bool
     }
 
     _handleDelete(e) {
         e.stopPropagation();
-        this.props.onDelete();
+        this.props.onDelete(this.props.email.id);
     }
 
     _handleMarkUnread(e) {
         e.stopPropagation();
-        this.props.onMarkUnread();
+        this.props.onMarkUnread(this.props.email.id);
     }
 
-    _handleSelect(e) {
-        e.stopPropagation();
-        this.props.onSelect();
+    _handleClick(e) {
+        let {email, onSelect} = this.props;
+
+        if (onSelect) {
+            e.stopPropagation();
+            onSelect(email.id);
+        }
     }
 
     render() {
@@ -60,7 +64,7 @@ export default class EmailListItem extends React.Component {
         );
 
         return (
-            <div className={className} onClick={this._handleSelect.bind(this)}>
+            <div className={className} onClick={this._handleClick.bind(this)}>
                 <span className="email-list-item__from">{from}</span>
 
                 <span className="email-list-item__subject">{subject}</span>

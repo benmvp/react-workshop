@@ -1,4 +1,5 @@
 import React from 'react';
+import find from 'lodash/find';
 
 import {addEmail, deleteEmail, getEmails, markRead, markUnread} from '../action-reducers';
 
@@ -140,7 +141,7 @@ export default class App extends React.Component {
 
     render() {
         let {emails, selectedEmailId, showForm} = this.state;
-        let selectedEmail = emails.find((email) => email.id === selectedEmailId);
+        let selectedEmail = find(emails, (email) => email.id === selectedEmailId);
 
         return (
             <main className="app">

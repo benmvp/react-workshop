@@ -1,6 +1,7 @@
-import {EMAIL_PROP_TYPE} from './constants';
-import EmailListItem from './EmailListItem';
 import React from 'react';
+
+import EmailListItem from './EmailListItem';
+import {EMAIL_PROP_TYPE} from './constants';
 
 import './EmailList.scss';
 
@@ -27,9 +28,9 @@ export default class EmailList extends React.Component {
                 <EmailListItem
                     email={email}
                     isSelected={email.id === selectedEmailId}
-                    onSelect={onItemSelect.bind(null, email.id)}
-                    onDelete={onItemDelete.bind(null, email.id)}
-                    onMarkUnread={onItemMarkUnread.bind(null, email.id)}
+                    onSelect={onItemSelect}
+                    onDelete={onItemDelete}
+                    onMarkUnread={onItemMarkUnread}
                 />
             </li>
         ));

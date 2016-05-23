@@ -1,7 +1,5 @@
-import {EMAIL_PROP_TYPE} from './constants';
 import React from 'react';
-
-import './EmailView.scss';
+import {EMAIL_PROP_TYPE} from './constants';
 
 export default class EmailView extends React.Component {
     static propTypes = {
@@ -21,12 +19,12 @@ export default class EmailView extends React.Component {
         let rawMessage = {__html: message};
 
         return (
-            <div className="email-view">
+            <div>
                 <h1>{subject}</h1>
                 <h2>From: <a href={`mailto:${from}`}>{from}</a></h2>
                 <h3>{date}</h3>
                 <div dangerouslySetInnerHTML={rawMessage} />
-                <button className="email-view__close" onClick={this._handleCloseClick.bind(this)}>Close</button>
+                <button onClick={this._handleCloseClick.bind(this)}>Close</button>
             </div>
         );
     }
