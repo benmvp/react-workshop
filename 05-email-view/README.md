@@ -73,4 +73,3 @@ Go to [Step 6 - Email Form](https://github.com/benmvp/react-workshop/tree/master
 - [React Hot Loader Getting Started](http://gaearon.github.io/react-hot-loader/getstarted/)
 - [Event System](https://facebook.github.io/react/docs/events.html)
 - [Dangerously Set innerHTML](https://facebook.github.io/react/tips/dangerously-set-inner-html.html)
-- [lodash Documentation](https://lodash.com/docs)

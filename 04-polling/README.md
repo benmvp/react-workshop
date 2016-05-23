@@ -16,3 +16,4 @@ Go to [Step 5 - Email View](https://github.com/benmvp/react-workshop/tree/master
 ## Resources
 
 - [Lifecycle methods](https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods)
+- [lodash Documentation](https://lodash.com/docs)

@@ -1,5 +1,6 @@
 import React from 'react';
 import find from 'lodash/find';
+import isEqual from 'lodash/isEqual';
 
 import {addEmail, deleteEmail, getEmails, markRead, markUnread} from '../action-reducers';
 
@@ -74,7 +75,16 @@ export default class App extends React.Component {
 
     _getUpdateEmails() {
         return getEmails()
-            .then((emails) => this.setState({emails}));
+            .then((emails) => {
+                // Because `emails` is a different reference from `this.state.emails`,
+                // the component will unnecessarily re-render even though the contents
+                // are the same. The virtual DOM will prevent the actual DOM from updating
+                // but it still actually has to run its diffing algorithm. So instead
+                // making this quick check here, saves unnecessary extra work
+                if (!isEqual(emails, this.state.emails)) {
+                    this.setState({emails});
+                }
+            });
     }
 
     _handleItemSelect(emailId) {
