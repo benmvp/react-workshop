@@ -35,7 +35,9 @@ class EmailList extends React.Component {
 class EmailView extends React.Component {
     render() {
         return (
-            <div>View selected email</div>
+            <div>
+                <h2>View selected email</h2>
+            </div>
         );
     }
 }
@@ -43,7 +45,9 @@ class EmailView extends React.Component {
 class EmailForm extends React.Component {
     render() {
         return (
-            <div>Add a new email</div>
+            <div>
+                <h2>Add a new email</h2>
+            </div>
         );
     }
 }
