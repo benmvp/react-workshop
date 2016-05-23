@@ -6,7 +6,7 @@ module.exports = {
 
     // Bundle location
     output: {
-        path: path.resolve(__dirname, 'src/dist'),
+        path: path.join(__dirname, 'src/dist'),
         filename: 'bundle.js'
     },
 
@@ -15,7 +15,8 @@ module.exports = {
         loaders: [
             {
                 test: /\.js?$/,
-                loader: 'babel'
+                loader: 'babel',
+                include: path.join(__dirname, 'src')
             }
         ]
     }

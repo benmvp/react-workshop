@@ -11,8 +11,8 @@ module.exports = {
 
     // Bundle location
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        pubicPath: 'http://localhost:8080/static/',
+        path: path.join(__dirname, 'dist'),
+        publicPath: '/dist/',
         filename: 'bundle.js'
     },
 

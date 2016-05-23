@@ -11,7 +11,7 @@ None
 
 ## Next
 
-Coming soon...
+Go to [Step 5 - Email View](https://github.com/benmvp/react-workshop/tree/master/05-email-view).
 
 ## Resources
 

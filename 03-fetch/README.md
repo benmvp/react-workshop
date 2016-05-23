@@ -50,14 +50,15 @@ var webpack = require('webpack'),
 module.exports = {
     entry: './src/index',
     output: {
-        path: path.resolve(__dirname, 'src/dist'),
+        path: path.join(__dirname, 'src/dist'),
         filename: 'bundle.js'
     },
     module: {
         loaders: [
             {
                 test: /\.js?$/,
-                loader: 'babel'
+                loader: 'babel',
+                include: path.join(__dirname, 'src')
             }
         ]
     },
@@ -77,7 +78,7 @@ npm run build:watch
 
 ## Tasks
 
-- Remove `emails` constant in [App.js](src/containers/App.js), and replace with new `emails` property on [state](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html) that is set from `fetch` call to the API inside [`componentDidMount`](https://facebook.github.io/react/docs/component-specs.html#mounting-componentdidmount)
+- Remove `emails` constant in [`EmailApp`](src/containers/App.js), and replace with new `emails` property on [state](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html) that is set from `fetch` call to the API inside [`componentDidMount`](https://facebook.github.io/react/docs/component-specs.html#mounting-componentdidmount)
 
 ## Next
 
