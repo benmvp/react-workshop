@@ -2,7 +2,7 @@ import React from 'react';
 import find from 'lodash/find';
 import isEqual from 'lodash/isEqual';
 
-import {addEmail, deleteEmail, getEmails, markRead, markUnread} from '../action-reducers';
+import * as actionReducers from '../action-reducers';
 
 import EmailForm from '../components/EmailForm';
 import EmailList from '../components/EmailList';
@@ -74,7 +74,7 @@ export default class App extends React.Component {
     }
 
     _getUpdateEmails() {
-        return getEmails()
+        return actionReducers.getEmails()
             .then((emails) => {
                 // Because `emails` is a different reference from `this.state.emails`,
                 // the component will unnecessarily re-render even though the contents
@@ -93,7 +93,7 @@ export default class App extends React.Component {
             this.setState({selectedEmailId: emailId});
 
             // also mark the email as read
-            markRead(this.state.emails, emailId)
+            actionReducers.markRead(this.state.emails, emailId)
                 // optimistic updating (see _handleFormSubmit for more info)
                 .then((emails) => this.setState({emails}))
 
@@ -103,7 +103,7 @@ export default class App extends React.Component {
     }
 
     _handleItemDelete(emailId) {
-        deleteEmail(this.state.emails, emailId)
+        actionReducers.deleteEmail(this.state.emails, emailId)
             // optimistic updating (see _handleFormSubmit for more info)
             .then((emails) => this.setState({emails}))
 
@@ -112,7 +112,7 @@ export default class App extends React.Component {
     }
 
     _handleItemMarkUnread(emailId) {
-        markUnread(this.state.emails, emailId)
+        actionReducers.markUnread(this.state.emails, emailId)
             // optimistic updating (see _handleFormSubmit for more info)
             .then((emails) => this.setState({emails}))
 
@@ -126,7 +126,7 @@ export default class App extends React.Component {
     }
 
     _handleFormSubmit(newEmail) {
-        addEmail(this.state.emails, newEmail)
+        actionReducers.addEmail(this.state.emails, newEmail)
             // if the email was successfully updated, we have to make
             // a request to get the new list of emails, but we'll have
             // to wait for the response of that request, so let's add to
