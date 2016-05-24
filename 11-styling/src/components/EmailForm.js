@@ -11,8 +11,7 @@ const DEFAULT_FORM_VALUES = {
 
 export default class EmailForm extends React.Component {
     static propTypes = {
-        onSubmit: React.PropTypes.func.isRequired,
-        onCancel: React.PropTypes.func
+        onSubmit: React.PropTypes.func.isRequired
     }
 
     state = DEFAULT_FORM_VALUES
@@ -35,12 +34,6 @@ export default class EmailForm extends React.Component {
 
     _handleMessageChanged(e) {
         this._updateFormFieldState('message', e);
-    }
-
-    _handleCancel() {
-        if (this.props.onCancel) {
-            this.props.onCancel();
-        }
     }
 
     _handleSubmit(e) {
@@ -104,7 +97,7 @@ export default class EmailForm extends React.Component {
                 <div className="email-form__field">
                     <label className="email-form__label" htmlFor="message">Message:</label>
                     <textarea id="message"
-                        className="email-form__input email-form__input-message"
+                        className="email-form__input"
                         value={message}
                         onChange={this._handleMessageChanged.bind(this)}
                         placeholder="[Insert message here]"
@@ -112,7 +105,6 @@ export default class EmailForm extends React.Component {
                 </div>
 
                 <div className="email-form__button-bar">
-                    <button type="button" onClick={this._handleCancel.bind(this)}>Cancel</button>
                     <button type="submit">Send email</button>
                 </div>
             </form>

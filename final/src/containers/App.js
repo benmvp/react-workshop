@@ -35,7 +35,7 @@ const EmailFormWrapper = ({showForm, onSubmit, onCancel}) => {
 
     if (showForm) {
         component = (
-            <div className="app__form-wrapper">
+            <div className="app__form-modal">
                 <div className="app__form">
                     <EmailForm onSubmit={onSubmit} onCancel={onCancel} />
                 </div>
@@ -165,7 +165,6 @@ export default class App extends React.Component {
                             onItemMarkUnread={this._handleItemMarkUnread.bind(this)}
                         />
                     </section>
-
                     <EmailViewWrapper selectedEmail={selectedEmail}
                         onClose={this._handleEmailViewClose.bind(this)}
                         onDelete={this._handleItemDelete.bind(this, selectedEmailId)}

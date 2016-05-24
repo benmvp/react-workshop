@@ -58,3 +58,4 @@ Each step in the workshop builds on top of the previous one. You can begin at th
 1. [Optimistic updating](https://github.com/benmvp/react-workshop/tree/master/08-optimistic-updating)
 1. [Delete email](https://github.com/benmvp/react-workshop/tree/master/09-delete-email)
 1. [Mark unread/read](https://github.com/benmvp/react-workshop/tree/master/10-mark-unread)
+1. [Styling](https://github.com/benmvp/react-workshop/tree/master/11-styling)

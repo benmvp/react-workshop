@@ -65,13 +65,13 @@ export default class EmailView extends React.Component {
                 <h2>From: <a href={`mailto:${from}`}>{from}</a></h2>
                 <h3>{date}</h3>
                 <div dangerouslySetInnerHTML={rawMessage} />
-                <EmailViewButtonBar
-                    unread={unread}
-                    onClose={this._handleClose.bind(this)}
-                    onDelete={this._handleDelete.bind(this)}
-                    onMarkUnread={this._handleMarkUnread.bind(this)}
-                    onMarkRead={this._handleMarkRead.bind(this)}
-                />
+                    <EmailViewButtonBar
+                        unread={unread}
+                        onClose={this._handleClose.bind(this)}
+                        onDelete={this._handleDelete.bind(this)}
+                        onMarkUnread={this._handleMarkUnread.bind(this)}
+                        onMarkRead={this._handleMarkRead.bind(this)}
+                    />
             </div>
         );
     }

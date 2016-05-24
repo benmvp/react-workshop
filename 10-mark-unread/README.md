@@ -13,7 +13,7 @@ None
 
 ## Next
 
-Coming soon...
+Go to [Step 11 - Styling](https://github.com/benmvp/react-workshop/tree/master/11-styling).
 
 ## Resources
 
