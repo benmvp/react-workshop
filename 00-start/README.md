@@ -16,7 +16,7 @@ nvm install node
 git clone https://github.com/YOUR-USERNAME/react-workshop.git
 ```
 
-Copy the [`00-start`](https://github.com/benmvp/react-workshop/tree/master/00-start) directory, name it `workshop`, and change to it:
+Copy the [`00-start`](./) directory, name it `workshop`, and change to it:
 
 ```sh
 cd react-workshop
@@ -42,7 +42,7 @@ serve src --port 8080
 
 ## Next
 
-Go to [Step 1 - Add core components](https://github.com/benmvp/react-workshop/tree/master/01-core-components).
+Go to [Step 1 - Add core components](../01-core-components/).
 
 ## Resources
 

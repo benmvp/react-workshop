@@ -82,7 +82,7 @@ npm run build:watch
 
 ## Next
 
-Go to [Step 4 - Long polling](https://github.com/benmvp/react-workshop/tree/master/04-polling).
+Go to [Step 4 - Long polling](../04-polling/).
 
 ## Resources
 

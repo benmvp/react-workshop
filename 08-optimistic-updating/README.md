@@ -10,7 +10,7 @@ None
 
 ## Next
 
-Go to [Step 9 - Delete email](https://github.com/benmvp/react-workshop/tree/master/09-delete-email).
+Go to [Step 9 - Delete email](../09-delete-email/).
 
 ## Resources
 

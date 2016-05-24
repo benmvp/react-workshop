@@ -14,7 +14,7 @@ nvm install node
 git clone https://github.com/YOUR-USERNAME/react-workshop.git
 ```
 
-Change to [`final`](https://github.com/benmvp/react-workshop/tree/master/final) directory:
+Change to [`final`](./) directory:
 
 ```sh
 cd react-workshop/final

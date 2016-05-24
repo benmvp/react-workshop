@@ -144,7 +144,7 @@ npm test
 
 ## Next
 
-Go to [Step 3 - Fetching from server](https://github.com/benmvp/react-workshop/tree/master/03-fetch).
+Go to [Step 3 - Fetching from server](../03-fetch/).
 
 ## Resources
 

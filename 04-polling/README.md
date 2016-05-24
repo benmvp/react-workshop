@@ -11,7 +11,7 @@ None
 
 ## Next
 
-Go to [Step 5 - Email View](https://github.com/benmvp/react-workshop/tree/master/05-email-view).
+Go to [Step 5 - Email View](../05-email-view/).
 
 ## Resources
 

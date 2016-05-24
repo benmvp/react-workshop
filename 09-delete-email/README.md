@@ -11,7 +11,7 @@ None
 
 ## Next
 
-Go to [Step 10 - Mark unread/read](https://github.com/benmvp/react-workshop/tree/master/10-mark-unread).
+Go to [Step 10 - Mark unread/read](../10-mark-unread/).
 
 ## Resources
 

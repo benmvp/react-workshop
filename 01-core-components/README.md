@@ -10,7 +10,7 @@ None
 
 ## Next
 
-Go to [Step 2 - Environment setup](https://github.com/benmvp/react-workshop/tree/master/02-env-setup).
+Go to [Step 2 - Environment setup](../02-env-setup/).
 
 ## Resources
 
