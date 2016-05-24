@@ -6,12 +6,12 @@ None
 
 ## Tasks
 
-- Add a delete button to each [`EmailListItem`](src/components/EmailListItem.js) that will make a `fetch` `DELETE` & optimistically update afterwards
-- Add a delete button to [`EmailView`](src/components/EmailView.js) that'll do the same
+- Add a "Delete" button to each [`EmailListItem`](src/components/EmailListItem.js) that will make a `fetch` `DELETE` & optimistically update `emails` state afterwards
+- Add a "Delete" button to [`EmailView`](src/components/EmailView.js) that will do the same
 
 ## Next
 
-Coming soon...
+Go to [Step 10 - Mark unread/read](https://github.com/benmvp/react-workshop/tree/master/10-mark-unread).
 
 ## Resources
 

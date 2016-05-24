@@ -10,13 +10,19 @@ import EmailView from '../components/EmailView';
 
 import './App.scss';
 
-const EmailViewWrapper = ({selectedEmail, onClose, onDelete}) => {
+const EmailViewWrapper = ({selectedEmail, onClose, onDelete, onMarkUnread, onMarkRead}) => {
     let component = null;
 
     if (selectedEmail) {
         component = (
             <article className="app__view">
-                <EmailView email={selectedEmail} onClose={onClose} onDelete={onDelete} />
+                <EmailView
+                    email={selectedEmail}
+                    onClose={onClose}
+                    onDelete={onDelete}
+                    onMarkUnread={onMarkUnread}
+                    onMarkRead={onMarkRead}
+                />
             </article>
         );
     }
@@ -88,24 +94,15 @@ export default class App extends React.Component {
     }
 
     _handleItemSelect(emailId) {
-        if (this.state.selectedEmailId !== emailId) {
-            // update state (so that the EmailView will show)
-            this.setState({selectedEmailId: emailId});
+        // update state (so that the EmailView will show)
+        this.setState({selectedEmailId: emailId});
 
+        if (this.state.selectedEmailId !== emailId) {
             // also mark the email as read
             actionReducers.markRead(this.state.emails, emailId)
                 // optimistic updating (see _handleFormSubmit for more info)
                 .then((emails) => this.setState({emails}));
         }
-    }
-
-    _handleItemMarkUnread(emailId) {
-        actionReducers.markUnread(this.state.emails, emailId)
-            // optimistic updating (see _handleFormSubmit for more info)
-            .then((emails) => this.setState({emails}))
-
-            // actually retrieve new emails from server
-            .then(() => this._getUpdateEmails());
     }
 
     _handleEmailViewClose() {
@@ -128,10 +125,19 @@ export default class App extends React.Component {
         actionReducers.deleteEmail(this.state.emails, emailId)
             // optimistic updating (see _handleFormSubmit for more info)
             // Also reset `selectedEmailId` since we're deleting it
-            .then((emails) => this.setState({emails, selectedEmailId: -1}))
+            .then((emails) => this.setState({emails, selectedEmailId: -1}));
+    }
 
-            // actually retrieve new emails from server
-            .then(() => this._getUpdateEmails());
+    _handleItemMarkUnread(emailId) {
+        actionReducers.markUnread(this.state.emails, emailId)
+            // optimistic updating (see _handleFormSubmit for more info)
+            .then((emails) => this.setState({emails}));
+    }
+
+    _handleItemMarkRead(emailId) {
+        actionReducers.markRead(this.state.emails, emailId)
+            // optimistic updating (see _handleFormSubmit for more info)
+            .then((emails) => this.setState({emails}));
     }
 
     _handleShowForm() {
@@ -163,6 +169,8 @@ export default class App extends React.Component {
                     <EmailViewWrapper selectedEmail={selectedEmail}
                         onClose={this._handleEmailViewClose.bind(this)}
                         onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
+                        onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
+                        onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
                     />
                     <button className="app__new-email" onClick={this._handleShowForm.bind(this)}>+</button>
                     <EmailFormWrapper showForm={showForm}
