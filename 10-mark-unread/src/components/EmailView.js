@@ -11,17 +11,17 @@ export default class EmailView extends React.Component {
         onMarkRead: React.PropTypes.func
     }
 
-    _handleCloseClick(e) {
+    _handleClose(e) {
         e.stopPropagation();
         this.props.onClose();
     }
 
-    _handleDeleteClick(e) {
+    _handleDelete(e) {
         e.stopPropagation();
         this.props.onDelete();
     }
 
-    _handleMarkUnreadClick(e) {
+    _handleMarkUnread(e) {
         e.stopPropagation();
 
         if (this.props.onMarkUnread) {
@@ -29,7 +29,7 @@ export default class EmailView extends React.Component {
         }
     }
 
-    _handleMarkReadClick(e) {
+    _handleMarkRead(e) {
         e.stopPropagation();
 
         if (this.props.onMarkRead) {
@@ -43,8 +43,8 @@ export default class EmailView extends React.Component {
         } = this.props;
         let rawMessage = {__html: message};
         let markUnreadReadButton = unread
-            ? (<button onClick={this._handleMarkReadClick.bind(this)}>Mark Read</button>)
-            : (<button onClick={this._handleMarkUnreadClick.bind(this)}>Mark Unread</button>);
+            ? (<button onClick={this._handleMarkRead.bind(this)}>Mark Read</button>)
+            : (<button onClick={this._handleMarkUnread.bind(this)}>Mark Unread</button>);
 
         return (
             <div>
@@ -53,8 +53,8 @@ export default class EmailView extends React.Component {
                 <h3>{date}</h3>
                 <div dangerouslySetInnerHTML={rawMessage} />
                 {markUnreadReadButton}
-                <button onClick={this._handleDeleteClick.bind(this)}>Delete</button>
-                <button onClick={this._handleCloseClick.bind(this)}>Close</button>
+                <button onClick={this._handleDelete.bind(this)}>Delete</button>
+                <button onClick={this._handleClose.bind(this)}>Close</button>
             </div>
         );
     }

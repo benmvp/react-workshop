@@ -8,12 +8,12 @@ export default class EmailView extends React.Component {
         onDelete: React.PropTypes.func.isRequired
     }
 
-    _handleCloseClick(e) {
+    _handleClose(e) {
         e.stopPropagation();
         this.props.onClose();
     }
 
-    _handleDeleteClick(e) {
+    _handleDelete(e) {
         e.stopPropagation();
         this.props.onDelete();
     }
@@ -30,8 +30,8 @@ export default class EmailView extends React.Component {
                 <h2>From: <a href={`mailto:${from}`}>{from}</a></h2>
                 <h3>{date}</h3>
                 <div dangerouslySetInnerHTML={rawMessage} />
-                <button onClick={this._handleDeleteClick.bind(this)}>Delete</button>
-                <button onClick={this._handleCloseClick.bind(this)}>Close</button>
+                <button onClick={this._handleDelete.bind(this)}>Delete</button>
+                <button onClick={this._handleClose.bind(this)}>Close</button>
             </div>
         );
     }
