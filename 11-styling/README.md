@@ -41,7 +41,7 @@ npm install --save classnames
 
 ## Next
 
-Coming soon...
+Go to [Step 12 - Email Form Modal](../12-email-form-modal/).
 
 ## Resources
 
