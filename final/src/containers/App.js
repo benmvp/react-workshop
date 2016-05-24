@@ -10,13 +10,13 @@ import EmailView from '../components/EmailView';
 
 import './App.scss';
 
-const EmailViewWrapper = ({selectedEmail, onClose}) => {
+const EmailViewWrapper = ({selectedEmail, onClose, onDelete}) => {
     let component = null;
 
     if (selectedEmail) {
         component = (
             <article className="app__view">
-                <EmailView email={selectedEmail} onClose={onClose} />
+                <EmailView email={selectedEmail} onClose={onClose} onDelete={onDelete} />
             </article>
         );
     }
@@ -102,15 +102,6 @@ export default class App extends React.Component {
         }
     }
 
-    _handleItemDelete(emailId) {
-        actionReducers.deleteEmail(this.state.emails, emailId)
-            // optimistic updating (see _handleFormSubmit for more info)
-            .then((emails) => this.setState({emails}))
-
-            // actually retrieve new emails from server
-            .then(() => this._getUpdateEmails());
-    }
-
     _handleItemMarkUnread(emailId) {
         actionReducers.markUnread(this.state.emails, emailId)
             // optimistic updating (see _handleFormSubmit for more info)
@@ -134,6 +125,16 @@ export default class App extends React.Component {
             // comes back, the server-side list will update. This is mainly
             // here to demonstrate immutable updating of data structures
             .then((emails) => this.setState({emails, showForm: false}))
+
+            // actually retrieve new emails from server
+            .then(() => this._getUpdateEmails());
+    }
+
+    _handleItemDelete(emailId) {
+        actionReducers.deleteEmail(this.state.emails, emailId)
+            // optimistic updating (see _handleFormSubmit for more info)
+            // Also reset `selectedEmailId` since we're deleting it
+            .then((emails) => this.setState({emails, selectedEmailId: -1}))
 
             // actually retrieve new emails from server
             .then(() => this._getUpdateEmails());
@@ -167,6 +168,7 @@ export default class App extends React.Component {
 
                     <EmailViewWrapper selectedEmail={selectedEmail}
                         onClose={this._handleEmailViewClose.bind(this)}
+                        onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
                     />
                     <button className="app__new-email" onClick={this._handleShowForm.bind(this)}>+</button>
                     <EmailFormWrapper showForm={showForm}

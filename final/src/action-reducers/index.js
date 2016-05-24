@@ -4,10 +4,10 @@ const setUnread = (emails, emailId, unread) => (
     api.setUnread(emailId, unread)
         .then(({success}) => {
             if (success) {
-                return emails.map((emailInfo) => (
-                    emailInfo === emailId
-                        ? {...emailInfo, unread: false}
-                        : emailInfo
+                return emails.map((email) => (
+                    email.id === emailId
+                        ? {...email, unread: false}
+                        : email
                 ));
             }
 
@@ -29,7 +29,7 @@ export const deleteEmail = (emails, emailId) => (
     api.deleteEmail(emailId)
         .then(({success}) => {
             if (success) {
-                return emails.filter((emailInfo) => emailInfo.id !== emailId);
+                return emails.filter((email) => email.id !== emailId);
             }
 
             throw new Error(`Unable to delete email ID# ${emailId}.`);
