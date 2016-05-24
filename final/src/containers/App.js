@@ -95,10 +95,7 @@ export default class App extends React.Component {
             // also mark the email as read
             actionReducers.markRead(this.state.emails, emailId)
                 // optimistic updating (see _handleFormSubmit for more info)
-                .then((emails) => this.setState({emails}))
-
-                // actually retrieve new emails from server
-                .then(() => this._getUpdateEmails());
+                .then((emails) => this.setState({emails}));
         }
     }
 
@@ -124,10 +121,7 @@ export default class App extends React.Component {
             // our state immediately and then later when the response
             // comes back, the server-side list will update. This is mainly
             // here to demonstrate immutable updating of data structures
-            .then((emails) => this.setState({emails, showForm: false}))
-
-            // actually retrieve new emails from server
-            .then(() => this._getUpdateEmails());
+            .then((emails) => this.setState({emails, showForm: false}));
     }
 
     _handleItemDelete(emailId) {

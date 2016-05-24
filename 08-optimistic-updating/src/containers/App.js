@@ -104,7 +104,6 @@ export default class EmailApp extends React.Component {
                     throw new Error('Unable to send email!');
                 }
             })
-            .then(() => this._getUpdateEmails())
             .catch((ex) => console.error(ex));
     }
 

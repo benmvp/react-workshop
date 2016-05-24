@@ -104,7 +104,6 @@ export default class EmailApp extends React.Component {
                     throw new Error('Unable to send email!');
                 }
             })
-            .then(() => this._getUpdateEmails())
             .catch((ex) => console.error(ex));
     }
 
@@ -127,9 +126,6 @@ export default class EmailApp extends React.Component {
                     throw new Error(`Unable to delete email ID# ${emailId}.`);
                 }
             })
-
-            // actually retrieve new emails from server
-            .then(() => this._getUpdateEmails())
 
             .catch((ex) => console.error(ex));
     }
