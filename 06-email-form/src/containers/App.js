@@ -55,7 +55,7 @@ export default class EmailApp extends React.Component {
             .catch((ex) => console.error(ex));
     }
 
-    _handleItemSelected(emailId) {
+    _handleItemSelect(emailId) {
         // update state (so that the EmailView will show)
         this.setState({selectedEmailId: emailId});
     }
@@ -83,7 +83,7 @@ export default class EmailApp extends React.Component {
             <main>
                 <EmailList
                     emails={emails}
-                    onItemSelect={this._handleItemSelected.bind(this)}
+                    onItemSelect={this._handleItemSelect.bind(this)}
                 />
                 {emailViewComponent}
                 <EmailForm />
