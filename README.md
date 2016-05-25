@@ -60,3 +60,4 @@ Each step in the workshop builds on top of the previous one. You can begin at th
 1. [Mark unread/read](10-mark-unread/)
 1. [Styling](11-styling/)
 1. [Email Form Modal](12-email-form-modal/)
+1. [API lib](13-api-lib/)

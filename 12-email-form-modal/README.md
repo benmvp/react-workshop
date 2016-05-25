@@ -12,7 +12,7 @@ None
 
 ## Next
 
-Coming soon...
+Go to [Step 13 - API lib](../13-api-lib/).
 
 ## Resources
 
