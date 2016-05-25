@@ -10,7 +10,7 @@ None
 
 ## Next
 
-Coming soon...
+Go to [Step 14 - Action-Reducers](../14-action-reducers/).
 
 ## Resources
 
