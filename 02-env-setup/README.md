@@ -38,7 +38,7 @@ npm install --save-dev babel-cli babel-preset-es2015 babel-preset-stage-0 babel-
 Install [ESLint](http://eslint.org/) linting utility for JavaScript:
 
 ```sh
-npm install --save-dev eslint babel-eslint eslint-plugin-react eslint-config-benmvp
+npm install --save-dev eslint babel-eslint eslint-plugin-react eslint-plugin-jsx-a11y eslint-config-benmvp 
 ```
 
 Update [package.json](package.json) contents to add Babel configuration:
