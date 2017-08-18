@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "body-parser": "^1.17.2",
+    "classnames": "^2.2.5",
     "express": "^4.15.4",
     "lodash": "^4.17.4",
     "react": "^15.6.1",
