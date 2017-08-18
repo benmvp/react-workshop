@@ -12,7 +12,7 @@ Install the latest stable version of node (you need Node >= 6):
 nvm install node
 ```
 
-[Fork](https://help.github.com/articles/fork-a-repo/) this [`react-workshop`](./) repo and create a local clone (be sure to replace `YOUR-USERNAME` with your own):
+[Fork the repo](https://github.com/benmvp/react-workshop/fork) and create a local clone (be sure to replace `YOUR-USERNAME` with your own):
 
 ```sh
 git clone https://github.com/YOUR-USERNAME/react-workshop.git
@@ -60,17 +60,17 @@ After the app is initially built, a new browser window should open up at [http:/
 
 Each step in the workshop builds on top of the previous one. You can start at the [beginning](00-begin/). Afterwards follow these steps:
 
-0. [JSX](01-jsx/)
-0. [Environment setup](02-env-setup/)
-0. [Fetching from server](03-fetch/)
-0. [Long polling](04-polling/)
-0. [Email View](05-email-view/)
-0. [Email Form](06-email-form/)
-0. [Submit email form](07-submit-email-form/)
-0. [Optimistic updating](08-optimistic-updating/)
-0. [Delete email](09-delete-email/)
-0. [Mark unread/read](10-mark-unread/)
-0. [Styling](11-styling/)
-0. [Email Form Modal](12-email-form-modal/)
-0. [API lib](13-api-lib/)
-0. [Action-Reducers](14-action-reducers/)
+1. [JSX](01-jsx/)
+1. [Environment setup](02-env-setup/)
+1. [Fetching from server](03-fetch/)
+1. [Long polling](04-polling/)
+1. [Email View](05-email-view/)
+1. [Email Form](06-email-form/)
+1. [Submit email form](07-submit-email-form/)
+1. [Optimistic updating](08-optimistic-updating/)
+1. [Delete email](09-delete-email/)
+1. [Mark unread/read](10-mark-unread/)
+1. [Styling](11-styling/)
+1. [Email Form Modal](12-email-form-modal/)
+1. [API lib](13-api-lib/)
+1. [Action-Reducers](14-action-reducers/)
