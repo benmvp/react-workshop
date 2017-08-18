@@ -1,5 +1,7 @@
 # Step 0 - Begin
 
+The goal of this step is just to get everything set up with a running (blank) app.
+
 ## Setup
 
 Assuming you have a version of [node](https://nodejs.org/en/) installed, [install `nvm`](https://github.com/creationix/nvm#install-script) and then close & reopen your terminal.
