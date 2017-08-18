@@ -6,7 +6,7 @@ A step-by-step workshop for learning React fundamentals.
 
 Assuming you have a version of [node](https://nodejs.org/en/) installed, [install `nvm`](https://github.com/creationix/nvm#install-script) and then close & reopen your terminal.
 
-Install the latest stable version of node:
+Install the latest stable version of node (you need Node >= 6):
 
 ```sh
 nvm install node
@@ -27,26 +27,38 @@ cd react-workshop/final
 Install all of the dependencies:
 
 ```sh
+# Yarn
+yarn
+
+# NPM
 npm install
 ```
 
 Start API server (running at [http://localhost:9090/](http://localhost:9090/)):
 
 ```sh
+# Yarn
+yarn run start:api
+
+# NPM
 npm run start:api
 ```
 
-In a **separate console window/tab**, start the web server:
+In a **separate console window/tab**, start the app:
 
 ```sh
-npm run start:server
+# Yarn
+yarn start
+
+# NPM
+npm start
 ```
 
-Once the initial bundle is built, visit [http://localhost:8080/](http://localhost:8080/).
+After the app is initially built, a new browser window should open up at [http://localhost:3000/](http://localhost:3000/).
 
 ## Exercises
 
-Each step in the workshop builds on top of the previous one. You can begin at the [Start](00-start/). Afterwards follow these steps:
+Each step in the workshop builds on top of the previous one. You can start at the [beginning](00-begin/). Afterwards follow these steps:
 
 1. [Add core components](01-core-components/)
 1. [Environment setup](02-env-setup/)

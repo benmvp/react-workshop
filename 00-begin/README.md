@@ -1,10 +1,10 @@
-# Step 0 - Start
+# Step 0 - Begin
 
 ## Setup
 
 Assuming you have a version of [node](https://nodejs.org/en/) installed, [install `nvm`](https://github.com/creationix/nvm#install-script) and then close & reopen your terminal.
 
-Install the latest stable version of node:
+Install the latest stable version of node (you need Node >= 6):
 
 ```sh
 nvm install node
@@ -16,35 +16,44 @@ nvm install node
 git clone https://github.com/YOUR-USERNAME/react-workshop.git
 ```
 
-Copy the [`00-start`](./) directory, name it `workshop`, and change to it:
+Copy the [`00-begin`](./) directory, name it `workshop`, and change to it:
 
 ```sh
 cd react-workshop
-cp -r 00-start workshop
+cp -r 00-begin workshop
 cd workshop
 ```
 
-Install [`serve`](https://github.com/tj/serve):
+Install all of the dependencies:
 
 ```sh
-npm install -g serve
+# Yarn
+yarn
+
+# NPM
+npm install
 ```
 
-Run `serve` on port `8080` in [`src`](src/) directory:
+Start the app:
 
 ```sh
-serve src --port 8080
+# Yarn
+yarn start
+
+# NPM
+npm start
 ```
 
 ## Tasks
 
-- Visit [http://localhost:8080/](http://localhost:8080/) and you should see an empty page
+- Visit [http://localhost:3000/](http://localhost:3000/) and you should see an empty page
 
 ## Next
 
-Go to [Step 1 - Add core components](../01-core-components/).
+Go to [Step 1 - JSX](../01-jsx/).
 
 ## Resources
 
 - [Fork A Repo on Github](https://help.github.com/articles/fork-a-repo/)
 - [`git-clone`](https://git-scm.com/docs/git-clone)
+- [Create React App](https://github.com/facebookincubator/create-react-app)
