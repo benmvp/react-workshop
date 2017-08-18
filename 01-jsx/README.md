@@ -76,7 +76,7 @@ Notice that instead of `class` it's `className` and `htmlFor` instead of just `f
 
 ## Next
 
-Go to [Step 2 - Components](../02-components/).
+Go to [Step 2 - Environment setup](../02-env-setup/).
 
 ## Resources
 
