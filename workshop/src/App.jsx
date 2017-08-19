@@ -2,7 +2,6 @@ import React from 'react';
 import EmailList from './components/EmailList';
 import EmailView from './components/EmailView';
 import EmailForm from './components/EmailForm';
-import {emails} from './utils/data';
 
 class App extends React.Component {
     constructor(props) {
@@ -14,9 +13,15 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:9090/emails').then((data) => {
-            console.log('Data', data);
-        });
+        fetch('http://localhost:9090/emails')
+            .then((response) => {
+                return response.json();
+            })
+            .then((listOfEmails) => {
+                this.setState({
+                    emails: listOfEmails
+                });
+            });
     }
 
     render() {
