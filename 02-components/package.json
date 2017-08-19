@@ -1,7 +1,10 @@
 {
-  "name": "00-begin",
+  "name": "react-workshop",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=6"
+  },
   "dependencies": {
     "body-parser": "^1.17.2",
     "classnames": "^2.2.5",
