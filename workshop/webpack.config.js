@@ -6,12 +6,19 @@ module.exports = {
         path: path.join(__dirname, 'src/dist'),
         filename: 'bundle.js'
     },
+    resolve: {
+        extensions: ['.js', '.jsx', '.json']
+    },
     module: {
         loaders: [
             {
-                test: /\.js?$/,
+                test: /\.jsx?$/,
                 loader: 'babel-loader',
-                include: path.join(__dirname, 'src')
+                include: path.resolve('src'),
+                exclude: /node_modules/,
+                query: {
+                    presets: ['es2015', 'react']
+                }
             }
         ]
     }
