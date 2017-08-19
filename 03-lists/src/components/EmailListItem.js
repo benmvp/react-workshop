@@ -1,16 +1,14 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+
+import {EMAIL_PROP_TYPE} from './constants';
 
 export default class EmailListItem extends PureComponent {
-  // declare types of expected props
-  // i.e. the component's interface
   static propTypes = {
-    from: PropTypes.string.isRequired,
-    subject: PropTypes.string.isRequired
+    email: EMAIL_PROP_TYPE.isRequired
   };
 
   render() {
-    let {from, subject} = this.props;
+    let {email: {from, subject}} = this.props;
 
     return (
       <div className="email-list-item">

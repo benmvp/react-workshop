@@ -6,7 +6,7 @@ Conceptually, components are like JavaScript functions. They accept arbitrary in
 
 ## Tasks
 
-In [`src/App.js`](src/App.js), the `App` component has quite a bit of markup in it, even though it doesn't do much yet. Break up the large `App` component into smaller `EmailList`, `EmailView` & `EmailForm` components and reference them back in the `App` component:
+The [`App`](src/App.js) component has quite a bit of markup in it, even though it doesn't do much yet. Break up the large `App` component into smaller `EmailList`, `EmailView` & `EmailForm` components and reference them back in the `App` component:
 
 ```js
 class EmailList extends PureComponent {
@@ -138,8 +138,8 @@ class EmailListItem extends PureComponent {
   // declare types of expected props
   // i.e. the component's interface
   static propTypes = {
-    from: PropTypes.string,
-    subject: PropTypes.string
+    from: PropTypes.string.isRequired,
+    subject: PropTypes.string.isRequired
   }
 
   render() {
@@ -155,7 +155,9 @@ class EmailListItem extends PureComponent {
 }
 ```
 
-Lastly, move each component into its own file under a new [`src/components/`](src/components/) folder, `import`ing and `export`ing as necessary. For example in `EmailList`:
+## Exercises
+
+Move each component into its own file under a new [`src/components/`](src/components/) folder, `import`ing and `export`ing as necessary. For example in `EmailList`:
 
 ```js
 import React, {PureComponent} from 'react';
@@ -189,6 +191,8 @@ export default class EmailList extends PureComponent {
   }
 }
 ```
+
+Aftewards, use the  [React Developer Tools](https://github.com/facebook/react-devtools#installation) to inspect the component hierarchy, including the props being passed to the `EmailListItem` components.
 
 ## Next
 

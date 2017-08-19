@@ -60,3 +60,4 @@ Go to [Step 1 - JSX](../01-jsx/).
 - [Fork A Repo on Github](https://help.github.com/articles/fork-a-repo/)
 - [`git-clone`](https://git-scm.com/docs/git-clone)
 - [Create React App](https://github.com/facebookincubator/create-react-app)
+- [_Learning ES6_ series](http://www.benmvp.com/learning-es6-series/)

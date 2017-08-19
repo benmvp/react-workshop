@@ -74,7 +74,9 @@ export default class App extends PureComponent {
 
 Notice that instead of `class` it's `className` and `htmlFor` instead of just `for`.
 
-Lastly, add the skeleton markup to begin our email application:
+## Exercises
+
+Add the skeleton markup to begin our email application, such as:
 
 ```js
 export default class App extends PureComponent {
