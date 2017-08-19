@@ -1,3 +1,8 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+console.log('Hello');
+
 class EmailListItem extends React.Component {
     render() {
         let {email: {from, subject}} = this.props;
