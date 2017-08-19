@@ -1,6 +1,20 @@
 # React Fundamentals Workshop by Ben Ilegbodu
 
-A step-by-step workshop for learning React fundamentals.
+[![Maintenance Status](https://img.shields.io/badge/status-maintained-brightgreen.svg)](https://github.com/benmvp/react-workshop/pulse)
+[![Build Status](https://travis-ci.org/benmvp/react-workshop.svg?branch=master)](https://travis-ci.org/benmvp/react-workshop)
+[![license](https://img.shields.io/github/license/benmvp/react-workshop.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+
+[![Watch on GitHub](https://img.shields.io/github/watchers/benmvp/react-workshop.svg?style=social)](https://github.com/benmvp/react-workshop/watchers)
+[![Star on GitHub](https://img.shields.io/github/stars/benmvp/react-workshop.svg?style=social)](https://github.com/benmvp/react-workshop/stargazers)
+[![Tweet](https://img.shields.io/twitter/url/https/github.com/benmvp/react-workshop.svg?style=social)](https://twitter.com/intent/tweet?text=Check%20out%20React%20Fundamentals%20Workshop%20by%20%40benmvp!%0A%0Ahttps%3A%2F%2Fgithub.com%2Fbenmvp%2Freact-workshop)
+
+A step-by-step workshop for learning React fundamentals. Best if accompanied with live facilitation. 🙂
+
+## Many thanks!
+
+- [Create React App](https://github.com/facebookincubator/create-react-app) - makes it painless to spin up a React environment
+- [React Docs](http://facebook.github.io/react) - lots of content has been borrowed from here
 
 ## To run completed app
 
@@ -24,7 +38,7 @@ Change to [`end`](end/) directory:
 cd react-workshop/end
 ```
 
-Install all of the dependencies:
+Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred):
 
 ```sh
 # Yarn
@@ -74,3 +88,7 @@ Each step in the workshop builds on top of the previous one. You can start at th
 1. [Email Form Modal](12-email-form-modal/)
 1. [API lib](13-api-lib/)
 1. [Action-Reducers](14-action-reducers/)
+
+## License
+
+MIT

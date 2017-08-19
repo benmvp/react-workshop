@@ -20,7 +20,7 @@ Change to [`end`](end/) directory:
 cd react-workshop/end
 ```
 
-Install all of the dependencies:
+Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred):
 
 ```sh
 # Yarn

@@ -26,7 +26,7 @@ cp -r 00-begin workshop
 cd workshop
 ```
 
-Install all of the dependencies:
+Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred):
 
 ```sh
 # Yarn
