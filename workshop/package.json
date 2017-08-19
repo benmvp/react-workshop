@@ -9,14 +9,18 @@
         "build:watch": "webpack --watch --progress --colors --devtool source-map",
         "eslint": "eslint .",
         "lint": "npm run eslint",
-        "test": "npm run lint"
+        "test": "npm run lint",
+        "start:api": "node api-server.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "es6-promise": "^4.1.1",
+        "prop-types": "^15.5.10",
         "react": "^15.6.1",
-        "react-dom": "^15.6.1"
+        "react-dom": "^15.6.1",
+        "whatwg-fetch": "^2.0.3"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",
@@ -29,9 +33,15 @@
         "eslint-config-benmvp": "^4.1.0",
         "eslint-plugin-jsx-a11y": "^6.0.2",
         "eslint-plugin-react": "^7.2.1",
+        "exports-loader": "^0.6.4",
+        "imports-loader": "^0.7.1",
         "webpack": "^3.5.5"
     },
     "babel": {
-        "presets": ["es2015", "react", "stage-0"]
+        "presets": [
+            "es2015",
+            "react",
+            "stage-0"
+        ]
     }
 }

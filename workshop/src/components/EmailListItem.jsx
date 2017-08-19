@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class EmailListItem extends React.Component {
     render() {
@@ -16,5 +17,10 @@ class EmailListItem extends React.Component {
         );
     }
 }
+
+EmailListItem.propTypes = {
+    from: PropTypes.string,
+    subject: PropTypes.string
+};
 
 export default EmailListItem;
