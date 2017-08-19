@@ -2,7 +2,7 @@ let path = require('path');
 let webpack = require('webpack');
 
 module.exports = {
-    entry: './src/index',
+    entry: ['./src/index'],
     output: {
         path: path.join(__dirname, 'src/dist'),
         filename: 'bundle.js'
@@ -25,7 +25,11 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+            fetch:
+                'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
         })
     ]
 };
+
+// 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+// 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
