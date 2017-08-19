@@ -3,13 +3,34 @@ import React, {PureComponent} from 'react';
 export default class App extends PureComponent {
   render() {
     return (
-      <div>
-        <h1>Hello world!</h1>
-        <p>This is a paragraph of text written in React</p>
-        <aside>
-          <input type="text" id="input" placeholder="Fill me in please" />
-        </aside>
-      </div>
+      <main className="app">
+        <ul className="email-list">
+          <li>
+            <div className="email-list-item">
+              <span>alittle0@chronoengine.com</span>
+              <span>Mauris lacinia sapien quis libero.</span>
+            </div>
+          </li>
+          <li>
+            <div className="email-list-item">
+              <span>amurray1@mit.edu</span>
+              <span>Mauris ullamcorper purus sit amet nulla.</span>
+            </div>
+          </li>
+          <li>
+            <div className="email-list-item">
+              <span>dmccoy2@bluehost.com</span>
+              <span>Suspendisse potenti.</span>
+            </div>
+          </li>
+        </ul>
+        <div className="email-view">
+          <h2>View selected email</h2>
+        </div>
+        <div className="email-form">
+          <h2>Add a new email</h2>
+        </div>
+      </main>
     );
   }
 }

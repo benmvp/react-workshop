@@ -1,7 +1,0 @@
-exclude: 'node_modules/**'
-
-linters:
-    Indentation:
-        width: 4
-    SelectorFormat:
-        convention: hyphenated_BEM

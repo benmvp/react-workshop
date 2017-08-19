@@ -74,6 +74,45 @@ export default class App extends PureComponent {
 
 Notice that instead of `class` it's `className` and `htmlFor` instead of just `for`.
 
+Lastly, add the skeleton markup to begin our email application:
+
+```js
+export default class App extends PureComponent {
+  render() {
+    return (
+      <main className="app">
+        <ul className="email-list">
+          <li>
+            <div className="email-list-item">
+              <span>alittle0@chronoengine.com</span>
+              <span>Mauris lacinia sapien quis libero.</span>
+            </div>
+          </li>
+          <li>
+            <div className="email-list-item">
+              <span>amurray1@mit.edu</span>
+              <span>Mauris ullamcorper purus sit amet nulla.</span>
+            </div>
+          </li>
+          <li>
+            <div className="email-list-item">
+              <span>dmccoy2@bluehost.com</span>
+              <span>Suspendisse potenti.</span>
+            </div>
+          </li>
+        </ul>
+        <div className="email-view">
+          <h2>View selected email</h2>
+        </div>
+        <div className="email-form">
+          <h2>Add a new email</h2>
+        </div>
+      </main>
+    );
+  }
+}
+```
+
 ## Next
 
 Go to [Step 2 - Components](../02-components/).

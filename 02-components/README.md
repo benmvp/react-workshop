@@ -1,0 +1,200 @@
+# Step 2 - Components
+
+The goal of this step is to practice creating and composing [React components](https://facebook.github.io/react/docs/components-and-props.html). Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. Components can refer to other components in their output. This lets us use the same component abstraction for any level of detail. A button, a form, a dialog, a screen, etc. In React apps, all of these are commonly expressed as components.
+
+Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
+
+## Tasks
+
+In [`src/App.js`](src/App.js), the `App` component has quite a bit of markup in it, even though it doesn't do much yet. Break up the large `App` component into smaller `EmailList`, `EmailView` & `EmailForm` components and reference them back in the `App` component:
+
+```js
+class EmailList extends PureComponent {
+  render() {
+    return (
+      <ul class="email-list">
+        <li>
+          <div className="email-list-item">
+            <span>alittle0@chronoengine.com</span>
+            <span>Mauris lacinia sapien quis libero.</span>
+          </div>
+        </li>
+        <li>
+          <div className="email-list-item">
+            <span>amurray1@mit.edu</span>
+            <span>Mauris ullamcorper purus sit amet nulla.</span>
+          </div>
+        </li>
+        <li>
+          <div className="email-list-item">
+            <span>dmccoy2@bluehost.com</span>
+            <span>Suspendisse potenti.</span>
+          </div>
+        </li>
+      </ul>
+    );
+  }
+}
+
+class EmailView extends PureComponent {
+  render() {
+    return (
+      <div className="email-view">
+        <h2>View selected email</h2>
+      </div>
+    );
+  }
+}
+
+class EmailForm extends PureComponent {
+  render() {
+    return (
+      <div className="email-form">
+        <h2>Add a new email</h2>
+      </div>
+    );
+  }
+}
+
+export default class App extends PureComponent {
+  render() {
+    return (
+      <main className="app">
+        <EmailList />
+        <EmailView />
+        <EmailForm />
+      </main>
+    );
+  }
+}
+```
+
+The top-level `App` component is now composed of the `EmailList`, `EmailView` & `EmailForm` components. It's also much easier to see what makes up the `App` component now that the three smaller components have been extracted out.
+
+The `EmailList` component is still logically made up of several list item components, which can be extracted into a `EmailListItem` component with configurable props:
+
+```js
+class EmailListItem extends PureComponent {
+  render() {
+    let {from, subject} = this.props;
+
+    return (
+      <div className="email-list-item">
+        <span>{from}</span>
+        <span>{subject}</span>
+      </div>
+    );
+  }
+}
+
+class EmailList extends PureComponent {
+  render() {
+    return (
+      <ul class="email-list">
+        <li>
+          <EmailListItem
+            from="alittle0@chronoengine.com"
+            subject="Mauris lacinia sapien quis libero."
+          />
+        </li>
+        <li>
+          <EmailListItem
+            from="amurray1@mit.edu"
+            subject="Mauris ullamcorper purus sit amet nulla."
+          />
+        </li>
+        <li>
+          <EmailListItem
+            from="dmccoy2@bluehost.com"
+            subject="Suspendisse potenti."
+          />
+        </li>
+      </ul>
+    );
+  }
+}
+```
+
+The attributes passed to components are called "props." Those props are then available under `this.props` within the component class definition.
+
+Components can also be declared using functions instead of classes:
+
+```js
+const EmailListItem = ({from, subject}) => (
+  <div className="email-list-item">
+    <span>{from}</span>
+    <span>{subject}</span>
+  </div>
+);
+```
+
+But we'll continue to use the `class` syntax so that we can define [`propTypes`](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) for `EmailListItem`:
+
+```js
+// back up top add new import of `prop-types` lib
+import PropTypes from 'prop-types';
+
+class EmailListItem extends PureComponent {
+  // declare types of expected props
+  // i.e. the component's interface
+  static propTypes = {
+    from: PropTypes.string,
+    subject: PropTypes.string
+  }
+
+  render() {
+    let {from, subject} = this.props;
+
+    return (
+      <div className="email-list-item">
+        <span>{from}</span>
+        <span>{subject}</span>
+      </div>
+    );
+  }
+}
+```
+
+Lastly, move each component into its own file under a new [`src/components/`](src/components/) folder, `import`ing and `export`ing as necessary. For example in `EmailList`:
+
+```js
+import React, {PureComponent} from 'react';
+
+import EmailListItem from './EmailListItem';
+
+export default class EmailList extends PureComponent {
+  render() {
+    return (
+      <ul className="email-list">
+        <li>
+          <EmailListItem
+            from="alittle0@chronoengine.com"
+            subject="Mauris lacinia sapien quis libero."
+          />
+        </li>
+        <li>
+          <EmailListItem
+            from="amurray1@mit.edu"
+            subject="Mauris ullamcorper purus sit amet nulla."
+          />
+        </li>
+        <li>
+          <EmailListItem
+            from="dmccoy2@bluehost.com"
+            subject="Suspendisse potenti."
+          />
+        </li>
+      </ul>
+    );
+  }
+}
+```
+
+## Next
+
+Go to [Step 3 - Lists](../03-lists/).
+
+## Resources
+
+- [Components and Props](https://facebook.github.io/react/docs/components-and-props.html)
+- [Typechecking with PropTypes](https://facebook.github.io/react/docs/typechecking-with-proptypes.html)

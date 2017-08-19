@@ -61,7 +61,7 @@ After the app is initially built, a new browser window should open up at [http:/
 Each step in the workshop builds on top of the previous one. You can start at the [beginning](00-begin/). Afterwards follow these steps:
 
 1. [JSX](01-jsx/)
-1. [Environment setup](02-env-setup/)
+1. [Environment setup](02-components/)
 1. [Fetching from server](03-fetch/)
 1. [Long polling](04-polling/)
 1. [Email View](05-email-view/)
