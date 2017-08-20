@@ -110,7 +110,7 @@ export default class EmailForm extends PureComponent {
 }
 ```
 
-In the top-level `App` component, add a handler to `<EmailForm />` for its `onSubmit` prop and make a JSON `fetch` `POST` request to [http://localhost:9090/emails](//localhost:9090/emails), passing the new email data:
+In the top-level `App` component, add a handler to `<EmailForm />` for its `onSubmit` prop and make a JSON `fetch` `POST` request to `http://localhost:9090/emails`, passing the new email data:
 
 ```js
 export default class App extends PureComponent {
@@ -181,5 +181,5 @@ Go to [Step 8 - Delete email](../08-delete-email/).
 
 - [Forms](https://facebook.github.io/react/docs/forms.html)
 - [DOM Elements](https://facebook.github.io/react/docs/dom-elements.html)
+- [HTTP Methods](http://restfulapi.net/http-methods/)
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) & Github's [`fetch` polyfill](https://github.com/github/fetch)
-- [Learning ES6: Promises](http://www.benmvp.com/learning-es6-promises/)
