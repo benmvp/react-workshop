@@ -1,9 +1,7 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
-export const EMAIL_PROP_TYPE = React.PropTypes.shape({
-    id: React.PropTypes.number.isRequired,
-    from: React.PropTypes.string.isRequired,
-    subject: React.PropTypes.string.isRequired,
-    message: React.PropTypes.string.isRequired,
-    unread: React.PropTypes.bool
+export const EMAIL_PROP_TYPE = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  from: PropTypes.string.isRequired,
+  subject: PropTypes.string.isRequired
 });

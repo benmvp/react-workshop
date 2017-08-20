@@ -68,7 +68,12 @@ export default class App extends PureComponent {
   };
 
   state = {
+    // Initialize emails state to an empty array.
+    // Will get populated with data in `componentDidMount`
     emails: [],
+    // Initialize selected email ID to -1, indicating nothing is selected.
+    // When an email is selected in EmailList, this will be updated to
+    // corresponding ID
     selectedEmailId: -1,
     showForm: false
   };

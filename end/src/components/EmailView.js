@@ -65,7 +65,7 @@ export default class EmailView extends PureComponent {
     let rawMessage = {__html: message};
 
     return (
-      <div className="email-view">
+      <section className="email-view">
         <h1>
           {subject}
         </h1>
@@ -83,7 +83,7 @@ export default class EmailView extends PureComponent {
           onMarkUnread={this._handleMarkUnread.bind(this)}
           onMarkRead={this._handleMarkRead.bind(this)}
         />
-      </div>
+      </section>
     );
   }
 }

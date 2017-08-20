@@ -1,67 +1,193 @@
 # Step 5 - Email View
 
-## Setup
+The goal of this step is to build some interactivity into the app by responding to user interactions. [Handling events](https://facebook.github.io/react/docs/handling-events.html) within React elements is very similar to handling events on DOM elements. Event handlers will be passed instances of [`SyntheticEvent`], a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event (including` stopPropagation()` and `preventDefault()`) except the events work identically across all browsers!
 
-Install [`webpack-dev-server`](https://webpack.github.io/docs/webpack-dev-server.html) & [`react-hot-loader`](https://github.com/gaearon/react-hot-loader):
+## Tasks
 
-```sh
-npm install --save-dev webpack-dev-server react-hot-loader
-```
-
-Update [webpack.config.js](webpack.config.js) to update `entry`, `output` & `loaders`:
+In the top-level `App` component, add a `selectedEmailId` property to `state`, defaulting it to `-1`. Within `render()`, find an email within `this.state.emails` that matches `this.state.selectedEmailId`. Pass the selected email to the `<EmailView />` via `email` prop. If a matching email isn't found, the `<EmailView />` should not be rendered.
 
 ```js
-var webpack = require('webpack'),
-    path = require('path');
+export default class App extends PureComponent {
+  // propTypes & defaultPropTypes
 
-module.exports = {
-    entry: [
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server',
-        './src/index'
-    ],
-    output: {
-        path: path.join(__dirname, 'src/dist'),
-        publicPath: '/dist/',
-        filename: 'bundle.js'
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js?$/,
-                loaders: ['react-hot', 'babel'],
-                include: path.join(__dirname, 'src')
-            }
-        ]
-    },
-    plugins: [
-        new webpack.ProvidePlugin({
-            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-        })
-    ]
-};
-```
+  state = {
+    // Initialize emails state to an empty array.
+    // Will get populated with data in `componentDidMount`
+    emails: [],
+    // Initialize selected email ID to -1, indicating nothing is selected.
+    // When an email is selected in EmailList, this will be updated to
+    // corresponding ID
+    selectedEmailId: -1
+  };
 
-Add `start:server` script to [package.json](package.json):
+  // lifecycle methods
 
-```json
-{
-  "scripts": {
-    "build": "webpack --progress --colors --devtool source-map",
-    "build:watch": "webpack --watch --progress --colors --devtool source-map",
-    "eslint": "eslint .",
-    "lint": "npm run eslint",
-    "start:api": "node api-server.js",
-    "start:server": "webpack-dev-server --content-base src/ --hot --inline --open",
-    "test": "npm run lint"
+  // helper methods
+
+  render() {
+    let {emails, selectedEmailId} = this.state;
+    let selectedEmail = emails.find(email => email.id === selectedEmailId);
+    let emailViewComponent;
+
+    if (selectedEmail) {
+      emailViewComponent = (
+        <EmailView email={selectedEmail} />
+      );
+    }
+
+    return (
+      <main className="app">
+        <EmailList emails={emails} />
+        {emailViewComponent}
+        <EmailForm />
+      </main>
+    );
   }
 }
 ```
 
-## Tasks
+You should see the email view in the UI disappear. The next step is wire in the interactivity that will make it display when an email list item is clicked.
 
-- Clicking an [`EmailListItem`](src/components/EmailListItem.js) displays the corresponding email information in [`EmailView`](src/components/EmailView.js), which now doesn't show unless there is a selected email item
-- Add a close button to [`EmailView`](src/components/EmailView.js) which hides `EmailView` and deselects the selected [`EmailListItem`](src/components/EmailListItem.js)
+In `EmailListItem` add an `onClick` handler to the container `<div>` that will call a (newly added) `onSelect` prop:
+
+```js
+export default class EmailListItem extends PureComponent {
+  static propTypes = {
+    email: EMAIL_PROP_TYPE.isRequired,
+    onSelect: PropTypes.func
+  }
+
+  _handleClick(e) {
+    let {email, onSelect} = this.props;
+
+    if (onSelect) {
+      e.stopPropagation();
+      onSelect(email.id);
+    }
+  }
+
+  render() {
+    let {email: {from, subject}} = this.props;
+
+    return (
+      <div className="email-list-item" onClick={this._handleClick.bind(this)}>
+        <span></span>
+        <span>{subject}</span>
+      </div>
+    );
+  }
+}
+```
+
+In `EmailList` add a `onItemSelect` event handler prop and pass it through as the `onSelect` prop to all of the `<EmailListItem />` components it renders:
+
+```js
+export default class EmailList extends PureComponent {
+  static propTypes = {
+    emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
+    onItemSelect: PropTypes.func.isRequired
+  }
+
+  render() {
+    let {emails, onItemSelect} = this.props;
+    let emailComponents = emails.map(email =>
+      <li key={email.id}>
+        <EmailListItem email={email} onSelect={onItemSelect} />
+      </li>
+    );
+
+    return (
+      <ul className="email-list">
+        {emailComponents}
+      </ul>
+    );
+  }
+}
+```
+
+Back in `App`, add a handler for the `onItemSelect` handler in `EmailList` called `_handleItemSelect` that will update `this.state.selectedEmail` with the selected email item:
+
+```js
+export default class App extends PureComponent {
+  // prop types & default props
+
+  state = {
+    // Initialize emails state to an empty array.
+    // Will get populated with data in `componentDidMount`
+    emails: [],
+    // Initialize selected email ID to -1, indicating nothing is selected.
+    // When an email is selected in EmailList, this will be updated to
+    // corresponding ID
+    selectedEmailId: -1
+  }
+
+  // lifecycle methods
+
+  // other helper methods
+
+  _handleItemSelect(selectedEmailId) {
+    // update state (so that the EmailView will show)
+    this.setState({selectedEmailId});
+  }
+
+  render() {
+    let {emails, selectedEmailId} = this.state;
+    let selectedEmail = emails.find(email => email.id === selectedEmailId);
+    let emailViewComponent;
+
+    if (selectedEmail) {
+      emailViewComponent = (
+        <EmailView email={selectedEmail} />
+      );
+    }
+
+    return (
+      <main className="app">
+        <EmailList
+          emails={emails}
+          onItemSelect={this._handleItemSelect.bind(this)}
+        />
+        {emailViewComponent}
+        <EmailForm />
+      </main>
+    );
+  }
+}
+```
+
+At this point, clicking an email list item, should display the `EmailList` component, but it's still just displaying a label.
+
+Add an `email` prop to `EmailView` and display the subject, from, date & message:
+
+```js
+import {EMAIL_PROP_TYPE} from './constants';
+
+export default class EmailView extends React.Component {
+  static propTypes = {
+    email: EMAIL_PROP_TYPE.isRequired
+  };
+
+  render() {
+    let {email: {subject, from, date, message}} = this.props;
+    let rawMessage = {__html: message};
+
+    return (
+      <section className="email-view">
+        <h1>{subject}</h1>
+        <h2>From: <a href={`mailto:${from}`}>{from}</a></h2>
+        <h3>{date}</h3>
+        <div dangerouslySetInnerHTML={rawMessage} />
+      </section>
+    );
+  }
+}
+```
+
+Now, clicking different email items should display a different message in the email view.
+
+## Exercises
+
+- Add a close button to `EmailView` which hides `EmailView` (hint: add an `onClose` prop to `EmailView` that will be handled in `App`)
 
 ## Next
 
@@ -69,7 +195,6 @@ Go to [Step 6 - Email Form](../06-email-form/).
 
 ## Resources
 
-- [webpack dev server](https://webpack.github.io/docs/webpack-dev-server.html)
-- [React Hot Loader Getting Started](http://gaearon.github.io/react-hot-loader/getstarted/)
-- [Event System](https://facebook.github.io/react/docs/events.html)
-- [Dangerously Set innerHTML](https://facebook.github.io/react/tips/dangerously-set-inner-html.html)
+- [Handling Events](https://facebook.github.io/react/docs/handling-events.html)
+- [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html)
+- [Dangerously Set innerHTML](https://facebook.github.io/react/docs/dom-elements.html#dangerouslysetinnerhtml)

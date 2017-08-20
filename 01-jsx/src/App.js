@@ -24,9 +24,9 @@ export default class App extends PureComponent {
             </div>
           </li>
         </ul>
-        <div className="email-view">
+        <section className="email-view">
           <h2>View selected email</h2>
-        </div>
+        </section>
         <div className="email-form">
           <h2>Add a new email</h2>
         </div>

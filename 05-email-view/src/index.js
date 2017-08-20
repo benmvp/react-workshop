@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
 
-import EmailApp from './containers/App.js';
+import './index.css';
 
-ReactDOM.render(
-    <EmailApp pollInterval={5000} />,
-    document.getElementById('app')
-);
+ReactDOM.render(<App pollInterval={5000} />, document.getElementById('root'));
