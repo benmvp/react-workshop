@@ -40,7 +40,7 @@ export default class App extends PureComponent {
   }
 
   _getUpdateEmails() {
-    return fetch('http://localhost:9090/emails')
+    return fetch('//localhost:9090/emails')
       .then(res => res.json())
       .then(emails => this.setState({emails}))
       .catch(ex => console.error(ex));

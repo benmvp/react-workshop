@@ -1,107 +1,95 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
 const DEFAULT_FORM_VALUES = {
-    from: '',
-    to: 'me@abcdef.com',
-    subject: '',
-    message: ''
+  from: '',
+  to: 'me@abcdef.com',
+  subject: '',
+  message: ''
 };
 
-export default class EmailForm extends React.Component {
-    static propTypes = {
-        onSubmit: React.PropTypes.func.isRequired
+export default class EmailForm extends PureComponent {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired
+  };
+
+  state = DEFAULT_FORM_VALUES;
+
+  _updateFormFieldState(name, e) {
+    this.setState({[name]: e.target.value});
+  }
+
+  _handleSubmit(e) {
+    e.preventDefault();
+
+    let {from, to, subject, message} = this.state;
+
+    // super simple validation
+    if (from && to && subject && message) {
+      // call handler with email info
+      this.props.onSubmit({
+        from,
+        to,
+        subject,
+        message
+      });
+
+      // reset the form to initial values
+      this.setState(DEFAULT_FORM_VALUES);
+    } else {
+      alert('fill out the form!');
     }
+  }
 
-    state = DEFAULT_FORM_VALUES
+  render() {
+    let {from, to, subject, message} = this.state;
 
-    _updateFormFieldState(name, e) {
-        this.setState({[name]: e.target.value});
-    }
+    return (
+      <form className="email-form" onSubmit={this._handleSubmit.bind(this)}>
+        <fieldset>
+          <label htmlFor="from">From:</label>
+          <input
+            type="email"
+            id="from"
+            value={from}
+            placeholder="jill@me.com"
+            onChange={this._updateFormFieldState.bind(this, 'from')}
+          />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="to">To:</label>
+          <input
+            type="email"
+            id="to"
+            value={to}
+            placeholder="me@me.com"
+            onChange={this._updateFormFieldState.bind(this, 'to')}
+          />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="subject">Subject:</label>
+          <input
+            type="text"
+            id="subject"
+            value={subject}
+            placeholder="Awesome React workshop!"
+            onChange={this._updateFormFieldState.bind(this, 'subject')}
+          />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="message">Message:</label>
+          <textarea
+            id="message"
+            value={message}
+            placeholder="[Insert message here]"
+            onChange={this._updateFormFieldState.bind(this, 'message')}
+          />
+        </fieldset>
 
-    _handleFromChanged(e) {
-        this._updateFormFieldState('from', e);
-    }
-
-    _handleToChanged(e) {
-        this._updateFormFieldState('to', e);
-    }
-
-    _handleSubjectChanged(e) {
-        this._updateFormFieldState('subject', e);
-    }
-
-    _handleMessageChanged(e) {
-        this._updateFormFieldState('message', e);
-    }
-
-    _handleSubmit(e) {
-        e.preventDefault();
-
-        let {from, to, subject, message} = this.state;
-
-        // super simple validation
-        if (from && to && subject && message) {
-            // call handler with email info
-            this.props.onSubmit({
-                from,
-                to,
-                subject,
-                message
-            });
-
-            // reset the form to initial values
-            this.setState(DEFAULT_FORM_VALUES);
-        }
-        else {
-            alert('fill out the form!');
-        }
-    }
-
-    render() {
-        let {from, to, subject, message} = this.state;
-
-        return (
-            <form onSubmit={this._handleSubmit.bind(this)}>
-                <div>
-                    <label htmlFor="from">From:</label>
-                    <input type="email"
-                        id="from"
-                        value={from}
-                        onChange={this._handleFromChanged.bind(this)}
-                        placeholder="jill@me.com"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="to">To:</label>
-                    <input type="email"
-                        id="to"
-                        value={to}
-                        onChange={this._handleToChanged.bind(this)}
-                        placeholder="me@me.com"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="subject">Subject:</label>
-                    <input type="text"
-                        id="subject"
-                        value={subject}
-                        onChange={this._handleSubjectChanged.bind(this)}
-                        placeholder="Awesome React workshop!"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="message">Message:</label>
-                    <textarea id="message"
-                        value={message}
-                        onChange={this._handleMessageChanged.bind(this)}
-                        placeholder="[Insert message here]"
-                    />
-                </div>
-
-                <div>
-                    <button type="submit">Send email</button>
-                </div>
-            </form>
-        );
-    }
+        <footer>
+          <button type="submit">Send email</button>
+        </footer>
+      </form>
+    );
+  }
 }

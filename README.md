@@ -81,7 +81,6 @@ All of the exercise make use of [ES6](http://www.benmvp.com/learning-es6-series/
 1. [Email View](05-email-view/)
 1. [Email Form](06-email-form/)
 1. [Submit email form](07-submit-email-form/)
-1. [Optimistic updating](08-optimistic-updating/)
 1. [Delete email](09-delete-email/)
 1. [Mark unread/read](10-mark-unread/)
 1. [Styling](11-styling/)

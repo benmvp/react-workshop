@@ -24,7 +24,7 @@ In the [`App`](src/App.js) component add the [`componentDidMount()`](https://fac
 export default class App extends PureComponent {
   componentDidMount() {
     // Retrieve emails from server once we know DOM exists
-    fetch('http://localhost:9090/emails');
+    fetch('//localhost:9090/emails');
   }
 
   render() {
@@ -51,7 +51,7 @@ export default class App extends PureComponent {
 
   componentDidMount() {
     // Retrieve emails from server once we know DOM exists
-    fetch('http://localhost:9090/emails')
+    fetch('//localhost:9090/emails')
       .then(res => res.json())
       // update the state with the emails fetched from the server
       .then(emails => this.setState({emails}))
