@@ -196,5 +196,7 @@ Go to [Step 6 - Email Form](../06-email-form/).
 ## Resources
 
 - [Handling Events](https://facebook.github.io/react/docs/handling-events.html)
+- [Conditional Rendering](https://facebook.github.io/react/docs/conditional-rendering.html)
+- [Lifting State Up](https://facebook.github.io/react/docs/lifting-state-up.html)
 - [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html)
 - [Dangerously Set innerHTML](https://facebook.github.io/react/docs/dom-elements.html#dangerouslysetinnerhtml)

@@ -1,6 +1,6 @@
 # Step 8 - Delete email
 
-The goal of this step is to add support deleting individual emails by submitting a `DELETE` method to the API.
+The goal of this step is to add support deleting individual emails by submitting a `DELETE` method to the API as a result of user interactions.
 
 ## Tasks
 
@@ -119,8 +119,9 @@ export default class App extends PureComponent {
     );
   }
 }
-
 ```
+
+At this point, you should be able to click a "Delete" button for one of the email items. After the long polling retrieves the new information, that email item should be removed from the list. Use the [React Developer Tools](https://github.com/facebook/react-devtools#installation) watch how the deleted email item is optimally removed from the list. Nothing else in the UI is updated thanks to the [_reconciler_](https://facebook.github.io/react/docs/reconciliation.html) (aka "Virtual DOM").
 
 ## Exercises
 
@@ -134,4 +135,5 @@ Go to [Step 9 - Mark unread/read](../09-mark-unread/).
 
 ## Resources
 
+- [Reconciliation](https://facebook.github.io/react/docs/reconciliation.html)
 - [HTTP Methods](http://restfulapi.net/http-methods/)

@@ -181,5 +181,6 @@ Go to [Step 8 - Delete email](../08-delete-email/).
 
 - [Forms](https://facebook.github.io/react/docs/forms.html)
 - [DOM Elements](https://facebook.github.io/react/docs/dom-elements.html)
+- [The Power of Not Mutating Data](https://facebook.github.io/react/docs/optimizing-performance.html#the-power-of-not-mutating-data)
 - [HTTP Methods](http://restfulapi.net/http-methods/)
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) & Github's [`fetch` polyfill](https://github.com/github/fetch)
