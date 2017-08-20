@@ -7,7 +7,7 @@ export default class EmailListItem extends PureComponent {
   static propTypes = {
     email: EMAIL_PROP_TYPE.isRequired,
     onDelete: PropTypes.func.isRequired,
-    onMarkUnread: React.PropTypes.func.isRequired,
+    onMarkUnread: PropTypes.func.isRequired,
     onSelect: PropTypes.func,
 
     isSelected: PropTypes.bool
