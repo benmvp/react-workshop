@@ -192,7 +192,7 @@ export default class EmailList extends PureComponent {
 }
 ```
 
-Aftewards, use the  [React Developer Tools](https://github.com/facebook/react-devtools#installation) to inspect the component hierarchy, including the props being passed to the `EmailListItem` components.
+Afterwards, use the [React Developer Tools](https://github.com/facebook/react-devtools#installation) to inspect the component hierarchy, including the props being passed to the `EmailListItem` components.
 
 ## Next
 

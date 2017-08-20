@@ -162,7 +162,7 @@ Add an `email` prop to `EmailView` and display the subject, from, date & message
 ```js
 import {EMAIL_PROP_TYPE} from './constants';
 
-export default class EmailView extends React.Component {
+export default class EmailView extends PureComponent {
   static propTypes = {
     email: EMAIL_PROP_TYPE.isRequired
   };

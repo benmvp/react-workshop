@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 import {EMAIL_PROP_TYPE} from './constants';
 
-export default class EmailView extends React.Component {
+export default class EmailView extends PureComponent {
   static propTypes = {
     email: EMAIL_PROP_TYPE.isRequired,
     onClose: PropTypes.func.isRequired

@@ -22,22 +22,6 @@ export default class EmailForm extends PureComponent {
     this.setState({[name]: e.target.value});
   }
 
-  _handleFromChanged(e) {
-    this._updateFormFieldState('from', e);
-  }
-
-  _handleToChanged(e) {
-    this._updateFormFieldState('to', e);
-  }
-
-  _handleSubjectChanged(e) {
-    this._updateFormFieldState('subject', e);
-  }
-
-  _handleMessageChanged(e) {
-    this._updateFormFieldState('message', e);
-  }
-
   _handleSubmit(e) {
     e.preventDefault();
 
@@ -81,7 +65,7 @@ export default class EmailForm extends PureComponent {
 
     return (
       <form className="email-form" onSubmit={this._handleSubmit.bind(this)}>
-        <div className="email-form__field">
+        <fieldset className="email-form__field">
           <label className="email-form__label" htmlFor="from">
             From:
           </label>
@@ -90,11 +74,11 @@ export default class EmailForm extends PureComponent {
             id="from"
             className="email-form__input"
             value={from}
-            onChange={this._handleFromChanged.bind(this)}
             placeholder="jill@me.com"
+            onChange={this._updateFormFieldState.bind(this, 'from')}
           />
-        </div>
-        <div className="email-form__field">
+        </fieldset>
+        <fieldset className="email-form__field">
           <label className="email-form__label" htmlFor="to">
             To:
           </label>
@@ -103,11 +87,11 @@ export default class EmailForm extends PureComponent {
             id="to"
             className="email-form__input"
             value={to}
-            onChange={this._handleToChanged.bind(this)}
             placeholder="me@me.com"
+            onChange={this._updateFormFieldState.bind(this, 'to')}
           />
-        </div>
-        <div className="email-form__field">
+        </fieldset>
+        <fieldset className="email-form__field">
           <label className="email-form__label" htmlFor="subject">
             Subject:
           </label>
@@ -116,11 +100,11 @@ export default class EmailForm extends PureComponent {
             id="subject"
             className="email-form__input"
             value={subject}
-            onChange={this._handleSubjectChanged.bind(this)}
             placeholder="Awesome React workshop!"
+            onChange={this._updateFormFieldState.bind(this, 'subject')}
           />
-        </div>
-        <div className="email-form__field">
+        </fieldset>
+        <fieldset className="email-form__field">
           <label className="email-form__label" htmlFor="message">
             Message:
           </label>
@@ -128,15 +112,15 @@ export default class EmailForm extends PureComponent {
             id="message"
             className="email-form__input email-form__input-message"
             value={message}
-            onChange={this._handleMessageChanged.bind(this)}
             placeholder="[Insert message here]"
+            onChange={this._updateFormFieldState.bind(this, 'message')}
           />
-        </div>
+        </fieldset>
 
-        <div className="email-form__button-bar">
+        <footer className="email-form__button-bar">
           {cancelButton}
           <button type="submit">Send email</button>
-        </div>
+        </footer>
       </form>
     );
   }
