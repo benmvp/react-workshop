@@ -73,27 +73,29 @@ export default class App extends PureComponent {
       .then(res => res.json())
       .then(({success}) => {
         if (success) {
-          // if the email was successfully updated, we have to make
-          // a request to get the new list of emails, but we'll have
-          // to wait for the response of that request, so let's add to
-          // our state immediately and then later when the response
-          // comes back, the server-side list will update. This is mainly
-          // here to demonstrate immutable updating of data structures
+          this.setState(({emails}) => {
+            // if the email was successfully updated, we have to make
+            // a request to get the new list of emails, but we'll have
+            // to wait for the response of that request, so let's add to
+            // our state immediately and then later when the response
+            // comes back, the server-side list will update. This is mainly
+            // here to demonstrate immutable updating of data structures
 
-          // Create a full email info by spreading in `id`, `date` & `unread`
-          // Then spread to front of emails state (since it's the newest)
-          let emails = [
-            {
-              ...newEmail,
-              id: Date.now(),
-              date: `${new Date()}`,
-              unread: true
-            },
-            ...this.state.emails
-          ];
+            // Create a full email info by spreading in `id`, `date` & `unread`
+            // Then spread to front of emails state (since it's the newest)
+            let newEmails = [
+              {
+                ...newEmail,
+                id: Date.now(),
+                date: `${new Date()}`,
+                unread: true
+              },
+              ...emails
+            ];
 
-          // Set state with new updated emails list
-          this.setState({emails});
+            // Set state with new updated emails list
+            return {emails: newEmails};
+          });
         } else {
           throw new Error('Unable to send email!');
         }

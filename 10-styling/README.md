@@ -1,5 +1,9 @@
 # Step 10 - Styling
 
+The goal of this step is to apply CSS styling to all of the components. There are many ways to style React components, but CSS classes are probably the simplest and most familiar. In certain cases we'll want to conditionally apply CSS classes based on props. We'll make use of the very helpful [`classnames`](https://github.com/JedWatson/classnames) library.
+
+As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
+
 ## Tasks
 
 In order to make `render()` of `App` a bit cleaner, move out the logic for whether or not the `<EmailView />` should display into a helper component called `EmailViewWrapper`:

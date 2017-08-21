@@ -5,6 +5,50 @@ import EmailList from './components/EmailList';
 import EmailView from './components/EmailView';
 import EmailForm from './components/EmailForm';
 
+import './App.css';
+
+const EmailViewWrapper = ({
+  selectedEmail,
+  onClose,
+  onDelete,
+  onMarkUnread,
+  onMarkRead
+}) => {
+  let component = null;
+
+  if (selectedEmail) {
+    component = (
+      <article className="app__view">
+        <EmailView
+          email={selectedEmail}
+          onClose={onClose}
+          onDelete={onDelete}
+          onMarkUnread={onMarkUnread}
+          onMarkRead={onMarkRead}
+        />
+      </article>
+    );
+  }
+
+  return component;
+};
+
+const EmailFormWrapper = ({showForm, onSubmit, onCancel}) => {
+  let component = null;
+
+  if (showForm) {
+    component = (
+      <div className="app__form-modal">
+        <div className="app__form">
+          <EmailForm onSubmit={onSubmit} onCancel={onCancel} />
+        </div>
+      </div>
+    );
+  }
+
+  return component;
+};
+
 export default class App extends PureComponent {
   static propTypes = {
     pollInterval: PropTypes.number
@@ -22,7 +66,11 @@ export default class App extends PureComponent {
     // Initialize selected email ID to -1, indicating nothing is selected.
     // When an email is selected in EmailList, this will be updated to
     // corresponding ID
-    selectedEmailId: -1
+    selectedEmailId: -1,
+    // Initialize show form flag to false, indicating that it won't show.
+    // When the new email button is clicked, it'll be set to `true`. It'll
+    // be toggled false on form submission or cancel
+    showForm: false
   };
 
   componentDidMount() {
@@ -99,7 +147,10 @@ export default class App extends PureComponent {
             ];
 
             // Set state with new updated emails list
-            return {emails: newEmails};
+            return {
+              emails: newEmails,
+              showForm: false
+            };
           });
         } else {
           throw new Error('Unable to send email!');
@@ -172,34 +223,54 @@ export default class App extends PureComponent {
     this._setUnread(emailId, false);
   }
 
-  render() {
-    let {emails, selectedEmailId} = this.state;
-    let selectedEmail = emails.find(email => email.id === selectedEmailId);
-    let emailViewComponent;
+  _handleShowForm() {
+    // Show email form overlay by setting state to true
+    this.setState({showForm: true});
+  }
 
-    if (selectedEmail) {
-      emailViewComponent = (
-        <EmailView
-          email={selectedEmail}
-          onClose={this._handleEmailViewClose.bind(this)}
-          onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
-          onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
-          onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
-        />
-      );
-    }
+  _handleHideForm() {
+    // Hide email form overlay by setting state to false
+    this.setState({showForm: false});
+  }
+
+  render() {
+    let {emails, selectedEmailId, showForm} = this.state;
+    let selectedEmail = emails.find(email => email.id === selectedEmailId);
 
     return (
       <main className="app">
-        <EmailList
-          emails={emails}
-          onItemSelect={this._handleItemSelect.bind(this)}
-          onItemDelete={this._handleItemDelete.bind(this)}
-          onItemMarkUnread={this._handleItemMarkUnread.bind(this)}
-          selectedEmailId={selectedEmailId}
-        />
-        {emailViewComponent}
-        <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />
+        <div className="app__page">
+          <div className="app__list">
+            <EmailList
+              emails={emails}
+              onItemSelect={this._handleItemSelect.bind(this)}
+              onItemDelete={this._handleItemDelete.bind(this)}
+              onItemMarkUnread={this._handleItemMarkUnread.bind(this)}
+              selectedEmailId={selectedEmailId}
+            />
+          </div>
+          <EmailViewWrapper
+            selectedEmail={selectedEmail}
+            onClose={this._handleEmailViewClose.bind(this)}
+            onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
+            onMarkUnread={this._handleItemMarkUnread.bind(
+              this,
+              selectedEmailId
+            )}
+            onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
+          />
+          <button
+            className="app__new-email"
+            onClick={this._handleShowForm.bind(this)}
+          >
+            +
+          </button>
+          <EmailFormWrapper
+            showForm={showForm}
+            onSubmit={this._handleFormSubmit.bind(this)}
+            onCancel={this._handleHideForm.bind(this)}
+          />
+        </div>
       </main>
     );
   }

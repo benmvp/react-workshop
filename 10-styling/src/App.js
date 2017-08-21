@@ -106,27 +106,29 @@ export default class App extends PureComponent {
       .then(res => res.json())
       .then(({success}) => {
         if (success) {
-          // if the email was successfully updated, we have to make
-          // a request to get the new list of emails, but we'll have
-          // to wait for the response of that request, so let's add to
-          // our state immediately and then later when the response
-          // comes back, the server-side list will update. This is mainly
-          // here to demonstrate immutable updating of data structures
+          this.setState(({emails}) => {
+            // if the email was successfully updated, we have to make
+            // a request to get the new list of emails, but we'll have
+            // to wait for the response of that request, so let's add to
+            // our state immediately and then later when the response
+            // comes back, the server-side list will update. This is mainly
+            // here to demonstrate immutable updating of data structures
 
-          // Create a full email info by spreading in `id`, `date` & `unread`
-          // Then spread to front of emails state (since it's the newest)
-          let emails = [
-            {
-              ...newEmail,
-              id: Date.now(),
-              date: `${new Date()}`,
-              unread: true
-            },
-            ...this.state.emails
-          ];
+            // Create a full email info by spreading in `id`, `date` & `unread`
+            // Then spread to front of emails state (since it's the newest)
+            let newEmails = [
+              {
+                ...newEmail,
+                id: Date.now(),
+                date: `${new Date()}`,
+                unread: true
+              },
+              ...emails
+            ];
 
-          // Set state with new updated emails list
-          this.setState({emails});
+            // Set state with new updated emails list
+            return {emails: newEmails};
+          });
         } else {
           throw new Error('Unable to send email!');
         }
@@ -143,10 +145,13 @@ export default class App extends PureComponent {
       // optimistic updating (see _handleFormSubmit for more info)
       .then(({success}) => {
         if (success) {
-          let emails = this.state.emails.filter(email => email.id !== emailId);
+          this.setState(({emails}) => ({
+            // "delete" the email by returning a filtered list that doesn't include it
+            emails: emails.filter(email => email.id !== emailId),
 
-          // Also reset `selectedEmailId` since we're deleting it
-          this.setState({emails, selectedEmailId: -1});
+            // Also reset `selectedEmailId` since we're deleting it
+            selectedEmailId: -1
+          }));
         } else {
           throw new Error(`Unable to delete email ID# ${emailId}.`);
         }
@@ -168,11 +173,16 @@ export default class App extends PureComponent {
       // optimistic updating (see _handleFormSubmit for more info)
       .then(({success}) => {
         if (success) {
-          let emails = this.state.emails.map(
-            email => (email.id === emailId ? {...email, unread} : email)
-          );
+          this.setState(({emails}) => {
+            // Map over all of the emails and when we find the match
+            // override its `unread` property with the new value by
+            // doing object spread
+            let newEmails = emails.map(
+              email => (email.id === emailId ? {...email, unread} : email)
+            );
 
-          this.setState({emails});
+            return {emails: newEmails};
+          });
         } else {
           throw new Error(
             `Unable to set email ID# ${emailId} unread state to ${unread}.`

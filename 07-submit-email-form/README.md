@@ -2,6 +2,8 @@
 
 The goal of this step is to actually submit the email for by `POST`ing the form data to the API.
 
+As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
+
 ## Tasks
 
 Add a submit button and an `onSubmit` handler to the `<form>` inside `EmailForm`:
@@ -182,5 +184,6 @@ Go to [Step 8 - Delete email](../08-delete-email/).
 - [Forms](https://facebook.github.io/react/docs/forms.html)
 - [DOM Elements](https://facebook.github.io/react/docs/dom-elements.html)
 - [The Power of Not Mutating Data](https://facebook.github.io/react/docs/optimizing-performance.html#the-power-of-not-mutating-data)
+- [Functional `setState` is the future of React](https://medium.freecodecamp.org/functional-setstate-is-the-future-of-react-374f30401b6b)]
 - [HTTP Methods](http://restfulapi.net/http-methods/)
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) & Github's [`fetch` polyfill](https://github.com/github/fetch)

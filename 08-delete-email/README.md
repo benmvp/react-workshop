@@ -2,6 +2,8 @@
 
 The goal of this step is to add support deleting individual emails by submitting a `DELETE` method to the API as a result of user interactions.
 
+As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
+
 ## Tasks
 
 In `EmailListItem`, add a "Delete" button that will call a (newly added) `onDelete` prop when clicked:

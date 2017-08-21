@@ -2,6 +2,8 @@
 
 The goal of this step is to move away from the hard-coded `EMAILS` `const` to fetching "real" data from the server using the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and [ES6 Promises](http://www.benmvp.com/learning-es6-promises/). We'll retrieve the data in the `App` components lifecyle methods and store in its `state`.
 
+As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
+
 ## Setp
 
 In a **separate console window/tab**, start API server (running at [http://localhost:9090/](http://localhost:9090/)):
@@ -91,5 +93,4 @@ Go to [Step 5 - Email View](../05-email-view/).
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) & Github's [`fetch` polyfill](https://github.com/github/fetch)
 - [Learning ES6: Promises](http://www.benmvp.com/learning-es6-promises/)
 - [Lifecycle Methods](https://facebook.github.io/react/docs/react-component.html#the-component-lifecycle)
-- [Functional `setState` is the future of React](https://medium.freecodecamp.org/functional-setstate-is-the-future-of-react-374f30401b6b)
 - [Postman](https://www.getpostman.com/)

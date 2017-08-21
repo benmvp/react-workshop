@@ -2,6 +2,8 @@
 
 The goal of this step is to add support for marking an email read or unread by submitting a `PUT` method to the API as a result of user interactions.
 
+As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
+
 ## Tasks
 
 Add "Mark Unread" & "Mark Read" buttons to `EmailView` that will call (newly added) `onMarkUnread` & `onMarkRead` props, respectively, when clicked. Only one button should show at a given time based on the `unread` property within `this.props.email`:

@@ -4,6 +4,8 @@ The goal of this step is to practice creating and composing [React components](h
 
 Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
 
+Once again, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
+
 ## Tasks
 
 The [`App`](src/App.js) component has quite a bit of markup in it, even though it doesn't do much yet. Break up the large `App` component into smaller `EmailList`, `EmailView` & `EmailForm` components and reference them back in the `App` component:

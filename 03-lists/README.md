@@ -2,6 +2,8 @@
 
 The goal of this step is to practice transforming lists of data into lists of components which can be included in JSX. As a result, we'll convert the `EmailList` component from statically rendering the three `EmailListItem` components to dynamically rendering an arbitrary list of `EmailListItem` components. We'll also make use of more advanced prop types.
 
+As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
+
 ## Tasks
 
 Pull out the raw data that makes up the three `EmailListItem` components into an `EMAILS` `const` array. Use [`Array.prototype.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) to convert the array of data into an array of components:
