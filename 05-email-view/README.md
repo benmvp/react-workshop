@@ -73,7 +73,7 @@ export default class EmailListItem extends PureComponent {
 
     return (
       <div className="email-list-item" onClick={this._handleClick.bind(this)}>
-        <span></span>
+        <span>{from}</span>
         <span>{subject}</span>
       </div>
     );
@@ -86,7 +86,7 @@ In `EmailList` add a `onItemSelect` event handler prop and pass it through as th
 ```js
 export default class EmailList extends PureComponent {
   static propTypes = {
-    emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
+    emails: PropTypes.arrayOf(EMAIL_PROP_TYPE).isRequired,
     onItemSelect: PropTypes.func.isRequired
   }
 

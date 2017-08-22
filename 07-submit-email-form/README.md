@@ -173,7 +173,7 @@ export default class App extends PureComponent {
 
 ## Exercises
 
-- After `POST`ing the new email, "optimistically" update `this.state.emails` with the new email so that the new email shows up immediately in the email list before long poll interval comes around
+- After `POST`ing the new email, "optimistically" update `this.state.emails` with the new email so that the new email shows up immediately in the email list before the long poll interval comes around
 
 ## Next
 

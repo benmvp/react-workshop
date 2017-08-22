@@ -4,7 +4,7 @@ The goal of this step is to move away from the hard-coded `EMAILS` `const` to fe
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
 
-## Setp
+## Setup
 
 In a **separate terminal window/tab**, start API server (running at [http://localhost:9090/](http://localhost:9090/)):
 

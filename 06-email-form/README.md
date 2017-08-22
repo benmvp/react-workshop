@@ -85,7 +85,7 @@ Use the [React Developer Tools](https://github.com/facebook/react-devtools#insta
 ## Exercises
 
 - Add **to** & **subject** form fields in between **from** & **message**
-- Leveraging [`Function.prototype.bind()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind), call `this._updateFormFieldState` directly in the `onChange` handlers for each input to keep the code DRY
+- **BONUS:** Leveraging [`Function.prototype.bind()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind), call `this._updateFormFieldState` directly in the `onChange` handlers for each input to keep the code DRY
 
 ## Next
 

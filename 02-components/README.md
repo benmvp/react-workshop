@@ -14,7 +14,7 @@ The [`App`](src/App.js) component has quite a bit of markup in it, even though i
 class EmailList extends PureComponent {
   render() {
     return (
-      <ul class="email-list">
+      <ul className="email-list">
         <li>
           <div className="email-list-item">
             <span>alittle0@chronoengine.com</span>

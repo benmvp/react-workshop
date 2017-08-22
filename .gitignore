@@ -35,3 +35,6 @@ node_modules
 # Webpack build folders
 **/build/
 **/dist
+
+# Workshop folder
+workshop
