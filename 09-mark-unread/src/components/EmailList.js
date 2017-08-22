@@ -9,6 +9,7 @@ export default class EmailList extends PureComponent {
     emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
     onItemDelete: PropTypes.func.isRequired,
     onItemSelect: PropTypes.func.isRequired,
+    onItemMarkUnread: PropTypes.func.isRequired,
 
     selectedEmailId: PropTypes.number
   };

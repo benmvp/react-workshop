@@ -8,9 +8,9 @@ import './EmailList.css';
 
 export default class EmailList extends PureComponent {
   static propTypes = {
-    emails: PropTypes.arrayOf(EMAIL_PROP_TYPE).isRequired,
-    onItemSelect: PropTypes.func.isRequired,
+    emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
     onItemDelete: PropTypes.func.isRequired,
+    onItemSelect: PropTypes.func.isRequired,
     onItemMarkUnread: PropTypes.func.isRequired,
 
     selectedEmailId: PropTypes.number
@@ -19,19 +19,19 @@ export default class EmailList extends PureComponent {
   render() {
     let {
       emails,
-      selectedEmailId,
       onItemSelect,
       onItemDelete,
-      onItemMarkUnread
+      onItemMarkUnread,
+      selectedEmailId
     } = this.props;
     let emailComponents = emails.map(email =>
       <li key={email.id} className="email-list__item">
         <EmailListItem
           email={email}
-          isSelected={email.id === selectedEmailId}
           onSelect={onItemSelect}
           onDelete={onItemDelete}
           onMarkUnread={onItemMarkUnread}
+          isSelected={email.id === selectedEmailId}
         />
       </li>
     );

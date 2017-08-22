@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
 import {EMAIL_PROP_TYPE} from './constants';
 
 import './EmailListItem.css';
@@ -30,6 +31,15 @@ export default class EmailListItem extends PureComponent {
     isSelected: PropTypes.bool
   };
 
+  _handleClick(e) {
+    let {email, onSelect} = this.props;
+
+    if (onSelect) {
+      e.stopPropagation();
+      onSelect(email.id);
+    }
+  }
+
   _handleDelete(e) {
     e.stopPropagation();
     this.props.onDelete(this.props.email.id);
@@ -38,15 +48,6 @@ export default class EmailListItem extends PureComponent {
   _handleMarkUnread(e) {
     e.stopPropagation();
     this.props.onMarkUnread(this.props.email.id);
-  }
-
-  _handleClick(e) {
-    let {email, onSelect} = this.props;
-
-    if (onSelect) {
-      e.stopPropagation();
-      onSelect(email.id);
-    }
   }
 
   render() {
