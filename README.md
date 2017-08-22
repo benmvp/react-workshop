@@ -58,7 +58,7 @@ yarn run start:api
 npm run start:api
 ```
 
-In a **separate console window/tab**, start the app:
+In a **separate terminal window/tab**, start the app:
 
 ```sh
 # Yarn

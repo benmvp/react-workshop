@@ -6,7 +6,7 @@ As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exer
 
 ## Setp
 
-In a **separate console window/tab**, start API server (running at [http://localhost:9090/](http://localhost:9090/)):
+In a **separate terminal window/tab**, start API server (running at [http://localhost:9090/](http://localhost:9090/)):
 
 ```sh
 # Yarn
