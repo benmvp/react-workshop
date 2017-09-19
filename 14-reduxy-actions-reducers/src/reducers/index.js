@@ -1,12 +1,10 @@
-import {combinReducers} from 'redux';
-
 import {
     SET_EMAIL_UNREAD,
     DELETE_EMAIL,
     ADD_EMAIL,
 } from './actions';
 
-const emails = (state = [], action) => {
+export const emails = (state = [], action) => {
     let nextState = state;
 
     if (action.type === DELETE_EMAIL) {
@@ -33,5 +31,3 @@ const emails = (state = [], action) => {
 
     return nextState;
 }
-
-export default combineReducers({emails});
