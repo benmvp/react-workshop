@@ -9,7 +9,7 @@ export const getEmails = getEmailsApi;
 
 //make api call dispatch action
 export const SET_EMAIL_UNREAD = 'setEmailUnread';
-const setUnreadAction = (emailId, unread) => ({
+const setEmailUnread = (emailId, unread) => ({
     type: SET_EMAIL_UNREAD,
     payload: {
         emailId,
@@ -20,7 +20,7 @@ const setUnreadAction = (emailId, unread) => ({
 const _setUnread = (dispatch, emailId, unread) => (
     setUnreadApi(emailId, unread).then(({success}) => {
         if (success) {
-            return dispatch(setUnreadAction(emailId, unread)))
+            return dispatch(setEmailUnread(emailId, unread)))
         }
 
         throw new Error(
