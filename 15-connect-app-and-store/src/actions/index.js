@@ -13,13 +13,11 @@ export const updateEmails = (emails) => ({
 
 export const getEmails = () => (
     (dispatch) => (
-        getEmailsApi().then(({success, response}) => {
-            if (success) {
-                return dispatch(updateEmails(response));
-            }
-
-            throw new Error('Unable to fetch new emails');
-        })
+        getEmailsApi()
+            .then((response) => (dispatch(updateEmails(response))))
+            .catch(() => {
+                throw new Error('Unable to fetch emails')
+            })
     )
 )
 
@@ -45,8 +43,13 @@ const _setUnread = (dispatch, emailId, unread) => (
     }
 ))
 
-export const markUnRead = (emailId) => (dispatch) => dispatch(_setUnread(emailId, true))
-export const markRead = (emailId) => (dispatch) => dispatch(_setUnread(emailId, false))
+export const markUnread = (emailId) => (
+    (dispatch) => _setUnread(dispatch, emailId, true)
+)
+
+export const markRead = (emailId) => (
+    (dispatch) => _setUnread(dispatch, emailId, false)
+)
 
 
 export const DELETE_EMAIL = 'deleteEmail';
@@ -63,7 +66,7 @@ export const deleteEmail = (emailId) => (
             }
 
             throw new Error(`Unable to delete email ID# ${emailId}.`);
-        });
+        })
     )
 )
 

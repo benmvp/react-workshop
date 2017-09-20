@@ -2,10 +2,10 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import EmailList from './components/EmailList';
-import EmailView from './components/EmailView';
-import EmailForm from './components/EmailForm';
-import {EMAIL_PROP_TYPE} from './components/constants';
+import EmailList from '../components/EmailList';
+import EmailView from '../components/EmailView';
+import EmailForm from '../components/EmailForm';
+import {EMAIL_PROP_TYPE} from '../components/constants';
 
 import {
   addEmail,
@@ -14,7 +14,7 @@ import {
   markUnread,
 } from '../actions'
 
-import './App.css';
+import '../App.css';
 
 const EmailViewWrapper = ({
   selectedEmail,
@@ -85,7 +85,7 @@ class App extends PureComponent {
 
     if (this.state.selectedEmailId !== selectedEmailId) {
       // also mark the email as read
-      markRead(selectedEmailId)
+      this.props.markRead(selectedEmailId)
     }
   }
 
@@ -95,27 +95,21 @@ class App extends PureComponent {
   }
 
   _handleFormSubmit(newEmail) {
-    addEmail(newEmail)
-      // if the email was successfully updated, we have to make
-      // a request to get the new list of emails, but we'll have
-      // to wait for the response of that request, so let's add to
-      // our state immediately and then later when the response
-      // comes back, the server-side list will update. This is mainly
-      // here to demonstrate immutable updating of data structures
-      .then(() => this.setState({showForm: false}));
+    this.props.addEmail(newEmail)
+    // if the email was successfully updated, we have to make
+    // a request to get the new list of emails, but we'll have
+    // to wait for the response of that request, so let's add to
+    // our state immediately and then later when the response
+    // comes back, the server-side list will update. This is mainly
+    // here to demonstrate immutable updating of data structures
+    this.setState({showForm: false});
   }
 
   _handleItemDelete(emailId) {
-    deleteEmail(emailId)
-      // optimistic updating (see _handleFormSubmit for more info)
-      // Also reset `selectedEmailId` since we're deleting it
-      .then(() => this.setState({selectedEmailId: -1}));
-  }
-
-  _handleItemMarkRead(emailId) {
-    markRead(this.state.emails, emailId)
-      // optimistic updating (see _handleFormSubmit for more info)
-      .then(emails => this.setState({emails}));
+    this.props.deleteEmail(emailId)
+    // optimistic updating (see _handleFormSubmit for more info)
+    // Also reset `selectedEmailId` since we're deleting it
+    this.setState({selectedEmailId: -1});
   }
 
   _handleShowForm() {
@@ -129,7 +123,11 @@ class App extends PureComponent {
   }
 
   render() {
-    let {emails} = this.props;
+    let {
+      emails,
+      markUnread,
+      markRead
+    } = this.props;
     let {selectedEmailId, showForm} = this.state;
     let selectedEmail = emails.find(email => email.id === selectedEmailId);
 
@@ -171,12 +169,13 @@ class App extends PureComponent {
 
 export default connect(
   //_mapStateToProps
-  (state) => ({emails: state.emails}),
+
+  (state) => ({emails: state}),
   //_mapDispatchToProps
-  () => ({
+  {
     addEmail,
     deleteEmail,
     markRead,
     markUnread,
-  })
+  }
 )(App);
