@@ -72,7 +72,7 @@ _handleFormSubmit(newEmail) {
 
 ## Next
 
-You're done! Your code should mirror the [Completed App](../end/).
+Go to [Step 14 - Redux-y Actions and Reducers](../14-reduxy-actions-reducers/).
 
 ## Resources
 
