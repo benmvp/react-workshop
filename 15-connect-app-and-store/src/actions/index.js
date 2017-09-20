@@ -15,7 +15,7 @@ export const getEmails = () => (
     (dispatch) => (
         getEmailsApi().then(({success, response}) => {
             if (success) {
-                return dispatch(updateEmails(emails));
+                return dispatch(updateEmails(response));
             }
 
             throw new Error('Unable to fetch new emails');
@@ -36,14 +36,14 @@ const setEmailUnread = (emailId, unread) => ({
 const _setUnread = (dispatch, emailId, unread) => (
     setUnreadApi(emailId, unread).then(({success}) => {
         if (success) {
-            return dispatch(setEmailUnread(emailId, unread)))
+            return dispatch(setEmailUnread(emailId, unread))
         }
 
         throw new Error(
             `Unable to set email ID# ${emailId} unread state to ${unread}.`
         );
     }
-)
+))
 
 export const markUnRead = (emailId) => (dispatch) => dispatch(_setUnread(emailId, true))
 export const markRead = (emailId) => (dispatch) => dispatch(_setUnread(emailId, false))
@@ -83,4 +83,4 @@ export const addEmail = (newEmail) => (
             throw new Error('Unable to send email!');
         }
     )
-)
+))

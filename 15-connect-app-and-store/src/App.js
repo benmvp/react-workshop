@@ -4,6 +4,8 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import PropTypes from 'prop-types';
 
+import Page from './containers/Page';
+
 import {getEmails} from './actions';
 import {emails} from './reducers';
 

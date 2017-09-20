@@ -12,7 +12,7 @@ import {
   deleteEmail,
   markRead,
   markUnread,
-} from './actions'
+} from '../actions'
 
 import './App.css';
 
@@ -85,7 +85,7 @@ class App extends PureComponent {
 
     if (this.state.selectedEmailId !== selectedEmailId) {
       // also mark the email as read
-      markRead(emailId)
+      markRead(selectedEmailId)
     }
   }
 
@@ -149,7 +149,7 @@ class App extends PureComponent {
             selectedEmail={selectedEmail}
             onClose={this._handleEmailViewClose.bind(this)}
             onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
-            onMarkUnread={markUnread)}
+            onMarkUnread={markUnread}
             onMarkRead={markRead}
           />
           <button
@@ -175,7 +175,6 @@ export default connect(
   //_mapDispatchToProps
   () => ({
     addEmail,
-    getEmails,
     deleteEmail,
     markRead,
     markUnread,

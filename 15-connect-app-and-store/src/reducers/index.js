@@ -3,7 +3,7 @@ import {
     DELETE_EMAIL,
     ADD_EMAIL,
     UPDATE_EMAILS,
-} from './actions';
+} from '../actions';
 
 export const emails = (state = [], action) => {
     let nextState = state;
@@ -19,7 +19,7 @@ export const emails = (state = [], action) => {
     if (action.type === SET_EMAIL_UNREAD) {
         nextState = nextState.map((email) => (
             email.id === action.payload.emailId ? {...email, unread: action.payload.unread} : email
-        )
+        ))
     }
 
     if (action.type === ADD_EMAIL) {
@@ -27,7 +27,7 @@ export const emails = (state = [], action) => {
             {
                 ...action.payload,
                 id: Date.now(),
-                date `${new Date()}`,
+                date: `${new Date()}`,
                 unread: true
             },
             ...nextState,
