@@ -46,7 +46,7 @@ export default class App extends PureComponent {
   }
 
   _getUpdateEmails() {
-    getEmails();
+    this._store.dispatch(getEmails());
   }
 
   render() {

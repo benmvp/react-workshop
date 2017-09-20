@@ -5,7 +5,23 @@ import {
   setUnread as setUnreadApi
 } from '../api';
 
-export const getEmails = getEmailsApi;
+export const UPDATE_EMAILS = 'updateEmails';
+export const updateEmails = (emails) => ({
+    type: UPDATE_EMAILS,
+    payload: emails,
+})
+
+export const getEmails = () => (
+    (dispatch) => (
+        getEmailsApi().then(({success, response}) => {
+            if (success) {
+                return dispatch(updateEmails(emails));
+            }
+
+            throw new Error('Unable to fetch new emails');
+        })
+    )
+)
 
 //make api call dispatch action
 export const SET_EMAIL_UNREAD = 'setEmailUnread';
