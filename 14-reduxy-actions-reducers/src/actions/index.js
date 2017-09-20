@@ -20,17 +20,22 @@ const setEmailUnread = (emailId, unread) => ({
 const _setUnread = (dispatch, emailId, unread) => (
     setUnreadApi(emailId, unread).then(({success}) => {
         if (success) {
-            return dispatch(setEmailUnread(emailId, unread)))
+            return dispatch(setEmailUnread(emailId, unread))
         }
 
         throw new Error(
             `Unable to set email ID# ${emailId} unread state to ${unread}.`
         )
     }
+))
+
+export const markUnread = (emailId) => (
+    (dispatch) => _setUnread(dispatch, emailId, true)
 )
 
-export const markUnRead = (emailId) => (dispatch) => dispatch(_setUnread(emailId, true))
-export const markRead = (emailId) => (dispatch) => dispatch(_setUnread(emailId, false))
+export const markRead = (emailId) => (
+    (dispatch) => _setUnread(dispatch, emailId, false)
+)
 
 
 export const DELETE_EMAIL = 'deleteEmail'
@@ -46,7 +51,7 @@ export const deleteEmail = (emailId) => (
                 return dispatch(deleteEmailAction(emailId))
             }
 
-            throw new Error(`Unable to delete email ID# ${emailId}.`)
+            throw new Error(`Unable to delete email ID# ${emailId}.`);
         })
     )
 )
@@ -67,4 +72,4 @@ export const addEmail = (newEmail) => (
             throw new Error('Unable to send email!')
         }
     )
-)
+))
