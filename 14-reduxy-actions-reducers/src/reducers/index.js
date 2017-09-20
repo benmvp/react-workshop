@@ -13,7 +13,7 @@ export const emails = (state = [], action) => {
 
     if (action.type === SET_EMAIL_UNREAD) {
         nextState = nextState.map((email) => (
-            email.id === action.payload.emailId ? {...email, action.payload.unread} : email
+            email.id === action.payload.emailId ? {...email, unread: action.payload.unread} : email
         )
     }
 
