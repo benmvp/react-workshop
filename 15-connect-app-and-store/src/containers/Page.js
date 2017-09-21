@@ -8,13 +8,13 @@ import EmailForm from '../components/EmailForm';
 import {EMAIL_PROP_TYPE} from '../components/constants';
 
 import {
-  addEmail,
-  deleteEmail,
-  markRead,
-  markUnread,
+  addEmail as addEmailAction,
+  deleteEmail as deleteEmailAction,
+  markRead as markReadAction,
+  markUnread as markUnreadAction,
 } from '../actions'
 
-import '../App.css';
+import '../Page.css';
 
 const EmailViewWrapper = ({
   selectedEmail,
@@ -58,7 +58,7 @@ const EmailFormWrapper = ({showForm, onSubmit, onCancel}) => {
   return component;
 };
 
-class App extends PureComponent {
+class Page extends PureComponent {
   static propTypes = {
     emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
     addEmail: PropTypes.func,
@@ -96,19 +96,15 @@ class App extends PureComponent {
 
   _handleFormSubmit(newEmail) {
     this.props.addEmail(newEmail)
-    // if the email was successfully updated, we have to make
-    // a request to get the new list of emails, but we'll have
-    // to wait for the response of that request, so let's add to
-    // our state immediately and then later when the response
-    // comes back, the server-side list will update. This is mainly
-    // here to demonstrate immutable updating of data structures
+    //the optimistic update is now happening
+    //automatically thanks to attaching our state
+    //to our redux store
     this.setState({showForm: false});
   }
 
   _handleItemDelete(emailId) {
     this.props.deleteEmail(emailId)
-    // optimistic updating (see _handleFormSubmit for more info)
-    // Also reset `selectedEmailId` since we're deleting it
+    //reset `selectedEmailId` since we're deleting it
     this.setState({selectedEmailId: -1});
   }
 
@@ -169,13 +165,13 @@ class App extends PureComponent {
 
 export default connect(
   //_mapStateToProps
-
   (state) => ({emails: state}),
+
   //_mapDispatchToProps
   {
-    addEmail,
-    deleteEmail,
-    markRead,
-    markUnread,
+    addEmail: addEmailAction,
+    deleteEmail: deleteEmailAction,
+    markRead: markReadAction,
+    markUnread: markUnreadAction,
   }
 )(App);

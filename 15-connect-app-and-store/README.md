@@ -1,183 +1,526 @@
-# Step 14 - Reduxy Actions and Reducers
+# Step 15 - Connect App and Store
 
-Our goal in [Step 13](../13-action-reducers) was to separate the app state from the display logic by moving the business logic into a set of actions (api calls) and reducers (state changes). This, however, wasn't in true Redux-y fashion. The goal of the next two steps is make that final jump and turn this application into a full [Redux](http://redux.js.org/) app.
+In [step 14](../14-reduxy-action-reducers) we separated out our "action-reducers" into distinct "actions" and "reducers". As of now, these "actions" and "reducers" are not being consumed at any part of our app. We are still relying on the "action-creators" from before. Our goal in this step is to actually connect our [Redux](http://redux.js.org/)-y "reducers" and "actions" to our React application by hydrating the data via the [`store`](http://redux.js.org/docs/api/Store.html).
 
-In order to do this we will need to separate out our `action-reducers` into two separate files: [`actions/index.js`](./actions/index.js) and [`reducers/index.js`]('reducers/index.js). Our ["actions"](http://redux.js.org/docs/basics/Actions.html) will respond to user interactions and communicate to our ["reducers"](http://redux.js.org/docs/basics/Reducers.html) what changes need to occur. The "reducers" will listen for dispatched "actions", and respond when appropriate, modifying the state as appropriate (the same as before!). This 'broadcasting' and 'listening' is achieved by wrapping our "actions" in a [`dispatch()`](http://redux.js.org/docs/api/Store.html#dispatch) function.
+In order to actually connect the two, we will be using some helpers provided by [`react-redux`](https://github.com/reactjs/react-redux). Namely: [`Provider`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#provider-store) and [`connect()`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options). The docs provide invaluable insight into their behavior, but in short terms:
+* **Provider**: The top level component in your application, makes the `store` accessible via calls to `connect()` for all children components
+* **connect()**: A function which takes your component as an argument, and and provides access to the `store` and `dispatch()` in the passed in component's props via [`mapStateToProps`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) and [`mapDispatchToProps`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options).
 
-The goal of this step in particular is to pull out the "actions" and "reducers" into their own specific files and set up the interaction between the two.
+A component which has been passed to connect takes on a different term: a [container](http://redux.js.org/docs/basics/UsageWithReact.html#presentational-and-container-components). The term comes from an abstraction suggested in redux documentation that components should be split into two basic groups: those which handle *presentation* and those which handle *data*. "Containers" are passed to `connect()` and so are aware of the state, and are able to dispatch actions, while presentational components simply consume their props and maintain state for UI purposes.
 
-Our app is very API call heavy, so we need support for asynchronous actions, something vanilla [Redux](http://redux.js.org/) does not support out of the box. Enter [`redux-thunk`](https://github.com/gaearon/redux-thunk)! Redux thunk lets us call "actions" as "actionCreators" so that we can dispatch asynchronous promise based calls.
+In this step we are going to do all that is left in order to connect our React application to our Redux store and actions. This will include:
+* Creating our `store` in `App.js`
+* Applying `redux-thunk` as a middleware to handle async actions
+* Making `<Provider />` the top level component
+* Refactoring of `<App />` such that its primary job is creating the store, and hydrating the app. Moving the JSX into a new container component: `<Page />`
+* `connect()` `<Page />` so that we can `dispatch()` actions, and access our App's state
 
-Lets implement this in our app.
+The [tasks](#tasks) and [exercises](#exercises) below will address each of the steps above and when we finish, will have a fully functioning Redux app.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
 
 ## Tasks
 
-Create 2 new folders and files [`actions/index.js`](./actions/index.js) and [`reducers/index.js`]('reducers/index.js).
-
-Now lets separate the `markRead()` and `markUnread()` action-reducers into their respective actions. In our empty `actions/index.js` import the `setUnread()` api call. Next, lets start by bringing over `markRead()` and `_setUnread()` functions.
-
-The two functions' are going to be similar to how they were previously defined, with some key differences:
-
-* Remove emails from both function's arguments
-* Change `markRead` into a redux-thunk style function and pass dispatch into `_setUnread`
-* Remove the state update logic from `_setUnread` and replace with a call to `dispatch()`
-
-Lets also define the traditional redux style action which will be dispatched to update the state of the application.
-
-First, lets pull over `markRead()` but since the helper it calls involves calling an API (an async action), we are going to need to `redux-thunk`-ify the action.
-
-```js
-// actions/index.js
-
-export const markRead = (emailId) => (dispatch) => _setUnread(dispatch, emailId, false);
+First things first, lets install the libraries necessary to make this happen. If you are starting the workshop from this step, or have already run `yarn install` in this directory please disregard. For everyone else, run:
+```
+yarn add redux
+yarn add react-redux
+yarn add redux-thunk
 ```
 
-What we are doing above is essentially wrapping the call to the helper inside a redux-thunk action creator, exposing `dispatch()` to our helper. Below is a simple example showcasing what is going on here:
+Once that finishes we are good to go!
+
+Lets create a new folder [`containers/`](src/containers/) and within that folder add a new file [`Page.js`](src/containers/Page.js). Lets quickly add `<Page />` to export.
 
 ```js
-// example
+import React, {PureComponent} from 'react';
 
-const myActionCreator = (argumentFromComponent) => (
-    //redux-thunk exposing dispatch
-    (dispatch) => (
-        //we have abstracted this bit into a helper function
-        makeApiCall(argumentFromComponent)
-            .then(dispatch(actionToModifyStore))
+export default class Page extends PureComponent {
+  render() {
+    return (
+      <div />
     )
-)
-```
-Now that we have our action creator made, lets pull over `_setUnread()` minus the state logic.
-
-```js
-// actions/index.js
-
-import {setUnread as setUnreadApi} from '../api';
-
-const _setUnread = (dispatch, emailId, unread) => (
-    setUnreadApi(emailId, unread).then(({success}) => {
-        if (success) {
-            return dispatch(actionToBeDefined())
-        }
-
-        throw new Error(
-            `Unable to set email ID# ${emailId} unread state to ${unread}.`
-        );
-    }
-)
-
-export const markRead = (emailId) => (dispatch) => _setUnread(dispatch, emailId, false)
-```
-Now we have `_setUnread()` making the API call to our server, and replaced any state logic with a call to `dispatch()`. Now we want `dispatch()` to actually fire an action signifying what state change needs to occur. Lets add the action that will be fired, and have our `dispatch()` call it properly:
-
-```js
-// actions/index.js
-
-import {setUnread as setUnreadApi} from '../api';
-
-const SET_EMAIL_UNREAD = 'setEmailUnread';
-const setEmailUnread = (emailId, unread) => ({
-    type: SET_UNREAD,
-    payload: {
-        emailId,
-        unread
-    },
-})
-
-const _setUnread = (dispatch, emailId, unread) => (
-    setUnreadApi(emailId, unread).then(({success}) => {
-        if (success) {
-            return dispatch(setEmailUnread(emailId, unread))
-        }
-
-        throw new Error(
-            `Unable to set email ID# ${emailId} unread state to ${unread}.`
-        );
-    }
-)
-
-export const markRead = (emailId) => (dispatch) => _setUnread(dispatch, emailId, false)
-```
-With the above we have separated the actions and state logic into two separate concerns.
-
-Next lets set up our reducer to handle updating the 'read' state of an email.
-
-Reducers are simply functions which take in the current state, update it if necessary, and return the updated state. It also takes an action as an argument to determine exactly what should be done.
-
-```js
-// reducers/index.js
-
-const emails = (state, action) => {
-    let nextState = state;
-
-    //do stuff
-
-    return nextState;
+  }
 }
 ```
 
-Since emails is an array, lets take advantage of argument defaults to set it to an empty array. Further,
-lets import the action type we defined above and perform the state update that was previously in `_setUnread`
-when the action.type matches `SET_EMAIL_UNREAD`.
+Next we are going to do is some ground work to set up the modified app structure. We want the `<Page />` to deal with:
+* the layout
+* handling user interactions
+* UI state
+
+The `<App />` should concern itself with:
+* setting up the `store`
+* initial hydration of the App
+
+So, first pull out the **JSX**, **helper components**, **component imports**, **event handlers** (such as `_handleItemSelect`), and **state** from `App.js`. Move them into `Page.js`.
+
+After moving everything over as is, `Page.js` should look like:
 
 ```js
-// reducers/index.js
+// containers/Page.js
 
-import {SET_EMAIL_UNREAD} from '../actions';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
-const emails = (state = [], action) => {
-    let nextState = state;
+import {
+  addEmail,
+  deleteEmail,
+  markRead,
+  markUnread
+} from '../action-reducers';
 
-    if (action.type === SET_EMAIL_UNREAD) {
-        nextState = nextState.map((email) => (
-            email.id === action.payload.emailId ? {...email, unread: action.payload.unread} : email
-        )
+import EmailList from '../components/EmailList';
+import EmailView from '../components/EmailView';
+import EmailForm from '../components/EmailForm';
+
+const EmailViewWrapper = ({
+  selectedEmail,
+  onClose,
+  onDelete,
+  onMarkUnread,
+  onMarkRead
+}) => {
+  let component = null;
+
+  if (selectedEmail) {
+    component = (
+      <article className="app__view">
+        <EmailView
+          email={selectedEmail}
+          onClose={onClose}
+          onDelete={onDelete}
+          onMarkUnread={onMarkUnread}
+          onMarkRead={onMarkRead}
+        />
+      </article>
+    );
+  }
+
+  return component;
+};
+
+const EmailFormWrapper = ({showForm, onSubmit, onCancel}) => {
+  let component = null;
+
+  if (showForm) {
+    component = (
+      <div className="app__form-modal">
+        <div className="app__form">
+          <EmailForm onSubmit={onSubmit} onCancel={onCancel} />
+        </div>
+      </div>
+    );
+  }
+
+  return component;
+};
+
+export default class Page extends PureComponent {
+  state = {
+    // Initialize emails state to an empty array.
+    // Will get populated with data in `componentDidMount`
+    emails: [],
+    // Initialize selected email ID to -1, indicating nothing is selected.
+    // When an email is selected in EmailList, this will be updated to
+    // corresponding ID
+    selectedEmailId: -1,
+    // Initialize show form flag to false, indicating that it won't show.
+    // When the new email button is clicked, it'll be set to `true`. It'll
+    // be toggled false on form submission or cancel
+    showForm: false
+  };
+
+  _handleItemSelect(selectedEmailId) {
+    // update state (so that the EmailView will show)
+    this.setState({selectedEmailId});
+
+    if (this.state.selectedEmailId !== selectedEmailId) {
+      // also mark the email as read
+      this._handleItemMarkRead(selectedEmailId);
     }
+  }
 
-    return nextState;
+  _handleEmailViewClose() {
+    // We close the email view by resetting the selected email
+    this.setState({selectedEmailId: -1});
+  }
+
+  _handleFormSubmit(newEmail) {
+    addEmail(this.state.emails, newEmail)
+      // if the email was successfully updated, we have to make
+      // a request to get the new list of emails, but we'll have
+      // to wait for the response of that request, so let's add to
+      // our state immediately and then later when the response
+      // comes back, the server-side list will update. This is mainly
+      // here to demonstrate immutable updating of data structures
+      .then(emails => this.setState({emails, showForm: false}));
+  }
+
+  _handleItemDelete(emailId) {
+    deleteEmail(this.state.emails, emailId)
+      // optimistic updating (see _handleFormSubmit for more info)
+      // Also reset `selectedEmailId` since we're deleting it
+      .then(emails => this.setState({emails, selectedEmailId: -1}));
+  }
+
+  _handleItemMarkUnread(emailId) {
+    markUnread(this.state.emails, emailId)
+      // optimistic updating (see _handleFormSubmit for more info)
+      .then(emails => this.setState({emails}));
+  }
+
+  _handleItemMarkRead(emailId) {
+    markRead(this.state.emails, emailId)
+      // optimistic updating (see _handleFormSubmit for more info)
+      .then(emails => this.setState({emails}));
+  }
+
+  _handleShowForm() {
+    // Show email form overlay by setting state to true
+    this.setState({showForm: true});
+  }
+
+  _handleHideForm() {
+    // Hide email form overlay by setting state to false
+    this.setState({showForm: false});
+  }
+
+  render() {
+    let {emails, selectedEmailId, showForm} = this.state;
+    let selectedEmail = emails.find(email => email.id === selectedEmailId);
+
+    return (
+      <main className="app">
+        <div className="app__page">
+          <div className="app__list">
+            <EmailList
+              emails={emails}
+              onItemSelect={this._handleItemSelect.bind(this)}
+              onItemDelete={this._handleItemDelete.bind(this)}
+              onItemMarkUnread={this._handleItemMarkUnread.bind(this)}
+              selectedEmailId={selectedEmailId}
+            />
+          </div>
+          <EmailViewWrapper
+            selectedEmail={selectedEmail}
+            onClose={this._handleEmailViewClose.bind(this)}
+            onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
+            onMarkUnread={this._handleItemMarkUnread.bind(
+              this,
+              selectedEmailId
+            )}
+            onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
+          />
+          <button
+            className="app__new-email"
+            onClick={this._handleShowForm.bind(this)}
+          >
+            +
+          </button>
+          <EmailFormWrapper
+            showForm={showForm}
+            onSubmit={this._handleFormSubmit.bind(this)}
+            onCancel={this._handleHideForm.bind(this)}
+          />
+        </div>
+      </main>
+    );
+  }
 }
 ```
 
-With the above, our state tree has a single key: `emails`, which will listen for actions of type `SET_EMAIL_UNREAD`, and return a new state tree with the appropriate modifications applied.
-
-Lastly, since `emails` are the only non-ui state in our app we can export this reducer directly.
+and `App.js` should look like:
 
 ```js
-// reducers/index.js
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
-import {SET_EMAIL_UNREAD} from '../actions';
+import {getEmails} from './action-reducers';
 
-export const emails = (state = [], action) => {
-    let nextState = state;
+export default class App extends PureComponent {
+  static propTypes = {
+    pollInterval: PropTypes.number
+  };
 
-    if (action.type === SET_EMAIL_UNREAD) {
-        nextState = nextState.map((email) => (
-            email.id === action.payload.emailId ? {...email, unread: action.payload.unread} : email
-        )
-    }
+  static defaultProps = {
+    // default the `pollInterval` prop to 2 secs when not specified
+    pollInterval: 2000
+  };
 
-    return nextState;
+  componentDidMount() {
+    // Retrieve emails from server once we know DOM exists
+    this._getUpdateEmails();
+
+    // Set up long-polling to continuously get new data
+    this._pollId = setInterval(
+      () => this._getUpdateEmails(),
+      this.props.pollInterval
+    );
+  }
+
+  componentWillUnmount() {
+    // Need to remember to clearInterval when the component gets
+    // removed from the DOM, otherwise the interval will keep going
+    // forever and leak memory
+    clearInterval(this._pollId);
+  }
+
+  _getUpdateEmails() {
+    return getEmails().then(emails => this.setState({emails}));
+  }
+
+  render() {
+    return (
+    );
+  }
 }
 ```
-Once we add the remaining actions and logic into the reducer it is ready to be consumed by our app.
+
+Now that we have separated out `<App/>` into two distinct components, lets start by setting up `<App/>` to create a `store` and have `<Provider/>` consume the store as the top level child. Then, we will return to `<Page/>` and complete it's refactor.
+
+Next, lets create our `store`.
+
+We are going to do this in `<App/>`'s [`constructor()`](https://facebook.github.io/react/docs/react-component.html#constructor). This should be added directly after `static defaultProps` as it is the first thing called when the component is evaluated.
+
+The only things we *need* when creating a store are: `createStore()` from `redux`, and our root reducer, which in this case is `emails` from [`reducers/index.js`]('.src/reducers/index.js'). Additionally, since we are using actions to make API calls which behave asynchronously, we also will need to import [`applyMiddleware()`](http://redux.js.org/docs/api/applyMiddleware.html) from `redux` and [`thunk`](https://github.com/gaearon/redux-thunk#whats-a-thunk) from `redux-thunk`.
+
+First, lets import the necessary modules:
+```js
+// App.js
+
+import {createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import {Provider} from 'react-redux';
+
+import {emails} from './reducers';
+```
+Next, lets add a `constructor()` in `<App />` which will handle creating the store.
+
+```js
+// App.js
+
+constructor(props) {
+  //It is always necessary to call super(props)
+  //whenever adding functionality to the constructor
+  super(props);
+
+  this._store = createStore(
+    emails,
+    applyMiddleware(thunk)
+  );
+}
+```
+We have a `store`! Now, that we do, we can modify our `render()` function so it returns `<Provider />` as the top level component, with `<Page />` as its child.
+
+```js
+//App.js
+
+render() {
+  <Provider store={this._store}>
+    <Page />
+  </Provider>
+}
+```
+
+After these changes our App.js should look something like:
+
+```js
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
+import {createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import {Provider} from 'react-redux';
+
+import Page from './containers/Page';
+
+import {emails} from './reducers';
+
+export default class App extends PureComponent {
+  static propTypes = {
+    pollInterval: PropTypes.number
+  };
+
+  static defaultProps = {
+    // default the `pollInterval` prop to 2 secs when not specified
+    pollInterval: 2000
+  };
+
+
+  constructor(props) {
+    super(props);
+
+    this._store = createStore(
+      emails,
+      applyMiddleware(thunk)
+    );
+  }
+
+  componentDidMount() {
+    // Retrieve emails from server once we know DOM exists
+    this._getUpdateEmails();
+
+    // Set up long-polling to continuously get new data
+    this._pollId = setInterval(
+      () => this._getUpdateEmails(),
+      this.props.pollInterval
+    );
+  }
+
+  componentWillUnmount() {
+    // Need to remember to clearInterval when the component gets
+    // removed from the DOM, otherwise the interval will keep going
+    // forever and leak memory
+    clearInterval(this._pollId);
+  }
+
+  _getUpdateEmails() {
+    return getEmails().then(emails => this.setState({emails}))
+  }
+
+  render() {
+    return (
+      <Provider store={this._store}>
+        <Page />
+      </Provider>
+    );
+  }
+}
+```
+There is one last thing we need to update before we can move on to updating `<Page/>`: hydration. We are still calling `getEmails` inside `_getUpdateEmails` and then updating our `state`! We instead want to call the Redux action we created in [Step 14](../14-reduxy-actions-reducers) and let the action handle hydrating the store. First, lets import it and remove the import from `'./action-creators'`:
+```js
+// App.js
+
+//other imports
+import {getEmails} from '../actions';
+```
+With that we are good to go right? Nope! We need to wrap the function in a call to `dispatch()` so our "action creators" know to listen for it. Since `dispatch()` is a property of the `store` we can access it and call it directly. We can do that by modifying `getUpdateEmails()` in the following way:
+```js
+//App.js
+
+_getUpdateEmails() {
+  return this._store.dispatch(getEmails());
+}
+```
+With that last change our `<App/>` has been successfully refactored to create our `store` and properly hydrate the application.
+
+Lets change focus and start the refactor of `<Page/>`
+
+`<Page/>` being a "container" means that it will receive the necessary application state and actions via its `props` rather than maintaining them itself. `<Page/>` will still keep track of purely UI data in its `state`, such as `showForm` and `selectedEmail`. But, any reference to or update of `emails` as a property of `<Page/>`'s state will need to be removed, and instead reference `props`. But *how* do they become `props` of `<Page/>`? That is where `connect()` comes into play.
+
+But first, lets remove `emails` from the state object, and instead add it to `<Page/>`'s `propTypes`. Additionally, since `pollInterval` is being handled by `<App/>`, we can remove that from proptypes as well.
+
+```js
+static propTypes = {
+  emails: PropTypes.arraOf(EMAIL_PROP_TYPE),
+}
+
+state = {
+    // Initialize selected email ID to -1, indicating nothing is selected.
+    // When an email is selected in EmailList, this will be updated to
+    // corresponding ID
+    selectedEmailId: -1,
+    // Initialize show form flag to false, indicating that it won't show.
+    // When the new email button is clicked, it'll be set to `true`. It'll
+    // be toggled false on form submission or cancel
+    showForm: false
+}
+```
+and in `render()`:
+```js
+let {emails} = this.props;
+let {selectedEmailId, showForm} = this.state;
+```
+
+Now that's out of the way, lets get our component hydrated with `connect()`. In general so far, our components have looked like:
+```js
+export default class Page extends PureComponent {
+```
+However, we want to export the "container" or *connected* component so instead we need to export the connected version. To do that, lets simply declare our class as:
+```js
+class Page extends PureComponent {
+```
+and then at the bottom of `Page.js` add:
+```js
+export default connect()(App);
+```
+Now our default export is a container.
+
+`connect()` exposes two functions as its first two arguments:
+* [`mapStateToProps`]() : recieves `state` as a parameter
+* [`mapDispatchToProps`]() : receives `dispatch` as a parameter
+
+We utilize these to hydrate the component (`<Page/>`) passed into `connect()`. In order to do so we need to *map* our application's *state* to our component's *props*. So lets modify our default export to look like:
+
+```js
+export default connect(
+  //_mapStateToProps
+  (state) => ({emails: state})
+)(App)
+```
+
+With that, `this.props.emails` is coming from our Redux **store**. Next we are going to address updating our `_handle` functions to stop referencing `state` and instead utilize actions via `dispatch`.
+
+Similarly to `emails` now being hydrated via the component's props, our actions shoudld be as well. By passing our actions through `mapDispatchToProps` each "action" is wrapped in a call to `dispatch()`. Lets import `deleteEmail` and pass it through `mapDispatchToProps`.
+```js
+import {deleteEmail as deleteEmailAction} from '../actions';
+```
+Then, in our call to `connect()`:
+```js
+export default connect(
+  //_mapStateToProps
+  (state) => ({emails: state}),
+
+  //_mapDispatchToProps
+  (dispatch) => ({
+    deleteEmail: () => dispatch(deleteEmailAction)
+  })
+```
+In the above block, `deleteEmail()` is the prop being passed to `<Page/>` which is simply a dispatch wrapping the imported `deleteEmail()`. Since it is now a prop of our component, lets add it to our `propTypes`.
+```js
+static propTypes = {
+    emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
+    deleteEmail: PropTypes.func,
+  };
+```
+Additionally, we can further optimize this call by taking advantage of a feature of `mapDispatchToProps()`. If an object made entirely of *action creators* is passed directly to `_mapDispatchToProps`, it will implicitly wrap each one in a call to`dispatch()`. This means we can rewrite the above as:
+```js
+export default connect(
+  //_mapStateToProps
+  (state) => ({emails: state}),
+
+  //_mapDispatchToProps
+  {
+    deleteEmail: deleteEmailAction
+  }
+```
+Now we can update our `_handleItemDelete()` to utilize the redux action coming through props, rather than our previous version. Addtionally, since we are using our Redux action, and `emails` is from our `store` we should no longer manually optimistically update our email state upon the action being completed. The `store` will handle that all on its own, so instead we can just focus on the UI behavior of resetting the `selectedEmail` to `-1`. So our `_handleItemDelete` should now look something like:
+
+```js
+_handleItemDelete(emailId) {
+  this.props.deleteEmail(emailId)
+  // Also reset `selectedEmailId` since we're deleting it
+  this.setState({selectedEmailId: -1});
+}
+```
+
+With this, our `deleteEmail()` action should properly go through `dispatch` to eventually update our store.
+
+Within `<Page />` there are still many references to our previous version of "action-reducers" and `this.state.emails`. However, once these have all been replaced with Redux actions, the app should work just as it did before but now built on the scalability of Redux.
+
 
 ## Exercises
 
-1. Add `markUnread()` to `actions/index.js`
-2. Convert `addEmail` into an actionCreator and action
-3. Convert `deleteEmail` into an actionCreator and action
-4. Move the state logic for `addEmail` and `deleteEmail` into the reducer in `reducers/index.js`.
+1. Replace the remaining actions in `Page.js` with the actions from `actions/index.js`
+  - *hint*: Some of the `_handlers` just update `this.state.emails` upon success. In which case you can pass the action *itself* directly to the child component and remove the handler.
 
 ## Next
 
-As of now our app is not calling or utilizing the actions we have created, next lets actually create
-the store and properly hydrate our app using our store and reducers.
+Enjoy your awesome redux app!
 
 ## Resources
 
 - [Redux](http://redux.js.org/)
-- [Actions](http://redux.js.org/docs/basics/Actions.html)
-- [Reducers](http://redux.js.org/docs/basics/Reducers.html)
 - [`redux-thunk`](https://github.com/gaearon/redux-thunk)
+- [React Redux](https://github.com/reactjs/react-redux/)
 - [Flux Standard Actions](https://github.com/acdlite/flux-standard-action)

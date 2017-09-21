@@ -1,13 +1,13 @@
 import React, {PureComponent} from 'react';
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
-import thunk from 'redux-thunk';
 import PropTypes from 'prop-types';
+import {createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import {Provider} from 'react-redux';
 
 import Page from './containers/Page';
 
-import {getEmails} from './actions';
 import {emails} from './reducers';
+import {getEmails} from './actions';
 
 export default class App extends PureComponent {
   static propTypes = {
@@ -52,11 +52,9 @@ export default class App extends PureComponent {
   }
 
   render() {
-    let {pollInterval} = this.props;
-
     return (
       <Provider store={this._store}>
-        <Page pollInterval={pollInterval} />
+        <Page />
       </Provider>
     );
   }

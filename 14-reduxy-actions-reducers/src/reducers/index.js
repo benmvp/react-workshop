@@ -7,6 +7,10 @@ import {
 export const emails = (state = [], action) => {
     let nextState = state;
 
+    if (action.type === UPDATE_EMAILS) {
+        nextState = action.payload;
+    }
+
     if (action.type === DELETE_EMAIL) {
         nextState = nextState.filter(email => email.id !== action.payload);
     }

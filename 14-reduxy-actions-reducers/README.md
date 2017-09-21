@@ -163,8 +163,8 @@ Once we add the remaining actions and logic into the reducer it is ready to be c
 
 ## Exercises
 
-1. Convert `markUnread()`, `addEmail()` & `deleteEmail()` into an action creators and actions
-1. Move the state logic for `addEmail()` and `deleteEmail()` into the reducer in `reducers/index.js`.
+1. Convert `markUnread()`, `addEmail()`, `getEmails()`, & `deleteEmail()` into an action creators and actions
+2. Move the state logic for `addEmail()` and `deleteEmail()` into the reducer in `reducers/index.js`.
 
 ## Next
 

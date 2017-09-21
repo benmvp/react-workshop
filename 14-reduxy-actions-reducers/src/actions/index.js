@@ -5,10 +5,23 @@ import {
   setUnread as setUnreadApi
 } from '../api'
 
-export const getEmails = getEmailsApi
+export const UPDATE_EMAILS = 'updateEmails';
+export const updateEmails = (emails) => ({
+    type: UPDATE_EMAILS,
+    payload: emails,
+})
 
-//make api call dispatch action
-export const SET_EMAIL_UNREAD = 'setEmailUnread'
+export const getEmails = () => (
+    (dispatch) => (
+        getEmailsApi()
+            .then((response) => (dispatch(updateEmails(response))))
+            .catch(() => {
+                throw new Error('Unable to fetch emails')
+            })
+    )
+)
+
+export const SET_EMAIL_UNREAD = 'setEmailUnread';
 const setEmailUnread = (emailId, unread) => ({
     type: SET_EMAIL_UNREAD,
     payload: {

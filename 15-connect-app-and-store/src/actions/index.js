@@ -21,7 +21,6 @@ export const getEmails = () => (
     )
 )
 
-//make api call dispatch action
 export const SET_EMAIL_UNREAD = 'setEmailUnread';
 const setEmailUnread = (emailId, unread) => ({
     type: SET_EMAIL_UNREAD,
