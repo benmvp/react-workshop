@@ -7,7 +7,11 @@ import {Provider} from 'react-redux';
 import Page from './containers/Page';
 
 import {emails} from './reducers';
-import {getEmails} from './actions';
+
+const store = createStore(
+  emails,
+  applyMiddleware(thunk)
+);
 
 export default class App extends PureComponent {
   static propTypes = {
@@ -19,42 +23,12 @@ export default class App extends PureComponent {
     pollInterval: 2000
   };
 
-
-  constructor(props) {
-    super(props);
-
-    this._store = createStore(
-      emails,
-      applyMiddleware(thunk)
-    );
-  }
-
-  componentDidMount() {
-    // Retrieve emails from server once we know DOM exists
-    this._getUpdateEmails();
-
-    // Set up long-polling to continuously get new data
-    this._pollId = setInterval(
-      () => this._getUpdateEmails(),
-      this.props.pollInterval
-    );
-  }
-
-  componentWillUnmount() {
-    // Need to remember to clearInterval when the component gets
-    // removed from the DOM, otherwise the interval will keep going
-    // forever and leak memory
-    clearInterval(this._pollId);
-  }
-
-  _getUpdateEmails() {
-    this._store.dispatch(getEmails());
-  }
-
   render() {
+    let {pollInterval} = this.props;
+
     return (
-      <Provider store={this._store}>
-        <Page />
+      <Provider store={store}>
+        <Page pollInterval={pollInterval} />
       </Provider>
     );
   }

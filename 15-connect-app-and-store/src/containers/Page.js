@@ -8,6 +8,7 @@ import EmailForm from '../components/EmailForm';
 import {EMAIL_PROP_TYPE} from '../components/constants';
 
 import {
+  getEmails as getEmailsAction,
   addEmail as addEmailAction,
   deleteEmail as deleteEmailAction,
   markRead as markReadAction,
@@ -78,6 +79,28 @@ class Page extends PureComponent {
     // be toggled false on form submission or cancel
     showForm: false
   };
+
+  componentDidMount() {
+    // Retrieve emails from server once we know DOM exists
+    this._getUpdateEmails();
+
+    // Set up long-polling to continuously get new data
+    this._pollId = setInterval(
+      () => this._getUpdateEmails(),
+      this.props.pollInterval
+    );
+  }
+
+  componentWillUnmount() {
+    // Need to remember to clearInterval when the component gets
+    // removed from the DOM, otherwise the interval will keep going
+    // forever and leak memory
+    clearInterval(this._pollId);
+  }
+
+  _getUpdateEmails() {
+    this.props.getEmails();
+  }
 
   _handleItemSelect(selectedEmailId) {
     // update state (so that the EmailView will show)
@@ -169,9 +192,10 @@ export default connect(
 
   //_mapDispatchToProps
   {
+    getEmails: getEmailsAction,
     addEmail: addEmailAction,
     deleteEmail: deleteEmailAction,
     markRead: markReadAction,
     markUnread: markUnreadAction,
   }
-)(App);
+)(Page);

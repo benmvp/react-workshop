@@ -15,9 +15,6 @@ export const getEmails = () => (
     (dispatch) => (
         getEmailsApi()
             .then((response) => (dispatch(updateEmails(response))))
-            .catch(() => {
-                throw new Error('Unable to fetch emails')
-            })
     )
 )
 
