@@ -387,7 +387,7 @@ export default class App extends PureComponent {
   }
 }
 ```
-There is one last thing we need to update before we can move on to updating `<Page/>`: hydration. We are still calling `getEmails` inside `_getUpdateEmails` and then updating our `state`! We instead want to call the Redux action we created in [Step 14](../14-reduxy-actions-reducers) and let the action handle hydrating the store. First, lets import it and remove the import from `'./action-creators'`:
+There is one last thing we need to update before we can move on to updating `<Page/>`: hydration. We are still calling `getEmails` inside `_getUpdateEmails` and then updating our `state`! We instead want to call the Redux action we created in [Step 14](../14-reduxy-actions-reducers) and let the action handle hydrating the store. First, lets import it and remove the import from `'./action-reducers'`:
 ```js
 // App.js
 
@@ -513,6 +513,7 @@ Within `<Page />` there are still many references to our previous version of "ac
 
 1. Replace the remaining actions in `Page.js` with the actions from `actions/index.js`
   - *hint*: Some of the `_handlers` just update `this.state.emails` upon success. In which case you can pass the action *itself* directly to the child component and remove the handler.
+2. Delete action-reducers file (Woo!)
 
 ## Next
 
