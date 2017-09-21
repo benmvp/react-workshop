@@ -59,8 +59,6 @@ Now that we have separated out `<App/>` into two distinct components, lets start
 
 Next, lets create our `store`.
 
-We are going to do this in `<App/>`'s [`constructor()`](https://facebook.github.io/react/docs/react-component.html#constructor). This should be added directly after `static defaultProps` as it is the first thing called when the component is evaluated.
-
 The only things we *need* when creating a store are: `createStore()` from `redux`, and our root reducer, which in this case is `emails` from [`reducers/index.js`]('.src/reducers/index.js'). Additionally, since we are using actions to make API calls which behave asynchronously, we also will need to import [`applyMiddleware()`](http://redux.js.org/docs/api/applyMiddleware.html) from `redux` and [`thunk`](https://github.com/gaearon/redux-thunk#whats-a-thunk) from `redux-thunk`.
 
 First, lets import the necessary modules:
