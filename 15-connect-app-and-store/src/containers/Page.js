@@ -15,7 +15,7 @@ import {
   markUnread as markUnreadAction,
 } from '../actions'
 
-import '../Page.css';
+import './Page.css';
 
 const EmailViewWrapper = ({
   selectedEmail,
@@ -61,12 +61,18 @@ const EmailFormWrapper = ({showForm, onSubmit, onCancel}) => {
 
 class Page extends PureComponent {
   static propTypes = {
+    pollInterval: PropTypes.number,
     emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
     addEmail: PropTypes.func,
     getEmails: PropTypes.func,
     deleteEmail: PropTypes.func,
     markRead: PropTypes.func,
     markUnread: PropTypes.func,
+  };
+
+  static defaultProps = {
+    // default the `pollInterval` prop to 2 secs when not specified
+    pollInterval: 2000
   };
 
   state = {
@@ -151,9 +157,9 @@ class Page extends PureComponent {
     let selectedEmail = emails.find(email => email.id === selectedEmailId);
 
     return (
-      <main className="app">
-        <div className="app__page">
-          <div className="app__list">
+      <main className="page">
+        <div className="page__page">
+          <div className="page__list">
             <EmailList
               emails={emails}
               onItemSelect={this._handleItemSelect.bind(this)}
@@ -170,7 +176,7 @@ class Page extends PureComponent {
             onMarkRead={markRead}
           />
           <button
-            className="app__new-email"
+            className="page__new-email"
             onClick={this._handleShowForm.bind(this)}
           >
             +

@@ -4,4 +4,4 @@ import App from './App';
 
 import './index.css';
 
-ReactDOM.render(<App pollInterval={5000} />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

@@ -21,10 +21,45 @@ As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exer
 
 ## Tasks
 
-First off Lets create a new folder [`src/containers/`](src/containers/) and within that folder add a new file [`Page.js`](src/containers/Page.js). Copy over the contents of `App.js` into the new file, and rename the class to `Page`:
+First off Lets create a new folder [`src/containers/`](src/containers/) and within that folder add a new file [`Page.js`](src/containers/Page.js). Copy over the contents of `App.js` into the new file, and rename the class to `Page`, and also replace all instances of `app` in the markup's classNames with `page`. After this, your code should look something like:
+
 ```js
+// Page.js
+
+// import
+
 export default class Page extends PureComponent {
+  // props
+
+  // initial state
+
+  // helper methods
+
+  render() {
+    // vars
+
+    return(
+      <main className="page">
+        <div className="page__page">
+          <div className="page__list">
+          // EmailList
+          // EmailViewWrapper
+          <button
+            className="page__new-email"
+            onClick={this._handleShowForm.bind(this)}
+          >
+            +
+          </button>
+          // EmailFormWrapper
+        </div>
+      </main>
+    )
+  }
+}
 ```
+
+We are going to do the same thing with our `App.css` as well. Create a file [`Page.css`](src/containers/Page.css) within `src/containers` and copy over the contents of `App.css` replacing all instances of `app` to `page`, then feel free to delete `App.css`.
+
 Next we are going to do some ground work to set up the modified app structure. We want the `<Page />` to deal with:
 * the layout
 * handling user interactions
@@ -34,21 +69,12 @@ Next we are going to do some ground work to set up the modified app structure. W
 The `<App/>` should concern itself with:
 * setting up the `store`
 
-All `<App />` needs to do render a `<Provider />`, and instantiate a `store`. To achieve this, `<App/>` only needs a call to `render()` and the passed in props. After removing unnecessary content the `<App/>` should look something like this:
+All `<App />` needs to do render a `<Provider />`, and instantiate a `store`. To achieve this, `<App/>` only needs a call to `render()`. With this refactor `<App/>` will become the root of our application, only setting up the `store`, `<Provider/>`, and `<Page />` components. Which means consuming `pollInterval` and passing it down is not necessary in `<App/>` either. After removing unnecessary content the `<App/>` should look something like this:
 
 ```js
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 
 export default class App extends PureComponent {
-  static propTypes = {
-    pollInterval: PropTypes.number
-  };
-
-  static defaultProps = {
-    // default the `pollInterval` prop to 2 secs when not specified
-    pollInterval: 2000
-  };
 
   render() {
     return ()
@@ -90,7 +116,7 @@ export default class App extends PureComponent {
   // class methods
 }
 ```
-We have a `store`! Now, that we do, we can modify our `render()` function so it returns `<Provider />` as the top level component, with `<Page />` as its child. Don't forget to pass our props to `<Page />`!
+We have a `store`! Now, that we do, we can modify our `render()` function so it returns `<Provider />` as the top level component, with `<Page/>` as its child. Because we are now treating `<App/>` as the root of our application, `pollInterval` should be declared and passed into `<Page/>` here, and removed from the instantiation in [`index.js`](/src/index.js).
 
 ```js
 // App.js
@@ -103,13 +129,9 @@ import Page from './containers/Page';
 
 export default class App extends PureComponent {
 
-  // propTypes and default props
-
   render() {
-    let {pollInterval} = this.props;
-
     <Provider store={store}>
-      <Page pollInterval={pollInterval} />
+      <Page pollInterval={5000} />
     </Provider>
   }
 }
@@ -135,19 +157,10 @@ const store = createStore(
 );
 
 export default class App extends PureComponent {
-  static propTypes = {
-    pollInterval: PropTypes.number
-  };
-
-  static defaultProps = {
-    // default the `pollInterval` prop to 2 secs when not specified
-    pollInterval: 2000
-  };
-
   render() {
     return (
       <Provider store={store}>
-        <Page pollInterval={pollInterval} />
+        <Page pollInterval={5000} />
       </Provider>
     );
   }
@@ -172,6 +185,8 @@ export default class Page extends PureComponent {
     pollInterval: PropTypes.number,
     emails: PropTypes.arraOf(EMAIL_PROP_TYPE),
   }
+
+  // default props
 
   state = {
       // Initialize selected email ID to -1, indicating nothing is selected.
@@ -251,9 +266,12 @@ import {deleteEmail as deleteEmailAction} from '../actions';
 class Page extends PureComponent {
 
   static propTypes = {
+    pollInterval: PropTypes.number,
     emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
     deleteEmail: PropTypes.func,
   };
+
+  // default props
 
   // initial state
 
@@ -320,13 +338,54 @@ class Page extends PureComponent {
 
 With this, our `deleteEmail()` action should properly go through `dispatch` to eventually update our store.
 
+As an optional minor optimization, some of the `_handlers`'s `.then()` just update `this.state.emails` upon success. If no other side effect occurs in the handler, you can pass the action *itself* directly to the child component and remove the handler altogether. For example with the `markUnread()` action we can delete `_handleMarkUnread()` and pass the action directly to the components which consume it, rather than the handler:
+
+```js
+class Page extends PureComponent {
+
+  // props
+
+  // initial state
+
+  // lifecycle methods
+
+  // delete this handler
+  // _handleMarkUnread() {
+  //   markUnread();
+  // }
+
+  // helpers
+
+  render() {
+    // var declarations
+
+    return (
+      <main className="page">
+        <div className="page__page">
+          <div className="page__list">
+            <EmailList
+              // other props
+
+              // We can pass markUnread() directly into the handler
+              onItemMarkUnread={this.props.markUnread}
+            />
+
+            // components
+
+          </div>
+        </div>
+      </main>
+    )
+  }
+}
+```
+
 Within `<Page />` there are still many references to our previous version of "action-reducers" and `this.state.emails`. However, once these have all been replaced with Redux actions, the app should work just as it did before but now built on the scalability of Redux.
 
 
 ## Exercises
 
-1. Replace the remaining  in `Page.js` with the actions from `actions/index.js`
-  - *hint*: Some of the `_handlers` just update `this.state.emails` upon success. In which case you can pass the action *itself* directly to the child component and remove the handler.
+1. Replace the remaining "action-reducers":`getEmails()`, `addEmail()`, `markRead()`, `markUnread()` in `Page.js` with the actions from `actions/index.js`
 2. Delete action-reducers file (Woo!)
 
 ## Next
@@ -336,6 +395,7 @@ Enjoy your awesome redux app!
 ## Resources
 
 - [Redux](http://redux.js.org/)
-- [`redux-thunk`](https://github.com/gaearon/redux-thunk)
+- [Store](http://redux.js.org/docs/api/Store.html)
+- [`mapDispatchToProps`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options)
+- [`mapStateToProps`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options)
 - [React Redux](https://github.com/reactjs/react-redux/)
-- [Flux Standard Actions](https://github.com/acdlite/flux-standard-action)
