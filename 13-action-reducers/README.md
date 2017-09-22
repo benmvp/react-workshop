@@ -6,6 +6,66 @@ The goal of these action-reducer is to perform an API call and then return a `Pr
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
 
+## Restart Setup
+
+If you didn't successfully complete the previous step, you can jump right in by copying the step and installing the dependencies.
+
+Ensure you're in the root folder of the repo:
+
+```sh
+cd react-workshop
+```
+
+Remove the existing workshop directory if you had previously started elsewhere:
+
+```sh
+rm -rf workshop
+```
+
+Copy the previous step as a starting point:
+
+```sh
+cp -r 12-api-lib workshop
+```
+
+Change into the `workshop` directory:
+
+```sh
+cd workshop
+```
+
+Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred):
+
+```sh
+# Yarn
+yarn
+
+# ...or NPM
+npm install
+```
+
+Start API server (running at [http://localhost:9090/](http://localhost:9090/)):
+
+```sh
+# Yarn
+yarn run start:api
+
+# ...or NPM
+npm run start:api
+```
+
+In a **separate terminal window/tab**, making sure you're still in the `workshop` directory, start the app:
+
+```sh
+# Yarn
+yarn start
+
+# ...or NPM
+npm start
+```
+
+After the app is initially built, a new browser window should open up at [http://localhost:3000/](http://localhost:3000/), and you should be able to continue on with the tasks below.
+
 ## Tasks
 
 Take out the API call ("action") and the logic for updating `this.state.emails` ("reducer") in `_handleFormSubmit` of `App`. Create a new [`src/action-reducers/index.js`](src/action-reducers/index.js) and export an `addEmail()` function:

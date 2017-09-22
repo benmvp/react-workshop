@@ -4,9 +4,69 @@ The goal of this step is to practice transforming lists of data into lists of co
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
 
+## Restart Setup
+
+If you didn't successfully complete the previous step, you can jump right in by copying the step and installing the dependencies.
+
+Ensure you're in the root folder of the repo:
+
+```sh
+cd react-workshop
+```
+
+Remove the existing workshop directory if you had previously started elsewhere:
+
+```sh
+rm -rf workshop
+```
+
+Copy the previous step as a starting point:
+
+```sh
+cp -r 02-components workshop
+```
+
+Change into the `workshop` directory:
+
+```sh
+cd workshop
+```
+
+Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred):
+
+```sh
+# Yarn
+yarn
+
+# ...or NPM
+npm install
+```
+
+Start API server (running at [http://localhost:9090/](http://localhost:9090/)):
+
+```sh
+# Yarn
+yarn run start:api
+
+# ...or NPM
+npm run start:api
+```
+
+In a **separate terminal window/tab**, making sure you're still in the `workshop` directory, start the app:
+
+```sh
+# Yarn
+yarn start
+
+# ...or NPM
+npm start
+```
+
+After the app is initially built, a new browser window should open up at [http://localhost:3000/](http://localhost:3000/), and you should be able to continue on with the tasks below.
+
 ## Tasks
 
-Pull out the raw data that makes up the three `EmailListItem` components into an `EMAILS` `const` array. Use [`Array.prototype.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) to convert the array of data into an array of components:
+In [`EmailList.js`](src/components/EmailList.js), pull out the raw data that makes up the three `EmailListItem` components into an `EMAILS` `const` array. Use [`Array.prototype.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) to convert the array of data into an array of components:
 
 ```js
 const EMAILS = [
@@ -74,7 +134,7 @@ The `EmailList` component will need to be updated to pass the `email` prop to `E
 
 - Move the `EMAILS` out of `EmailList` into the top-level `App`
 - Pass `EMAILS` in `App` as the `emails` prop to `<EmailList>`
-- Declare a new `emails` prop type using `PropTypes.arrayOf()` in `EmailList` (you can share common prop types with `EmailListItem` in a [`constants.js`](src/components/constants.js) file)
+- Declare a new `emails` prop type using `PropTypes.arrayOf()` in `EmailList` (you can share common prop types with `EmailListItem` in a [`components/constants.js`](src/components/constants.js) file)
 - Use `this.props.emails` in the `map()` within `render()` of `EmailList`
 
 ## Next
