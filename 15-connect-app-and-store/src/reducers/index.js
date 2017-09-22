@@ -2,7 +2,8 @@ import {
     SET_EMAIL_UNREAD,
     DELETE_EMAIL,
     ADD_EMAIL,
-} from './actions';
+    UPDATE_EMAILS,
+} from '../actions';
 
 export const emails = (state = [], action) => {
     let nextState = state;

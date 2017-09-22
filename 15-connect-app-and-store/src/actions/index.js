@@ -3,7 +3,7 @@ import {
   getEmails as getEmailsApi,
   deleteEmail as deleteEmailApi,
   setUnread as setUnreadApi
-} from '../api'
+} from '../api';
 
 export const UPDATE_EMAILS = 'updateEmails';
 export const updateEmails = (emails) => ({
@@ -35,7 +35,7 @@ const _setUnread = (dispatch, emailId, unread) => (
 
         throw new Error(
             `Unable to set email ID# ${emailId} unread state to ${unread}.`
-        )
+        );
     }
 ))
 
@@ -48,7 +48,7 @@ export const markRead = (emailId) => (
 )
 
 
-export const DELETE_EMAIL = 'deleteEmail'
+export const DELETE_EMAIL = 'deleteEmail';
 const deleteEmailAction = (emailId) => ({
     type: DELETE_EMAIL,
     payload: emailId,
@@ -58,7 +58,7 @@ export const deleteEmail = (emailId) => (
     (dispatch) => (
         deleteEmailApi(emailId).then(({success}) => {
             if (success) {
-                return dispatch(deleteEmailAction(emailId))
+                return dispatch(deleteEmailAction(emailId));
             }
 
             throw new Error(`Unable to delete email ID# ${emailId}.`);
@@ -67,7 +67,7 @@ export const deleteEmail = (emailId) => (
 )
 
 
-export const ADD_EMAIL = 'addEmail'
+export const ADD_EMAIL = 'addEmail';
 const addEmailAction = (newEmail) => ({
     type: ADD_EMAIL,
     payload: newEmail,
@@ -79,7 +79,7 @@ export const addEmail = (newEmail) => (
             if (success) {
                 return dispatch(addEmailAction(newEmail))
             }
-            throw new Error('Unable to send email!')
+            throw new Error('Unable to send email!');
         }
     )
 ))
