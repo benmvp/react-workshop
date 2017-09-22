@@ -168,7 +168,7 @@ Once we add the remaining actions and logic into the reducer it is ready to be c
 
 ## Next
 
-As of now our app is not calling or utilizing the actions we have created. Go to [Step 15 - XXXXX](../15-connect-app-and-store/) to actually create the store and properly hydrate our app using our store and reducers.
+As of now our app is not calling or utilizing the actions we have created. Go to [Step 15 - Connect App and Store](../15-connect-app-and-store/) to actually create the store and properly hydrate our app using our store and reducers.
 
 ## Resources
 

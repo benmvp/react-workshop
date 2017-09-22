@@ -19,7 +19,7 @@ As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exer
 
 ## Tasks
 
-Create a new folder [`src/containers/`](src/containers/) and within that folder add a new file [`Page.js`](src/containers/Page.js). Copy over the contents of `App.js` into the new file, and rename the class to `Page`. Also reeplace all instances of `app` in the markup's `className`s with `page`: 
+Create a new folder [`src/containers/`](src/containers/) and within that folder add a new file [`Page.js`](src/containers/Page.js). Copy over the contents of `App.js` into the new file, and rename the class to `Page`. Also replace all instances of `app` in the markup's `className`'s with `page`:
 
 ```js
 // imports
@@ -64,7 +64,7 @@ Next we are going to do some ground work to set up the modified app structure. W
 
 The `<App/>` should only concernt itself with setting up the `store`.
 
-All `<App />` needs to do render a `<Provider />`, and instantiate a `store`. To achieve this, `<App />` only needs a call to `render()`. With this refactor `<App />` will become the root of our application, only setting up the `store`, `<Provider />`, and `<Page />` components. Which means consuming `pollInterval` and passing it down is not necessary in `<App />` either. After removing unnecessary content the `<App/>` should look something like this:
+All `<App />` needs to do is render a `<Provider />`, and instantiate a `store`. To achieve this, `<App />` only needs a call to `render()`. With this refactor `<App />` will become the root of our application, only setting up the `store`, `<Provider />`, and `<Page />` components. Which means consuming `pollInterval` and passing it down is not necessary in `<App />` either. After removing unnecessary content, the `<App/>` should look something like this:
 
 ```js
 import React, {PureComponent} from 'react';
@@ -77,7 +77,7 @@ export default class App extends PureComponent {
 }
 ```
 
-Now that we have separated out `<App />` into two distinct components, set up `<App />` to create a `store` and have `<Provider />` consume the store as the top level child. Then, we return to `<Page />` and complete it's refactor.
+Now that we have separated out `<App />` into two distinct components, set up `<App />` to create a `store` and have `<Provider />` consume the store as the top level child. Then, we will return to `<Page />` and complete it's refactor.
 
 Next, lets create our `store`.
 
@@ -203,6 +203,8 @@ export default class Page extends PureComponent {
   render() {
     let {emails} = this.props;
     let {selectedEmailId, showForm} = this.state;
+
+    // returned JSX
   }
 ```
 
@@ -287,7 +289,8 @@ export default connect(
   //_mapDispatchToProps
   (dispatch) => ({
     deleteEmail: () => dispatch(deleteEmailAction)
-})
+  })
+)
 ```
 
 Additionally, we can further optimize this call by taking advantage of a feature of `mapDispatchToProps()`. If an object made entirely of *action creators* is passed directly to `_mapDispatchToProps`, it will implicitly wrap each one in a call to`dispatch()`. This means we can rewrite the above as:

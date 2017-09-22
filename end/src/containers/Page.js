@@ -168,8 +168,8 @@ class Page extends PureComponent {
             selectedEmail={selectedEmail}
             onClose={this._handleEmailViewClose.bind(this)}
             onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
-            onMarkUnread={markUnread}
-            onMarkRead={markRead}
+            onMarkUnread={markUnread.bind(null, selectedEmailId)}
+            onMarkRead={markRead.bind(null, selectedEmailId)}
           />
           <button
             className="page__new-email"
