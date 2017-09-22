@@ -94,3 +94,7 @@ Go to [Step 5 - Email View](../05-email-view/).
 - [Learning ES6: Promises](http://www.benmvp.com/learning-es6-promises/)
 - [Lifecycle Methods](https://facebook.github.io/react/docs/react-component.html#the-component-lifecycle)
 - [Postman](https://www.getpostman.com/)
+
+## Questions
+
+Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

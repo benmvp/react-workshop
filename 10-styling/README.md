@@ -185,3 +185,7 @@ Go to [Step 11 - Email Form Modal](../11-email-form-modal/).
 - [Inline Styles](https://facebook.github.io/react/docs/dom-elements.html#style)
 - [CSS Modules: Welcome to the Future](http://glenmaddern.com/articles/css-modules)
 - [Using CSS flexible boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes)
+
+## Questions
+
+Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

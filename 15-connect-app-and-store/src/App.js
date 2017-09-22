@@ -7,10 +7,7 @@ import Page from './containers/Page';
 
 import {emails} from './reducers';
 
-const store = createStore(
-  emails,
-  applyMiddleware(thunk)
-);
+const store = createStore(emails, applyMiddleware(thunk));
 
 export default class App extends PureComponent {
   render() {

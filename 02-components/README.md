@@ -204,3 +204,7 @@ Go to [Step 3 - Lists](../03-lists/).
 
 - [Components and Props](https://facebook.github.io/react/docs/components-and-props.html)
 - [Typechecking with PropTypes](https://facebook.github.io/react/docs/typechecking-with-proptypes.html)
+
+## Questions
+
+Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

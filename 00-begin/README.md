@@ -32,7 +32,7 @@ Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred)
 # Yarn
 yarn
 
-# NPM
+# ...or NPM
 npm install
 ```
 
@@ -42,7 +42,7 @@ Start the app:
 # Yarn
 yarn start
 
-# NPM
+# ...or NPM
 npm start
 ```
 

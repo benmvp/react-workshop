@@ -202,3 +202,7 @@ Go to [Step 6 - Email Form](../06-email-form/).
 - [Lifting State Up](https://facebook.github.io/react/docs/lifting-state-up.html)
 - [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html)
 - [Dangerously Set innerHTML](https://facebook.github.io/react/docs/dom-elements.html#dangerouslysetinnerhtml)
+
+## Questions
+
+Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

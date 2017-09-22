@@ -14,7 +14,7 @@ nvm install node
 git clone https://github.com/<YOUR-USERNAME>/react-workshop.git
 ```
 
-Change to [`end`](end/) directory:
+Change to [`end/`](end/) directory:
 
 ```sh
 cd react-workshop/end
@@ -26,7 +26,7 @@ Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred)
 # Yarn
 yarn
 
-# NPM
+# ...or NPM
 npm install
 ```
 
@@ -36,17 +36,17 @@ Start API server (running at [http://localhost:9090/](http://localhost:9090/)):
 # Yarn
 yarn run start:api
 
-# NPM
+# ...or NPM
 npm run start:api
 ```
 
-In a **separate terminal window/tab**, start the app:
+In a **separate terminal window/tab**, making sure you're still in the [`end/`](end/) directory, start the app:
 
 ```sh
 # Yarn
 yarn start
 
-# NPM
+# ...or NPM
 npm start
 ```
 

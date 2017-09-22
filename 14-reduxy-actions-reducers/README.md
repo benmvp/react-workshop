@@ -1,6 +1,6 @@
 # Step 14 - Redux-y Actions and Reducers
 
-Our goal in [Step 13](../13-action-reducers) was to separate the app state from the display logic by moving the business logic into a set of actions (api calls) and reducers (state changes). This, however, wasn't in true Redux-y fashion. The goal of this step and [Step 15](../15-xxxx) is make that final jump and turn this application into a full [Redux](http://redux.js.org/) app.
+Our goal in [Step 13](../13-action-reducers) was to separate the app state from the display logic by moving the business logic into a set of actions (api calls) and reducers (state changes). This, however, wasn't in true Redux-y fashion. The goal of this step and [Step 15](../15-connect-app-and-store) is make that final jump and turn this application into a full [Redux](http://redux.js.org/) app.
 
 In order to do this we will need to separate out our `action-reducers` into two separate files: [`actions/index.js`](actions/index.js) and [`reducers/index.js`](reducers/index.js). Our ["actions"](http://redux.js.org/docs/basics/Actions.html) will respond to user interactions and communicate to our ["reducers"](http://redux.js.org/docs/basics/Reducers.html) what changes need to occur. The "reducers" will listen for dispatched "actions", and respond when appropriate, modifying the state as appropriate (the same as before!). This 'broadcasting' and 'listening' is achieved by wrapping our "actions" in a [`dispatch()`](http://redux.js.org/docs/api/Store.html#dispatch) function.
 
@@ -168,7 +168,7 @@ Once we add the remaining actions and logic into the reducer it is ready to be c
 
 ## Next
 
-As of now our app is not calling or utilizing the actions we have created. Go to [Step 15 - XXXXX](../15-xxxxx/) to actually create the store and properly hydrate our app using our store and reducers.
+As of now our app is not calling or utilizing the actions we have created. Go to [Step 15 - XXXXX](../15-connect-app-and-store/) to actually create the store and properly hydrate our app using our store and reducers.
 
 ## Resources
 
@@ -177,3 +177,7 @@ As of now our app is not calling or utilizing the actions we have created. Go to
 - [Reducers](http://redux.js.org/docs/basics/Reducers.html)
 - [`redux-thunk`](https://github.com/gaearon/redux-thunk)
 - [Flux Standard Actions](https://github.com/acdlite/flux-standard-action)
+
+## Questions
+
+Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

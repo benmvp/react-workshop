@@ -1,56 +1,52 @@
 # Step 15 - Connect App and Store
 
-In [step 14](../14-reduxy-action-reducers) we separated out our "action-reducers" into distinct "actions" and "reducers". As of now, these "actions" and "reducers" are not being consumed at any part of our app. We are still relying on the "action-creators" from before. Our goal in this step is to actually connect our [Redux](http://redux.js.org/)-y "reducers" and "actions" to our React application by hydrating the data via the [`store`](http://redux.js.org/docs/api/Store.html).
+In [step 14](../14-reduxy-action-reducers) we separated out our "action-reducers" into distinct "actions" and "reducers". As of now, these "actions" and "reducers" are not being consumed by any part of our app. We are still relying on the "action-reducers" from before. Our goal in this step is to actually connect our [Redux](http://redux.js.org/)-y "reducers" and "actions" to our React application by hydrating the data via a Redux [`store`](http://redux.js.org/docs/api/Store.html).
 
-In order to actually connect the two, we will be using some helpers provided by [`react-redux`](https://github.com/reactjs/react-redux). Namely: [`<Provider/>`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#provider-store) and [`connect()`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options). The docs provide invaluable insight into their behavior, but in short terms:
+In order to actually connect the two, we will be using some helpers provided by [`react-redux`](https://github.com/reactjs/react-redux), namely: [`<Provider/>`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#provider-store) and [`connect()`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options). The docs provide invaluable insight into their behavior, but in short terms:
 * **Provider**: The top level component in your application, makes the `store` accessible via calls to `connect()` for all children components
-* **connect()**: A function which takes your component as an argument, and and provides access to the `store` and `dispatch()` in the passed in component's props via [`mapStateToProps`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) and [`mapDispatchToProps`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options).
+* **connect()**: A function that provides access to the Redux state and actions via [`mapStateToProps`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) and [`mapDispatchToProps`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options).
 
 A component which has been passed to connect takes on a different term: a [container](http://redux.js.org/docs/basics/UsageWithReact.html#presentational-and-container-components). The term comes from an abstraction suggested in redux documentation that components should be split into two basic groups: those which handle *presentation* and those which handle *data*. "Containers" are passed to `connect()` and so are aware of the state, and are able to dispatch actions, while presentational components simply consume their props and maintain state for UI purposes.
 
-In this step we are going to do all that is left in order to connect our React application to our Redux store and actions. This will include:
+In this step we are going to finish the remaining tasks in order to connect our React application to our Redux state and actions. This will include:
 * Creating our `store` in `App.js`
 * Applying `redux-thunk` as a middleware to handle async actions
 * Making `<Provider />` the top level component
-* Refactoring of `<App />` such that its primary job is creating the store, and hydrating the app. Moving the JSX into a new container component: `<Page />`
+* Refactoring of `<App />` such that its primary job is creating the store, and hydrating the app. The JSX will move into a new container component: `<Page />`
 * `connect()` `<Page />` so that we can `dispatch()` actions, and access our App's state
-
-The [tasks](#tasks) and [exercises](#exercises) below will address each of the steps above and when we finish, will have a fully functioning Redux app.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
 
 ## Tasks
 
-First off Lets create a new folder [`src/containers/`](src/containers/) and within that folder add a new file [`Page.js`](src/containers/Page.js). Copy over the contents of `App.js` into the new file, and rename the class to `Page`, and also replace all instances of `app` in the markup's classNames with `page`. After this, your code should look something like:
+Create a new folder [`src/containers/`](src/containers/) and within that folder add a new file [`Page.js`](src/containers/Page.js). Copy over the contents of `App.js` into the new file, and rename the class to `Page`. Also reeplace all instances of `app` in the markup's `className`s with `page`: 
 
 ```js
-// Page.js
-
-// import
+// imports
 
 export default class Page extends PureComponent {
-  // props
+  // prop types & default props
 
-  // initial state
+  // initialize state
 
-  // helper methods
+  // lifecycle and helper methods
 
   render() {
-    // vars
+    // variable declarations
 
     return(
       <main className="page">
         <div className="page__page">
           <div className="page__list">
-          // EmailList
-          // EmailViewWrapper
+          { /* EmailList */ }
+          { /* EmailViewWrapper */ }
           <button
             className="page__new-email"
             onClick={this._handleShowForm.bind(this)}
           >
             +
           </button>
-          // EmailFormWrapper
+          { /* EmailFormWrapper */ }
         </div>
       </main>
     )
@@ -58,7 +54,7 @@ export default class Page extends PureComponent {
 }
 ```
 
-We are going to do the same thing with our `App.css` as well. Create a file [`Page.css`](src/containers/Page.css) within `src/containers` and copy over the contents of `App.css` replacing all instances of `app` to `page`, then feel free to delete `App.css`.
+We are going to do the same thing with our `App.css` as well. Create a file [`Page.css`](src/containers/Page.css) within `src/containers` and copy over the contents of `App.css` replacing all instances of `app` to `page`. Then feel free to delete `App.css`.
 
 Next we are going to do some ground work to set up the modified app structure. We want the `<Page />` to deal with:
 * the layout
@@ -66,10 +62,9 @@ Next we are going to do some ground work to set up the modified app structure. W
 * UI state
 * initial hydration of the App
 
-The `<App/>` should concern itself with:
-* setting up the `store`
+The `<App/>` should only concernt itself with setting up the `store`.
 
-All `<App />` needs to do render a `<Provider />`, and instantiate a `store`. To achieve this, `<App/>` only needs a call to `render()`. With this refactor `<App/>` will become the root of our application, only setting up the `store`, `<Provider/>`, and `<Page />` components. Which means consuming `pollInterval` and passing it down is not necessary in `<App/>` either. After removing unnecessary content the `<App/>` should look something like this:
+All `<App />` needs to do render a `<Provider />`, and instantiate a `store`. To achieve this, `<App />` only needs a call to `render()`. With this refactor `<App />` will become the root of our application, only setting up the `store`, `<Provider />`, and `<Page />` components. Which means consuming `pollInterval` and passing it down is not necessary in `<App />` either. After removing unnecessary content the `<App/>` should look something like this:
 
 ```js
 import React, {PureComponent} from 'react';
@@ -81,16 +76,16 @@ export default class App extends PureComponent {
   }
 }
 ```
-Now that we have separated out `<App/>` into two distinct components, lets start by setting up `<App/>` to create a `store` and have `<Provider/>` consume the store as the top level child. Then, we will return to `<Page/>` and complete it's refactor.
+
+Now that we have separated out `<App />` into two distinct components, set up `<App />` to create a `store` and have `<Provider />` consume the store as the top level child. Then, we return to `<Page />` and complete it's refactor.
 
 Next, lets create our `store`.
 
 The only things we *need* when creating a store are: `createStore()` from `redux`, and our root reducer, which in this case is `emails` from [`reducers/index.js`]('.src/reducers/index.js'). Additionally, since we are using actions to make API calls which behave asynchronously, we also will need to import [`applyMiddleware()`](http://redux.js.org/docs/api/applyMiddleware.html) from `redux` and [`thunk`](https://github.com/gaearon/redux-thunk#whats-a-thunk) from `redux-thunk`.
 
-First, lets import the necessary modules:
-```js
-// App.js
+First, import the necessary modules:
 
+```js
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
@@ -101,10 +96,10 @@ export default class App extends PureComponent {
   // class methods
 }
 ```
-Next lets instantiate our store. We can simply define it as a const above the class declaration:
-```js
-// App.js
 
+Next, instantiate the store. We can simply define it as a `const` above the class declaration:
+
+```js
 // imports
 
 const store = createStore(
@@ -116,16 +111,15 @@ export default class App extends PureComponent {
   // class methods
 }
 ```
-We have a `store`! Now, that we do, we can modify our `render()` function so it returns `<Provider />` as the top level component, with `<Page/>` as its child. Because we are now treating `<App/>` as the root of our application, `pollInterval` should be declared and passed into `<Page/>` here, and removed from the instantiation in [`index.js`](/src/index.js).
+
+We have a `store`! Now, that we do, we can modify our `render()` function so it returns `<Provider />` as the top level component, with `<Page />` as its child. Because we are now treating `<App />` as the root of our application, `pollInterval` should be declared and passed into `<Page />` here, and removed from the instantiation in [`index.js`](/src/index.js).
 
 ```js
-// App.js
-
-//previously declared imports
+// previously declared imports
 
 import Page from './containers/Page';
 
-//store
+// store
 
 export default class App extends PureComponent {
 
@@ -166,11 +160,12 @@ export default class App extends PureComponent {
   }
 }
 ```
-With that last change our `<App/>` has been successfully refactored to create our `store`.
 
-Lets change focus and start the refactor of `<Page/>`
+With that, last change our `<App />` has been successfully refactored to create our `store`.
 
-`<Page/>` being a "container" means that it will receive the necessary application state and actions via its `props` rather than maintaining them itself. `<Page/>` will still keep track of purely UI data in its `state`, such as `showForm` and `selectedEmail`. But, any reference to or update of `emails` as a property of `<Page/>`'s state will need to be removed, and instead reference `props`. But *how* do they become `props` of `<Page/>`? That is where `connect()` comes into play.
+Lets change focus and start the refactor of `<Page />`
+
+`<Page />` being a "container" means that it will receive the necessary application state and actions via its `props` rather than maintaining them itself. `<Page />` will still keep track of purely UI data in its `state`, such as `showForm` and `selectedEmailId`. But, any reference to or update of `emails` as a property of `<Page />`'s state will need to be removed, and instead reference `props`. But *how* do they become `props` of `<Page />`? That is where `connect()` comes into play.
 
 But first, lets remove `emails` from the state object, and instead add it to `<Page/>`'s `propTypes` and render:
 
@@ -210,11 +205,15 @@ export default class Page extends PureComponent {
     let {selectedEmailId, showForm} = this.state;
   }
 ```
+
 Now that's out of the way, lets get our component hydrated with `connect()`. In general so far, our components have looked like:
+
 ```js
 export default class Page extends PureComponent {
 ```
+
 However, we want to export the "container" or *connected* component so instead we need to export the connected version. To do that, lets simply declare our class and then at the bottom of `Page.js` export default our connected component:
+
 ```js
 // Page.js
 
@@ -253,9 +252,10 @@ export default connect(
 )(App)
 ```
 
-With that, `this.props.emails` is coming from our Redux **store**. Next we are going to address updating our `_handle` functions to stop referencing `state` and instead utilize actions via `dispatch`.
+With that, `this.props.emails` is coming from our Redux **state**. Next we are going to address updating our `_handle` functions to stop referencing `state` and instead utilize actions via `dispatch`.
 
 Similarly to `emails` now being hydrated via the component's props, our actions shoudld be as well. By passing our actions through `mapDispatchToProps` each "action" is wrapped in a call to `dispatch()`. Lets import `deleteEmail` and pass it through `mapDispatchToProps`. Doing this will add `deleteEmail()` as a prop to the `<Page />`, so lets add it to our `propTypes` as well.
+
 ```js
 // Page.js
 
@@ -291,6 +291,7 @@ export default connect(
 ```
 
 Additionally, we can further optimize this call by taking advantage of a feature of `mapDispatchToProps()`. If an object made entirely of *action creators* is passed directly to `_mapDispatchToProps`, it will implicitly wrap each one in a call to`dispatch()`. This means we can rewrite the above as:
+
 ```js
 // Page.js
 
@@ -312,6 +313,7 @@ export default connect(
   }
 );
 ```
+
 Now we can update our `_handleItemDelete()` to utilize the redux action coming through props, rather than our previous version. Addtionally, since we are using our Redux action, and `emails` is from our `store` we should no longer manually optimistically update our email state upon the action being completed. The `store` will handle that all on its own, so instead we can just focus on the UI behavior of resetting the `selectedEmail` to `-1`. So our `_handleItemDelete` should now look something like:
 
 ```js
@@ -390,12 +392,16 @@ Within `<Page />` there are still many references to our previous version of "ac
 
 ## Next
 
-Enjoy your awesome redux app!
+You're done! Your code should mirror the [Completed App](../end/).
 
 ## Resources
 
 - [Redux](http://redux.js.org/)
-- [Store](http://redux.js.org/docs/api/Store.html)
+- [Redux Store](http://redux.js.org/docs/api/Store.html)
 - [`mapDispatchToProps`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options)
 - [`mapStateToProps`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options)
 - [React Redux](https://github.com/reactjs/react-redux/)
+
+## Questions
+
+Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

@@ -187,3 +187,7 @@ Go to [Step 8 - Delete email](../08-delete-email/).
 - [Functional `setState` is the future of React](https://medium.freecodecamp.org/functional-setstate-is-the-future-of-react-374f30401b6b)]
 - [HTTP Methods](http://restfulapi.net/http-methods/)
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) & Github's [`fetch` polyfill](https://github.com/github/fetch)
+
+## Questions
+
+Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

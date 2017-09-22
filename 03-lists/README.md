@@ -85,3 +85,7 @@ Go to [Step 4 - Fetch](../04-fetch/).
 
 - [Lists and Keys](https://facebook.github.io/react/docs/lists-and-keys.html)
 - [`Array.prototype.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+
+## Questions
+
+Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

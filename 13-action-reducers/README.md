@@ -77,3 +77,7 @@ Go to [Step 14 - Redux-y Actions and Reducers](../14-reduxy-actions-reducers/).
 ## Resources
 
 - [Redux](http://redux.js.org/)
+
+## Questions
+
+Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

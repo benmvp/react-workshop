@@ -155,3 +155,7 @@ Go to [Step 13 - Action-Reducers](../13-action-reducers/).
 ## Resources
 
 - [ES6 imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+
+## Questions
+
+Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

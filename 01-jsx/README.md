@@ -128,3 +128,7 @@ Go to [Step 2 - Components](../02-components/).
 - [JSX in Depth](https://facebook.github.io/react/docs/jsx-in-depth.html)
 - [React without JSX](https://facebook.github.io/react/docs/react-without-jsx.html)
 - [Babel REPL](http://babeljs.io/repl/)
+
+## Questions
+
+Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

@@ -15,6 +15,7 @@ A step-by-step workshop for learning React fundamentals. Best if accompanied wit
 
 - [Create React App](https://github.com/facebookincubator/create-react-app) - makes it painless to spin up a React environment
 - [React Docs](http://facebook.github.io/react) - lots of content has been borrowed from here
+- [Vincent Budrovich](https://github.com/vwb) for his Redux tutorial contributions
 
 ## To run completed app
 
@@ -32,7 +33,7 @@ nvm install node
 git clone https://github.com/<YOUR-USERNAME>/react-workshop.git
 ```
 
-Change to [`end`](end/) directory:
+Change to [`end/`](end/) directory:
 
 ```sh
 cd react-workshop/end
@@ -44,7 +45,7 @@ Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred)
 # Yarn
 yarn
 
-# NPM
+# ...or NPM
 npm install
 ```
 
@@ -54,17 +55,17 @@ Start API server (running at [http://localhost:9090/](http://localhost:9090/)):
 # Yarn
 yarn run start:api
 
-# NPM
+# ...or NPM
 npm run start:api
 ```
 
-In a **separate terminal window/tab**, start the app:
+In a **separate terminal window/tab**, making sure you're still in the [`end/`](end/) directory, start the app:
 
 ```sh
 # Yarn
 yarn start
 
-# NPM
+# ...or NPM
 npm start
 ```
 
@@ -89,6 +90,12 @@ You can start at the [beginning](00-begin/). Afterwards follow these steps:
 1. [Email Form Modal](11-email-form-modal/)
 1. [API lib](12-api-lib/)
 1. [Action-Reducers](13-action-reducers/)
+1. [Redux-y Actions and Reducers](14-reduxy-actions-reducers/)
+1. [Connect App and Store](15-connect-app-and-store/)
+
+## Questions
+
+Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!
 
 ## License
 

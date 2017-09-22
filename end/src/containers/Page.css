@@ -1,9 +1,9 @@
-.app {
+.page {
   background: #f2f2f2;
   box-sizing: border-box;
 }
 
-.app__page {
+.page__page {
   box-sizing: border-box;
   display: flex;
   height: 100vh;
@@ -14,12 +14,12 @@
   position: relative;
 }
 
-.app__list {
+.page__list {
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-.app__view {
+.page__view {
   background: white;
   border: 1px solid #222;
   border-radius: 10px;
@@ -34,9 +34,9 @@
   padding: 10px;
 }
 
-.app__form-modal {
+.page__form-modal {
   align-items: center;
-  background: rgba(255, 255, 255, .75);
+  background: rgba(255, 255, 255, 0.75);
   display: flex;
   flex-direction: column;
   left: 0;
@@ -47,17 +47,17 @@
   width: 100%;
 }
 
-.app__form {
+.page__form {
   background: white;
   border: 1px solid #000;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   min-width: 300px;
   padding: 20px;
   width: 50%;
 }
 
-.app__new-email {
+.page__new-email {
   bottom: 10px;
   cursor: pointer;
   font-size: 1.5em;
