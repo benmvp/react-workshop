@@ -281,13 +281,15 @@ However, we want to export the "container" or *connected* component so instead w
 
 //imports
 
+import {connect} from 'react-redux'
+
 class Page extends PureComponent {
 
   // class methods
 
 }
 
-export default connect()(App);
+export default connect()(Page);
 ```
 Now our default export is a container.
 
@@ -311,7 +313,7 @@ class Page extends PureComponent {
 export default connect(
   //_mapStateToProps
   (state) => ({emails: state})
-)(App)
+)(Page)
 ```
 
 With that, `this.props.emails` is coming from our Redux **state**. Next we are going to address updating our `_handle` functions to stop referencing `state` and instead utilize actions via `dispatch`.
@@ -350,7 +352,7 @@ export default connect(
   (dispatch) => ({
     deleteEmail: () => dispatch(deleteEmailAction)
   })
-)
+)(Page)
 ```
 
 Additionally, we can further optimize this call by taking advantage of a feature of `mapDispatchToProps()`. If an object made entirely of *action creators* is passed directly to `_mapDispatchToProps`, it will implicitly wrap each one in a call to`dispatch()`. This means we can rewrite the above as:
@@ -374,7 +376,7 @@ export default connect(
   {
     deleteEmail: deleteEmailAction
   }
-);
+)(Page);
 ```
 
 Now we can update our `_handleItemDelete()` to utilize the redux action coming through props, rather than our previous version. Addtionally, since we are using our Redux action, and `emails` is from our `store` we should no longer manually optimistically update our email state upon the action being completed. The `store` will handle that all on its own, so instead we can just focus on the UI behavior of resetting the `selectedEmail` to `-1`. So our `_handleItemDelete` should now look something like:
