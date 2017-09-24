@@ -2,7 +2,7 @@
 
 Our goal in [Step 13](../13-action-reducers) was to separate the app state from the display logic by moving the business logic into a set of actions (api calls) and reducers (state changes). This, however, wasn't in true Redux-y fashion. The goal of this step and [Step 15](../15-connect-app-and-store) is make that final jump and turn this application into a full [Redux](http://redux.js.org/) app.
 
-In order to do this we will need to separate out our `action-reducers` into two separate files: [`actions/index.js`](actions/index.js) and [`reducers/index.js`](reducers/index.js). Our ["actions"](http://redux.js.org/docs/basics/Actions.html) will respond to user interactions and communicate to our ["reducers"](http://redux.js.org/docs/basics/Reducers.html) what changes need to occur. The "reducers" will listen for dispatched "actions", and respond when appropriate, modifying the state as appropriate (the same as before!). This 'broadcasting' and 'listening' is achieved by wrapping our "actions" in a [`dispatch()`](http://redux.js.org/docs/api/Store.html#dispatch) function.
+In order to do this we will need to separate out our `action-reducers` into two separate files: [`actions/index.js`](src/actions/index.js) and [`reducers/index.js`](src/reducers/index.js). Our ["actions"](http://redux.js.org/docs/basics/Actions.html) will respond to user interactions and communicate to our ["reducers"](http://redux.js.org/docs/basics/Reducers.html) what changes need to occur. The "reducers" will listen for dispatched "actions", and respond when appropriate, modifying the state as appropriate (the same as before!). This 'broadcasting' and 'listening' is achieved by wrapping our "actions" in a [`dispatch()`](http://redux.js.org/docs/api/Store.html#dispatch) function.
 
 The goal of this step in particular is to pull out the "actions" and "reducers" into their own specific files and set up the interaction between the two.
 
@@ -74,7 +74,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## Tasks
 
-Create two new folders and files [`actions/index.js`](actions/index.js) and [`reducers/index.js`](reducers/index.js). We want to separate the `markRead()` action-reducer into separate a separate action and reducer.
+Create two new folders and files [`actions/index.js`](src/actions/index.js) and [`reducers/index.js`](src/reducers/index.js). We want to separate the `markRead()` action-reducer into separate a separate action and reducer.
 
 First, pull over `markRead()` into `actions/index.js`. But since the helper it calls (`_setUnread()`) involves calling an API (an async action), we are going to need to `redux-thunk`-ify the action.
 
