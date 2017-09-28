@@ -42,17 +42,7 @@ yarn
 npm install
 ```
 
-Start API server (running at [http://localhost:9090/](http://localhost:9090/)):
-
-```sh
-# Yarn
-yarn run start:api
-
-# ...or NPM
-npm run start:api
-```
-
-In a **separate terminal window/tab**, making sure you're still in the `workshop` directory, start the app:
+Start the app:
 
 ```sh
 # Yarn
