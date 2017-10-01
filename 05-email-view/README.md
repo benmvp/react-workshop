@@ -167,7 +167,7 @@ export default class EmailList extends PureComponent {
 }
 ```
 
-Back in `App`, add a handler for the `onItemSelect` handler in `EmailList` called `_handleItemSelect` that will update `this.state.selectedEmail` with the selected email item:
+Back in `App`, add a handler for the `onItemSelect` handler in `EmailList` called `_handleItemSelect` that will update `this.state.selectedEmailId` with the selected email item:
 
 ```js
 export default class App extends PureComponent {
