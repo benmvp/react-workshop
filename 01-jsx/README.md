@@ -55,7 +55,7 @@ export default class App extends PureComponent {
 }
 ```
 
-Try adding classes to JSX markup or a `<label>` for inputs:
+Try adding classes to JSX markup, or a `<label>` to connect inputs:
 
 ```js
 export default class App extends PureComponent {

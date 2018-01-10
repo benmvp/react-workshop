@@ -19,13 +19,7 @@ A step-by-step workshop for learning React fundamentals. Best if accompanied wit
 
 ## To run completed app
 
-Assuming you have a version of [node](https://nodejs.org/en/) installed, [install `nvm`](https://github.com/creationix/nvm#install-script) and then close & reopen your terminal.
-
-Install the latest stable version of node (you need Node >= 6):
-
-```sh
-nvm install node
-```
+You need [node](https://nodejs.org/en/) version 6 or higher.
 
 [Fork the repo](https://github.com/benmvp/react-workshop/fork) and create a local clone (be sure to replace `<YOUR-USERNAME>` with your own):
 
