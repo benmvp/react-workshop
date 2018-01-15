@@ -9,15 +9,13 @@ Reorder the steps to focus on key React functionality (like updating `state`) be
   * still keep `EMAILS` const
   * `this.state.selectedEmailId`
   * reorder steps to be bottom-up
-  * import `EmailView.css` and add relevant CSS classes to elements
 - 05-email-form
-  * import `EmailForm.css` and add relevant CSS classes to eleements
 - 06-submit-email-form
   * move `EMAILS` to `this.state.emails` default value
   * do array concatenation to show principle of not mutating data
 - 07-delete-email
   * delete email by doing `.filter`
-  * style delete button by adding "status" element + CSS class??? (see how it looks w/o it)
+  * style delete button by adding "status" element + CSS classes for layout
 - 08-fetch
   * in `componentDidMount` `GET` emails + polling
   * in `_handleFormSubmit` `POST` new email + optimistic update
