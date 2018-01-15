@@ -1,6 +1,8 @@
-# Step 5 - Email View
+# Step 4 - Email View
 
-The goal of this step is to build some interactivity into the app by responding to user interactions. [Handling events](https://facebook.github.io/react/docs/handling-events.html) within React elements is very similar to handling events on DOM elements. Event handlers will be passed instances of [`SyntheticEvent`], a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event (including` stopPropagation()` and `preventDefault()`) except the events work identically across all browsers!
+The goal of this step is to build some interactivity into the app by responding to user interactions. [Handling events](https://facebook.github.io/react/docs/handling-events.html) within React elements is very similar to handling events on DOM elements. Event handlers will be passed instances of [`SyntheticEvent`](https://reactjs.org/docs/events.html), a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event (including` stopPropagation()` and `preventDefault()`) except the events work identically across all browsers!
+
+Ultimately, we want to click on an email list item and have its details displayed in the email view.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
 
@@ -23,7 +25,7 @@ rm -rf workshop
 Copy the previous step as a starting point:
 
 ```sh
-cp -r 04-fetch workshop
+cp -r 03-lists workshop
 ```
 
 Change into the `workshop` directory:
@@ -42,17 +44,7 @@ yarn
 npm install
 ```
 
-Start API server (running at [http://localhost:9090/](http://localhost:9090/)):
-
-```sh
-# Yarn
-yarn run start:api
-
-# ...or NPM
-npm run start:api
-```
-
-In a **separate terminal window/tab**, making sure you're still in the `workshop` directory, start the app:
+Start the app:
 
 ```sh
 # Yarn
@@ -65,50 +57,6 @@ npm start
 After the app is initially built, a new browser window should open up at [http://localhost:3000/](http://localhost:3000/), and you should be able to continue on with the tasks below.
 
 ## Tasks
-
-In the top-level `App` component, add a `selectedEmailId` property to `state`, defaulting it to `-1`. Within `render()`, find an email within `this.state.emails` that matches `this.state.selectedEmailId`. Pass the selected email to the `<EmailView />` via `email` prop. If a matching email isn't found, the `<EmailView />` should not be rendered.
-
-```js
-export default class App extends PureComponent {
-  // propTypes & defaultPropTypes
-
-  state = {
-    // Initialize emails state to an empty array.
-    // Will get populated with data in `componentDidMount`
-    emails: [],
-    // Initialize selected email ID to -1, indicating nothing is selected.
-    // When an email is selected in EmailList, this will be updated to
-    // corresponding ID
-    selectedEmailId: -1
-  };
-
-  // lifecycle methods
-
-  // helper methods
-
-  render() {
-    let {emails, selectedEmailId} = this.state;
-    let selectedEmail = emails.find(email => email.id === selectedEmailId);
-    let emailViewComponent;
-
-    if (selectedEmail) {
-      emailViewComponent = (
-        <EmailView email={selectedEmail} />
-      );
-    }
-
-    return (
-      <main className="app">
-        <EmailList emails={emails} />
-        {emailViewComponent}
-        <EmailForm />
-      </main>
-    );
-  }
-}
-```
-
-You should see the email view in the UI disappear. The next step is wire in the interactivity that will make it display when an email list item is clicked.
 
 In `EmailListItem` add an `onClick` handler to the container `<div>` that will call a (newly added) `onSelect` prop:
 
@@ -141,6 +89,8 @@ export default class EmailListItem extends PureComponent {
 }
 ```
 
+This now makes clicks that happen within a `<EmailListItem />` available to `EmailList`.
+
 In `EmailList` add a `onItemSelect` event handler prop and pass it through as the `onSelect` prop to all of the `<EmailListItem />` components it renders:
 
 ```js
@@ -167,34 +117,56 @@ export default class EmailList extends PureComponent {
 }
 ```
 
-Back in `App`, add a handler for the `onItemSelect` handler in `EmailList` called `_handleItemSelect` that will update `this.state.selectedEmailId` with the selected email item:
+This now makes all the clicks that happen within `<EmailList />` (which were actually from its `<EmailListItem >` children) available to the top-level `App` component.
+
+In `App`, add a handler for the `onItemSelect` handler in `EmailList` called `_handleItemSelect` that, for now, just logs the selected email ID to the console:
 
 ```js
 export default class App extends PureComponent {
   // prop types & default props
 
+  _handleItemSelect(selectedEmailId) {
+    // logging the clicked email item that was passed *up* the component hierarchy
+    console.log(selectedEmailId);
+  }
+
+  render() {
+    return (
+      <main className="app">
+        <EmailList
+          emails={EMAILS}
+          onItemSelect={this._handleItemSelect.bind(this)}
+        />
+        <EmailView />
+        <EmailForm />
+      </main>
+    );
+  }
+}
+```
+
+Every time you click on one of the email list items, its ID should be logged to the console.
+
+But we want to do more than just log to the console; we want to display the email view with the details of the selected email. In order to do this, we will have to maintain state to keep track of the currently selected email item.
+
+In the `App` component, add a `selectedEmailId` property to `state`, defaulting it to `-1` (signifying nothing is selected). Within `render()`, find an email within `EMAILS` that matches `this.state.selectedEmailId`. Pass the selected email to the `<EmailView />` via `email` prop. If a matching email isn't found, the `<EmailView />` should not be rendered.
+
+```js
+export default class App extends PureComponent {
+  // propTypes & defaultPropTypes
+
   state = {
-    // Initialize emails state to an empty array.
-    // Will get populated with data in `componentDidMount`
-    emails: [],
     // Initialize selected email ID to -1, indicating nothing is selected.
     // When an email is selected in EmailList, this will be updated to
     // corresponding ID
     selectedEmailId: -1
-  }
+  };
 
-  // lifecycle methods
-
-  // other helper methods
-
-  _handleItemSelect(selectedEmailId) {
-    // update state (so that the EmailView will show)
-    this.setState({selectedEmailId});
-  }
+  // helper methods
 
   render() {
-    let {emails, selectedEmailId} = this.state;
-    let selectedEmail = emails.find(email => email.id === selectedEmailId);
+    let {selectedEmailId} = this.state;
+    let selectedEmail = EMAILS.find(email => email.id === selectedEmailId);
     let emailViewComponent;
 
     if (selectedEmail) {
@@ -206,7 +178,7 @@ export default class App extends PureComponent {
     return (
       <main className="app">
         <EmailList
-          emails={emails}
+          emails={EMAILS}
           onItemSelect={this._handleItemSelect.bind(this)}
         />
         {emailViewComponent}
@@ -217,9 +189,52 @@ export default class App extends PureComponent {
 }
 ```
 
-At this point, clicking an email list item, should display the `EmailList` component, but it's still just displaying a label.
+You should see the email view in the UI disappear. The next step is wire in the interactivity that will make it display when an email list item is clicked by updating `this.state.selectedEmailId` whenever an email item is selected. We can now change our console logging code in `_handleItemSelect` to update `this.state.selectedEmailId`:
 
-Add an `email` prop to `EmailView` and display the subject, from, date & message:
+```js
+export default class App extends PureComponent {
+  // propTypes & defaultPropTypes
+
+  state = {
+    // Initialize selected email ID to -1, indicating nothing is selected.
+    // When an email is selected in EmailList, this will be updated to
+    // corresponding ID
+    selectedEmailId: -1
+  };
+
+  _handleItemSelect(selectedEmailId) {
+    // update state (so that the EmailView will show)
+    this.setState({selectedEmailId});
+  }
+
+  render() {
+    let {selectedEmailId} = this.state;
+    let selectedEmail = EMAILS.find(email => email.id === selectedEmailId);
+    let emailViewComponent;
+
+    if (selectedEmail) {
+      emailViewComponent = (
+        <EmailView email={selectedEmail} />
+      );
+    }
+
+    return (
+      <main className="app">
+        <EmailList
+          emails={EMAILS}
+          onItemSelect={this._handleItemSelect.bind(this)}
+        />
+        {emailViewComponent}
+        <EmailForm />
+      </main>
+    );
+  }
+}
+```
+
+At this point, clicking an email list item, should display the `EmailList` component, but it's still just displaying the heading "View selected email".
+
+Add an `email` prop to `EmailView` and display a subject, from, date & message:
 
 ```js
 import {EMAIL_PROP_TYPE} from './constants';
@@ -245,15 +260,57 @@ export default class EmailView extends PureComponent {
 }
 ```
 
-Now, clicking different email items should display a different message in the email view.
+Now, clicking different email items should display a different message in the email view. Because the message itself has HTML within it, we need to use [`dangerouslySetInnerHTML`](https://facebook.github.io/react/docs/dom-elements.html#dangerouslysetinnerhtml) to prevent React's default HTML encoding of all element content.
+
+Finally, update the `EMAILS` constant in `App` to add dates and messages for each of the sample emails:
+
+```js
+const EMAILS = [
+  {
+    id: 1,
+    from: 'alittle0@chronoengine.com',
+    subject: 'Mauris lacinia sapien quis libero',
+    date: '01/19/2016',
+    message: 'Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.<br /><br />Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.<br /><br />Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.',
+  },
+  {
+    id: 2,
+    from: 'amurray1@mit.edu',
+    subject: 'Mauris ullamcorper purus sit amet nulla',
+    date: '11/18/2015',
+    message: '<em><strong>Sed ante.</strong></em> Vivamus tortor. Duis mattis egestas metus.<br /><br />Aenean fermentum. 😀 Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.<br /><br />Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.',
+  },
+  {
+    id: 3,
+    from: 'dmccoy2@bluehost.com',
+    subject: 'Suspendisse potenti',
+    date: '04/12/2016',
+    message: 'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.<br /><br /><ol><li>Phasellus sit amet erat.</li><li>Nulla tempus.</li><li>Vivamus in felis eu sapien cursus vestibulum.</li></ol><br /><br />Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.<br /><br />Duis aliquam convallis nunc. Proin at <a href="http://www.benmvp.com">turpis a pede posuere</a> nonummy. Integer non velit.',
+  },
+  {
+    id: 4,
+    from: 'raustin3@hexun.com',
+    subject: 'Maecenas rhoncus aliquam lacus',
+    date: '07/30/2015',
+    message: 'Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.',
+  },
+  {
+    id: 5,
+    from: 'rwagner4@instagram.com',
+    subject: 'Pellentesque ultrices mattis odi',
+    date: '04/26/2016',
+    message: '<h3>In blandit ultrices enim.</h3> Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<br /><br />Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.<br /><br />Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.',
+  },
+];
+```
 
 ## Exercises
 
-- Add a close button to `EmailView` which hides `EmailView` (hint: add an `onClose` prop to `EmailView` that will be handled in `App`)
+- Add a close button to `EmailView` which hides `EmailView` (hint: add an `onClose` prop to `EmailView` that will be handled in `App` to update `this.state.selectedEmailId`)
 
 ## Next
 
-Go to [Step 6 - Email Form](../06-email-form/).
+Go to [Step 5 - Email Form](../05-email-form/).
 
 ## Resources
 

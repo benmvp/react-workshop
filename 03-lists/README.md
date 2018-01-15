@@ -192,7 +192,7 @@ export default class EmailListItem extends PureComponent {
 
 ## Next
 
-Go to [Step 4 - Fetch](../04-fetch/).
+Go to [Step 4 - Email View](../04-email-view/).
 
 ## Resources
 
