@@ -2,6 +2,8 @@ import React, {PureComponent} from 'react';
 
 import {EMAIL_PROP_TYPE} from './constants';
 
+import './EmailListItem.css';
+
 export default class EmailListItem extends PureComponent {
   static propTypes = {
     email: EMAIL_PROP_TYPE.isRequired
@@ -12,12 +14,8 @@ export default class EmailListItem extends PureComponent {
 
     return (
       <div className="email-list-item">
-        <span>
-          {from}
-        </span>
-        <span>
-          {subject}
-        </span>
+        <span>{from}</span>
+        <span>{subject}</span>
       </div>
     );
   }

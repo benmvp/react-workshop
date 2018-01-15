@@ -38,3 +38,6 @@ node_modules
 
 # Workshop folder
 workshop
+
+# Editor settings
+settings.json

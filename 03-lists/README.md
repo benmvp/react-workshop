@@ -65,17 +65,27 @@ const EMAILS = [
   {
     id: 1,
     from: 'alittle0@chronoengine.com',
-    subject: 'Mauris lacinia sapien quis libero.'
+    subject: 'Mauris lacinia sapien quis libero'
   },
   {
     id: 2,
     from: 'amurray1@mit.edu',
-    subject: 'Mauris ullamcorper purus sit amet nulla.'
+    subject: 'Mauris ullamcorper purus sit amet nulla'
   },
   {
     id: 3,
     from: 'dmccoy2@bluehost.com',
-    subject: 'Suspendisse potenti.'
+    subject: 'Suspendisse potenti'
+  },
+  {
+    id: 4,
+    from: 'raustin3@hexun.com',
+    subject: 'Maecenas rhoncus aliquam lacus'
+  },
+  {
+    id: 5,
+    from: 'rwagner4@instagram.com',
+    subject: 'Pellentesque ultrices mattis odi'
   }
 ];
 
@@ -122,7 +132,55 @@ export default class EmailListItem extends PureComponent {
 }
 ```
 
-The `EmailList` component will need to be updated to pass the `email` prop to `EmailListItem`.
+The `EmailList` component will need to be updated to pass the `email` prop to `EmailListItem`:
+
+```js
+export default class EmailList extends PureComponent {
+  render() {
+    let emailComponents = EMAILS.map((email) =>
+      <li key={email.id}>
+        <EmailListItem email={email} />
+      </li>
+    );
+
+    return (
+      <ul className="email-list">
+        {emailComponents}
+      </ul>
+    );
+  }
+}
+```
+
+We're starting to make something that visually looks like a list of emails, but it currently isn't styled so nicely. The app already comes with component CSS files so we just need to associate them with their corresponding JS files so that the elements will be styled. Simply `import` the component CSS files in [`EmailList.js`](src/components/EmailList.js) and [`EmailListItem.js`](src/components/EmailListItem.js):
+
+EmailList.js
+```js
+import React, {PureComponent} from 'react'
+import PropTypes from 'prop-types'
+
+import EmailListItem from './EmailListItem'
+import {EMAIL_PROP_TYPE} from './constants'
+
+// import component CSS file
+import './EmailList.css'
+
+export default class EmailList extends PureComponent {
+  ...
+```
+
+EmailListItem
+```js
+import React, {PureComponent} from 'react';
+
+import {EMAIL_PROP_TYPE} from './constants';
+
+// import component CSS file
+import './EmailListItem.css';
+
+export default class EmailListItem extends PureComponent {
+  ...
+```
 
 ## Exercises
 
@@ -130,6 +188,7 @@ The `EmailList` component will need to be updated to pass the `email` prop to `E
 - Pass `EMAILS` in `App` as the `emails` prop to `<EmailList>`
 - Declare a new `emails` prop type using `PropTypes.arrayOf()` in `EmailList` (you can share common prop types with `EmailListItem` in a [`components/constants.js`](src/components/constants.js) file)
 - Use `this.props.emails` in the `map()` within `render()` of `EmailList`
+- Import component CSS for [`App.js`](src/App.js), [`EmailForm.js`](src/components/EmailForm.js) and [`EmailView.js`](src/components/EmailView.js)
 
 ## Next
 
