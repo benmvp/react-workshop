@@ -66,23 +66,35 @@ class EmailList extends PureComponent {
     return (
       <ul className="email-list">
         <li>
-          <div className="email-list-item">
-            <span>alittle0@chronoengine.com</span>
-            <span>Mauris lacinia sapien quis libero.</span>
-          </div>
-        </li>
-        <li>
-          <div className="email-list-item">
-            <span>amurray1@mit.edu</span>
-            <span>Mauris ullamcorper purus sit amet nulla.</span>
-          </div>
-        </li>
-        <li>
-          <div className="email-list-item">
-            <span>dmccoy2@bluehost.com</span>
-            <span>Suspendisse potenti.</span>
-          </div>
-        </li>
+            <div className="email-list-item">
+              <span>alittle0@chronoengine.com</span>
+              <span>Mauris lacinia sapien quis libero</span>
+            </div>
+          </li>
+          <li>
+            <div className="email-list-item">
+              <span>amurray1@mit.edu</span>
+              <span>Mauris ullamcorper purus sit amet nulla</span>
+            </div>
+          </li>
+          <li>
+            <div className="email-list-item">
+              <span>dmccoy2@bluehost.com</span>
+              <span>Suspendisse potenti</span>
+            </div>
+          </li>
+          <li>
+            <div className="email-list-item">
+              <span>raustin3@hexun.com</span>
+              <span>Maecenas rhoncus aliquam lacus</span>
+            </div>
+          </li>
+          <li>
+            <div className="email-list-item">
+              <span>rwagner4@instagram.com</span>
+              <span>Pellentesque ultrices mattis odio</span>
+            </div>
+          </li>
       </ul>
     );
   }
@@ -146,19 +158,31 @@ class EmailList extends PureComponent {
         <li>
           <EmailListItem
             from="alittle0@chronoengine.com"
-            subject="Mauris lacinia sapien quis libero."
+            subject="Mauris lacinia sapien quis libero"
           />
         </li>
         <li>
           <EmailListItem
             from="amurray1@mit.edu"
-            subject="Mauris ullamcorper purus sit amet nulla."
+            subject="Mauris ullamcorper purus sit amet nulla"
           />
         </li>
         <li>
           <EmailListItem
             from="dmccoy2@bluehost.com"
-            subject="Suspendisse potenti."
+            subject="Suspendisse potenti"
+          />
+        </li>
+        <li>
+          <EmailListItem
+            from="raustin3@hexun.com"
+            subject="Maecenas rhoncus aliquam lacus"
+          />
+        </li>
+        <li>
+          <EmailListItem
+            from="rwagner4@instagram.com"
+            subject="Pellentesque ultrices mattis odio"
           />
         </li>
       </ul>
@@ -223,19 +247,31 @@ export default class EmailList extends PureComponent {
         <li>
           <EmailListItem
             from="alittle0@chronoengine.com"
-            subject="Mauris lacinia sapien quis libero."
+            subject="Mauris lacinia sapien quis libero"
           />
         </li>
         <li>
           <EmailListItem
             from="amurray1@mit.edu"
-            subject="Mauris ullamcorper purus sit amet nulla."
+            subject="Mauris ullamcorper purus sit amet nulla"
           />
         </li>
         <li>
           <EmailListItem
             from="dmccoy2@bluehost.com"
-            subject="Suspendisse potenti."
+            subject="Suspendisse potenti"
+          />
+        </li>
+        <li>
+          <EmailListItem
+            from="raustin3@hexun.com"
+            subject="Maecenas rhoncus aliquam lacus"
+          />
+        </li>
+        <li>
+          <EmailListItem
+            from="rwagner4@instagram.com"
+            subject="Pellentesque ultrices mattis odio"
           />
         </li>
       </ul>

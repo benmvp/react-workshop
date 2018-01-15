@@ -112,7 +112,7 @@ export default class App extends PureComponent {
           </li>
           <li>
             <div className="email-list-item">
-              <span>rwagner4@instagram.comm</span>
+              <span>rwagner4@instagram.com</span>
               <span>Pellentesque ultrices mattis odio</span>
             </div>
           </li>

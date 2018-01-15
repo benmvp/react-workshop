@@ -24,6 +24,18 @@ export default class EmailList extends PureComponent {
             subject="Suspendisse potenti."
           />
         </li>
+        <li>
+          <EmailListItem
+            from="raustin3@hexun.com"
+            subject="Maecenas rhoncus aliquam lacus"
+          />
+        </li>
+        <li>
+          <EmailListItem
+            from="rwagner4@instagram.com"
+            subject="Pellentesque ultrices mattis odio"
+          />
+        </li>
       </ul>
     );
   }
