@@ -4,7 +4,7 @@
 
 Reorder the steps to focus on key React functionality (like updating `state`) before dealing with API calls. Also incorporate styling earlier so what we look at looks better earlier since half-day sessions don't make it to step 10.
 
-- 01-jsx
+- 02-components
   * Add 2 more list items for a total of 5
 - 03-lists
   * import `EmailListItem.css` and add CSS classes to elements

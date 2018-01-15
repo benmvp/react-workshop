@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent} from 'react'
 
 export default class App extends PureComponent {
   render() {
@@ -23,6 +23,18 @@ export default class App extends PureComponent {
               <span>Suspendisse potenti.</span>
             </div>
           </li>
+          <li>
+            <div className="email-list-item">
+              <span>raustin3@hexun.com</span>
+              <span>Maecenas rhoncus aliquam lacus</span>
+            </div>
+          </li>
+          <li>
+            <div className="email-list-item">
+              <span>rwagner4@instagram.comm</span>
+              <span>Pellentesque ultrices mattis odio</span>
+            </div>
+          </li>
         </ul>
         <section className="email-view">
           <h2>View selected email</h2>
@@ -31,6 +43,6 @@ export default class App extends PureComponent {
           <h2>Add a new email</h2>
         </div>
       </main>
-    );
+    )
   }
 }

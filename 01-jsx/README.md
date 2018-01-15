@@ -89,19 +89,31 @@ export default class App extends PureComponent {
           <li>
             <div className="email-list-item">
               <span>alittle0@chronoengine.com</span>
-              <span>Mauris lacinia sapien quis libero.</span>
+              <span>Mauris lacinia sapien quis libero</span>
             </div>
           </li>
           <li>
             <div className="email-list-item">
               <span>amurray1@mit.edu</span>
-              <span>Mauris ullamcorper purus sit amet nulla.</span>
+              <span>Mauris ullamcorper purus sit amet nulla</span>
             </div>
           </li>
           <li>
             <div className="email-list-item">
               <span>dmccoy2@bluehost.com</span>
-              <span>Suspendisse potenti.</span>
+              <span>Suspendisse potenti</span>
+            </div>
+          </li>
+          <li>
+            <div className="email-list-item">
+              <span>raustin3@hexun.com</span>
+              <span>Maecenas rhoncus aliquam lacus</span>
+            </div>
+          </li>
+          <li>
+            <div className="email-list-item">
+              <span>rwagner4@instagram.comm</span>
+              <span>Pellentesque ultrices mattis odio</span>
             </div>
           </li>
         </ul>
