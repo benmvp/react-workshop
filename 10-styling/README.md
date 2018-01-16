@@ -123,11 +123,9 @@ export default class App extends PureComponent {
 }
 ```
 
-Add wrapper elements around `EmailList`, `EmailView` & `EmailForm` with the appropriate class names to position them within `App`. Import the companion [`App.css`](src/App.css) file containing the styling.
+Add wrapper elements around `EmailList`, `EmailView` & `EmailForm` with the appropriate class names to position them within `App`:
 
 ```js
-import './App.css';
-
 const EmailViewWrapper = ({selectedEmail, onClose, onDelete, onMarkUnread, onMarkRead}) => {
   let component = null;
 
@@ -192,7 +190,7 @@ export default class App extends PureComponent {
 
 When an email item is selected, you should see a 3-column layout: email list on the left, email form on the right, and email view in the center.
 
-In `EmailListItem`, import the companion [`EmailLisItem.css`](src/components/EmailListItem.css). Add CSS classes for from & subject display elements. Wrap the mark read/unread button & delete buttons in `<span>` with a CSS class. Using the [`classnames`](https://github.com/JedWatson/classnames) library, conditionally add classes container element based on whether or not the email item is selected or unread:
+In `EmailListItem`, add CSS classes for from & subject display elements. Wrap the mark read/unread button & delete buttons in `<span>` with a CSS class. Using the [`classnames`](https://github.com/JedWatson/classnames) library, conditionally add classes container element based on whether or not the email item is selected or unread:
 
 ```js
 render() {
@@ -229,9 +227,9 @@ render() {
 ## Exercises
 
 - Extract the "status" section in `EmailListItem` into a helper `EmailListItemStatus` component
-- In `EmailList`, import the companion [`EmailList.css`](src/components/EmailList.css) and add `"email-list__item"` to the `<li>` elements wrapping the `<EmailListItem />` components
-- In `EmailView`, import the companion [`EmailView.css`](src/components/EmailView.css), extract an `EmailViewButtonBar` component that'll contain the mark read/unread button, delete & close buttons, and give the bar a `"email-view__button-bar"` CSS class
-- In `EmailForm`, import the companion [`EmailForm.css`](src/components/EmailForm.css) and add the appropriate classes to the various parts of the form fields as well as the button bar
+- In `EmailList`, add `"email-list__item"` to the `<li>` elements wrapping the `<EmailListItem />` components
+- In `EmailView`, extract an `EmailViewButtonBar` component that'll contain the mark read/unread button, delete & close buttons, and give the bar a `"email-view__button-bar"` CSS class
+- In `EmailForm`, add the appropriate classes to the various parts of the form fields as well as the button bar
 
 ## Next
 
