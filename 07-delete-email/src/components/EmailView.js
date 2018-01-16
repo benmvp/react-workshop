@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import {EMAIL_PROP_TYPE} from './constants';
 
+import './EmailView.css';
+
 export default class EmailView extends PureComponent {
   static propTypes = {
     email: EMAIL_PROP_TYPE.isRequired,

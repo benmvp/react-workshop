@@ -1,6 +1,6 @@
-# Step 8 - Delete email
+# Step 7 - Delete email
 
-The goal of this step is to add support deleting individual emails by submitting a `DELETE` method to the API as a result of user interactions.
+The goal of this step is to add support for deleting individual emails in the UI.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
 
@@ -23,7 +23,7 @@ rm -rf workshop
 Copy the previous step as a starting point:
 
 ```sh
-cp -r 07-submit-email-form workshop
+cp -r 06-submit-email-form workshop
 ```
 
 Change into the `workshop` directory:
@@ -42,17 +42,7 @@ yarn
 npm install
 ```
 
-Start API server (running at [http://localhost:9090/](http://localhost:9090/)):
-
-```sh
-# Yarn
-yarn run start:api
-
-# ...or NPM
-npm run start:api
-```
-
-In a **separate terminal window/tab**, making sure you're still in the `workshop` directory, start the app:
+Start the app:
 
 ```sh
 # Yarn
@@ -66,7 +56,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## Tasks
 
-In `EmailListItem`, add a "Delete" button that will call a (newly added) `onDelete` prop when clicked:
+In `EmailListItem`, add a "Delete" button that will call a (newly added) `onDelete` prop with the email ID when clicked:
 
 ```js
 export default class EmailListItem extends PureComponent {
@@ -128,30 +118,16 @@ export default class EmailList extends PureComponent {
 }
 ```
 
-In the top-level `App`, add a `_handleItemDelete()` helper method that is passed as `onItemDelete` to `<EmailList />`. `_handleItemDelete()` will make a `fetch` `DELETE` action to `http://localhost:9090/emails/<EMAIL_ID>`:
+In the top-level `App`, add a `_handleItemDelete()` helper method that is passed as `onItemDelete` to `<EmailList />`. Initially have `_handleItemDelete()` log to the console the ID of the email to delete:
 
 ```js
 export default class App extends PureComponent {
-  // prop types & default props
-
   // initialize state
-
-  // lifecycle methods
 
   // other helper methods
 
   _handleItemDelete(emailId) {
-    // Make a DELETE request
-    fetch(`//localhost:9090/emails/${emailId}`, {
-      method: 'DELETE'
-    })
-      .then(res => res.json())
-      .then(({success}) => {
-        if (!success) {
-          throw new Error(`Unable to delete email ID# ${emailId}.`);
-        }
-      })
-      .catch(ex => console.error(ex));
+    console.log(emailId);
   }
 
   render() {
@@ -183,22 +159,44 @@ export default class App extends PureComponent {
 }
 ```
 
-At this point, you should be able to click a "Delete" button for one of the email items. After the long polling retrieves the new information, that email item should be removed from the list. Use the [React Developer Tools](https://github.com/facebook/react-devtools#installation) watch how the deleted email item is optimally removed from the list. Nothing else in the UI is updated thanks to the [_reconciler_](https://facebook.github.io/react/docs/reconciliation.html) (aka "Virtual DOM").
+At this point, you should be able to click a "Delete" button for one of the email items and see the ID logged to the console. What we need to do next is to actually remove the email from `this.state.emails` so that it no longer shows up in the list:
+
+```js
+export default class App extends PureComponent {
+  // initialize state
+
+  // other helper methods
+
+  _handleItemDelete(emailId) {
+    this.setState(({emails}) => ({
+      // "delete" the email by returning a filtered list that doesn't include it
+      emails: emails.filter(email => email.id !== emailId)
+    }));
+  }
+
+  // render()
+}
+```
+
+Once again we're using the "updater function" version of [`setState`](https://reactjs.org/docs/react-component.html#setstate) to update the `emails` state because we're using the current version of `emails` to determine the next version of `emails`. And as always we never want to mutate state or properties within state. So before we remove the email to delete from `this.state.emails` we first need to make a copy of `emails`. A quick way to do this in a single step is using [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) to return a filtered list that doesn't include the email to delete.
+
+Now clicking a "Delete" button for one of the emails items should immediately remove it from the list. Use the [React Developer Tools](https://github.com/facebook/react-devtools#installation) watch how the deleted email item is optimally removed from the list. Nothing else in the UI is updated thanks to the [_reconciler_](https://facebook.github.io/react/docs/reconciliation.html) (aka "Virtual DOM").
 
 ## Exercises
 
-- Add optimistic updating of `this.state.emails` state after an email is deleted for immediate feedback
-- Add a "Delete" button to [`EmailView`](src/components/EmailView.js) that hooks into `_handleItemDelete()`
+- Add a "Delete" button to [`EmailView`](src/components/EmailView.js) that hooks into `_handleItemDelete()` (`EmailView` will need to expose an `onDelete` callback prop)
 - Update `_handleItemDelete()` to reset `this.state.selectedEmailId` so that the email in the email view doesn't still show after being deleted
 
 ## Next
 
-Go to [Step 9 - Mark unread/read](../09-mark-unread/).
+Go to [Step 8 - Interacting with APIs](../08-fetch/).
 
 ## Resources
 
+- [`setState`](https://reactjs.org/docs/react-component.html#setstate)
+- [Spread in array literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator#Spread_in_array_literals)
+- [The Power of Not Mutating Data](https://facebook.github.io/react/docs/optimizing-performance.html#the-power-of-not-mutating-data)
 - [Reconciliation](https://facebook.github.io/react/docs/reconciliation.html)
-- [HTTP Methods](http://restfulapi.net/http-methods/)
 
 ## Questions
 

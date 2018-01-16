@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import EmailListItem from './EmailListItem';
 import {EMAIL_PROP_TYPE} from './constants';
 
+import './EmailList.css';
+
 export default class EmailList extends PureComponent {
   static propTypes = {
     emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
