@@ -78,7 +78,7 @@ You can start at the [beginning](00-begin/). Afterwards follow these steps:
 1. [Email Form](05-email-form/)
 1. [Submit email form](06-submit-email-form/)
 1. [Delete email](07-delete-email/)
-1. [Fetching from server](08-fetch/)
+1. [Interacting with APIs](08-api/)
 1. [Mark unread/read](09-mark-unread/)
 1. [Styling](10-styling/)
 1. [Email Form Modal](11-email-form-modal/)

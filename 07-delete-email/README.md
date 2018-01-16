@@ -189,7 +189,7 @@ Now clicking a "Delete" button for one of the emails items should immediately re
 
 ## Next
 
-Go to [Step 8 - Interacting with APIs](../08-fetch/).
+Go to [Step 8 - Interacting with APIs](../08-api/).
 
 ## Resources
 
