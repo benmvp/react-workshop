@@ -123,8 +123,6 @@ In `App`, add a handler for the `onItemSelect` handler in `EmailList` called `_h
 
 ```js
 export default class App extends PureComponent {
-  // prop types & default props
-
   _handleItemSelect(selectedEmailId) {
     // logging the clicked email item that was passed *up* the component hierarchy
     console.log(selectedEmailId);

@@ -1,5 +1,4 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 
 import EmailList from './components/EmailList';
 import EmailView from './components/EmailView';
@@ -46,21 +45,12 @@ const EMAILS = [
 ];
 
 export default class App extends PureComponent {
-  static propTypes = {
-    pollInterval: PropTypes.number
-  };
-
-  static defaultProps = {
-    // default the `pollInterval` prop to 2 secs when not specified
-    pollInterval: 2000
-  };
-
   state = {
     // Initialize selected email ID to -1, indicating nothing is selected.
     // When an email is selected in EmailList, this will be updated to
     // corresponding ID
     selectedEmailId: -1
-  };
+  }
 
   _handleItemSelect(selectedEmailId) {
     // update state (so that the EmailView will show)
