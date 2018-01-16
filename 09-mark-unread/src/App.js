@@ -5,6 +5,8 @@ import EmailList from './components/EmailList';
 import EmailView from './components/EmailView';
 import EmailForm from './components/EmailForm';
 
+import './App.css';
+
 export default class App extends PureComponent {
   static propTypes = {
     pollInterval: PropTypes.number

@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
+import './EmailForm.css';
+
 const DEFAULT_FORM_VALUES = {
   from: '',
   to: 'me@abcdef.com',

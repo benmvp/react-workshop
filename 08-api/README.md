@@ -120,7 +120,7 @@ export default class App extends PureComponent {
 }
 ```
 
-You should now see a list of 50 emails instead of the original 5. Our app is looking more like a legitimate app.
+Initially you'll see an empty list of emails, but soon after a list of 50 emails instead of the original 5. Our app is looking more like a legitimate app.
 
 Next let's add long-polling to `App` so that we're periodically checking for any new emails that may have been added (or deleted):
 

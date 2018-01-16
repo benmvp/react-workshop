@@ -23,7 +23,7 @@ rm -rf workshop
 Copy the previous step as a starting point:
 
 ```sh
-cp -r 08-delete-email workshop
+cp -r 08-api workshop
 ```
 
 Change into the `workshop` directory:
