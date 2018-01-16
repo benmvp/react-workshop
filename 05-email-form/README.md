@@ -1,4 +1,4 @@
-# Step 6 - Email Form
+# Step 5 - Email Form
 
 The goal of this step is learning how to deal with forms. HTML form elements work a little bit differently from other DOM elements in React, because form elements naturally keep some internal state. Regular HTML forms _do_ work in React, but in most cases, it's convenient to have React keep track of the data that the user has entered into a form. The standard way to achieve this is with a technique called ["controlled components"](https://facebook.github.io/react/docs/forms.html#controlled-components).
 
@@ -23,7 +23,7 @@ rm -rf workshop
 Copy the previous step as a starting point:
 
 ```sh
-cp -r 05-email-view workshop
+cp -r 04-email-view workshop
 ```
 
 Change into the `workshop` directory:
@@ -42,17 +42,7 @@ yarn
 npm install
 ```
 
-Start API server (running at [http://localhost:9090/](http://localhost:9090/)):
-
-```sh
-# Yarn
-yarn run start:api
-
-# ...or NPM
-npm run start:api
-```
-
-In a **separate terminal window/tab**, making sure you're still in the `workshop` directory, start the app:
+Start the app:
 
 ```sh
 # Yarn
@@ -87,7 +77,7 @@ export default class EmailForm extends PureComponent {
 }
 ```
 
-As of now, the DOM is maintaining the state of the input fields; React has no idea what the values of the fields are. They are currently "uncontrolled components." We want to make them "controlled components" so we can keep tracking of their state within `EmailForm`.
+As of now, the DOM is maintaining the state of the input fields; React has no idea what the values of the fields are. They are currently ["uncontrolled components"](https://reactjs.org/docs/uncontrolled-components.html). We want to make them "controlled components" so we can keep track of their state within `EmailForm`.
 
 Add new state properties for `from` & `message` and pass those state properties as the `value` of the corresponding input fields. Then `onChange` of the fields, update the corresponding state properties.
 
@@ -149,7 +139,7 @@ Use the [React Developer Tools](https://github.com/facebook/react-devtools#insta
 
 ## Next
 
-Go to [Step 7 - Submit email form](../07-submit-email-form/).
+Go to [Step 6 - Submit email form](../06-submit-email-form/).
 
 ## Resources
 

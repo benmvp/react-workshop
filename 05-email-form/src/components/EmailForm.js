@@ -1,5 +1,7 @@
 import React, {PureComponent} from 'react';
 
+import './EmailForm.css';
+
 export default class EmailForm extends PureComponent {
   state = {
     from: '',
