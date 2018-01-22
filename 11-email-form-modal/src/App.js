@@ -52,12 +52,12 @@ const EmailFormWrapper = ({showForm, onSubmit, onCancel}) => {
 export default class App extends PureComponent {
   static propTypes = {
     pollInterval: PropTypes.number
-  };
+  }
 
   static defaultProps = {
     // default the `pollInterval` prop to 2 secs when not specified
     pollInterval: 2000
-  };
+  }
 
   state = {
     // Initialize emails state to an empty array.
@@ -66,12 +66,18 @@ export default class App extends PureComponent {
     // Initialize selected email ID to -1, indicating nothing is selected.
     // When an email is selected in EmailList, this will be updated to
     // corresponding ID
-    selectedEmailId: -1,
-    // Initialize show form flag to false, indicating that it won't show.
-    // When the new email button is clicked, it'll be set to `true`. It'll
-    // be toggled false on form submission or cancel
-    showForm: false
-  };
+    selectedEmailId: -1
+  }
+
+  componentDidUpdate() {
+    let {emails, selectedEmailId} = this.state;
+    let selectedEmail = emails.find(email => email.id === selectedEmailId);    
+
+    // mark the email as read if it is currently unread
+    if (selectedEmail && selectedEmail.unread) {
+      this._setUnread(selectedEmailId, false);
+    }
+  }
 
   componentDidMount() {
     // Retrieve emails from server once we know DOM exists
@@ -101,11 +107,6 @@ export default class App extends PureComponent {
   _handleItemSelect(selectedEmailId) {
     // update state (so that the EmailView will show)
     this.setState({selectedEmailId});
-
-    if (this.state.selectedEmailId !== selectedEmailId) {
-      // also mark the email as read
-      this._setUnread(selectedEmailId, false);
-    }
   }
 
   _handleEmailViewClose() {
