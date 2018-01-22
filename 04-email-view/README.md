@@ -145,7 +145,7 @@ export default class App extends PureComponent {
 
 Every time you click on one of the email list items, its ID should be logged to the console.
 
-But we want to do more than just log to the console; we want to display the email view with the details of the selected email. In order to do this, we will have to maintain state to keep track of the currently selected email item.
+But we want to do more than just log to the console; we want to display the email view with the details of the selected email. In order to do this, we will have to maintain state to keep track of the currently selected email item. This will allow us to pass that currently selected email item to stat to `<EmailView />`.
 
 In the `App` component, add a `selectedEmailId` property to `state`, defaulting it to `-1` (signifying nothing is selected). Within `render()`, find an email within `EMAILS` that matches `this.state.selectedEmailId`. Pass the selected email to the `<EmailView />` via `email` prop. If a matching email isn't found, the `<EmailView />` should not be rendered.
 
@@ -187,7 +187,7 @@ export default class App extends PureComponent {
 }
 ```
 
-You should see the email view in the UI disappear. The next step is wire in the interactivity that will make it display when an email list item is clicked by updating `this.state.selectedEmailId` whenever an email item is selected. We can now change our console logging code in `_handleItemSelect` to update `this.state.selectedEmailId`:
+You should actually see the email view in the UI disappear. The next step is wire in the interactivity that will make it display when an email list item is clicked by updating `this.state.selectedEmailId` whenever an email item is selected. We can now change our console logging code in `_handleItemSelect` to update `this.state.selectedEmailId`:
 
 ```js
 export default class App extends PureComponent {
@@ -230,7 +230,16 @@ export default class App extends PureComponent {
 }
 ```
 
-At this point, clicking an email list item, should display the `EmailList` component, but it's still just displaying the heading "View selected email".
+Whenever we call `setStatae`, React calls the `render()` method again for us so that the state that was just updated can be rendered in the UI. This is how interactivity is built in React:
+
+1. Initialize `state` to the default values you would like to render
+1. React calls `render()` to display the UI
+1. At some point, a user interaction happens
+1. We call `setState` to update the state
+1. React calls `render()` again so we can display UI with updated state
+1. Do step 3 again and again and again
+
+At this point, clicking an email list item, should display the `EmailView` component, but it's still just displaying the heading "View selected email." Let's fix that.
 
 Add an `email` prop to `EmailView` and display a subject, from, date & message:
 
@@ -260,7 +269,7 @@ export default class EmailView extends PureComponent {
 
 Now, clicking different email items should display a different message in the email view. Because the message itself has HTML within it, we need to use [`dangerouslySetInnerHTML`](https://facebook.github.io/react/docs/dom-elements.html#dangerouslysetinnerhtml) to prevent React's default HTML encoding of all element content.
 
-Finally, update the `EMAILS` constant in `App` to add dates and messages for each of the sample emails:
+Finally, update the `EMAILS` constant in `App` to add `date` and `message` properties for each of the sample emails:
 
 ```js
 const EMAILS = [

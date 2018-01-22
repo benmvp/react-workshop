@@ -1,6 +1,6 @@
 # Step 6 - Submit email form
 
-The goal of this step is to actually submit the email and have it added to the email list.
+The goal of this step is to "send" the email and have it added to the email list by actually submitting the form.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
 
@@ -108,12 +108,7 @@ export default class EmailForm extends PureComponent {
     // super simple validation
     if (from && to && subject && message) {
       // call handler with email info
-      this.props.onSubmit({
-        from,
-        to,
-        subject,
-        message
-      });
+      this.props.onSubmit({from, to, subject, message});
     } else {
       alert('fill out the form!');
     }
@@ -148,12 +143,7 @@ export default class EmailForm extends PureComponent {
     // super simple validation
     if (from && to && subject && message) {
       // call handler with email info
-      this.props.onSubmit({
-        from,
-        to,
-        subject,
-        message
-      });
+      this.props.onSubmit({from, to, subject, message});
 
       // reset the form to initial values
       this.setState(DEFAULT_FORM_VALUES);
@@ -229,6 +219,8 @@ export default class App extends PureComponent {
   // render()
 }
 ```
+
+> NOTE: Your first thought might be to update the `EMAILS` constant, but updating it will not cause React to call `render()` like calling `setState` does.
 
 Now within `render()`, instead of rendering from `EMAILS`, we'll render from `this.state.emails`:
 
@@ -313,15 +305,15 @@ export default class App extends PureComponent {
   // render
 ```
 
-You will notice that we're not calling [`.push`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) on the `emails` array, but instead making a copy of `emails` and inserting `newEmail` at the beginning of it all via the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator#Spread_in_array_literals). We **never** want to mutate `state` or the objects within it. Any time we need to update objects within `state` we use `setState` and make copies of the objects before changing them.
+> NOTE: You will notice that we're not calling [`.push()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) on the `emails` array, but instead making a copy of `emails` and inserting `newEmail` at the beginning of it all via the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator#Spread_in_array_literals). We **never** want to mutate `state` or the objects within it. Any time we need to update objects within `state` we use `setState` and make copies of the objects before changing them.
 
-The [`setState`](https://reactjs.org/docs/react-component.html#setstate) above differs from the ones we used to update `this.state.selectedEmailId`. Here we're using the "updater function" version. It takes a function that's passed the current version of the entire state and is expected to return new versions of whatever state needs to be updated. You need to use the "updater function" version of `setState` whenever the new state depends on the current state. We're appending a new email to the current emails list in order to return a new emails list. 
+> NOTE: The [`setState`](https://reactjs.org/docs/react-component.html#setstate) above differs from the ones we used to update `this.state.selectedEmailId`. Here we're using the "updater function" version. It takes a function that's passed the current version of the entire state and is expected to return new versions of whatever state needs to be updated. You need to use the "updater function" version of `setState` whenever the new state depends on the current state. We're appending a new email to the current emails list in order to return a new emails list. 
 
-You should now see the email show up at the top of the list when you add it. You should also be able to click it and view its details. Use the [React Developer Tools](https://github.com/facebook/react-devtools#installation) watch how the deleted email item is optimally removed from the list. Nothing else in the UI is updated thanks to the [_reconciler_](https://facebook.github.io/react/docs/reconciliation.html) (aka "Virtual DOM").
+You should now see the email show up at the top of the list when you add it. You should also be able to click it and view its details. Using the [React Developer Tools](https://github.com/facebook/react-devtools#installation), watch how the new email item is optimally added to the list. Nothing else in the UI is updated thanks to the [_reconciler_](https://facebook.github.io/react/docs/reconciliation.html) (aka "Virtual DOM").
 
 ## Exercises
 
-- Emails added via `EmailForm` do not have a date to display in `EmailView`. Update `_handleFormSubmit` to also pass along the current date/time in the `date` property
+- Emails added via `EmailForm` do not have a date to display in `EmailView`. Update `_handleFormSubmit` to also pass along the current date/time as a string in the `date` property
 
 ## Next
 

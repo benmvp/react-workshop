@@ -193,7 +193,7 @@ class EmailList extends PureComponent {
 
 The attributes passed to components are called "props." Those props are then available under `this.props` within the component class definition.
 
-Components can also be declared using functions instead of classes:
+By the way, components can also be declared using functions instead of classes:
 
 ```js
 const EmailListItem = ({from, subject}) => (
@@ -204,7 +204,7 @@ const EmailListItem = ({from, subject}) => (
 );
 ```
 
-But we'll continue to use the `class` syntax so that we can define [`propTypes`](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) for `EmailListItem`:
+But we'll continue to use the `class` syntax so that we can define [`propTypes`](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) for `EmailListItem` (and to manage `state` later on):
 
 ```js
 // back up top add new import of `prop-types` lib

@@ -16,10 +16,11 @@ A step-by-step workshop for learning React fundamentals. Best if accompanied wit
 - [Create React App](https://github.com/facebookincubator/create-react-app) - makes it painless to spin up a React environment
 - [React Docs](http://facebook.github.io/react) - lots of content has been borrowed from here
 - [Vincent Budrovich](https://github.com/vwb) for his Redux tutorial contributions
+- ...and other contributors for their docs and code fixes
 
 ## To run completed app
 
-You need [node](https://nodejs.org/en/) version 6 or higher.
+You need [node](https://nodejs.org/en/) version 6 or higher. You can [install `nvm`](https://github.com/creationix/nvm#install-script) to manage multiple versions of node.
 
 [Fork the repo](https://github.com/benmvp/react-workshop/fork) and create a local clone (be sure to replace `<YOUR-USERNAME>` with your own):
 
@@ -43,7 +44,7 @@ yarn
 npm install
 ```
 
-Start API server (running at [http://localhost:9090/](http://localhost:9090/)):
+Start the API server (running at [http://localhost:9090/](http://localhost:9090/)):
 
 ```sh
 # Yarn
@@ -67,9 +68,9 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## Exercises
 
-All of the exercises make use of [ES6](http://www.benmvp.com/learning-es6-series/) so you may need to brush up on the new JavaScript features if they are not familiar. Each step in the workshop builds on top of the previous one. If at any point you get stuck, you can find the answers in the source code of the given step. Any given step can be used as a starting point to continue on to the remaining steps.
+All of the exercises make use of [ES6](http://www.benmvp.com/learning-es6-series/), so you may need to brush up on the new JavaScript features if they are unfamiliar. Each step in the workshop builds on top of the previous one. If at any point you get stuck, you can find the answers in the source code of the current step. Any  step can be used as a starting point to continue on to the remaining steps.
 
-You can start at the [beginning](00-begin/). Afterwards follow these steps:
+You can start at the [beginning](00-begin/) to get setup. Afterwards follow these steps:
 
 1. [JSX](01-jsx/)
 1. [Environment setup](02-components/)

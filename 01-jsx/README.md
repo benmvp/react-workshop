@@ -4,9 +4,9 @@ The goal of this step is to practice with [JSX](https://facebook.github.io/react
 
 Unlike browser DOM elements, React elements are plain objects, and are cheap to create. [`ReactDOM`](https://facebook.github.io/react/docs/react-dom.html) takes care of updating the DOM to match the React elements.
 
-> NOTE: One might confuse elements with a more widely known concept of "components". We will look at components in the [next section](../02-components/). Elements are what components are "made of".
+> NOTE: One might confuse elements with a more widely known concept of "components". We will look at components in the [next section](../02-components/). Elements are what components are "made of."
 
-If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
+If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/App.js).
 
 ## Tasks
 
@@ -78,7 +78,7 @@ Notice that instead of `class` it's `className` and `htmlFor` instead of just `f
 
 ## Exercises
 
-Add the skeleton markup to begin our email application, such as:
+Add the skeleton markup to begin our email application:
 
 ```js
 export default class App extends PureComponent {
