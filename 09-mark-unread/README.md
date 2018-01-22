@@ -66,7 +66,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## Tasks
 
-Add "Mark Unread" & "Mark Read" buttons to `EmailView` that will call (newly added) `onMarkUnread` & `onMarkRead` props, respectively, when clicked. Only one button should show at a given time based on the `unread` property within `this.props.email`:
+Add "Mark Unread" & "Mark Read" buttons to `EmailView` that when clicked will call the (newly added) `onMarkUnread` & `onMarkRead` props, respectively. Only one button should show at a given time based on the `unread` property within `this.props.email`:
 
 ```js
 export default class EmailView extends PureComponent {
@@ -196,7 +196,7 @@ You should now be able to mark a selected email as unread in the email view. Aft
 ## Exercises
 
 - Add optimistic updating of `this.state.emails` state after an email is marked read/unread for immediate feedback
-- Add a "Mark Unread" button for each `EmailListItem` that only shows when an item is selected and read
+- Add a "Mark Unread" button for each `EmailListItem` that **only** shows when an item is selected and read
 - When an `EmailListItem` is selected, it should also mark the email as read
 
 ## Next

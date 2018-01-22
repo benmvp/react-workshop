@@ -178,13 +178,13 @@ export default class App extends PureComponent {
 }
 ```
 
-Once again we're using the "updater function" version of [`setState`](https://reactjs.org/docs/react-component.html#setstate) to update the `emails` state because we're using the current version of `emails` to determine the next version of `emails`. And as always we never want to mutate state or properties within state. So before we remove the email to delete from `this.state.emails` we first need to make a copy of `emails`. A quick way to do this in a single step is using [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) to return a filtered list that doesn't include the email to delete.
+Once again we're using the "updater function" version of [`setState`](https://reactjs.org/docs/react-component.html#setstate) to update the `emails` state because we're using the current version of `emails` to determine the next version of `emails`. And as always, we never want to mutate state or properties within state. So before we remove the email to delete from `this.state.emails` we first need to make a copy of `emails`. A quick way to do this in a single step is using [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) to return a filtered list that doesn't include the email to delete.
 
-Now clicking a "Delete" button for one of the emails items should immediately remove it from the list. Use the [React Developer Tools](https://github.com/facebook/react-devtools#installation) watch how the deleted email item is optimally removed from the list. Nothing else in the UI is updated thanks to the [_reconciler_](https://facebook.github.io/react/docs/reconciliation.html) (aka "Virtual DOM").
+Now clicking a "Delete" button for one of the emails items should immediately remove it from the list. Using the [React Developer Tools](https://github.com/facebook/react-devtools#installation), watch how the deleted email item is optimally removed from the list. Nothing else in the UI is updated thanks to the [_reconciler_](https://facebook.github.io/react/docs/reconciliation.html) (aka "Virtual DOM").
 
 ## Exercises
 
-- Add a "Delete" button to [`EmailView`](src/components/EmailView.js) that hooks into `_handleItemDelete()` (`EmailView` will need to expose an `onDelete` callback prop)
+- Add a "Delete" button to [`EmailView`](src/components/EmailView.js) that hooks into `_handleItemDelete()` (`EmailView` will need to expose an `onDelete` callback prop too)
 - Update `_handleItemDelete()` to reset `this.state.selectedEmailId` so that the email in the email view doesn't still show after being deleted
 
 ## Next
@@ -194,7 +194,6 @@ Go to [Step 8 - Interacting with APIs](../08-api/).
 ## Resources
 
 - [`setState`](https://reactjs.org/docs/react-component.html#setstate)
-- [Spread in array literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator#Spread_in_array_literals)
 - [The Power of Not Mutating Data](https://facebook.github.io/react/docs/optimizing-performance.html#the-power-of-not-mutating-data)
 - [Reconciliation](https://facebook.github.io/react/docs/reconciliation.html)
 

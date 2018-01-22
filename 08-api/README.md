@@ -1,6 +1,6 @@
 # Step 8 - Interacting with APIs
 
-The goal of this step is to move away from the hard-coded `EMAILS` `const` to interacting with a "real" API server using the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and [ES6 Promises](http://www.benmvp.com/learning-es6-promises/). We'll retrieve the data in the `App` component's lifecyle methods and store in its `state`.
+The goal of this step is to move away from the hard-coded `EMAILS` constant to interacting with a "real" API server using the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and [ES6 Promises](http://www.benmvp.com/learning-es6-promises/). We'll retrieve the data in the `App` component's lifecyle methods and store in its `state`.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
 
@@ -91,7 +91,7 @@ export default class App extends PureComponent {
 }
 ```
 
-`componentDidMount()` is invoked immediately after a component is mounted. Initialization that requires DOM nodes or API requests to load data go here.
+`componentDidMount()` is invoked immediately after a component is mounted (added to the DOM). Initialization that requires DOM nodes or API requests to load data go here.
 
 We can replace the use of the `EMAILS` constant with data from the API. Initialize the `state` to empty (`[]`), store the result of the `fetch` call in the `App` component's `state`, and remove the `EMAILS` constant altogether:
 
@@ -120,7 +120,7 @@ export default class App extends PureComponent {
 }
 ```
 
-Initially you'll see an empty list of emails, but soon after a list of 50 emails instead of the original 5. Our app is looking more like a legitimate app.
+Initially you'll see an empty list of emails, but soon after a list of 50 emails instead of the original five. Our app is looking more like a legitimate app.
 
 Next let's add long-polling to `App` so that we're periodically checking for any new emails that may have been added (or deleted):
 
@@ -167,7 +167,7 @@ export default class App extends PureComponent {
 }
 ```
 
-We leveraged [`setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) in [`componentDidMount()`](https://facebook.github.io/react/docs/react-component.html#componentdidmount) to kick off the long-polling after making loading the initial data. We also used [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval) in [`componentWillUnmount()`](https://facebook.github.io/react/docs/react-component.html#componentwillunmount) to clean up after ourselves and stop polling whenever `App` is removed from the DOM.
+We leveraged [`setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) in [`componentDidMount()`](https://facebook.github.io/react/docs/react-component.html#componentdidmount) to kick off the long-polling after loading the initial data. We also used [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval) in [`componentWillUnmount()`](https://facebook.github.io/react/docs/react-component.html#componentwillunmount) to clean up after ourselves and stop polling whenever `App` is removed from the DOM.
 
 We can communicate the email creations & deletions with the API since the server should be the source of truth. Let's start by updating `_handleFormSubmit()` to make an HTTP `POST` with the new email info:
 
@@ -210,7 +210,7 @@ export default class App extends PureComponent {
 }
 ```
 
-You should not be able to fill out the email form, click "Send email", and within 2 seconds see the new email added at the top of the list. The maximum 2-second delay is due to the long-polling we set up. It's the only way that `this.state.emails` is update with the latest data.
+You should now be able to fill out the email form, click "Send email", and within 2 seconds see the new email added at the top of the list. The maximum 2-second delay is due to the long-polling we set up. It's the only way that `this.state.emails` is update with the latest data.
 
 ## Exercises
 
