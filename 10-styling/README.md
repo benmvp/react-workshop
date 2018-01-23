@@ -1,6 +1,6 @@
 # Step 10 - Styling
 
-The goal of this step is to apply CSS styling to all of the components. There are many ways to style React components, but CSS classes are probably the simplest and most familiar. In certain cases we'll want to conditionally apply CSS classes based on props. We'll make use of the very helpful [`classnames`](https://github.com/JedWatson/classnames) library.
+The goal of this step is to apply CSS styling to all of the components. There are many ways to style React components, but CSS classes are probably the simplest and most familiar. In certain cases we'll want to _conditionally_ apply CSS classes based on prop values. We'll make use of the very helpful [`classnames`](https://github.com/JedWatson/classnames) library.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
 
@@ -187,6 +187,8 @@ export default class App extends PureComponent {
   }
 }
 ```
+
+These classes help position the email list, email view and email form within the `App` component. That's why they exist within `App` and not within the individual components.
 
 When an email item is selected, you should see a 3-column layout: email list on the left, email form on the right, and email view in the center.
 
