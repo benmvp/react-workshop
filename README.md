@@ -73,7 +73,7 @@ All of the exercises make use of [ES6](http://www.benmvp.com/learning-es6-series
 You can start at the [beginning](00-begin/) to get setup. Afterwards follow these steps:
 
 1. [JSX](01-jsx/)
-1. [Environment setup](02-components/)
+1. [Components](02-components/)
 1. [Lists](03-lists/)
 1. [Email View](04-email-view/)
 1. [Email Form](05-email-form/)
