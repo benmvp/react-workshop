@@ -2,7 +2,7 @@
 
 The goal of this step is just to get everything set up with a running (but blank) app. We will be working in a step-by-step fashion to build an email application. Visit the [final step](../end/) to install and run the finished app locally.
 
-## Setup
+## Tasks
 
 You need [node](https://nodejs.org/en/) version 6 or higher. You can [install `nvm`](https://github.com/creationix/nvm#install-script) to manage multiple versions of node.
 
@@ -40,7 +40,7 @@ yarn start
 npm start
 ```
 
-## Tasks
+## Exercises
 
 - Visit [http://localhost:3000/](http://localhost:3000/) and you should see an empty page
 - Install [React Developer Tools](https://github.com/facebook/react-devtools#installation) for your browser
