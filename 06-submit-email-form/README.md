@@ -309,10 +309,11 @@ export default class App extends PureComponent {
 
 > NOTE: The [`setState`](https://reactjs.org/docs/react-component.html#setstate) above differs from the ones we used to update `this.state.selectedEmailId`. Here we're using the "updater function" version. It takes a function that's passed the current version of the entire state and is expected to return new versions of whatever state needs to be updated. You need to use the "updater function" version of `setState` whenever the new state depends on the current state. We're appending a new email to the current emails list in order to return a new emails list. 
 
-You should now see the email show up at the top of the list when you add it. You should also be able to click it and view its details. Using the [React Developer Tools](https://github.com/facebook/react-devtools#installation), watch how the new email item is optimally added to the list. Nothing else in the UI is updated thanks to the [_reconciler_](https://facebook.github.io/react/docs/reconciliation.html) (aka "Virtual DOM").
+You should now see the email show up at the top of the list when you add it. You should also be able to click it and view its details. 
 
 ## Exercises
 
+- Using the [React Developer Tools](https://github.com/facebook/react-devtools#installation), watch how the new email item is optimally added to the list (nothing else in the UI is updated thanks to the [_reconciler_](https://facebook.github.io/react/docs/reconciliation.html) (aka "Virtual DOM"))
 - Emails added via `EmailForm` do not have a date to display in `EmailView`. Update `_handleFormSubmit` to also pass along the current date/time as a string in the `date` property
 
 ## Next
