@@ -2,7 +2,12 @@
 
 The goal of this step is to build some interactivity into the app by responding to user interactions. [Handling events](https://facebook.github.io/react/docs/handling-events.html) within React elements is very similar to handling events on DOM elements. Event handlers will be passed instances of [`SyntheticEvent`](https://reactjs.org/docs/events.html), a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event (including` stopPropagation()` and `preventDefault()`) except the events work identically across all browsers!
 
-Ultimately, we want to click on an email list item and have its details displayed in the email view.
+Ultimately, we want to click on an email list item and have its details displayed in the email view. While this a relatively simple user interaction, we'll ultimately learn about four key parts of React development:
+
+- Maintaining state
+- Passing event handlers down the compnoent hierarchy
+- Conditionally rendering components
+- Rendering unencoded content
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/).
 
@@ -58,218 +63,11 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## Tasks
 
-In `EmailListItem` add an `onClick` handler to the container `<div>` that will call a (newly added) `onSelect` prop:
+### Phase 1 - Rendering unencoded content
 
-```js
-export default class EmailListItem extends PureComponent {
-  static propTypes = {
-    email: EMAIL_PROP_TYPE.isRequired,
-    onSelect: PropTypes.func
-  }
+Let's start with simply rendering an email withing the `<EmailView />`.
 
-  _handleClick(e) {
-    let {email, onSelect} = this.props;
-
-    if (onSelect) {
-      e.stopPropagation();
-      onSelect(email.id);
-    }
-  }
-
-  render() {
-    let {email: {from, subject}} = this.props;
-
-    return (
-      <div className="email-list-item" onClick={this._handleClick.bind(this)}>
-        <span>{from}</span>
-        <span>{subject}</span>
-      </div>
-    );
-  }
-}
-```
-
-This now makes clicks that happen within a `<EmailListItem />` available to `EmailList`.
-
-In `EmailList` add a `onItemSelect` event handler prop and pass it through as the `onSelect` prop to all of the `<EmailListItem />` components it renders:
-
-```js
-export default class EmailList extends PureComponent {
-  static propTypes = {
-    emails: PropTypes.arrayOf(EMAIL_PROP_TYPE).isRequired,
-    onItemSelect: PropTypes.func.isRequired
-  }
-
-  render() {
-    let {emails, onItemSelect} = this.props;
-    let emailComponents = emails.map(email =>
-      <li key={email.id}>
-        <EmailListItem email={email} onSelect={onItemSelect} />
-      </li>
-    );
-
-    return (
-      <ul className="email-list">
-        {emailComponents}
-      </ul>
-    );
-  }
-}
-```
-
-This now makes all the clicks that happen within `<EmailList />` (which were actually from its `<EmailListItem >` children) available to the top-level `App` component.
-
-In `App`, add a handler for the `onItemSelect` handler in `EmailList` called `_handleItemSelect` that, for now, just logs the selected email ID to the console:
-
-```js
-export default class App extends PureComponent {
-  _handleItemSelect(selectedEmailId) {
-    // logging the clicked email item that was passed *up* the component hierarchy
-    console.log(selectedEmailId);
-  }
-
-  render() {
-    return (
-      <main className="app">
-        <EmailList
-          emails={EMAILS}
-          onItemSelect={this._handleItemSelect.bind(this)}
-        />
-        <EmailView />
-        <EmailForm />
-      </main>
-    );
-  }
-}
-```
-
-Every time you click on one of the email list items, its ID should be logged to the console.
-
-But we want to do more than just log to the console; we want to display the email view with the details of the selected email. In order to do this, we will have to maintain state to keep track of the currently selected email item. This will allow us to pass that currently selected email item to stat to `<EmailView />`.
-
-In the `App` component, add a `selectedEmailId` property to `state`, defaulting it to `-1` (signifying nothing is selected). Within `render()`, find an email within `EMAILS` that matches `this.state.selectedEmailId`. Pass the selected email to the `<EmailView />` via `email` prop. If a matching email isn't found, the `<EmailView />` should not be rendered.
-
-```js
-export default class App extends PureComponent {
-  // propTypes & defaultPropTypes
-
-  state = {
-    // Initialize selected email ID to -1, indicating nothing is selected.
-    // When an email is selected in EmailList, this will be updated to
-    // corresponding ID
-    selectedEmailId: -1
-  };
-
-  // helper methods
-
-  render() {
-    let {selectedEmailId} = this.state;
-    let selectedEmail = EMAILS.find(email => email.id === selectedEmailId);
-    let emailViewComponent;
-
-    if (selectedEmail) {
-      emailViewComponent = (
-        <EmailView email={selectedEmail} />
-      );
-    }
-
-    return (
-      <main className="app">
-        <EmailList
-          emails={EMAILS}
-          onItemSelect={this._handleItemSelect.bind(this)}
-        />
-        {emailViewComponent}
-        <EmailForm />
-      </main>
-    );
-  }
-}
-```
-
-You should actually see the email view in the UI disappear. The next step is wire in the interactivity that will make it display when an email list item is clicked by updating `this.state.selectedEmailId` whenever an email item is selected. We can now change our console logging code in `_handleItemSelect` to update `this.state.selectedEmailId`:
-
-```js
-export default class App extends PureComponent {
-  // propTypes & defaultPropTypes
-
-  state = {
-    // Initialize selected email ID to -1, indicating nothing is selected.
-    // When an email is selected in EmailList, this will be updated to
-    // corresponding ID
-    selectedEmailId: -1
-  };
-
-  _handleItemSelect(selectedEmailId) {
-    // update state (so that the EmailView will show)
-    this.setState({selectedEmailId});
-  }
-
-  render() {
-    let {selectedEmailId} = this.state;
-    let selectedEmail = EMAILS.find(email => email.id === selectedEmailId);
-    let emailViewComponent;
-
-    if (selectedEmail) {
-      emailViewComponent = (
-        <EmailView email={selectedEmail} />
-      );
-    }
-
-    return (
-      <main className="app">
-        <EmailList
-          emails={EMAILS}
-          onItemSelect={this._handleItemSelect.bind(this)}
-        />
-        {emailViewComponent}
-        <EmailForm />
-      </main>
-    );
-  }
-}
-```
-
-Whenever we call `setStatae`, React calls the `render()` method again for us so that the state that was just updated can be rendered in the UI. This is how interactivity is built in React:
-
-1. Initialize `state` to the default values you would like to render
-1. React calls `render()` to display the UI
-1. At some point, a user interaction happens
-1. We call `setState` to update the state
-1. React calls `render()` again so we can display UI with updated state
-1. Do step 3 again and again and again
-
-At this point, clicking an email list item, should display the `EmailView` component, but it's still just displaying the heading "View selected email." Let's fix that.
-
-Add an `email` prop to `EmailView` and display a subject, from, date & message:
-
-```js
-import {EMAIL_PROP_TYPE} from './constants';
-
-export default class EmailView extends PureComponent {
-  static propTypes = {
-    email: EMAIL_PROP_TYPE.isRequired
-  };
-
-  render() {
-    let {email: {subject, from, date, message}} = this.props;
-    let rawMessage = {__html: message};
-
-    return (
-      <section className="email-view">
-        <h1>{subject}</h1>
-        <h2>From: <a href={`mailto:${from}`}>{from}</a></h2>
-        <h3>{date}</h3>
-        <div dangerouslySetInnerHTML={rawMessage} />
-      </section>
-    );
-  }
-}
-```
-
-Now, clicking different email items should display a different message in the email view. Because the message itself has HTML within it, we need to use [`dangerouslySetInnerHTML`](https://facebook.github.io/react/docs/dom-elements.html#dangerouslysetinnerhtml) to prevent React's default HTML encoding of all element content.
-
-Finally, update the `EMAILS` constant in `App` to add `date` and `message` properties for each of the sample emails:
+First, update the `EMAILS` constant in `App` to add `date` and `message` properties for each of the sample emails:
 
 ```js
 const EMAILS = [
@@ -311,9 +109,322 @@ const EMAILS = [
 ];
 ```
 
+Notice that the `message` property of the emails contain HTML.
+
+Next, in the `render()` of `App`, pass one of the emails in to `<EmailView />` (such as `EMAILS[2]`):
+
+```js
+export default class App extends PureComponent {
+  render() {
+    return (
+      <main className="app">
+        <EmailList emails={EMAILS} />
+        <EmailView email={EMAILS[2]} />
+        <EmailForm />
+      </main>
+    );
+  }
+}
+```
+
+Finally in `EmailView`, add an `email` display a `subject`, `from`, `date` & `message`:
+
+```js
+import {EMAIL_PROP_TYPE} from './constants';
+
+export default class EmailView extends PureComponent {
+  static propTypes = {
+    email: EMAIL_PROP_TYPE.isRequired
+  }
+
+  render() {
+    let {email: {subject, from, date, message}} = this.props;
+    let rawMessage = {__html: message};
+
+    return (
+      <section className="email-view">
+        <h1>{subject}</h1>
+        <h2>From: <a href={`mailto:${from}`}>{from}</a></h2>
+        <h3>{date}</h3>
+        <div dangerouslySetInnerHTML={rawMessage} />
+      </section>
+    );
+  }
+}
+```
+
+By default, any content you put within an HTML element is automatically HTML-encoded by React. However, the `message` property of our email will have HTML within that we would like to be rendered instead of encoded. We use the [`dangerouslySetInnerHtml`](https://facebook.github.io/react/docs/dom-elements.html#dangerouslysetinnerhtml) attribute React adds to all HTML elements to sidestep the HTML encoding.
+
+You should see the details of that email displayed in the app.
+
+
+### Phase 2 - Maintaining State
+
+As of now we've hard-coded the email that we're passing to `<EmailView />`. However, we want to ultimately pass the email corresponding to the email list item that was clicked. In order to that, we'll need to keep track of the currently selected email. In React, we use `state` for this.
+
+Still in `App`, add a `selectedEmailId` property to `state` (to keep track of the currently selected email) and initialize it to the IDs of one of the emails:
+
+```js
+export default class App extends PureComponent {
+  // propTypes & defaultPropTypes
+
+  state = {
+    selectedEmailId: 4
+  }
+
+  // helper methods
+
+  // render()
+}
+```
+
+Next within `render()`, find an email within `EMAILS` that matches `state.selectedEmailId` and pass that selected email to the `<EmailView />` via the `email` prop we defined in Step 1:
+
+```js
+export default class App extends PureComponent {
+  // propTypes & defaultPropTypes
+
+  state = {
+    selectedEmailId: 4
+  }
+
+  // helper methods
+
+  render() {
+    let {selectedEmailId} = this.state;
+    let selectedEmail = EMAILS.find(email => email.id === selectedEmailId);
+
+    return (
+      <main className="app">
+        <EmailList emails={EMAILS} />
+        <EmailView email={selectedEmail} />
+        <EmailForm />
+      </main>
+    );
+  }
+}
+```
+
+Using the [React Developer Tools](https://github.com/facebook/react-devtools#installation), you should be able to change the value of `state.selectedEmailId` and see the corresponding email displayed in the email view. By changing the state we are mimicing what will happen when we click an email list item.
+
+
+### Phase 3 - Passing down event handlers
+
+Now let's hook up clicking an email list item for real. We've already got `state.selectedEmailId` connected to display the `<EmailView />` based on the email ID. We just need `App` to know when an email list item is clicked.
+
+In React, encapsulation is important. `<App />` cannot and should not dig into the events of `<EmailListItem />`. The way that `<App />` can get know about when a `click` event happens in `<EmailListItem />` is by `<App />` passing a (callback) function **down** to its `<EmailListItem />` child components. This function can also be called an _event handler_. Then a `<EmailListItem />` can call that event handler whenever a `click` event happens. In our case, however, `<App />` doesn't have `<EmailListItem />` components as children. `<App />` has an `<EmailList />`, which in turn as `<EmailListItem />` components so we need to do a little extra.
+
+Let's pretend that `EmailList` has already been fully implemented. We'd want it to expose an `onItemSelect` handler that is called with an email ID whenever an email list item is called. In `App`, add a handler for the `onItemSelect` handler in `EmailList` called `_handleItemSelect` that, for now, just logs the selected email ID to the console:
+
+```js
+export default class App extends PureComponent {
+  _handleItemSelect(selectedEmailId) {
+    // logging the clicked email item ID
+    console.log(selectedEmailId);
+  }
+
+  render() {
+    return (
+      <main className="app">
+        <EmailList
+          emails={EMAILS}
+          onItemSelect={this._handleItemSelect.bind(this)}
+        />
+        <EmailView />
+        <EmailForm />
+      </main>
+    );
+  }
+}
+```
+
+Now in theory, every time you click on one of the email list items, its ID should be logged to the console. But of course `EmailList` doesn't yet implement `onItemSelect`.
+
+In `EmailList` add that `onItemSelect` event handler prop and pass it through as the (soon-to-be-implemented) `onSelect` prop to all of the `<EmailListItem />` components it renders:
+
+```js
+export default class EmailList extends PureComponent {
+  static propTypes = {
+    emails: PropTypes.arrayOf(EMAIL_PROP_TYPE).isRequired,
+    onItemSelect: PropTypes.func.isRequired
+  }
+
+  render() {
+    let {emails, onItemSelect} = this.props;
+    let emailComponents = emails.map(email =>
+      <li key={email.id}>
+        <EmailListItem email={email} onSelect={onItemSelect} />
+      </li>
+    );
+
+    return (
+      <ul className="email-list">
+        {emailComponents}
+      </ul>
+    );
+  }
+}
+```
+
+We are pretending that `EmailListItem` is fully implemented. We'd want it to have an `onSelect` handler that will be called every time a email list item is called. We can just pass down the `props.onItemSelect` event handler we received from `<App />` to each `<EmailListItem />` for its `onSelect` prop.
+
+In `EmailListItem`, add an `onClick` handler to the container `<div>` that will call a (newly added) `onSelect` prop:
+
+```js
+export default class EmailListItem extends PureComponent {
+  static propTypes = {
+    email: EMAIL_PROP_TYPE.isRequired,
+    onSelect: PropTypes.func
+  }
+
+  _handleClick(e) {
+    let {email, onSelect} = this.props;
+
+    if (onSelect) {
+      e.stopPropagation();
+      onSelect(email.id);
+    }
+  }
+
+  render() {
+    let {email: {from, subject}} = this.props;
+
+    return (
+      <div className="email-list-item" onClick={this._handleClick.bind(this)}>
+        <span>{from}</span>
+        <span>{subject}</span>
+      </div>
+    );
+  }
+}
+```
+
+This now makes `click` events that happen within a `<EmailListItem />` available to `EmailList` (with the email ID). And since `EmailList` passed along it's event handler, the `click` event is also available to `<App />`. Now clicking an email list item, really does log the email ID to the console.
+
+But we want to do more than just log to the console; we want to display the email view with the details of the selected email. In order to do this, `App` needs to update `state.selectedEmailId` so that `<EmailView />` will get a new selected email. We can now change our console logging code in `_handleItemSelect` to update `state.selectedEmailId`:
+
+```js
+export default class App extends PureComponent {
+  // propTypes & defaultPropTypes
+
+  state = {
+    selectedEmailId: 4
+  }
+
+  _handleItemSelect(selectedEmailId) {
+    // update state (so that the EmailView will show)
+    this.setState({selectedEmailId});
+  }
+
+  render() {
+    let {selectedEmailId} = this.state;
+    let selectedEmail = EMAILS.find(email => email.id === selectedEmailId);
+    let emailViewComponent;
+
+    if (selectedEmail) {
+      emailViewComponent = (
+        <EmailView email={selectedEmail} />
+      );
+    }
+
+    return (
+      <main className="app">
+        <EmailList
+          emails={EMAILS}
+          onItemSelect={this._handleItemSelect.bind(this)}
+        />
+        {emailViewComponent}
+        <EmailForm />
+      </main>
+    );
+  }
+}
+```
+
+Whenever we call `setStatae`, React calls the `render()` method again for us so that the state that was just updated can be rendered in the UI. This is how interactivity in `App` is built in React:
+
+1. Initialize `state` to the default values you would like to render
+1. React calls `render()` to display the UI
+1. At some point, a user interaction happens
+1. We call `setState()` to update the state
+1. React calls `render()` again so we can display UI with updated state
+1. Do step 3 again and again and again for every user interaction
+
+At this point, clicking an email list item, should display the `<EmailView />` component with the appropriate content.
+
+
+### Phase 4 - Conditionally rendering components
+
+In this last phase, we need to handle an edge case. We're not always going to have an email selected. When the app first loads we shouldn't have an email selected. And we may later want to support closing/hiding the email view.
+
+Initialize `state.selectedEmailId` to be `-1` (signifying nothing is selected):
+
+```js
+export default class App extends PureComponent {
+  // propTypes & defaultPropTypes
+
+  state = {
+    // Initialize selected email ID to -1, indicating nothing is selected.
+    // When an email is selected in EmailList, this will be updated to
+    // corresponding ID
+    selectedEmailId: -1
+  }
+
+  // helper methods
+
+  // render()
+}
+```
+
+You should get an error in `EmailView` saying that no `email` prop was specified. This is because there is no email with the id `-1` so `App` is passing `undefined` to `<EmailView />`. In `App` when there is no matching email, we shouldn't render the `<EmailView />` at all. We want to conditionally render the component:
+
+```js
+export default class App extends PureComponent {
+  // propTypes & defaultPropTypes
+
+  state = {
+    // Initialize selected email ID to -1, indicating nothing is selected.
+    // When an email is selected in EmailList, this will be updated to
+    // corresponding ID
+    selectedEmailId: -1
+  }
+
+  // helper methods
+
+  render() {
+    let {selectedEmailId} = this.state;
+    let selectedEmail = EMAILS.find(email => email.id === selectedEmailId);
+    let emailViewComponent;
+
+    // only render <EmailView /> if a matching email is found
+    if (selectedEmail) {
+      emailViewComponent = (
+        <EmailView email={selectedEmail} />
+      );
+    }
+
+    return (
+      <main className="app">
+        <EmailList
+          emails={EMAILS}
+          onItemSelect={this._handleItemSelect.bind(this)}
+        />
+        {emailViewComponent}
+        <EmailForm />
+      </main>
+    );
+  }
+}
+```
+
+When you render `undefined` in React, it renders nothing. So by defaulting `emailViewComponent` to `undefined`, if no matching email is found, we'll just render nothing. However, if one _is_ found, we'll render the `<EmailView />`.
+
+At this point, clicking different email items should display a different message in the email view. With those key parts of React development, we've been able to build interactivity into our app. If it feels like a lot of code, you're not alone. It feels very verbose having to explicitly pass everything around. However, the nice part is that as our app grows, the way we build interactivity remains the same. So we've learned this flow once and can keep applying it to more complex interactions.
+
+
 ## Exercises
 
-- Add a close button to `EmailView` which hides `EmailView` (hint: add an `onClose` prop to `EmailView` that will be handled in `App` to update `this.state.selectedEmailId`)
+- Add a close button to `EmailView` which hides `<EmailView />` in `App` (hint: add an `onClose` prop to `EmailView` that will be handled in `App` to update `this.state.selectedEmailId`)
 
 ## Next
 
