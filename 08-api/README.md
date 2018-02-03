@@ -73,7 +73,7 @@ Verify that you receive a JSON response from [http://localhost:9090/emails](http
 In the [`App`](src/App.js) component add the [`componentDidMount()`](https://facebook.github.io/react/docs/react-component.html#componentdidmount) lifecycle method and make a `GET` [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) request to [http://localhost:9090/emails](http://localhost:9090/emails):
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   componentDidMount() {
     // Retrieve emails from server once we know DOM exists
     fetch('//localhost:9090/emails');
@@ -96,7 +96,7 @@ export default class App extends PureComponent {
 We can replace the use of the `EMAILS` constant with data from the API. Initialize the `state` to empty (`[]`), store the result of the `fetch` call in the `App` component's `state`, and remove the `EMAILS` constant altogether:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   state = {
     // Initialize emails state to an empty array.
     // Will get populated with data in `componentDidMount`
@@ -125,7 +125,7 @@ Initially you'll see an empty list of emails, but soon after a list of 50 emails
 Next let's add long-polling to `App` so that we're periodically checking for any new emails that may have been added (or deleted):
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   state = {
     // Initialize emails state to an empty array.
     // Will get populated with data in `componentDidMount`
@@ -172,7 +172,7 @@ We leveraged [`setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/Wi
 We can communicate the email creations & deletions with the API since the server should be the source of truth. Let's start by updating `_handleFormSubmit()` to make an HTTP `POST` with the new email info:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   state = {
     // Initialize emails state to an empty array.
     // Will get populated with data in `componentDidMount`

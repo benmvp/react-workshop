@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
@@ -59,7 +59,7 @@ const EmailFormWrapper = ({showForm, onSubmit, onCancel}) => {
   return component;
 };
 
-class Page extends PureComponent {
+class Page extends Component {
   static propTypes = {
     pollInterval: PropTypes.number,
     emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),

@@ -89,7 +89,7 @@ const EMAILS = [
   }
 ];
 
-export default class EmailList extends PureComponent {
+export default class EmailList extends Component {
   render() {
     let emailComponents = EMAILS.map((email) =>
       <li key={email.id}>
@@ -111,7 +111,7 @@ Be sure to include the [`key` prop](https://facebook.github.io/react/docs/lists-
 Update `EmailListItem` to take a single `email` prop instead of individual props for each email property (don't forget the `propTypes`!):
 
 ```js
-export default class EmailListItem extends PureComponent {
+export default class EmailListItem extends Component {
   static propTypes = {
     email: PropTypes.shape({
       from: PropTypes.string.isRequired,
@@ -135,7 +135,7 @@ export default class EmailListItem extends PureComponent {
 The `EmailList` component will need to be updated to pass the `email` prop to `EmailListItem`:
 
 ```js
-export default class EmailList extends PureComponent {
+export default class EmailList extends Component {
   render() {
     let emailComponents = EMAILS.map((email) =>
       <li key={email.id}>
@@ -156,7 +156,7 @@ We're starting to make something that visually looks like a list of emails, but 
 
 EmailList.js
 ```js
-import React, {PureComponent} from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
 import EmailListItem from './EmailListItem'
@@ -165,20 +165,20 @@ import {EMAIL_PROP_TYPE} from './constants'
 // import component CSS file
 import './EmailList.css'
 
-export default class EmailList extends PureComponent {
+export default class EmailList extends Component {
   ...
 ```
 
 EmailListItem
 ```js
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 
 import {EMAIL_PROP_TYPE} from './constants';
 
 // import component CSS file
 import './EmailListItem.css';
 
-export default class EmailListItem extends PureComponent {
+export default class EmailListItem extends Component {
   ...
 ```
 

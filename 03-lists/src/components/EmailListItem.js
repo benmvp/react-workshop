@@ -1,10 +1,10 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 
 import {EMAIL_PROP_TYPE} from './constants';
 
 import './EmailListItem.css';
 
-export default class EmailListItem extends PureComponent {
+export default class EmailListItem extends Component {
   static propTypes = {
     email: EMAIL_PROP_TYPE.isRequired
   };

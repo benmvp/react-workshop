@@ -61,7 +61,7 @@ After the app is initially built, a new browser window should open up at [http:/
 The [`App`](src/App.js) component has quite a bit of markup in it, even though it doesn't do much yet. Break up the large `App` component into smaller `EmailList`, `EmailView` & `EmailForm` components and reference them back in the `App` component:
 
 ```js
-class EmailList extends PureComponent {
+class EmailList extends Component {
   render() {
     return (
       <ul className="email-list">
@@ -100,7 +100,7 @@ class EmailList extends PureComponent {
   }
 }
 
-class EmailView extends PureComponent {
+class EmailView extends Component {
   render() {
     return (
       <div className="email-view">
@@ -110,7 +110,7 @@ class EmailView extends PureComponent {
   }
 }
 
-class EmailForm extends PureComponent {
+class EmailForm extends Component {
   render() {
     return (
       <div className="email-form">
@@ -120,7 +120,7 @@ class EmailForm extends PureComponent {
   }
 }
 
-export default class App extends PureComponent {
+export default class App extends Component {
   render() {
     return (
       <main className="app">
@@ -138,7 +138,7 @@ The top-level `App` component is now composed of the `EmailList`, `EmailView` & 
 The `EmailList` component is still logically made up of several list item components, which can be extracted into a `EmailListItem` component with configurable props:
 
 ```js
-class EmailListItem extends PureComponent {
+class EmailListItem extends Component {
   render() {
     let {from, subject} = this.props;
 
@@ -151,7 +151,7 @@ class EmailListItem extends PureComponent {
   }
 }
 
-class EmailList extends PureComponent {
+class EmailList extends Component {
   render() {
     return (
       <ul class="email-list">
@@ -210,7 +210,7 @@ But we'll continue to use the `class` syntax so that we can define [`propTypes`]
 // back up top add new import of `prop-types` lib
 import PropTypes from 'prop-types';
 
-class EmailListItem extends PureComponent {
+class EmailListItem extends Component {
   // declare types of expected props
   // i.e. the component's interface
   static propTypes = {
@@ -236,11 +236,11 @@ class EmailListItem extends PureComponent {
 Move each component into its own file under a new [`src/components/`](src/components/) folder, `import`ing and `export`ing as necessary. For example in `EmailList`:
 
 ```js
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 
 import EmailListItem from './EmailListItem';
 
-export default class EmailList extends PureComponent {
+export default class EmailList extends Component {
   render() {
     return (
       <ul className="email-list">

@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 const DEFAULT_FORM_VALUES = {
@@ -8,7 +8,7 @@ const DEFAULT_FORM_VALUES = {
   message: ''
 };
 
-export default class EmailForm extends PureComponent {
+export default class EmailForm extends Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired
   };

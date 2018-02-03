@@ -69,7 +69,7 @@ After the app is initially built, a new browser window should open up at [http:/
 Add "Mark Unread" & "Mark Read" buttons to `EmailView` that when clicked will call the (newly added) `onMarkUnread` & `onMarkRead` props, respectively. Only one button should show at a given time based on the `unread` property within `this.props.email`:
 
 ```js
-export default class EmailView extends PureComponent {
+export default class EmailView extends Component {
   static propTypes = {
     email: EMAIL_PROP_TYPE.isRequired,
     onClose: PropTypes.func.isRequired,
@@ -121,7 +121,7 @@ export default class EmailView extends PureComponent {
 In the top-level `App`, add handlers for `onMarkUnread` & `onMarkRead` on `<EmailView />` that will make a `fetch` `PUT` action to `http://localhost:9090/emails/<EMAIL_ID>`:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   // prop types & default props
 
   // initial state

@@ -1,8 +1,8 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 
 import EmailListItem from './EmailListItem';
 
-export default class EmailList extends PureComponent {
+export default class EmailList extends Component {
   render() {
     return (
       <ul className="email-list">

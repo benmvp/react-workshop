@@ -69,7 +69,7 @@ After the app is initially built, a new browser window should open up at [http:/
 Whether or not the email form modal is being displayed will be maintained in the `state` of the `App`. Also add a `<button>` with an `onClick` handler that set `this.state.showForm` to `true`:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   // prop types & default props
 
   state = {
@@ -158,7 +158,7 @@ const EmailFormWrapper = ({showForm, onSubmit}) => {
   return component;
 };
 
-export default class App extends PureComponent {
+export default class App extends Component {
   // prop types & default props
 
   // initialize state

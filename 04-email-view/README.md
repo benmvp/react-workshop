@@ -114,7 +114,7 @@ Notice that the `message` property of the emails contain HTML.
 Next, in the `render()` of `App`, pass one of the emails in to `<EmailView />` (such as `EMAILS[2]`):
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   render() {
     return (
       <main className="app">
@@ -132,7 +132,7 @@ Finally in `EmailView`, add an `email` display a `subject`, `from`, `date` & `me
 ```js
 import {EMAIL_PROP_TYPE} from './constants';
 
-export default class EmailView extends PureComponent {
+export default class EmailView extends Component {
   static propTypes = {
     email: EMAIL_PROP_TYPE.isRequired
   }
@@ -165,7 +165,7 @@ As of now we've hard-coded the email that we're passing to `<EmailView />`. Howe
 Still in `App`, add a `selectedEmailId` property to `state` (to keep track of the currently selected email) and initialize it to the IDs of one of the emails:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   // propTypes & defaultPropTypes
 
   state = {
@@ -181,7 +181,7 @@ export default class App extends PureComponent {
 Next within `render()`, find an email within `EMAILS` that matches `state.selectedEmailId` and pass that selected email to the `<EmailView />` via the `email` prop we defined in Step 1:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   // propTypes & defaultPropTypes
 
   state = {
@@ -217,7 +217,7 @@ In React, encapsulation is important. `<App />` cannot and should not dig into t
 Let's pretend that `EmailList` has already been fully implemented. We'd want it to expose an `onItemSelect` handler that is called with an email ID whenever an email list item is called. In `App`, add a handler for the `onItemSelect` handler in `EmailList` called `_handleItemSelect` that, for now, just logs the selected email ID to the console:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   _handleItemSelect(selectedEmailId) {
     // logging the clicked email item ID
     console.log(selectedEmailId);
@@ -243,7 +243,7 @@ Now in theory, every time you click on one of the email list items, its ID shoul
 In `EmailList` add that `onItemSelect` event handler prop and pass it through as the (soon-to-be-implemented) `onSelect` prop to all of the `<EmailListItem />` components it renders:
 
 ```js
-export default class EmailList extends PureComponent {
+export default class EmailList extends Component {
   static propTypes = {
     emails: PropTypes.arrayOf(EMAIL_PROP_TYPE).isRequired,
     onItemSelect: PropTypes.func.isRequired
@@ -271,7 +271,7 @@ We are pretending that `EmailListItem` is fully implemented. We'd want it to hav
 In `EmailListItem`, add an `onClick` handler to the container `<div>` that will call a (newly added) `onSelect` prop:
 
 ```js
-export default class EmailListItem extends PureComponent {
+export default class EmailListItem extends Component {
   static propTypes = {
     email: EMAIL_PROP_TYPE.isRequired,
     onSelect: PropTypes.func
@@ -304,7 +304,7 @@ This now makes `click` events that happen within a `<EmailListItem />` available
 But we want to do more than just log to the console; we want to display the email view with the details of the selected email. In order to do this, `App` needs to update `state.selectedEmailId` so that `<EmailView />` will get a new selected email. We can now change our console logging code in `_handleItemSelect` to update `state.selectedEmailId`:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   // propTypes & defaultPropTypes
 
   state = {
@@ -360,7 +360,7 @@ In this last phase, we need to handle an edge case. We're not always going to ha
 Initialize `state.selectedEmailId` to be `-1` (signifying nothing is selected):
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   // propTypes & defaultPropTypes
 
   state = {
@@ -379,7 +379,7 @@ export default class App extends PureComponent {
 You should get an error in `EmailView` saying that no `email` prop was specified. This is because there is no email with the id `-1` so `App` is passing `undefined` to `<EmailView />`. In `App` when there is no matching email, we shouldn't render the `<EmailView />` at all. We want to conditionally render the component:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   // propTypes & defaultPropTypes
 
   state = {

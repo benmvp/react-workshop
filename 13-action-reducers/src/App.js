@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -57,7 +57,7 @@ const EmailFormWrapper = ({showForm, onSubmit, onCancel}) => {
   return component;
 };
 
-export default class App extends PureComponent {
+export default class App extends Component {
   static propTypes = {
     pollInterval: PropTypes.number
   }

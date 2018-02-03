@@ -1,6 +1,6 @@
-import React, {PureComponent} from 'react'
+import React, {Component} from 'react'
 
-export default class App extends PureComponent {
+export default class App extends Component {
   render() {
     return (
       <main className="app">

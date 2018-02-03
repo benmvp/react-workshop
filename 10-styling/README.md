@@ -87,7 +87,7 @@ const EmailViewWrapper = ({selectedEmail, onClose, onDelete, onMarkUnread, onMar
   return component;
 };
 
-export default class App extends PureComponent {
+export default class App extends Component {
   // prop types & default props
 
   // initialize state
@@ -146,7 +146,7 @@ const EmailViewWrapper = ({selectedEmail, onClose, onDelete, onMarkUnread, onMar
   return component;
 };
 
-export default class App extends PureComponent {
+export default class App extends Component {
   // prop types & default props
 
   // initialize state

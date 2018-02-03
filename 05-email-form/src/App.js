@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 
 import EmailList from './components/EmailList';
 import EmailView from './components/EmailView';
@@ -44,7 +44,7 @@ const EMAILS = [
   },
 ];
 
-export default class App extends PureComponent {
+export default class App extends Component {
   state = {
     // Initialize selected email ID to -1, indicating nothing is selected.
     // When an email is selected in EmailList, this will be updated to

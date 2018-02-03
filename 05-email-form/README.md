@@ -59,7 +59,7 @@ After the app is initially built, a new browser window should open up at [http:/
 In `EmailForm`, create a form with **from** & **message** fields:
 
 ```js
-export default class EmailForm extends PureComponent {
+export default class EmailForm extends Component {
   render() {
     return (
       <form className="email-form">
@@ -82,7 +82,7 @@ As of now, the DOM is maintaining the state of the input fields; React has no id
 Add new state properties for `from` & `message` and pass those state properties as the `value` of the corresponding input fields. Then `onChange` of the fields, update the corresponding state properties.
 
 ```js
-export default class EmailForm extends PureComponent {
+export default class EmailForm extends Component {
   state = {
     from: '',
     message: ''

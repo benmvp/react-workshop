@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -21,7 +21,7 @@ const EmailListItemStatus = ({isSelected, unread, onDelete, onMarkUnread}) => {
   );
 };
 
-export default class EmailListItem extends PureComponent {
+export default class EmailListItem extends Component {
   static propTypes = {
     email: EMAIL_PROP_TYPE.isRequired,
     onDelete: PropTypes.func.isRequired,
