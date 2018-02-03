@@ -1,7 +1,7 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-export default class EmailListItem extends PureComponent {
+export default class EmailListItem extends Component {
   // declare types of expected props
   // i.e. the component's interface
   static propTypes = {

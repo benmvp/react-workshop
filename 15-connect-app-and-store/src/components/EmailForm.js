@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import './EmailForm.css';
@@ -10,7 +10,7 @@ const DEFAULT_FORM_VALUES = {
   message: ''
 };
 
-export default class EmailForm extends PureComponent {
+export default class EmailForm extends Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func

@@ -59,7 +59,7 @@ After the app is initially built, a new browser window should open up at [http:/
 Add a submit button and an `onSubmit` handler to the `<form>` inside `EmailForm`:
 
 ```js
-export default class EmailForm extends PureComponent {
+export default class EmailForm extends Component {
   // initialize state
 
   // other helper methods
@@ -91,7 +91,7 @@ export default class EmailForm extends PureComponent {
 Add a required `onSubmit` prop to `EmailForm` and call it within `_handleSubmit` when all the fields are filled:
 
 ```js
-export default class EmailForm extends PureComponent {
+export default class EmailForm extends Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired
   }
@@ -128,7 +128,7 @@ const DEFAULT_FORM_VALUES = {
   message: ''
 };
 
-export default class EmailForm extends PureComponent {
+export default class EmailForm extends Component {
   // prop types
 
   state = DEFAULT_FORM_VALUES
@@ -157,7 +157,7 @@ export default class EmailForm extends PureComponent {
 In the top-level `App` component, add a handler to `<EmailForm />` for its `onSubmit` prop and call it `_handleFormSubmit`. Just log the the new email to the console:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   // initialize state
 
   // lifecycle methods
@@ -204,7 +204,7 @@ const EMAILS = [
   ...
 ];
 
-export default class App extends PureComponent {
+export default class App extends Component {
   state = {
     // Initialize emails state to the `EMAILS` constant
     emails: EMAILS,
@@ -229,7 +229,7 @@ const EMAILS = [
   ...
 ];
 
-export default class App extends PureComponent {
+export default class App extends Component {
   state = {
     // Initialize emails state to the `EMAILS` constant
     emails: EMAILS,
@@ -273,7 +273,7 @@ export default class App extends PureComponent {
 Finally, back in `_handleFormSubmit`, change the console logging to update `this.state.emails` by prepending the `newEmail` to it, adding `id` to it:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   state = {
     // Initialize emails state to the `EMAILS` constant
     emails: EMAILS,

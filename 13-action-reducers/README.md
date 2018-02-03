@@ -102,7 +102,7 @@ import {addEmail} from './action-reducers';
 
 // helper components
 
-export default class App extends PureComponent {
+export default class App extends Component {
   // prop types & default props
 
   // initialize state

@@ -84,7 +84,7 @@ Create a new folder [`src/containers/`](src/containers/) and within that folder 
 ```js
 // imports
 
-export default class Page extends PureComponent {
+export default class Page extends Component {
   // prop types & default props
 
   // initialize state
@@ -127,9 +127,9 @@ The `<App/>` should only concernt itself with setting up the `store`.
 All `<App />` needs to do is render a `<Provider />`, and instantiate a `store`. To achieve this, `<App />` only needs a call to `render()`. With this refactor `<App />` will become the root of our application, only setting up the `store`, `<Provider />`, and `<Page />` components. Which means consuming `pollInterval` and passing it down is not necessary in `<App />` either. After removing unnecessary content, the `<App/>` should look something like this:
 
 ```js
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 
-export default class App extends PureComponent {
+export default class App extends Component {
 
   render() {
     return ()
@@ -152,7 +152,7 @@ import {Provider} from 'react-redux';
 
 import {emails} from './reducers';
 
-export default class App extends PureComponent {
+export default class App extends Component {
   // class methods
 }
 ```
@@ -167,7 +167,7 @@ const store = createStore(
   applyMiddleware(thunk)
 );
 
-export default class App extends PureComponent {
+export default class App extends Component {
   // class methods
 }
 ```
@@ -181,7 +181,7 @@ import Page from './containers/Page';
 
 // store
 
-export default class App extends PureComponent {
+export default class App extends Component {
 
   render() {
     <Provider store={store}>
@@ -195,7 +195,7 @@ export default class App extends PureComponent {
 After these changes our App.js should look something like:
 
 ```js
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
@@ -210,7 +210,7 @@ const store = createStore(
   applyMiddleware(thunk)
 );
 
-export default class App extends PureComponent {
+export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
@@ -234,7 +234,7 @@ But first, lets remove `emails` from the state object, and instead add it to `<P
 
 // imports
 
-export default class Page extends PureComponent {
+export default class Page extends Component {
 
   static propTypes = {
     pollInterval: PropTypes.number,
@@ -271,7 +271,7 @@ export default class Page extends PureComponent {
 Now that's out of the way, lets get our component hydrated with `connect()`. In general so far, our components have looked like:
 
 ```js
-export default class Page extends PureComponent {
+export default class Page extends Component {
 ```
 
 However, we want to export the "container" or *connected* component so instead we need to export the connected version. To do that, lets simply declare our class and then at the bottom of `Page.js` export default our connected component:
@@ -283,7 +283,7 @@ However, we want to export the "container" or *connected* component so instead w
 
 import {connect} from 'react-redux'
 
-class Page extends PureComponent {
+class Page extends Component {
 
   // class methods
 
@@ -304,7 +304,7 @@ We utilize these to hydrate the component (`<Page/>`) passed into `connect()`. I
 
 // imports
 
-class Page extends PureComponent {
+class Page extends Component {
 
   // class methods
 
@@ -327,7 +327,7 @@ Similarly to `emails` now being hydrated via the component's props, our actions 
 
 import {deleteEmail as deleteEmailAction} from '../actions';
 
-class Page extends PureComponent {
+class Page extends Component {
 
   static propTypes = {
     pollInterval: PropTypes.number,
@@ -362,7 +362,7 @@ Additionally, we can further optimize this call by taking advantage of a feature
 
 // imports
 
-class Page extends PureComponent {
+class Page extends Component {
 
   // class methods
 
@@ -383,7 +383,7 @@ Now we can update our `_handleItemDelete()` to utilize the redux action coming t
 
 ```js
 
-class Page extends PureComponent {
+class Page extends Component {
 
   // props
 
@@ -408,7 +408,7 @@ With this, our `deleteEmail()` action should properly go through `dispatch` to e
 As an optional minor optimization, some of the `_handlers`'s `.then()` just update `this.state.emails` upon success. If no other side effect occurs in the handler, you can pass the action *itself* directly to the child component and remove the handler altogether. For example with the `markUnread()` action we can delete `_handleMarkUnread()` and pass the action directly to the components which consume it, rather than the handler:
 
 ```js
-class Page extends PureComponent {
+class Page extends Component {
 
   // props
 

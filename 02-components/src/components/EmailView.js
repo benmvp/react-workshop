@@ -1,6 +1,6 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 
-export default class EmailView extends PureComponent {
+export default class EmailView extends Component {
   render() {
     return (
       <section className="email-view">

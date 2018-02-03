@@ -1,6 +1,6 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 
-export default class EmailForm extends PureComponent {
+export default class EmailForm extends Component {
   render() {
     return (
       <div className="email-form">

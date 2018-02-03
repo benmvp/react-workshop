@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import EmailList from './components/EmailList';
@@ -7,7 +7,7 @@ import EmailForm from './components/EmailForm';
 
 import './App.css';
 
-export default class App extends PureComponent {
+export default class App extends Component {
   static propTypes = {
     pollInterval: PropTypes.number
   }

@@ -85,7 +85,7 @@ import {getEmails} from './api';
 
 // helper components
 
-export default class App extends PureComponent {
+export default class App extends Component {
   // prop types & default props
 
   // initialize state
@@ -155,7 +155,7 @@ import {addEmail, getEmails} from './api';
 
 // helper components
 
-export default class App extends PureComponent {
+export default class App extends Component {
   // prop types & default props
 
   // initialize state

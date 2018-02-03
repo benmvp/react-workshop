@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 
 import EmailList from './components/EmailList';
 import EmailView from './components/EmailView';
@@ -44,7 +44,7 @@ const EMAILS = [
   },
 ];
 
-export default class App extends PureComponent {
+export default class App extends Component {
   state = {
     // Initialize emails state to the `EMAILS` constant
     emails: EMAILS,

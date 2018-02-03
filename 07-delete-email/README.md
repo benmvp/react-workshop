@@ -59,7 +59,7 @@ After the app is initially built, a new browser window should open up at [http:/
 In `EmailListItem`, add a "Delete" button that will call a (newly added) `onDelete` prop with the email ID when clicked:
 
 ```js
-export default class EmailListItem extends PureComponent {
+export default class EmailListItem extends Component {
   static propTypes = {
     email: EMAIL_PROP_TYPE.isRequired,
     onDelete: PropTypes.func.isRequired,
@@ -90,7 +90,7 @@ export default class EmailListItem extends PureComponent {
 In `EmailList`, add a new `onItemDelete` prop that is passed to each `<EmailListItem />`'s `onDelete` prop:
 
 ```js
-export default class EmailList extends PureComponent {
+export default class EmailList extends Component {
   static propTypes = {
     emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
     onItemDelete: PropTypes.func.isRequired,
@@ -121,7 +121,7 @@ export default class EmailList extends PureComponent {
 In the top-level `App`, add a `_handleItemDelete()` helper method that is passed as `onItemDelete` to `<EmailList />`. Initially have `_handleItemDelete()` log to the console the ID of the email to delete:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   // initialize state
 
   // other helper methods
@@ -162,7 +162,7 @@ export default class App extends PureComponent {
 At this point, you should be able to click a "Delete" button for one of the email items and see the ID logged to the console. What we need to do next is to actually remove the email from `this.state.emails` so that it no longer shows up in the list:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   // initialize state
 
   // other helper methods

@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {EMAIL_PROP_TYPE} from './constants';
@@ -25,7 +25,7 @@ const EmailViewButtonBar = ({
   );
 };
 
-export default class EmailView extends PureComponent {
+export default class EmailView extends Component {
   static propTypes = {
     email: EMAIL_PROP_TYPE.isRequired,
     onClose: PropTypes.func.isRequired,

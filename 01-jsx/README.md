@@ -13,7 +13,7 @@ If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you
 In [`src/App.js`](src/App.js), replace `null` with JSX markup. For example:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   render() {
     return (
       <div>Hello world!</div>
@@ -25,7 +25,7 @@ export default class App extends PureComponent {
 Add nested JSX markup. For example:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   render() {
     return (
       <div>
@@ -40,7 +40,7 @@ export default class App extends PureComponent {
 Add attributes to the nested JSX markup. For example:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   render() {
     return (
       <div>
@@ -58,7 +58,7 @@ export default class App extends PureComponent {
 Try adding classes to JSX markup, or a `<label>` to connect inputs:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   render() {
     return (
       <div>
@@ -81,7 +81,7 @@ Notice that instead of `class` it's `className` and `htmlFor` instead of just `f
 Add the skeleton markup to begin our email application:
 
 ```js
-export default class App extends PureComponent {
+export default class App extends Component {
   render() {
     return (
       <main className="app">
