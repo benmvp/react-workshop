@@ -7,8 +7,5 @@ node_js:
 # Cache dependencies in $HOME/.yarn-cache across builds
 cache: yarn
 
-# Go to the final step before install
-before_install: cd end
-
 # Run the dummy test
 script: yarn test

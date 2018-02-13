@@ -36,8 +36,8 @@ node_modules
 **/build/
 **/dist
 
-# Workshop folder
-workshop
+# Workshop directory
+src/workshop
 
 # Editor settings
-settings.json
+.vscode
