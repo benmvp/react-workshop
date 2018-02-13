@@ -6,11 +6,11 @@ Unlike browser DOM elements, React elements are plain objects, and are cheap to 
 
 > NOTE: One might confuse elements with a more widely known concept of "components". We will look at components in the [next section](../02-components/). Elements are what components are "made of."
 
-If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/App.js).
+If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
 ## Tasks
 
-In [`src/App.js`](src/App.js), replace `null` with JSX markup. For example:
+In [`App.js`](App.js), replace `null` with JSX markup. For example:
 
 ```js
 export default class App extends Component {

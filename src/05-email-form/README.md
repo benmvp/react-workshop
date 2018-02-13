@@ -2,11 +2,11 @@
 
 The goal of this step is learning how to deal with forms. HTML form elements work a little bit differently from other DOM elements in React, because form elements naturally keep some internal state. Regular HTML forms _do_ work in React, but in most cases, it's convenient to have React keep track of the data that the user has entered into a form. The standard way to achieve this is with a technique called ["controlled components"](https://facebook.github.io/react/docs/forms.html#controlled-components).
 
-As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](src/components/EmailForm.js).
+As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
 ## Restart Setup
 
-If you didn't successfully complete the previous step, you can jump right in by copying the step and installing the dependencies.
+If you didn't successfully complete the previous step, you can jump right in by copying the step.
 
 Ensure you're in the root folder of the repo:
 
@@ -17,29 +17,19 @@ cd react-workshop
 Remove the existing workshop directory if you had previously started elsewhere:
 
 ```sh
-rm -rf workshop
+rm -rf src/workshop
 ```
 
 Copy the previous step as a starting point:
 
 ```sh
-cp -r 04-email-view workshop
+cp -r src/04-email-view src/workshop
 ```
 
-Change into the `workshop` directory:
+Ensure [`src/index.js`](../index.js) is still pointing to the `workshop` App:
 
-```sh
-cd workshop
-```
-
-Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred):
-
-```sh
-# Yarn
-yarn
-
-# ...or NPM
-npm install
+```js
+import App from './workshop/App';
 ```
 
 Start the app:
