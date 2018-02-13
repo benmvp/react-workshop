@@ -1,23 +1,11 @@
 # Completed App
 
-Assuming you have a version of [node](https://nodejs.org/en/) installed, [install `nvm`](https://github.com/creationix/nvm#install-script) and then close & reopen your terminal.
+You need [node](https://nodejs.org/en/) version 6 or higher. You can [install `nvm`](https://github.com/creationix/nvm#install-script) to manage multiple versions of node.
 
-Install the latest stable version of node (you need Node >= 6):
-
-```sh
-nvm install node
-```
-
-[Fork the repo](https://github.com/benmvp/react-workshop/fork) and create a local clone (be sure to replace `<YOUR-USERNAME>` with your own):
+Clone the [`react-workshop`](https://github.com/benmvp/react-workshop) repo:
 
 ```sh
-git clone https://github.com/<YOUR-USERNAME>/react-workshop.git
-```
-
-Change to [`end/`](end/) directory:
-
-```sh
-cd react-workshop/end
+git clone https://github.com/benmvp/react-workshop.git
 ```
 
 Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred):
@@ -30,7 +18,13 @@ yarn
 npm install
 ```
 
-Start API server (running at [http://localhost:9090/](http://localhost:9090/)):
+Update [`src/index.js`](src/index.js) to point to the `end` App:
+
+```js
+import App from './end/App';
+```
+
+Start the API server (running at [http://localhost:9090/](http://localhost:9090/)):
 
 ```sh
 # Yarn
@@ -40,7 +34,7 @@ yarn run start:api
 npm run start:api
 ```
 
-In a **separate terminal window/tab**, making sure you're still in the [`end/`](end/) directory, start the app:
+In a **separate terminal window/tab**, making sure you're still in the repo root, start the app:
 
 ```sh
 # Yarn

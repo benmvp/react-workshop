@@ -1,4 +1,4 @@
-# Step 0 - Begin
+# Step 0 - Begin Workshop
 
 The goal of this step is just to get everything set up with a running (but blank) app. We will be working in a step-by-step fashion to build an email application. Visit the [final step](../end/) to install and run the finished app locally.
 
@@ -6,18 +6,10 @@ The goal of this step is just to get everything set up with a running (but blank
 
 You need [node](https://nodejs.org/en/) version 6 or higher. You can [install `nvm`](https://github.com/creationix/nvm#install-script) to manage multiple versions of node.
 
-[Fork the repo](https://github.com/benmvp/react-workshop/fork) and create a local clone (be sure to replace `<YOUR-USERNAME>` with your own):
+Clone the [`react-workshop`](https://github.com/benmvp/react-workshop) repo:
 
 ```sh
-git clone https://github.com/<YOUR-USERNAME>/react-workshop.git
-```
-
-Copy the [`00-begin`](./) directory, name it `workshop`, and change to it:
-
-```sh
-cd react-workshop
-cp -r 00-begin workshop
-cd workshop
+git clone https://github.com/benmvp/react-workshop.git
 ```
 
 Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred):
@@ -28,6 +20,19 @@ yarn
 
 # ...or NPM
 npm install
+```
+
+Copy the [`00-begin`](./) directory, name it `workshop`:
+
+```sh
+cd react-workshop
+cp -r src/00-begin src/workshop
+```
+
+Ensure [`src/index.js`](../index.js) is pointing to the `workshop` App:
+
+```js
+import App from './workshop/App';
 ```
 
 Start the app:
