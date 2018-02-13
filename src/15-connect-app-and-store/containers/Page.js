@@ -110,12 +110,10 @@ class Page extends Component {
 
   _handleItemSelect(selectedEmailId) {
     // update state (so that the EmailView will show)
-    this.setState({selectedEmailId});
-
-    if (this.state.selectedEmailId !== selectedEmailId) {
+    this.setState({selectedEmailId}, () => {
       // also mark the email as read
       this.props.markRead(selectedEmailId);
-    }
+    });
   }
 
   _handleEmailViewClose() {

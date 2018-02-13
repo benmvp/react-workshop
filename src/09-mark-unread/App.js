@@ -27,16 +27,6 @@ export default class App extends Component {
     selectedEmailId: -1
   }
 
-  componentDidUpdate() {
-    let {emails, selectedEmailId} = this.state;
-    let selectedEmail = emails.find(email => email.id === selectedEmailId);    
-
-    // mark the email as read if it is currently unread
-    if (selectedEmail && selectedEmail.unread) {
-      this._setUnread(selectedEmailId, false);
-    }
-  }
-
   componentDidMount() {
     // Retrieve emails from server once we know DOM exists
     this._getUpdateEmails();
@@ -64,7 +54,10 @@ export default class App extends Component {
 
   _handleItemSelect(selectedEmailId) {
     // update state (so that the EmailView will show)
-    this.setState({selectedEmailId});
+    this.setState({selectedEmailId}, () => {
+      // also mark the email as read
+      this._handleItemMarkRead(selectedEmailId);
+    });
   }
 
   _handleEmailViewClose() {

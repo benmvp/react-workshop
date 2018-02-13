@@ -74,17 +74,11 @@ export default class App extends Component {
     // Initialize selected email ID to -1, indicating nothing is selected.
     // When an email is selected in EmailList, this will be updated to
     // corresponding ID
-    selectedEmailId: -1
-  }
-
-  componentDidUpdate() {
-    let {emails, selectedEmailId} = this.state;
-    let selectedEmail = emails.find(email => email.id === selectedEmailId);    
-
-    // mark the email as read if it is currently unread
-    if (selectedEmail && selectedEmail.unread) {
-      this._setUnread(selectedEmailId, false);
-    }
+    selectedEmailId: -1,
+    // Initialize show form flag to false, indicating that it won't show.
+    // When the new email button is clicked, it'll be set to `true`. It'll
+    // be toggled false on form submission or cancel
+    showForm: false
   }
 
   componentDidMount() {
@@ -107,6 +101,14 @@ export default class App extends Component {
 
   _getUpdateEmails() {
     return getEmails().then(emails => this.setState({emails}));
+  }
+
+  _handleItemSelect(selectedEmailId) {
+    // update state (so that the EmailView will show)
+    this.setState({selectedEmailId}, () => {
+      // also mark the email as read
+      this._handleItemMarkRead(selectedEmailId);
+    });
   }
 
   _handleItemSelect(selectedEmailId) {

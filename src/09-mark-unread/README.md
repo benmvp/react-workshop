@@ -197,7 +197,7 @@ You should now be able to mark a selected email as unread in the email view. Aft
 
 - Add optimistic updating of `this.state.emails` state after an email is marked read/unread for immediate feedback
 - Add a "Mark Unread" button for each `EmailListItem` that **only** shows when an item is selected and read
-- When an `EmailListItem` is selected, it should also mark the email as read (HINT: use [`componentDidUpdate`](https://reactjs.org/docs/react-component.html#componentdidupdate) lifecycle method)
+- When an `EmailListItem` is selected, it should also mark the email as read (HINT: use callback of `setState`)
 
 ## Next
 
@@ -206,7 +206,7 @@ Go to [Step 10 - Styling](../10-styling/).
 ## Resources
 
 - [HTTP Methods](http://restfulapi.net/http-methods/)
-- [Lifecycle Methods](https://facebook.github.io/react/docs/react-component.html#the-component-lifecycle)
+- [`setState()`](https://reactjs.org/docs/react-component.html#setstate)
 
 ## Questions
 
