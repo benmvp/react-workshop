@@ -29,7 +29,7 @@ cd react-workshop
 cp -r src/00-begin src/workshop
 ```
 
-Ensure [`src/index.js`](../index.js) is pointing to the `workshop` App:
+Ensure [`src/index.js`](../index.js#L3) is pointing to the `workshop` App:
 
 ```js
 import App from './workshop/App';

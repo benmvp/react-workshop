@@ -18,7 +18,7 @@ yarn
 npm install
 ```
 
-Update [`src/index.js`](src/index.js) to point to the `end` App:
+Update [`src/index.js`](src/index.js#L3) to point to the `end` App:
 
 ```js
 import App from './end/App';

@@ -39,7 +39,7 @@ Copy the previous step as a starting point:
 cp -r src/14-reduxy-actions-reducers src/workshop
 ```
 
-Ensure [`src/index.js`](../index.js) is still pointing to the `workshop` App:
+Ensure [`src/index.js`](../index.js#L3) is still pointing to the `workshop` App:
 
 ```js
 import App from './workshop/App';
