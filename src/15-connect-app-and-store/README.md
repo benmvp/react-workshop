@@ -69,7 +69,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## Tasks
 
-Create a new folder [`src/containers/`](src/containers/) and within that folder add a new file [`Page.js`](src/containers/Page.js). Copy over the contents of `App.js` into the new file, and rename the class to `Page`. Also replace all instances of `app` in the markup's `className`'s with `page`:
+Create a new folder [`containers/`](containers/) and within that folder add a new file [`Page.js`](containers/Page.js). Copy over the contents of `App.js` into the new file, and rename the class to `Page`. Also replace all instances of `app` in the markup's `className`'s with `page`:
 
 ```js
 // imports
@@ -104,7 +104,7 @@ export default class Page extends Component {
 }
 ```
 
-We are going to do the same thing with our `App.css` as well. Create a file [`Page.css`](src/containers/Page.css) within `src/containers` and copy over the contents of `App.css` replacing all instances of `app` to `page`. Then feel free to delete `App.css`.
+We are going to do the same thing with our `App.css` as well. Create a file [`Page.css`](containers/Page.css) within `containers` and copy over the contents of `App.css` replacing all instances of `app` to `page`. Then feel free to delete `App.css`.
 
 Next we are going to do some ground work to set up the modified app structure. We want the `<Page />` to deal with:
 * the layout
@@ -131,7 +131,7 @@ Now that we have separated out `<App />` into two distinct components, set up `<
 
 Next, lets create our `store`.
 
-The only things we *need* when creating a store are: `createStore()` from `redux`, and our root reducer, which in this case is `emails` from [`reducers/index.js`]('.src/reducers/index.js'). Additionally, since we are using actions to make API calls which behave asynchronously, we also will need to import [`applyMiddleware()`](http://redux.js.org/docs/api/applyMiddleware.html) from `redux` and [`thunk`](https://github.com/gaearon/redux-thunk#whats-a-thunk) from `redux-thunk`.
+The only things we *need* when creating a store are: `createStore()` from `redux`, and our root reducer, which in this case is `emails` from [`reducers/index.js`]('reducers/index.js'). Additionally, since we are using actions to make API calls which behave asynchronously, we also will need to import [`applyMiddleware()`](http://redux.js.org/docs/api/applyMiddleware.html) from `redux` and [`thunk`](https://github.com/gaearon/redux-thunk#whats-a-thunk) from `redux-thunk`.
 
 First, import the necessary modules:
 
@@ -162,7 +162,7 @@ export default class App extends Component {
 }
 ```
 
-We have a `store`! Now, that we do, we can modify our `render()` function so it returns `<Provider />` as the top level component, with `<Page />` as its child. Because we are now treating `<App />` as the root of our application, `pollInterval` should be declared and passed into `<Page />` here, and removed from the instantiation in [`index.js`](/src/index.js).
+We have a `store`! Now, that we do, we can modify our `render()` function so it returns `<Provider />` as the top level component, with `<Page />` as its child. Because we are now treating `<App />` as the root of our application, `pollInterval` should be declared and passed into `<Page />` here, and removed from the instantiation in [`src/index.js`](../index.js).
 
 ```js
 // previously declared imports

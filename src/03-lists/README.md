@@ -48,7 +48,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 The way that you dynamically render multiple elements in React is by putting those elements in an array and rendering the array of components. This differs from traditional template languages where there is some looping construct (such as [`ng-repeat`](https://docs.angularjs.org/api/ng/directive/ngRepeat)) and you specify the loop item to display.
 
-In [`EmailList.js`](src/components/EmailList.js), pull out the raw data that makes up the three `EmailListItem` components into an `EMAILS` `const` array. Use [`Array.prototype.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) to convert the array of data into an array of components:
+In [`EmailList.js`](components/EmailList.js), pull out the raw data that makes up the three `EmailListItem` components into an `EMAILS` `const` array. Use [`Array.prototype.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) to convert the array of data into an array of components:
 
 ```js
 const EMAILS = [
@@ -142,7 +142,7 @@ export default class EmailList extends Component {
 }
 ```
 
-We're starting to make something that visually looks like a list of emails, but it currently isn't styled at all. The app already comes with component CSS files so we just need to associate them with their corresponding JS files so that the elements will be styled. Simply `import` the component CSS files in [`EmailList.js`](src/components/EmailList.js) and [`EmailListItem.js`](src/components/EmailListItem.js):
+We're starting to make something that visually looks like a list of emails, but it currently isn't styled at all. The app already comes with component CSS files so we just need to associate them with their corresponding JS files so that the elements will be styled. Simply `import` the component CSS files in [`EmailList.js`](components/EmailList.js) and [`EmailListItem.js`](components/EmailListItem.js):
 
 EmailList.js
 ```js
@@ -176,9 +176,9 @@ export default class EmailListItem extends Component {
 
 - Move the `EMAILS` out of `EmailList` into the top-level `App`
 - Pass `EMAILS` in `App` as the `emails` prop to `<EmailList>`
-- Declare a new `emails` prop type using `PropTypes.arrayOf()` in `EmailList` (you can share common prop types with `EmailListItem` in a [`components/constants.js`](src/components/constants.js) file)
+- Declare a new `emails` prop type using `PropTypes.arrayOf()` in `EmailList` (you can share common prop types with `EmailListItem` in a [`components/constants.js`](components/constants.js) file)
 - Use `this.props.emails` (instead of `EMAILS`) in the `map()` within `render()` of `EmailList`
-- Import component CSS for [`App.js`](src/App.js), [`EmailForm.js`](src/components/EmailForm.js) and [`EmailView.js`](src/components/EmailView.js)
+- Import component CSS for [`App.js`](App.js), [`EmailForm.js`](components/EmailForm.js) and [`EmailView.js`](components/EmailView.js)
 
 ## Next
 

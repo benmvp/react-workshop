@@ -175,7 +175,7 @@ Now clicking a "Delete" button for one of the emails items should immediately re
 ## Exercises
 
 - Using the [React Developer Tools](https://github.com/facebook/react-devtools#installation), watch how the deleted email item is optimally removed from the list (nothing else in the UI is updated thanks to the [_reconciler_](https://facebook.github.io/react/docs/reconciliation.html) (aka "Virtual DOM"))
-- Add a "Delete" button to [`EmailView`](src/components/EmailView.js) that hooks into `_handleItemDelete()` (`EmailView` will need to expose an `onDelete` callback prop too)
+- Add a "Delete" button to [`EmailView`](components/EmailView.js) that hooks into `_handleItemDelete()` (`EmailView` will need to expose an `onDelete` callback prop too)
 - Update `_handleItemDelete()` to reset `this.state.selectedEmailId` so that the email in the email view doesn't still show after being deleted
 
 ## Next

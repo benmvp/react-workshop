@@ -64,7 +64,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## Tasks
 
-Create two new folders and files [`actions/index.js`](src/actions/index.js) and [`reducers/index.js`](src/reducers/index.js). We want to separate the `markRead()` action-reducer into separate a separate action and reducer.
+Create two new folders and files [`actions/index.js`](actions/index.js) and [`reducers/index.js`](reducers/index.js). We want to separate the `markRead()` action-reducer into separate a separate action and reducer.
 
 First, pull over `markRead()` into `actions/index.js`. But since the helper it calls (`_setUnread()`) involves calling an API (an async action), we are going to need to `redux-thunk`-ify the action.
 

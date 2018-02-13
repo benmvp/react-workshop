@@ -48,7 +48,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## Tasks
 
-The [`App`](src/App.js) component has quite a bit of markup in it, even though it doesn't do much yet. Break up the large `App` component into smaller `EmailList`, `EmailView` & `EmailForm` components and reference them back in the `App` component:
+The [`App`](App.js) component has quite a bit of markup in it, even though it doesn't do much yet. Break up the large `App` component into smaller `EmailList`, `EmailView` & `EmailForm` components and reference them back in the `App` component:
 
 ```js
 class EmailList extends Component {
@@ -223,7 +223,7 @@ class EmailListItem extends Component {
 
 ## Exercises
 
-Move each component into its own file under a new [`src/components/`](src/components/) folder, `import`ing and `export`ing as necessary. For example in `EmailList`:
+Move each component into its own file under a new [`components/`](components/) folder, `import`ing and `export`ing as necessary. For example in `EmailList`:
 
 ```js
 import React, {Component} from 'react';

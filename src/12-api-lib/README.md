@@ -56,7 +56,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## Tasks
 
-In `App`, take the code making the `fetch` request in `_getUpdateEmails()` and move into a new [`src/api/index.js`](src/api/index.js) file. Put the code in a `export`ed function called `getEmails()`:
+In `App`, take the code making the `fetch` request in `_getUpdateEmails()` and move into a new [`api/index.js`](api/index.js) file. Put the code in a `export`ed function called `getEmails()`:
 
 ```js
 export const getEmails = () =>

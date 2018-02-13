@@ -60,7 +60,7 @@ Verify that you receive a JSON response from [http://localhost:9090/emails](http
 
 ## Tasks
 
-In the [`App`](src/App.js) component add the [`componentDidMount()`](https://facebook.github.io/react/docs/react-component.html#componentdidmount) lifecycle method and make a `GET` [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) request to [http://localhost:9090/emails](http://localhost:9090/emails):
+In the [`App`](App.js) component add the [`componentDidMount()`](https://facebook.github.io/react/docs/react-component.html#componentdidmount) lifecycle method and make a `GET` [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) request to [http://localhost:9090/emails](http://localhost:9090/emails):
 
 ```js
 export default class App extends Component {
@@ -205,7 +205,7 @@ You should now be able to fill out the email form, click "Send email", and withi
 ## Exercises
 
 - Update `_handleItemDelete()` to make an HTTP `DELETE` request to `//localhost:9090/emails/<EMAIL_ID>` to delete the unwanted email
-- Add `pollInterval` prop to [`App`](src/App.js) (with the appropriate prop type defined) that defaults to `2000` (using [`defaultProps`](https://facebook.github.io/react/docs/react-component.html#defaultprops)), but [`index.js`](src/index.js) overrides passing in `5000` to `<App />`
+- Add `pollInterval` prop to [`App`](App.js) (with the appropriate prop type defined) that defaults to `2000` (using [`defaultProps`](https://facebook.github.io/react/docs/react-component.html#defaultprops)), but [`index.js`](index.js) overrides passing in `5000` to `<App />`
 - After `POST`ing the new email in `_handleFormSubmit()`, "optimistically update" `this.state.emails` with the new email so that the new email shows up immediately in the email list before the long poll interval comes around (HINT: code should be _very_ similar to code prior to making API `POST`)
 - Similarly after `DELETE`ing the email in `_handleItemDelete()` "optimistically update" `this.state.emails` so that the deleted email is removed immediately removed from the list before the long poll interval comes around
 

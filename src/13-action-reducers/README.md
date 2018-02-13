@@ -58,7 +58,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## Tasks
 
-Take out the API call ("action") and the logic for updating `this.state.emails` ("reducer") in `_handleFormSubmit` of `App`. Create a new [`src/action-reducers/index.js`](src/action-reducers/index.js) and export an `addEmail()` function:
+Take out the API call ("action") and the logic for updating `this.state.emails` ("reducer") in `_handleFormSubmit` of `App`. Create a new [`action-reducers/index.js`](action-reducers/index.js) and export an `addEmail()` function:
 
 ```js
 import {
