@@ -218,7 +218,7 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={EMAILS}
-          onItemSelect={this._handleItemSelect.bind(this)}
+          onItemSelect={this._handleItemSelect}
         />
         <EmailView />
         <EmailForm />
@@ -280,7 +280,7 @@ export default class EmailListItem extends Component {
     let {email: {from, subject}} = this.props;
 
     return (
-      <div className="email-list-item" onClick={this._handleClick.bind(this)}>
+      <div className="email-list-item" onClick={this._handleClick}>
         <span>{from}</span>
         <span>{subject}</span>
       </div>
@@ -321,7 +321,7 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={EMAILS}
-          onItemSelect={this._handleItemSelect.bind(this)}
+          onItemSelect={this._handleItemSelect}
         />
         {emailViewComponent}
         <EmailForm />
@@ -397,7 +397,7 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={EMAILS}
-          onItemSelect={this._handleItemSelect.bind(this)}
+          onItemSelect={this._handleItemSelect}
         />
         {emailViewComponent}
         <EmailForm />

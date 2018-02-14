@@ -38,8 +38,8 @@ export default class EmailView extends Component {
           {date}
         </h3>
         <div dangerouslySetInnerHTML={rawMessage} />
-        <button onClick={this._handleDelete.bind(this)}>Delete</button>
-        <button onClick={this._handleClose.bind(this)}>Close</button>
+        <button onClick={this._handleDelete}>Delete</button>
+        <button onClick={this._handleClose}>Close</button>
       </section>
     );
   }

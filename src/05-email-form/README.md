@@ -102,7 +102,7 @@ export default class EmailForm extends Component {
             id="from"
             value={from}
             placeholder="jill@me.com"
-            onChange={this._handleFromChanged.bind(this)}
+            onChange={this._handleFromChanged}
           />
         </fieldset>
         <fieldset>
@@ -111,7 +111,7 @@ export default class EmailForm extends Component {
             id="message"
             value={message}
             placeholder="[Insert message here]"
-            onChange={this._handleMessageChanged.bind(this)}
+            onChange={this._handleMessageChanged}
           />
         </fieldset>
       </form>

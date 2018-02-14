@@ -181,7 +181,7 @@ export default class App extends Component {
       emailViewComponent = (
         <EmailView
           email={selectedEmail}
-          onClose={this._handleEmailViewClose.bind(this)}
+          onClose={this._handleEmailViewClose}
           onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
           onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
           onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
@@ -193,13 +193,13 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={emails}
-          onItemSelect={this._handleItemSelect.bind(this)}
-          onItemDelete={this._handleItemDelete.bind(this)}
-          onItemMarkUnread={this._handleItemMarkUnread.bind(this)}
+          onItemSelect={this._handleItemSelect}
+          onItemDelete={this._handleItemDelete}
+          onItemMarkUnread={this._handleItemMarkUnread}
           selectedEmailId={selectedEmailId}
         />
         {emailViewComponent}
-        <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />
+        <EmailForm onSubmit={this._handleFormSubmit} />
       </main>
     );
   }

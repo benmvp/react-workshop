@@ -67,10 +67,10 @@ export default class EmailListItem extends Component {
     let {email: {from, subject}} = this.props;
 
     return (
-      <div className="email-list-item" onClick={this._handleClick.bind(this)}>
+      <div className="email-list-item" onClick={this._handleClick}>
         <span>{from}</span>
         <span>{subject}</span>
-        <button onClick={this._handleDelete.bind(this)}>Delete</button>
+        <button onClick={this._handleDelete}>Delete</button>
       </div>
     );
   }
@@ -129,7 +129,7 @@ export default class App extends Component {
       emailViewComponent = (
         <EmailView
           email={selectedEmail}
-          onClose={this._handleEmailViewClose.bind(this)}
+          onClose={this._handleEmailViewClose}
         />
       );
     }
@@ -138,11 +138,11 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={emails}
-          onItemDelete={this._handleItemDelete.bind(this)}
-          onItemSelect={this._handleItemSelect.bind(this)}
+          onItemDelete={this._handleItemDelete}
+          onItemSelect={this._handleItemSelect}
         />
         {emailViewComponent}
-        <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />
+        <EmailForm onSubmit={this._handleFormSubmit} />
       </main>
     );
   }

@@ -78,10 +78,10 @@ export default class EmailView extends Component {
         <div dangerouslySetInnerHTML={rawMessage} />
         <EmailViewButtonBar
           unread={unread}
-          onClose={this._handleClose.bind(this)}
-          onDelete={this._handleDelete.bind(this)}
-          onMarkUnread={this._handleMarkUnread.bind(this)}
-          onMarkRead={this._handleMarkRead.bind(this)}
+          onClose={this._handleClose}
+          onDelete={this._handleDelete}
+          onMarkUnread={this._handleMarkUnread}
+          onMarkRead={this._handleMarkRead}
         />
       </section>
     );

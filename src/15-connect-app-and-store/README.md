@@ -92,7 +92,7 @@ export default class Page extends Component {
           { /* EmailViewWrapper */ }
           <button
             className="page__new-email"
-            onClick={this._handleShowForm.bind(this)}
+            onClick={this._handleShowForm}
           >
             +
           </button>

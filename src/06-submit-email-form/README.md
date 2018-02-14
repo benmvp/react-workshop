@@ -66,7 +66,7 @@ export default class EmailForm extends Component {
     let {from, to, subject, message} = this.state;
 
     return (
-      <form className="email-form" onSubmit={this._handleSubmit.bind(this)}>
+      <form className="email-form" onSubmit={this._handleSubmit}>
         {/* from, to, subject & message fields */}
 
         <footer>
@@ -168,7 +168,7 @@ export default class App extends Component {
       emailViewComponent = (
         <EmailView
           email={selectedEmail}
-          onClose={this._handleEmailViewClose.bind(this)}
+          onClose={this._handleEmailViewClose}
         />
       );
     }
@@ -177,10 +177,10 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={EMAILS}
-          onItemSelect={this._handleItemSelect.bind(this)}
+          onItemSelect={this._handleItemSelect}
         />
         {emailViewComponent}
-        <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />
+        <EmailForm onSubmit={this._handleFormSubmit} />
       </main>
     );
   }
@@ -241,7 +241,7 @@ export default class App extends Component {
       emailViewComponent = (
         <EmailView
           email={selectedEmail}
-          onClose={this._handleEmailViewClose.bind(this)}
+          onClose={this._handleEmailViewClose}
         />
       );
     }
@@ -250,10 +250,10 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={emails}
-          onItemSelect={this._handleItemSelect.bind(this)}
+          onItemSelect={this._handleItemSelect}
         />
         {emailViewComponent}
-        <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />
+        <EmailForm onSubmit={this._handleFormSubmit} />
       </main>
     );
   }

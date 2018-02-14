@@ -58,7 +58,7 @@ export default class EmailListItem extends Component {
     });
 
     return (
-      <div className={className} onClick={this._handleClick.bind(this)}>
+      <div className={className} onClick={this._handleClick}>
         <span className="email-list-item__from">
           {from}
         </span>
@@ -68,8 +68,8 @@ export default class EmailListItem extends Component {
         <EmailListItemStatus
           isSelected={isSelected}
           unread={unread}
-          onDelete={this._handleDelete.bind(this)}
-          onMarkUnread={this._handleMarkUnread.bind(this)}
+          onDelete={this._handleDelete}
+          onMarkUnread={this._handleMarkUnread}
         />
       </div>
     );

@@ -158,29 +158,29 @@ class Page extends Component {
           <div className="page__list">
             <EmailList
               emails={emails}
-              onItemSelect={this._handleItemSelect.bind(this)}
-              onItemDelete={this._handleItemDelete.bind(this)}
+              onItemSelect={this._handleItemSelect}
+              onItemDelete={this._handleItemDelete}
               onItemMarkUnread={markUnread}
               selectedEmailId={selectedEmailId}
             />
           </div>
           <EmailViewWrapper
             selectedEmail={selectedEmail}
-            onClose={this._handleEmailViewClose.bind(this)}
+            onClose={this._handleEmailViewClose}
             onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
-            onMarkUnread={markUnread.bind(null, selectedEmailId)}
-            onMarkRead={markRead.bind(null, selectedEmailId)}
+            onMarkUnread={markUnread.bind(this, selectedEmailId)}
+            onMarkRead={markRead.bind(this, selectedEmailId)}
           />
           <button
             className="page__new-email"
-            onClick={this._handleShowForm.bind(this)}
+            onClick={this._handleShowForm}
           >
             +
           </button>
           <EmailFormWrapper
             showForm={showForm}
-            onSubmit={this._handleFormSubmit.bind(this)}
-            onCancel={this._handleHideForm.bind(this)}
+            onSubmit={this._handleFormSubmit}
+            onCancel={this._handleHideForm}
           />
         </div>
       </main>

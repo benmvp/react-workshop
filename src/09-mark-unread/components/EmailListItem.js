@@ -40,12 +40,12 @@ export default class EmailListItem extends Component {
 
     if (isSelected && !unread) {
       markUnreadButton = (
-        <button onClick={this._handleMarkUnread.bind(this)}>Mark unread</button>
+        <button onClick={this._handleMarkUnread}>Mark unread</button>
       );
     }
 
     return (
-      <div className="email-list-item" onClick={this._handleClick.bind(this)}>
+      <div className="email-list-item" onClick={this._handleClick}>
         <span>
           {from}
         </span>
@@ -53,7 +53,7 @@ export default class EmailListItem extends Component {
           {subject}
         </span>
         {markUnreadButton}
-        <button onClick={this._handleDelete.bind(this)}>Delete</button>
+        <button onClick={this._handleDelete}>Delete</button>
       </div>
     );
   }

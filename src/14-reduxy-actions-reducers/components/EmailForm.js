@@ -58,14 +58,14 @@ export default class EmailForm extends Component {
 
     if (onCancel) {
       cancelButton = (
-        <button type="button" onClick={this._handleCancel.bind(this)}>
+        <button type="button" onClick={this._handleCancel}>
           Cancel
         </button>
       );
     }
 
     return (
-      <form className="email-form" onSubmit={this._handleSubmit.bind(this)}>
+      <form className="email-form" onSubmit={this._handleSubmit}>
         <fieldset className="email-form__field">
           <label className="email-form__label" htmlFor="from">
             From:

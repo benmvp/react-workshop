@@ -95,30 +95,27 @@ export default class App extends Component {
           <div className="app__list">
             <EmailList
               emails={emails}
-              onItemSelect={this._handleItemSelect.bind(this)}
-              onItemDelete={this._handleItemDelete.bind(this)}
-              onItemMarkUnread={this._handleItemMarkUnread.bind(this)}
+              onItemSelect={this._handleItemSelect}
+              onItemDelete={this._handleItemDelete}
+              onItemMarkUnread={this._handleItemMarkUnread}
               selectedEmailId={selectedEmailId}
             />
           </div>
           <EmailViewWrapper
             selectedEmail={selectedEmail}
-            onClose={this._handleEmailViewClose.bind(this)}
+            onClose={this._handleEmailViewClose}
             onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
-            onMarkUnread={this._handleItemMarkUnread.bind(
-              this,
-              selectedEmailId
-            )}
+            onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
             onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
           />
           <button 
             className="app__new-email"
-            onClick={this._handleShowForm.bind(this)}
+            onClick={this._handleShowForm}
           >
             +
           </button>
           <div className="app__form">
-            <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />
+            <EmailForm onSubmit={this._handleFormSubmit} />
           </div>
         </div>
       </main>
@@ -167,31 +164,28 @@ export default class App extends Component {
           <div className="app__list">
             <EmailList
               emails={emails}
-              onItemSelect={this._handleItemSelect.bind(this)}
-              onItemDelete={this._handleItemDelete.bind(this)}
-              onItemMarkUnread={this._handleItemMarkUnread.bind(this)}
+              onItemSelect={this._handleItemSelect}
+              onItemDelete={this._handleItemDelete}
+              onItemMarkUnread={this._handleItemMarkUnread}
               selectedEmailId={selectedEmailId}
             />
           </div>
           <EmailViewWrapper
             selectedEmail={selectedEmail}
-            onClose={this._handleEmailViewClose.bind(this)}
+            onClose={this._handleEmailViewClose}
             onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
-            onMarkUnread={this._handleItemMarkUnread.bind(
-              this,
-              selectedEmailId
-            )}
+            onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
             onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
           />
           <button 
             className="app__new-email"
-            onClick={this._handleShowForm.bind(this)}
+            onClick={this._handleShowForm}
           >
             +
           </button>
           <EmailFormWrapper
             showForm={showForm}
-            onSubmit={this._handleFormSubmit.bind(this)}
+            onSubmit={this._handleFormSubmit}
           />
         </div>
       </main>

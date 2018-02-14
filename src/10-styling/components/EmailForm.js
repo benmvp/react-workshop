@@ -47,7 +47,7 @@ export default class EmailForm extends Component {
     let {from, to, subject, message} = this.state;
 
     return (
-      <form className="email-form" onSubmit={this._handleSubmit.bind(this)}>
+      <form className="email-form" onSubmit={this._handleSubmit}>
         <fieldset className="email-form__field">
           <label className="email-form__label" htmlFor="from">
             From:

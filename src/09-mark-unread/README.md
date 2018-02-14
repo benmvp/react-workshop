@@ -90,8 +90,8 @@ export default class EmailView extends Component {
     let {email: {subject, from, date, message, unread}} = this.props;
     let rawMessage = {__html: message};
     let markUnreadReadButton = unread
-      ? (<button onClick={this._handleMarkRead.bind(this)}>Mark Read</button>)
-      : (<button onClick={this._handleMarkUnread.bind(this)}>Mark Unread</button>);
+      ? (<button onClick={this._handleMarkRead}>Mark Read</button>)
+      : (<button onClick={this._handleMarkUnread}>Mark Unread</button>);
 
     return (
       <section className="email-view">
@@ -100,8 +100,8 @@ export default class EmailView extends Component {
         <h3>{date}</h3>
         <div dangerouslySetInnerHTML={rawMessage} />
         {markUnreadReadButton}
-        <button onClick={this._handleDelete.bind(this)}>Delete</button>
-        <button onClick={this._handleClose.bind(this)}>Close</button>
+        <button onClick={this._handleDelete}>Delete</button>
+        <button onClick={this._handleClose}>Close</button>
       </section>
     );
   }
@@ -158,7 +158,7 @@ export default class App extends Component {
       emailViewComponent = (
         <EmailView
           email={selectedEmail}
-          onClose={this._handleEmailViewClose.bind(this)}
+          onClose={this._handleEmailViewClose}
           onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
           onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
           onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
@@ -170,11 +170,11 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={emails}
-          onItemDelete={this._handleItemDelete.bind(this)}
-          onItemSelect={this._handleItemSelect.bind(this)}
+          onItemDelete={this._handleItemDelete}
+          onItemSelect={this._handleItemSelect}
         />
         {emailViewComponent}
-        <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />
+        <EmailForm onSubmit={this._handleFormSubmit} />
       </main>
     );
   }

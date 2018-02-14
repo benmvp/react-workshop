@@ -71,7 +71,7 @@ export default class App extends Component {
       emailViewComponent = (
         <EmailView
           email={selectedEmail}
-          onClose={this._handleEmailViewClose.bind(this)}
+          onClose={this._handleEmailViewClose}
         />
       );
     }
@@ -80,7 +80,7 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={EMAILS}
-          onItemSelect={this._handleItemSelect.bind(this)}
+          onItemSelect={this._handleItemSelect}
         />
         {emailViewComponent}
         <EmailForm />
