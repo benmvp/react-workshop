@@ -144,7 +144,7 @@ export default class App extends Component {
     clearInterval(this._pollId);
   }
 
-  _getUpdateEmails() {
+  _getUpdateEmails = () => {
     return fetch('//localhost:9090/emails')
       .then(res => res.json())
       .then(emails => this.setState({emails}))
@@ -177,7 +177,7 @@ export default class App extends Component {
 
   // other helper methods
 
-  _handleFormSubmit(newEmail) {
+  _handleFormSubmit = (newEmail) => {
     // Make a JSON POST with the new email
     fetch('//localhost:9090/emails', {
       method: 'POST',

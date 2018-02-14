@@ -15,11 +15,11 @@ export default class EmailForm extends Component {
 
   state = DEFAULT_FORM_VALUES;
 
-  _updateFormFieldState(name, e) {
+  _updateFormFieldState = (name, e) => {
     this.setState({[name]: e.target.value});
   }
 
-  _handleSubmit(e) {
+  _handleSubmit = (e) => {
     e.preventDefault();
 
     let {from, to, subject, message} = this.state;
@@ -45,7 +45,7 @@ export default class EmailForm extends Component {
     let {from, to, subject, message} = this.state;
 
     return (
-      <form className="email-form" onSubmit={this._handleSubmit.bind(this)}>
+      <form className="email-form" onSubmit={this._handleSubmit}>
         <fieldset>
           <label htmlFor="from">From:</label>
           <input

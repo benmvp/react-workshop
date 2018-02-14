@@ -34,17 +34,17 @@ export default class EmailView extends Component {
     onMarkRead: PropTypes.func
   };
 
-  _handleClose(e) {
+  _handleClose = (e) => {
     e.stopPropagation();
     this.props.onClose();
   }
 
-  _handleDelete(e) {
+  _handleDelete = (e) => {
     e.stopPropagation();
     this.props.onDelete();
   }
 
-  _handleMarkUnread(e) {
+  _handleMarkUnread = (e) => {
     e.stopPropagation();
 
     if (this.props.onMarkUnread) {
@@ -52,7 +52,7 @@ export default class EmailView extends Component {
     }
   }
 
-  _handleMarkRead(e) {
+  _handleMarkRead = (e) => {
     e.stopPropagation();
 
     if (this.props.onMarkRead) {
@@ -78,10 +78,10 @@ export default class EmailView extends Component {
         <div dangerouslySetInnerHTML={rawMessage} />
         <EmailViewButtonBar
           unread={unread}
-          onClose={this._handleClose.bind(this)}
-          onDelete={this._handleDelete.bind(this)}
-          onMarkUnread={this._handleMarkUnread.bind(this)}
-          onMarkRead={this._handleMarkRead.bind(this)}
+          onClose={this._handleClose}
+          onDelete={this._handleDelete}
+          onMarkUnread={this._handleMarkUnread}
+          onMarkRead={this._handleMarkRead}
         />
       </section>
     );

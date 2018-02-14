@@ -31,7 +31,7 @@ export default class EmailListItem extends Component {
     isSelected: PropTypes.bool
   };
 
-  _handleClick(e) {
+  _handleClick = (e) => {
     let {email, onSelect} = this.props;
 
     if (onSelect) {
@@ -40,12 +40,12 @@ export default class EmailListItem extends Component {
     }
   }
 
-  _handleDelete(e) {
+  _handleDelete = (e) => {
     e.stopPropagation();
     this.props.onDelete(this.props.email.id);
   }
 
-  _handleMarkUnread(e) {
+  _handleMarkUnread = (e) => {
     e.stopPropagation();
     this.props.onMarkUnread(this.props.email.id);
   }
@@ -58,7 +58,7 @@ export default class EmailListItem extends Component {
     });
 
     return (
-      <div className={className} onClick={this._handleClick.bind(this)}>
+      <div className={className} onClick={this._handleClick}>
         <span className="email-list-item__from">
           {from}
         </span>
@@ -68,8 +68,8 @@ export default class EmailListItem extends Component {
         <EmailListItemStatus
           isSelected={isSelected}
           unread={unread}
-          onDelete={this._handleDelete.bind(this)}
-          onMarkUnread={this._handleMarkUnread.bind(this)}
+          onDelete={this._handleDelete}
+          onMarkUnread={this._handleMarkUnread}
         />
       </div>
     );

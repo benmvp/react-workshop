@@ -12,12 +12,12 @@ export default class EmailView extends Component {
     onDelete: PropTypes.func.isRequired
   };
 
-  _handleClose(e) {
+  _handleClose = (e) => {
     e.stopPropagation();
     this.props.onClose();
   }
 
-  _handleDelete(e) {
+  _handleDelete = (e) => {
     e.stopPropagation();
     this.props.onDelete();
   }
@@ -38,8 +38,8 @@ export default class EmailView extends Component {
           {date}
         </h3>
         <div dangerouslySetInnerHTML={rawMessage} />
-        <button onClick={this._handleDelete.bind(this)}>Delete</button>
-        <button onClick={this._handleClose.bind(this)}>Close</button>
+        <button onClick={this._handleDelete}>Delete</button>
+        <button onClick={this._handleClose}>Close</button>
       </section>
     );
   }

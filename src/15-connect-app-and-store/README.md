@@ -92,7 +92,7 @@ export default class Page extends Component {
           { /* EmailViewWrapper */ }
           <button
             className="page__new-email"
-            onClick={this._handleShowForm.bind(this)}
+            onClick={this._handleShowForm}
           >
             +
           </button>
@@ -381,7 +381,7 @@ class Page extends Component {
 
   // lifecycle methods
 
-  _handleItemDelete(emailId) {
+  _handleItemDelete = (emailId) => {
     this.props.deleteEmail(emailId)
     // Also reset `selectedEmailId` since we're deleting it
     this.setState({selectedEmailId: -1});

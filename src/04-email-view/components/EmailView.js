@@ -11,7 +11,7 @@ export default class EmailView extends Component {
     onClose: PropTypes.func.isRequired
   };
 
-  _handleClose(e) {
+  _handleClose = (e) => {
     e.stopPropagation();
     this.props.onClose();
   }
@@ -32,7 +32,7 @@ export default class EmailView extends Component {
           {date}
         </h3>
         <div dangerouslySetInnerHTML={rawMessage} />
-        <button onClick={this._handleClose.bind(this)}>Close</button>
+        <button onClick={this._handleClose}>Close</button>
       </section>
     );
   }

@@ -104,11 +104,11 @@ class Page extends Component {
     clearInterval(this._pollId);
   }
 
-  _getUpdateEmails() {
+  _getUpdateEmails = () => {
     this.props.getEmails();
   }
 
-  _handleItemSelect(selectedEmailId) {
+  _handleItemSelect = (selectedEmailId) => {
     // update state (so that the EmailView will show)
     this.setState({selectedEmailId}, () => {
       // also mark the email as read
@@ -116,12 +116,12 @@ class Page extends Component {
     });
   }
 
-  _handleEmailViewClose() {
+  _handleEmailViewClose = () => {
     // We close the email view by resetting the selected email
     this.setState({selectedEmailId: -1});
   }
 
-  _handleFormSubmit(newEmail) {
+  _handleFormSubmit = (newEmail) => {
     this.props.addEmail(newEmail);
     //the optimistic update is now happening
     //automatically thanks to attaching our state
@@ -129,18 +129,18 @@ class Page extends Component {
     this.setState({showForm: false});
   }
 
-  _handleItemDelete(emailId) {
+  _handleItemDelete = (emailId) => {
     this.props.deleteEmail(emailId);
     //reset `selectedEmailId` since we're deleting it
     this.setState({selectedEmailId: -1});
   }
 
-  _handleShowForm() {
+  _handleShowForm = () => {
     // Show email form overlay by setting state to true
     this.setState({showForm: true});
   }
 
-  _handleHideForm() {
+  _handleHideForm = () => {
     // Hide email form overlay by setting state to false
     this.setState({showForm: false});
   }
@@ -156,29 +156,29 @@ class Page extends Component {
           <div className="page__list">
             <EmailList
               emails={emails}
-              onItemSelect={this._handleItemSelect.bind(this)}
-              onItemDelete={this._handleItemDelete.bind(this)}
+              onItemSelect={this._handleItemSelect}
+              onItemDelete={this._handleItemDelete}
               onItemMarkUnread={markUnread}
               selectedEmailId={selectedEmailId}
             />
           </div>
           <EmailViewWrapper
             selectedEmail={selectedEmail}
-            onClose={this._handleEmailViewClose.bind(this)}
+            onClose={this._handleEmailViewClose}
             onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
-            onMarkUnread={markUnread.bind(null, selectedEmailId)}
-            onMarkRead={markRead.bind(null, selectedEmailId)}
+            onMarkUnread={markUnread.bind(this, selectedEmailId)}
+            onMarkRead={markRead.bind(this, selectedEmailId)}
           />
           <button
             className="page__new-email"
-            onClick={this._handleShowForm.bind(this)}
+            onClick={this._handleShowForm}
           >
             +
           </button>
           <EmailFormWrapper
             showForm={showForm}
-            onSubmit={this._handleFormSubmit.bind(this)}
-            onCancel={this._handleHideForm.bind(this)}
+            onSubmit={this._handleFormSubmit}
+            onCancel={this._handleHideForm}
           />
         </div>
       </main>

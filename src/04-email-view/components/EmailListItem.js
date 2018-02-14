@@ -11,7 +11,7 @@ export default class EmailListItem extends Component {
     onSelect: PropTypes.func
   };
 
-  _handleClick(e) {
+  _handleClick = (e) => {
     let {email, onSelect} = this.props;
 
     if (onSelect) {
@@ -24,7 +24,7 @@ export default class EmailListItem extends Component {
     let {email: {from, subject}} = this.props;
 
     return (
-      <div className="email-list-item" onClick={this._handleClick.bind(this)}>
+      <div className="email-list-item" onClick={this._handleClick}>
         <span>
           {from}
         </span>

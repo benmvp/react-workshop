@@ -99,7 +99,7 @@ export default class App extends Component {
 
   // lifecycle methods
 
-_handleFormSubmit(newEmail) {
+_handleFormSubmit = (newEmail) => {
     addEmail(this.state.emails, newEmail)
       // if the email was successfully updated, we have to make
       // a request to get the new list of emails, but we'll have

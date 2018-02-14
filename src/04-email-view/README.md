@@ -208,7 +208,7 @@ Let's pretend that `EmailList` has already been fully implemented. We'd want it 
 
 ```js
 export default class App extends Component {
-  _handleItemSelect(selectedEmailId) {
+  _handleItemSelect = (selectedEmailId) => {
     // logging the clicked email item ID
     console.log(selectedEmailId);
   }
@@ -218,7 +218,7 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={EMAILS}
-          onItemSelect={this._handleItemSelect.bind(this)}
+          onItemSelect={this._handleItemSelect}
         />
         <EmailView />
         <EmailForm />
@@ -267,7 +267,7 @@ export default class EmailListItem extends Component {
     onSelect: PropTypes.func
   }
 
-  _handleClick(e) {
+  _handleClick = (e) => {
     let {email, onSelect} = this.props;
 
     if (onSelect) {
@@ -280,7 +280,7 @@ export default class EmailListItem extends Component {
     let {email: {from, subject}} = this.props;
 
     return (
-      <div className="email-list-item" onClick={this._handleClick.bind(this)}>
+      <div className="email-list-item" onClick={this._handleClick}>
         <span>{from}</span>
         <span>{subject}</span>
       </div>
@@ -301,7 +301,7 @@ export default class App extends Component {
     selectedEmailId: 4
   }
 
-  _handleItemSelect(selectedEmailId) {
+  _handleItemSelect = (selectedEmailId) => {
     // update state (so that the EmailView will show)
     this.setState({selectedEmailId});
   }
@@ -321,7 +321,7 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={EMAILS}
-          onItemSelect={this._handleItemSelect.bind(this)}
+          onItemSelect={this._handleItemSelect}
         />
         {emailViewComponent}
         <EmailForm />
@@ -397,7 +397,7 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={EMAILS}
-          onItemSelect={this._handleItemSelect.bind(this)}
+          onItemSelect={this._handleItemSelect}
         />
         {emailViewComponent}
         <EmailForm />

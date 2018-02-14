@@ -52,12 +52,12 @@ export default class App extends Component {
     selectedEmailId: -1
   }
 
-  _handleItemSelect(selectedEmailId) {
+  _handleItemSelect = (selectedEmailId) => {
     // update state (so that the EmailView will show)
     this.setState({selectedEmailId});
   }
 
-  _handleEmailViewClose() {
+  _handleEmailViewClose = () => {
     // We close the email view by resetting the selected email
     this.setState({selectedEmailId: -1});
   }
@@ -71,7 +71,7 @@ export default class App extends Component {
       emailViewComponent = (
         <EmailView
           email={selectedEmail}
-          onClose={this._handleEmailViewClose.bind(this)}
+          onClose={this._handleEmailViewClose}
         />
       );
     }
@@ -80,7 +80,7 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={EMAILS}
-          onItemSelect={this._handleItemSelect.bind(this)}
+          onItemSelect={this._handleItemSelect}
         />
         {emailViewComponent}
         <EmailForm />

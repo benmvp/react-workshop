@@ -54,17 +54,17 @@ export default class App extends Component {
     selectedEmailId: -1
   }
 
-  _handleItemSelect(selectedEmailId) {
+  _handleItemSelect = (selectedEmailId) => {
     // update state (so that the EmailView will show)
     this.setState({selectedEmailId});
   }
 
-  _handleEmailViewClose() {
+  _handleEmailViewClose = () => {
     // We close the email view by resetting the selected email
     this.setState({selectedEmailId: -1});
   }
 
-  _handleFormSubmit(newEmail) {
+  _handleFormSubmit = (newEmail) => {
     this.setState(({emails}) => {
       // Create a full email info by spreading in `id` & `date`
       // Then spread to front of emails state (since it's the newest)
@@ -82,7 +82,7 @@ export default class App extends Component {
     });
   }
 
-  _handleItemDelete(emailId) {
+  _handleItemDelete = (emailId) => {
     this.setState(({emails}) => ({
       // "delete" the email by returning a filtered list that doesn't include it
       emails: emails.filter(email => email.id !== emailId),
@@ -101,7 +101,7 @@ export default class App extends Component {
       emailViewComponent = (
         <EmailView
           email={selectedEmail}
-          onClose={this._handleEmailViewClose.bind(this)}
+          onClose={this._handleEmailViewClose}
           onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
         />
       );
@@ -111,11 +111,11 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={emails}
-          onItemDelete={this._handleItemDelete.bind(this)}
-          onItemSelect={this._handleItemSelect.bind(this)}
+          onItemDelete={this._handleItemDelete}
+          onItemSelect={this._handleItemSelect}
         />
         {emailViewComponent}
-        <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />
+        <EmailForm onSubmit={this._handleFormSubmit} />
       </main>
     );
   }

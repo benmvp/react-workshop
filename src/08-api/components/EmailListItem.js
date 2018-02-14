@@ -12,7 +12,7 @@ export default class EmailListItem extends Component {
     onSelect: PropTypes.func
   };
 
-  _handleClick(e) {
+  _handleClick = (e) => {
     let {email, onSelect} = this.props;
 
     if (onSelect) {
@@ -21,7 +21,7 @@ export default class EmailListItem extends Component {
     }
   }
 
-  _handleDelete(e) {
+  _handleDelete = (e) => {
     e.stopPropagation();
     this.props.onDelete(this.props.email.id);
   }
@@ -30,14 +30,14 @@ export default class EmailListItem extends Component {
     let {email: {from, subject}} = this.props;
 
     return (
-      <div className="email-list-item" onClick={this._handleClick.bind(this)}>
+      <div className="email-list-item" onClick={this._handleClick}>
         <span>
           {from}
         </span>
         <span>
           {subject}
         </span>
-        <button onClick={this._handleDelete.bind(this)}>Delete</button>
+        <button onClick={this._handleDelete}>Delete</button>
       </div>
     );
   }

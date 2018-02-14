@@ -45,24 +45,24 @@ export default class App extends Component {
     clearInterval(this._pollId);
   }
 
-  _getUpdateEmails() {
+  _getUpdateEmails = () => {
     return fetch('//localhost:9090/emails')
       .then(res => res.json())
       .then(emails => this.setState({emails}))
       .catch(ex => console.error(ex));
   }
 
-  _handleItemSelect(selectedEmailId) {
+  _handleItemSelect = (selectedEmailId) => {
     // update state (so that the EmailView will show)
     this.setState({selectedEmailId});
   }
 
-  _handleEmailViewClose() {
+  _handleEmailViewClose = () => {
     // We close the email view by resetting the selected email
     this.setState({selectedEmailId: -1});
   }
 
-  _handleFormSubmit(newEmail) {
+  _handleFormSubmit = (newEmail) => {
     // Make a JSON POST with the new email
     fetch('//localhost:9090/emails', {
       method: 'POST',
@@ -105,7 +105,7 @@ export default class App extends Component {
       .catch(ex => console.error(ex));
   }
 
-  _handleItemDelete(emailId) {
+  _handleItemDelete = (emailId) => {
     // Make a DELETE request
     fetch(`//localhost:9090/emails/${emailId}`, {
       method: 'DELETE'
@@ -137,7 +137,7 @@ export default class App extends Component {
       emailViewComponent = (
         <EmailView
           email={selectedEmail}
-          onClose={this._handleEmailViewClose.bind(this)}
+          onClose={this._handleEmailViewClose}
           onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
         />
       );
@@ -147,12 +147,12 @@ export default class App extends Component {
       <main className="app">
         <EmailList
           emails={emails}
-          onItemSelect={this._handleItemSelect.bind(this)}
-          onItemDelete={this._handleItemDelete.bind(this)}
+          onItemSelect={this._handleItemSelect}
+          onItemDelete={this._handleItemDelete}
           selectedEmailId={selectedEmailId}
         />
         {emailViewComponent}
-        <EmailForm onSubmit={this._handleFormSubmit.bind(this)} />
+        <EmailForm onSubmit={this._handleFormSubmit} />
       </main>
     );
   }
