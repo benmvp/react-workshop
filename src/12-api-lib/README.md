@@ -82,7 +82,7 @@ export default class App extends Component {
 
   // lifecycle methods
 
-  _getUpdateEmails() {
+  _getUpdateEmails = () => {
     return getEmails()
       .then(emails => this.setState({emails}));
   }
@@ -152,7 +152,7 @@ export default class App extends Component {
 
   // lifecycle methods
 
-  _handleFormSubmit(newEmail) {
+  _handleFormSubmit = (newEmail) => {
     // Make a JSON POST with the new email
     addEmail(newEmail).then(({success}) => {
       if (success) {

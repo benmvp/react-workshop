@@ -11,7 +11,7 @@ export default class EmailView extends Component {
     onClose: PropTypes.func.isRequired
   };
 
-  _handleClose(e) {
+  _handleClose = (e) => {
     e.stopPropagation();
     this.props.onClose();
   }

@@ -99,11 +99,11 @@ export default class App extends Component {
     clearInterval(this._pollId);
   }
 
-  _getUpdateEmails() {
+  _getUpdateEmails = () => {
     return getEmails().then(emails => this.setState({emails}));
   }
 
-  _handleItemSelect(selectedEmailId) {
+  _handleItemSelect = (selectedEmailId) => {
     // update state (so that the EmailView will show)
     this.setState({selectedEmailId}, () => {
       // also mark the email as read
@@ -111,17 +111,17 @@ export default class App extends Component {
     });
   }
 
-  _handleItemSelect(selectedEmailId) {
+  _handleItemSelect = (selectedEmailId) => {
     // update state (so that the EmailView will show)
     this.setState({selectedEmailId});
   }
 
-  _handleEmailViewClose() {
+  _handleEmailViewClose = () => {
     // We close the email view by resetting the selected email
     this.setState({selectedEmailId: -1});
   }
 
-  _handleFormSubmit(newEmail) {
+  _handleFormSubmit = (newEmail) => {
     addEmail(this.state.emails, newEmail)
       // if the email was successfully updated, we have to make
       // a request to get the new list of emails, but we'll have
@@ -132,31 +132,31 @@ export default class App extends Component {
       .then(emails => this.setState({emails, showForm: false}));
   }
 
-  _handleItemDelete(emailId) {
+  _handleItemDelete = (emailId) => {
     deleteEmail(this.state.emails, emailId)
       // optimistic updating (see _handleFormSubmit for more info)
       // Also reset `selectedEmailId` since we're deleting it
       .then(emails => this.setState({emails, selectedEmailId: -1}));
   }
 
-  _handleItemMarkUnread(emailId) {
+  _handleItemMarkUnread = (emailId) => {
     markUnread(this.state.emails, emailId)
       // optimistic updating (see _handleFormSubmit for more info)
       .then(emails => this.setState({emails}));
   }
 
-  _handleItemMarkRead(emailId) {
+  _handleItemMarkRead = (emailId) => {
     markRead(this.state.emails, emailId)
       // optimistic updating (see _handleFormSubmit for more info)
       .then(emails => this.setState({emails}));
   }
 
-  _handleShowForm() {
+  _handleShowForm = () => {
     // Show email form overlay by setting state to true
     this.setState({showForm: true});
   }
 
-  _handleHideForm() {
+  _handleHideForm = () => {
     // Hide email form overlay by setting state to false
     this.setState({showForm: false});
   }

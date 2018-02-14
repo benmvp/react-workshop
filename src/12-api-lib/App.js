@@ -93,11 +93,11 @@ export default class App extends Component {
     clearInterval(this._pollId);
   }
 
-  _getUpdateEmails() {
+  _getUpdateEmails = () => {
     return getEmails().then(emails => this.setState({emails}));
   }
 
-  _handleItemSelect(selectedEmailId) {
+  _handleItemSelect = (selectedEmailId) => {
     // update state (so that the EmailView will show)
     this.setState({selectedEmailId}, () => {
       // also mark the email as read
@@ -105,12 +105,12 @@ export default class App extends Component {
     });
   }
 
-  _handleEmailViewClose() {
+  _handleEmailViewClose = () => {
     // We close the email view by resetting the selected email
     this.setState({selectedEmailId: -1});
   }
 
-  _handleFormSubmit(newEmail) {
+  _handleFormSubmit = (newEmail) => {
     addEmail(newEmail).then(({success}) => {
       if (success) {
         this.setState(({emails}) => {
@@ -145,7 +145,7 @@ export default class App extends Component {
     });
   }
 
-  _handleItemDelete(emailId) {
+  _handleItemDelete = (emailId) => {
     deleteEmail(emailId)
       // optimistic updating (see _handleFormSubmit for more info)
       .then(({success}) => {
@@ -163,7 +163,7 @@ export default class App extends Component {
       });
   }
 
-  _setUnread(emailId, unread = true) {
+  _setUnread = (emailId, unread = true) => {
     setUnread(emailId, unread)
       // optimistic updating (see _handleFormSubmit for more info)
       .then(({success}) => {
@@ -186,20 +186,20 @@ export default class App extends Component {
       });
   }
 
-  _handleItemMarkUnread(emailId) {
+  _handleItemMarkUnread = (emailId) => {
     this._setUnread(emailId);
   }
 
-  _handleItemMarkRead(emailId) {
+  _handleItemMarkRead = (emailId) => {
     this._setUnread(emailId, false);
   }
 
-  _handleShowForm() {
+  _handleShowForm = () => {
     // Show email form overlay by setting state to true
     this.setState({showForm: true});
   }
 
-  _handleHideForm() {
+  _handleHideForm = () => {
     // Hide email form overlay by setting state to false
     this.setState({showForm: false});
   }

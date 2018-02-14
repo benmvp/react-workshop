@@ -104,11 +104,11 @@ class Page extends Component {
     clearInterval(this._pollId);
   }
 
-  _getUpdateEmails() {
+  _getUpdateEmails = () => {
     this.props.getEmails();
   }
 
-  _handleItemSelect(selectedEmailId) {
+  _handleItemSelect = (selectedEmailId) => {
     // update state (so that the EmailView will show)
     this.setState({selectedEmailId});
 
@@ -118,12 +118,12 @@ class Page extends Component {
     }
   }
 
-  _handleEmailViewClose() {
+  _handleEmailViewClose = () => {
     // We close the email view by resetting the selected email
     this.setState({selectedEmailId: -1});
   }
 
-  _handleFormSubmit(newEmail) {
+  _handleFormSubmit = (newEmail) => {
     this.props.addEmail(newEmail);
     //the optimistic update is now happening
     //automatically thanks to attaching our state
@@ -131,18 +131,18 @@ class Page extends Component {
     this.setState({showForm: false});
   }
 
-  _handleItemDelete(emailId) {
+  _handleItemDelete = (emailId) => {
     this.props.deleteEmail(emailId);
     //reset `selectedEmailId` since we're deleting it
     this.setState({selectedEmailId: -1});
   }
 
-  _handleShowForm() {
+  _handleShowForm = () => {
     // Show email form overlay by setting state to true
     this.setState({showForm: true});
   }
 
-  _handleHideForm() {
+  _handleHideForm = () => {
     // Hide email form overlay by setting state to false
     this.setState({showForm: false});
   }

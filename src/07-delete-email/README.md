@@ -58,7 +58,7 @@ export default class EmailListItem extends Component {
 
   // other helper methods
 
-  _handleDelete(e) {
+  _handleDelete = (e) => {
     e.stopPropagation();
     this.props.onDelete(this.props.email.id);
   }
@@ -116,7 +116,7 @@ export default class App extends Component {
 
   // other helper methods
 
-  _handleItemDelete(emailId) {
+  _handleItemDelete = (emailId) => {
     console.log(emailId);
   }
 
@@ -157,7 +157,7 @@ export default class App extends Component {
 
   // other helper methods
 
-  _handleItemDelete(emailId) {
+  _handleItemDelete = (emailId) => {
     this.setState(({emails}) => ({
       // "delete" the email by returning a filtered list that doesn't include it
       emails: emails.filter(email => email.id !== emailId)

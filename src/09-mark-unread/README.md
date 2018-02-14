@@ -70,7 +70,7 @@ export default class EmailView extends Component {
 
   // other helper methods
 
-  _handleMarkUnread(e) {
+  _handleMarkUnread = (e) => {
     e.stopPropagation();
 
     if (this.props.onMarkUnread) {
@@ -78,7 +78,7 @@ export default class EmailView extends Component {
     }
   }
 
-  _handleMarkRead(e) {
+  _handleMarkRead = (e) => {
     e.stopPropagation();
 
     if (this.props.onMarkRead) {
@@ -120,7 +120,7 @@ export default class App extends Component {
 
   // other helper methods
 
-  _setUnread(emailId, unread = true) {
+  _setUnread = (emailId, unread = true) => {
     // Make a PUT request to update unread state
     fetch(`//localhost:9090/emails/${emailId}`, {
       method: 'PUT',
@@ -141,11 +141,11 @@ export default class App extends Component {
       .catch(ex => console.error(ex));
   }
 
-  _handleItemMarkUnread(emailId) {
+  _handleItemMarkUnread = (emailId) => {
     this._setUnread(emailId);
   }
 
-  _handleItemMarkRead(emailId) {
+  _handleItemMarkRead = (emailId) => {
     this._setUnread(emailId, false);
   }
 

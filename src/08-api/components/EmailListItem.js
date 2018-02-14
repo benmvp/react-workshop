@@ -12,7 +12,7 @@ export default class EmailListItem extends Component {
     onSelect: PropTypes.func
   };
 
-  _handleClick(e) {
+  _handleClick = (e) => {
     let {email, onSelect} = this.props;
 
     if (onSelect) {
@@ -21,7 +21,7 @@ export default class EmailListItem extends Component {
     }
   }
 
-  _handleDelete(e) {
+  _handleDelete = (e) => {
     e.stopPropagation();
     this.props.onDelete(this.props.email.id);
   }

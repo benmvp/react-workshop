@@ -80,7 +80,7 @@ export default class App extends Component {
 
   // other helper methods
 
-  _handleShowForm() {
+  _handleShowForm = () => {
     // Show email form overlay by setting state to true
     this.setState({showForm: true});
   }

@@ -12,12 +12,12 @@ export default class EmailView extends Component {
     onDelete: PropTypes.func.isRequired
   };
 
-  _handleClose(e) {
+  _handleClose = (e) => {
     e.stopPropagation();
     this.props.onClose();
   }
 
-  _handleDelete(e) {
+  _handleDelete = (e) => {
     e.stopPropagation();
     this.props.onDelete();
   }

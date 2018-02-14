@@ -381,7 +381,7 @@ class Page extends Component {
 
   // lifecycle methods
 
-  _handleItemDelete(emailId) {
+  _handleItemDelete = (emailId) => {
     this.props.deleteEmail(emailId)
     // Also reset `selectedEmailId` since we're deleting it
     this.setState({selectedEmailId: -1});

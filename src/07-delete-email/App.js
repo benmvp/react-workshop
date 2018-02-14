@@ -54,17 +54,17 @@ export default class App extends Component {
     selectedEmailId: -1
   }
 
-  _handleItemSelect(selectedEmailId) {
+  _handleItemSelect = (selectedEmailId) => {
     // update state (so that the EmailView will show)
     this.setState({selectedEmailId});
   }
 
-  _handleEmailViewClose() {
+  _handleEmailViewClose = () => {
     // We close the email view by resetting the selected email
     this.setState({selectedEmailId: -1});
   }
 
-  _handleFormSubmit(newEmail) {
+  _handleFormSubmit = (newEmail) => {
     this.setState(({emails}) => {
       // Create a full email info by spreading in `id` & `date`
       // Then spread to front of emails state (since it's the newest)
@@ -82,7 +82,7 @@ export default class App extends Component {
     });
   }
 
-  _handleItemDelete(emailId) {
+  _handleItemDelete = (emailId) => {
     this.setState(({emails}) => ({
       // "delete" the email by returning a filtered list that doesn't include it
       emails: emails.filter(email => email.id !== emailId),

@@ -11,7 +11,7 @@ export default class EmailListItem extends Component {
     onSelect: PropTypes.func
   };
 
-  _handleClick(e) {
+  _handleClick = (e) => {
     let {email, onSelect} = this.props;
 
     if (onSelect) {

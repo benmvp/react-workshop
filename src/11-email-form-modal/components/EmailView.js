@@ -34,17 +34,17 @@ export default class EmailView extends Component {
     onMarkRead: PropTypes.func
   };
 
-  _handleClose(e) {
+  _handleClose = (e) => {
     e.stopPropagation();
     this.props.onClose();
   }
 
-  _handleDelete(e) {
+  _handleDelete = (e) => {
     e.stopPropagation();
     this.props.onDelete();
   }
 
-  _handleMarkUnread(e) {
+  _handleMarkUnread = (e) => {
     e.stopPropagation();
 
     if (this.props.onMarkUnread) {
@@ -52,7 +52,7 @@ export default class EmailView extends Component {
     }
   }
 
-  _handleMarkRead(e) {
+  _handleMarkRead = (e) => {
     e.stopPropagation();
 
     if (this.props.onMarkRead) {
