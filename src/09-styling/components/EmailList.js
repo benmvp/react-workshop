@@ -11,7 +11,6 @@ export default class EmailList extends Component {
     emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
     onItemDelete: PropTypes.func.isRequired,
     onItemSelect: PropTypes.func.isRequired,
-    onItemMarkUnread: PropTypes.func.isRequired,
 
     selectedEmailId: PropTypes.number
   };
@@ -21,16 +20,14 @@ export default class EmailList extends Component {
       emails,
       onItemSelect,
       onItemDelete,
-      onItemMarkUnread,
       selectedEmailId
     } = this.props;
     let emailComponents = emails.map(email =>
-      <li key={email.id}>
+      <li key={email.id} className="email-list__item">
         <EmailListItem
           email={email}
           onSelect={onItemSelect}
           onDelete={onItemDelete}
-          onMarkUnread={onItemMarkUnread}
           isSelected={email.id === selectedEmailId}
         />
       </li>

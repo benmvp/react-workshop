@@ -211,7 +211,7 @@ You should now be able to fill out the email form, click "Send email", and withi
 
 ## Next
 
-Go to [Step 9 - Mark unread/read](../09-mark-unread/).
+Go to [Step 9 - Styling](../09-styling/).
 
 ## Resources
 

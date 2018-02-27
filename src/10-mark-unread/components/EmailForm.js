@@ -48,47 +48,59 @@ export default class EmailForm extends Component {
 
     return (
       <form className="email-form" onSubmit={this._handleSubmit}>
-        <fieldset>
-          <label htmlFor="from">From:</label>
+        <fieldset className="email-form__field">
+          <label className="email-form__label" htmlFor="from">
+            From:
+          </label>
           <input
             type="email"
             id="from"
+            className="email-form__input"
             value={from}
             placeholder="jill@me.com"
             onChange={this._updateFormFieldState.bind(this, 'from')}
           />
         </fieldset>
-        <fieldset>
-          <label htmlFor="to">To:</label>
+        <fieldset className="email-form__field">
+          <label className="email-form__label" htmlFor="to">
+            To:
+          </label>
           <input
             type="email"
             id="to"
+            className="email-form__input"
             value={to}
             placeholder="me@me.com"
             onChange={this._updateFormFieldState.bind(this, 'to')}
           />
         </fieldset>
-        <fieldset>
-          <label htmlFor="subject">Subject:</label>
+        <fieldset className="email-form__field">
+          <label className="email-form__label" htmlFor="subject">
+            Subject:
+          </label>
           <input
             type="text"
             id="subject"
+            className="email-form__input"
             value={subject}
             placeholder="Awesome React workshop!"
             onChange={this._updateFormFieldState.bind(this, 'subject')}
           />
         </fieldset>
-        <fieldset>
-          <label htmlFor="message">Message:</label>
+        <fieldset className="email-form__field">
+          <label className="email-form__label" htmlFor="message">
+            Message:
+          </label>
           <textarea
             id="message"
+            className="email-form__input email-form__input-message"
             value={message}
             placeholder="[Insert message here]"
             onChange={this._updateFormFieldState.bind(this, 'message')}
           />
         </fieldset>
 
-        <footer>
+        <footer className="email-form__button-bar">
           <button type="submit">Send email</button>
         </footer>
       </form>
