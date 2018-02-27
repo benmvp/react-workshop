@@ -99,18 +99,40 @@ export default class EmailView extends Component {
         <h2>From: <a href={`mailto:${from}`}>{from}</a></h2>
         <h3>{date}</h3>
         <div dangerouslySetInnerHTML={rawMessage} />
-        {markUnreadReadButton}
-        <button onClick={this._handleDelete}>Delete</button>
-        <button onClick={this._handleClose}>Close</button>
+        <div className="email-view__button-bar">
+          {markUnreadReadButton}
+          <button onClick={this._handleDelete}>Delete</button>
+          <button onClick={this._handleClose}>Close</button>
+        </div>
       </section>
     );
   }
 }
 ```
 
-In the top-level `App`, add handlers for `onMarkUnread` & `onMarkRead` on `<EmailView />` that will make a `fetch` `PUT` action to `http://localhost:9090/emails/<EMAIL_ID>`:
+In the top-level `App`, add handlers for `onMarkUnread` & `onMarkRead` on `<EmailView />` (via `<EmailViewWrapper />`) that will make a `fetch` `PUT` action to `http://localhost:9090/emails/<EMAIL_ID>`:
 
 ```js
+const EmailViewWrapper = ({selectedEmail, onClose, onDelete, onMarkUnread, onMarkRead}) => {
+  let component = null;
+
+  if (selectedEmail) {
+    component = (
+      <article className="app__view">
+        <EmailView
+          email={selectedEmail}
+          onClose={onClose}
+          onDelete={onDelete}
+          onMarkUnread={onMarkUnread}
+          onMarkRead={onMarkRead}
+        />
+      </article>
+    );
+  }
+
+  return component;
+};
+
 export default class App extends Component {
   // prop types & default props
 
@@ -152,19 +174,6 @@ export default class App extends Component {
   render() {
     let {emails, selectedEmailId} = this.state;
     let selectedEmail = emails.find(email => email.id === selectedEmailId);
-    let emailViewComponent;
-
-    if (selectedEmail) {
-      emailViewComponent = (
-        <EmailView
-          email={selectedEmail}
-          onClose={this._handleEmailViewClose}
-          onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
-          onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
-          onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
-        />
-      );
-    }
 
     return (
       <main className="app">
@@ -173,7 +182,13 @@ export default class App extends Component {
           onItemDelete={this._handleItemDelete}
           onItemSelect={this._handleItemSelect}
         />
-        {emailViewComponent}
+        <EmailViewWrapper
+            selectedEmail={selectedEmail}
+            onClose={this._handleEmailViewClose}
+            onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
+            onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
+            onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
+          />
         <EmailForm onSubmit={this._handleFormSubmit} />
       </main>
     );
@@ -186,9 +201,9 @@ You should now be able to mark a selected email as unread in the email view. Aft
 ## Exercises
 
 - Add optimistic updating of `this.state.emails` state after an email is marked read/unread for immediate feedback
-- Add a "Mark Unread" button for each `EmailListItem` that **only** shows when an item is selected and read
-- When an `EmailListItem` is selected, it should also mark the email as read (HINT: use callback of `setState`)
+- Add a "Mark Unread" button to "status" section in `EmailListItem` that **only** shows when an item is selected and read
 - Extract the "status" section in `EmailListItem` into a helper `EmailListItemStatus` component
+- When an `EmailListItem` is selected, it should also mark the email as read (HINT: use callback of `setState`)
 - In `EmailView`, extract an `EmailViewButtonBar` component that'll contain the mark read/unread button, delete & close buttons
 
 ## Next

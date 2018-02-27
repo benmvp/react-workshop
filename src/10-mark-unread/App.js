@@ -7,13 +7,7 @@ import EmailForm from './components/EmailForm';
 
 import './App.css';
 
-const EmailViewWrapper = ({
-  selectedEmail,
-  onClose,
-  onDelete,
-  onMarkUnread,
-  onMarkRead
-}) => {
+const EmailViewWrapper = ({selectedEmail, onClose, onDelete, onMarkUnread, onMarkRead}) => {
   let component = null;
 
   if (selectedEmail) {
