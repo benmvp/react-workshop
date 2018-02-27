@@ -59,7 +59,7 @@ After the app is initially built, a new browser window should open up at [http:/
 In order to make `render()` of `App` a bit cleaner, move out the logic for whether or not the `<EmailView />` should display into a helper component called `EmailViewWrapper`:
 
 ```js
-const EmailViewWrapper = ({selectedEmail, onClose, onDelete, onMarkUnread, onMarkRead}) => {
+const EmailViewWrapper = ({selectedEmail, onClose, onDelete}) => {
   let component = null;
 
   if (selectedEmail) {
@@ -68,8 +68,6 @@ const EmailViewWrapper = ({selectedEmail, onClose, onDelete, onMarkUnread, onMar
         email={selectedEmail}
         onClose={onClose}
         onDelete={onDelete}
-        onMarkUnread={onMarkUnread}
-        onMarkRead={onMarkRead}
       />
     );
   }
@@ -96,15 +94,12 @@ export default class App extends Component {
           emails={emails}
           onItemSelect={this._handleItemSelect}
           onItemDelete={this._handleItemDelete}
-          onItemMarkUnread={this._handleItemMarkUnread}
           selectedEmailId={selectedEmailId}
         />
         <EmailViewWrapper
           selectedEmail={selectedEmail}
           onClose={this._handleEmailViewClose}
           onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
-          onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
-          onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
         />
         <EmailForm onSubmit={this._handleFormSubmit} />
       </main>
@@ -116,7 +111,7 @@ export default class App extends Component {
 Add wrapper elements around `EmailList`, `EmailView` & `EmailForm` with the appropriate class names to position them within `App`:
 
 ```js
-const EmailViewWrapper = ({selectedEmail, onClose, onDelete, onMarkUnread, onMarkRead}) => {
+const EmailViewWrapper = ({selectedEmail, onClose, onDelete}) => {
   let component = null;
 
   if (selectedEmail) {
@@ -126,8 +121,6 @@ const EmailViewWrapper = ({selectedEmail, onClose, onDelete, onMarkUnread, onMar
           email={selectedEmail}
           onClose={onClose}
           onDelete={onDelete}
-          onMarkUnread={onMarkUnread}
-          onMarkRead={onMarkRead}
         />
       </article>
     );
@@ -157,7 +150,6 @@ export default class App extends Component {
               emails={emails}
               onItemSelect={this._handleItemSelect}
               onItemDelete={this._handleItemDelete}
-              onItemMarkUnread={this._handleItemMarkUnread}
               selectedEmailId={selectedEmailId}
             />
           </div>
@@ -165,8 +157,6 @@ export default class App extends Component {
             selectedEmail={selectedEmail}
             onClose={this._handleEmailViewClose}
             onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
-            onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
-            onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
           />
           <div className="app__form">
             <EmailForm onSubmit={this._handleFormSubmit} />
@@ -182,22 +172,14 @@ These classes help position the email list, email view and email form within the
 
 When an email item is selected, you should see a 3-column layout: email list on the left, email form on the right, and email view in the center.
 
-In `EmailListItem`, add CSS classes for from & subject display elements. Wrap the mark read/unread button & delete buttons in `<span>` with a CSS class. Using the [`classnames`](https://github.com/JedWatson/classnames) library, conditionally add classes container element based on whether or not the email item is selected or unread:
+In `EmailListItem`, add CSS classes for from & subject display elements. Wrap the delete button in `<span>` with a CSS class. Using the [`classnames`](https://github.com/JedWatson/classnames) library, conditionally add classes container element based on whether or not the email item is selected:
 
 ```js
 render() {
-  let {email: {from, subject, unread}, isSelected} = this.props;
+  let {email: {from, subject}, isSelected} = this.props;
   let className = classNames('email-list-item', {
-    'email-list-item--selected': isSelected,
-    'email-list-item--unread': unread
+    'email-list-item--selected': isSelected
   });
-  let markUnreadButton;
-
-  if (isSelected && !unread) {
-    markUnreadButton = (
-      <button onClick={this._handleMarkUnread}>Mark unread</button>
-    );
-  }
 
   return (
     <div className={className} onClick={this._handleClick}>
@@ -208,19 +190,25 @@ render() {
         {subject}
       </span>
       <span className="email-list-item__status">
-        {markUnreadButton}
-        <button onClick={onDelete}>Delete</button>
+        <button onClick={this._handleDelete}>Delete</button>
       </span>
     </div>
   );
 }
 ```
 
+You will need to import `classnames` at the top of the file:
+
+```js
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+```
+
 ## Exercises
 
-- Extract the "status" section in `EmailListItem` into a helper `EmailListItemStatus` component
 - In `EmailList`, add `"email-list__item"` to the `<li>` elements wrapping the `<EmailListItem />` components
-- In `EmailView`, extract an `EmailViewButtonBar` component that'll contain the mark read/unread button, delete & close buttons, and give the bar a `"email-view__button-bar"` CSS class
+- In `EmailView`, wrap the delete & close buttons in a containing element and give it a `"email-view__button-bar"` CSS class
 - In `EmailForm`, add the appropriate classes to the various parts of the form fields as well as the button bar
 
 ## Next

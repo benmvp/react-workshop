@@ -59,12 +59,8 @@ export default class EmailListItem extends Component {
 
     return (
       <div className={className} onClick={this._handleClick}>
-        <span className="email-list-item__from">
-          {from}
-        </span>
-        <span className="email-list-item__subject">
-          {subject}
-        </span>
+        <span className="email-list-item__from">{from}</span>
+        <span className="email-list-item__subject">{subject}</span>
         <EmailListItemStatus
           isSelected={isSelected}
           unread={unread}

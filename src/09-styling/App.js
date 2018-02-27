@@ -7,6 +7,28 @@ import EmailForm from './components/EmailForm';
 
 import './App.css';
 
+const EmailViewWrapper = ({
+  selectedEmail,
+  onClose,
+  onDelete,
+}) => {
+  let component = null;
+
+  if (selectedEmail) {
+    component = (
+      <article className="app__view">
+        <EmailView
+          email={selectedEmail}
+          onClose={onClose}
+          onDelete={onDelete}
+        />
+      </article>
+    );
+  }
+
+  return component;
+};
+
 export default class App extends Component {
   static propTypes = {
     pollInterval: PropTypes.number
@@ -54,10 +76,7 @@ export default class App extends Component {
 
   _handleItemSelect = (selectedEmailId) => {
     // update state (so that the EmailView will show)
-    this.setState({selectedEmailId}, () => {
-      // also mark the email as read
-      this._handleItemMarkRead(selectedEmailId);
-    });
+    this.setState({selectedEmailId});
   }
 
   _handleEmailViewClose = () => {
@@ -131,75 +150,30 @@ export default class App extends Component {
       .catch(ex => console.error(ex));
   }
 
-  _setUnread = (emailId, unread = true) => {
-    // Make a PUT request to update unread state
-    fetch(`//localhost:9090/emails/${emailId}`, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({unread})
-    })
-      .then(res => res.json())
-      // optimistic updating (see _handleFormSubmit for more info)
-      .then(({success}) => {
-        if (success) {
-          this.setState(({emails}) => {
-            // Map over all of the emails and when we find the match
-            // override its `unread` property with the new value by
-            // doing object spread
-            let newEmails = emails.map(
-              email => (email.id === emailId ? {...email, unread} : email)
-            );
-
-            return {emails: newEmails};
-          });
-        } else {
-          throw new Error(
-            `Unable to set email ID# ${emailId} unread state to ${unread}.`
-          );
-        }
-      })
-      .catch(ex => console.error(ex));
-  }
-
-  _handleItemMarkUnread = (emailId) => {
-    this._setUnread(emailId);
-  }
-
-  _handleItemMarkRead = (emailId) => {
-    this._setUnread(emailId, false);
-  }
-
   render() {
     let {emails, selectedEmailId} = this.state;
     let selectedEmail = emails.find(email => email.id === selectedEmailId);
-    let emailViewComponent;
-
-    if (selectedEmail) {
-      emailViewComponent = (
-        <EmailView
-          email={selectedEmail}
-          onClose={this._handleEmailViewClose}
-          onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
-          onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
-          onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
-        />
-      );
-    }
 
     return (
       <main className="app">
-        <EmailList
-          emails={emails}
-          onItemSelect={this._handleItemSelect}
-          onItemDelete={this._handleItemDelete}
-          onItemMarkUnread={this._handleItemMarkUnread}
-          selectedEmailId={selectedEmailId}
-        />
-        {emailViewComponent}
-        <EmailForm onSubmit={this._handleFormSubmit} />
+        <div className="app__page">
+          <div className="app__list">
+            <EmailList
+              emails={emails}
+              onItemSelect={this._handleItemSelect}
+              onItemDelete={this._handleItemDelete}
+              selectedEmailId={selectedEmailId}
+            />
+          </div>
+          <EmailViewWrapper
+            selectedEmail={selectedEmail}
+            onClose={this._handleEmailViewClose}
+            onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
+          />
+          <div className="app__form">
+            <EmailForm onSubmit={this._handleFormSubmit} />
+          </div>
+        </div>
       </main>
     );
   }

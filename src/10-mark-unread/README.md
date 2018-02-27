@@ -188,6 +188,8 @@ You should now be able to mark a selected email as unread in the email view. Aft
 - Add optimistic updating of `this.state.emails` state after an email is marked read/unread for immediate feedback
 - Add a "Mark Unread" button for each `EmailListItem` that **only** shows when an item is selected and read
 - When an `EmailListItem` is selected, it should also mark the email as read (HINT: use callback of `setState`)
+- Extract the "status" section in `EmailListItem` into a helper `EmailListItemStatus` component
+- In `EmailView`, extract an `EmailViewButtonBar` component that'll contain the mark read/unread button, delete & close buttons
 
 ## Next
 
