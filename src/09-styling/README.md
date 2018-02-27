@@ -1,6 +1,6 @@
-# Step 9 - Mark unread/read
+# Step 9 - Styling
 
-The goal of this step is to add support for marking an email read or unread by submitting a `PUT` method to the API as a result of user interactions.
+The goal of this step is to apply CSS styling to all of the components. There are many ways to style React components, but CSS classes are probably the simplest and most familiar. In certain cases we'll want to _conditionally_ apply CSS classes based on prop values. We'll make use of the very helpful [`classnames`](https://github.com/JedWatson/classnames) library.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
@@ -56,124 +56,56 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## Tasks
 
-Add "Mark Unread" & "Mark Read" buttons to `EmailView` that when clicked will call the (newly added) `onMarkUnread` & `onMarkRead` props, respectively. Only one button should show at a given time based on the `unread` property within `this.props.email`:
+In order to make `render()` of `App` a bit cleaner, move out the logic for whether or not the `<EmailView />` should display into a helper component called `EmailViewWrapper`:
 
 ```js
-export default class EmailView extends Component {
-  static propTypes = {
-    email: EMAIL_PROP_TYPE.isRequired,
-    onClose: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired,
-    onMarkUnread: PropTypes.func,
-    onMarkRead: PropTypes.func
-  };
+const EmailViewWrapper = ({selectedEmail, onClose, onDelete, onMarkUnread, onMarkRead}) => {
+  let component = null;
 
-  // other helper methods
-
-  _handleMarkUnread = (e) => {
-    e.stopPropagation();
-
-    if (this.props.onMarkUnread) {
-      this.props.onMarkUnread();
-    }
-  }
-
-  _handleMarkRead = (e) => {
-    e.stopPropagation();
-
-    if (this.props.onMarkRead) {
-      this.props.onMarkRead();
-    }
-  }
-
-  render() {
-    let {email: {subject, from, date, message, unread}} = this.props;
-    let rawMessage = {__html: message};
-    let markUnreadReadButton = unread
-      ? (<button onClick={this._handleMarkRead}>Mark Read</button>)
-      : (<button onClick={this._handleMarkUnread}>Mark Unread</button>);
-
-    return (
-      <section className="email-view">
-        <h1>{subject}</h1>
-        <h2>From: <a href={`mailto:${from}`}>{from}</a></h2>
-        <h3>{date}</h3>
-        <div dangerouslySetInnerHTML={rawMessage} />
-        {markUnreadReadButton}
-        <button onClick={this._handleDelete}>Delete</button>
-        <button onClick={this._handleClose}>Close</button>
-      </section>
+  if (selectedEmail) {
+    component = (
+      <EmailView
+        email={selectedEmail}
+        onClose={onClose}
+        onDelete={onDelete}
+        onMarkUnread={onMarkUnread}
+        onMarkRead={onMarkRead}
+      />
     );
   }
-}
-```
 
-In the top-level `App`, add handlers for `onMarkUnread` & `onMarkRead` on `<EmailView />` that will make a `fetch` `PUT` action to `http://localhost:9090/emails/<EMAIL_ID>`:
+  return component;
+};
 
-```js
 export default class App extends Component {
   // prop types & default props
 
-  // initial state
+  // initialize state
 
   // lifecycle methods
 
-  // other helper methods
-
-  _setUnread = (emailId, unread = true) => {
-    // Make a PUT request to update unread state
-    fetch(`//localhost:9090/emails/${emailId}`, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({unread})
-    })
-      .then(res => res.json())
-      .then(({success}) => {
-        if (!success) {
-          throw new Error(
-            `Unable to set email ID# ${emailId} unread state to ${unread}.`
-          );
-        }
-      })
-      .catch(ex => console.error(ex));
-  }
-
-  _handleItemMarkUnread = (emailId) => {
-    this._setUnread(emailId);
-  }
-
-  _handleItemMarkRead = (emailId) => {
-    this._setUnread(emailId, false);
-  }
+  // helper methods
 
   render() {
     let {emails, selectedEmailId} = this.state;
     let selectedEmail = emails.find(email => email.id === selectedEmailId);
-    let emailViewComponent;
-
-    if (selectedEmail) {
-      emailViewComponent = (
-        <EmailView
-          email={selectedEmail}
-          onClose={this._handleEmailViewClose}
-          onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
-          onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
-          onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
-        />
-      );
-    }
 
     return (
       <main className="app">
         <EmailList
           emails={emails}
-          onItemDelete={this._handleItemDelete}
           onItemSelect={this._handleItemSelect}
+          onItemDelete={this._handleItemDelete}
+          onItemMarkUnread={this._handleItemMarkUnread}
+          selectedEmailId={selectedEmailId}
         />
-        {emailViewComponent}
+        <EmailViewWrapper
+          selectedEmail={selectedEmail}
+          onClose={this._handleEmailViewClose}
+          onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
+          onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
+          onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
+        />
         <EmailForm onSubmit={this._handleFormSubmit} />
       </main>
     );
@@ -181,22 +113,128 @@ export default class App extends Component {
 }
 ```
 
-You should now be able to mark a selected email as unread in the email view. After the long polling retrieves the new information, the button should switch from "Mark Unread" to "Mark Read." Clicking the button should do the reverse.
+Add wrapper elements around `EmailList`, `EmailView` & `EmailForm` with the appropriate class names to position them within `App`:
+
+```js
+const EmailViewWrapper = ({selectedEmail, onClose, onDelete, onMarkUnread, onMarkRead}) => {
+  let component = null;
+
+  if (selectedEmail) {
+    component = (
+      <article className="app__view">
+        <EmailView
+          email={selectedEmail}
+          onClose={onClose}
+          onDelete={onDelete}
+          onMarkUnread={onMarkUnread}
+          onMarkRead={onMarkRead}
+        />
+      </article>
+    );
+  }
+
+  return component;
+};
+
+export default class App extends Component {
+  // prop types & default props
+
+  // initialize state
+
+  // lifecycle methods
+
+  // helper methods
+
+  render() {
+    let {emails, selectedEmailId} = this.state;
+    let selectedEmail = emails.find(email => email.id === selectedEmailId);
+
+    return (
+      <main className="app">
+        <div className="app__page">
+          <div className="app__list">
+            <EmailList
+              emails={emails}
+              onItemSelect={this._handleItemSelect}
+              onItemDelete={this._handleItemDelete}
+              onItemMarkUnread={this._handleItemMarkUnread}
+              selectedEmailId={selectedEmailId}
+            />
+          </div>
+          <EmailViewWrapper
+            selectedEmail={selectedEmail}
+            onClose={this._handleEmailViewClose}
+            onDelete={this._handleItemDelete.bind(this, selectedEmailId)}
+            onMarkUnread={this._handleItemMarkUnread.bind(this, selectedEmailId)}
+            onMarkRead={this._handleItemMarkRead.bind(this, selectedEmailId)}
+          />
+          <div className="app__form">
+            <EmailForm onSubmit={this._handleFormSubmit} />
+          </div>
+        </div>
+      </main>
+    );
+  }
+}
+```
+
+These classes help position the email list, email view and email form within the `App` component. That's why they exist within `App` and not within the individual components.
+
+When an email item is selected, you should see a 3-column layout: email list on the left, email form on the right, and email view in the center.
+
+In `EmailListItem`, add CSS classes for from & subject display elements. Wrap the mark read/unread button & delete buttons in `<span>` with a CSS class. Using the [`classnames`](https://github.com/JedWatson/classnames) library, conditionally add classes container element based on whether or not the email item is selected or unread:
+
+```js
+render() {
+  let {email: {from, subject, unread}, isSelected} = this.props;
+  let className = classNames('email-list-item', {
+    'email-list-item--selected': isSelected,
+    'email-list-item--unread': unread
+  });
+  let markUnreadButton;
+
+  if (isSelected && !unread) {
+    markUnreadButton = (
+      <button onClick={this._handleMarkUnread}>Mark unread</button>
+    );
+  }
+
+  return (
+    <div className={className} onClick={this._handleClick}>
+      <span className="email-list-item__from">
+        {from}
+      </span>
+      <span className="email-list-item__subject">
+        {subject}
+      </span>
+      <span className="email-list-item__status">
+        {markUnreadButton}
+        <button onClick={onDelete}>Delete</button>
+      </span>
+    </div>
+  );
+}
+```
 
 ## Exercises
 
-- Add optimistic updating of `this.state.emails` state after an email is marked read/unread for immediate feedback
-- Add a "Mark Unread" button for each `EmailListItem` that **only** shows when an item is selected and read
-- When an `EmailListItem` is selected, it should also mark the email as read (HINT: use callback of `setState`)
+- Extract the "status" section in `EmailListItem` into a helper `EmailListItemStatus` component
+- In `EmailList`, add `"email-list__item"` to the `<li>` elements wrapping the `<EmailListItem />` components
+- In `EmailView`, extract an `EmailViewButtonBar` component that'll contain the mark read/unread button, delete & close buttons, and give the bar a `"email-view__button-bar"` CSS class
+- In `EmailForm`, add the appropriate classes to the various parts of the form fields as well as the button bar
 
 ## Next
 
-Go to [Step 10 - Styling](../10-styling/).
+Go to [Step 10 - Mark unread/read](../10-mark-unread/).
 
 ## Resources
 
-- [HTTP Methods](http://restfulapi.net/http-methods/)
-- [`setState()`](https://reactjs.org/docs/react-component.html#setstate)
+- [`classnames` library](https://github.com/JedWatson/classnames)
+- [Introduction to BEM](http://getbem.com/introduction/)
+- [`glamorous` library](https://github.com/paypal/glamorous)
+- [Inline Styles](https://facebook.github.io/react/docs/dom-elements.html#style)
+- [CSS Modules: Welcome to the Future](http://glenmaddern.com/articles/css-modules)
+- [Using CSS flexible boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes)
 
 ## Questions
 
