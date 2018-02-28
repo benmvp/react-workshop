@@ -168,11 +168,11 @@ export default class App extends Component {
 }
 ```
 
-These classes help position the email list, email view and email form within the `App` component. That's why they exist within `App` and not within the individual components.
+These classes help position the email list, email view and email form within the `App` component. That's why they exist within `App` and not within the individual components. You'll find the actual CSS styling within [App.css](./App.css).
 
 When an email item is selected, you should see a 3-column layout: email list on the left, email form on the right, and email view in the center.
 
-In `EmailListItem`, add CSS classes for from & subject display elements. Wrap the delete button in `<span>` with a CSS class. Using the [`classnames`](https://github.com/JedWatson/classnames) library, conditionally add classes container element based on whether or not the email item is selected:
+In `EmailListItem`, add appropriate CSS classes for `from` & `subject` display elements. Wrap the delete button in `<span>` with a "status" CSS class. Using the [`classnames`](https://github.com/JedWatson/classnames) library, conditionally add a class to the container element based on whether or not the email item is selected:
 
 ```js
 render() {
@@ -197,7 +197,9 @@ render() {
 }
 ```
 
-You will need to import `classnames` at the top of the file:
+The CSS styling can be found in [EmailListItem.css](components/EmailListItem.css).
+
+Don't forget to import `classnames` at the top of the file:
 
 ```js
 import React, {Component} from 'react';

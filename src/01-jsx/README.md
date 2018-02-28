@@ -25,56 +25,61 @@ export default class App extends Component {
 Add nested JSX markup. For example:
 
 ```js
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Hello world!</h1>
-        <p>This is a paragraph of text written in React</p>
-      </div>
-    );
-  }
-}
+return (
+  <div>
+    <h1>Hello world!</h1>
+    <p>This is a paragraph of text written in React</p>
+  </div>
+);
 ```
 
 Add attributes to the nested JSX markup. For example:
 
 ```js
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Hello world!</h1>
-        <p>This is a paragraph of text written in React</p>
-        <aside>
-          <input type="text" id="input" placeholder="Fill me in please" />
-        </aside>
-      </div>
-    );
-  }
-}
+return (
+  <div>
+    <h1>Hello world!</h1>
+    <p>This is a paragraph of text written in React</p>
+    <aside>
+      <input type="text" id="input" placeholder="Fill me in please" />
+    </aside>
+  </div>
+);
 ```
 
 Try adding classes to JSX markup, or a `<label>` to connect inputs:
 
 ```js
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Hello world!</h1>
-        <p className="large">This is a paragraph of text written in React</p>
-        <aside>
-          <label htmlFor="input">Input label</label>
-          <input type="text" id="input" placeholder="Fill me in please" />
-        </aside>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <h1>Hello world!</h1>
+      <p className="large">This is a paragraph of text written in React</p>
+      <aside>
+        <label htmlFor="input">Input label</label>
+        <input type="text" id="input" placeholder="Fill me in please" />
+      </aside>
+    </div>
+  );
 ```
 
 Notice that instead of `class` it's `className` and `htmlFor` instead of just `for`.
+
+Lastly, add inline styles to some elements by passing an object to the `style` prop:
+
+```js
+return (
+  <div>
+    <h1 style={{fontSize: '5em'}}>Hello world!</h1>
+    <p className="large" style={{backgroundColor: 'lightgrey'}}>This is a paragraph of text written in React</p>
+    <aside>
+      <label htmlFor="input" style={{display: 'block'}}>Input label</label>
+      <input type="text" id="input" placeholder="Fill me in please" style={{color: 'blue', marginTop: '30'}} />
+    </aside>
+  </div>
+);
+```
+
+The `style` prop in React JSX takes an **object**, not a string like the HTML style property. The property names within the object are `camelCase` like JavaScript DOM notation (such as `backgroundColor`), instead of `kebab-case` like the property names in traditional CSS (such as `background-color`). If you pass a number to a property that takes a unit (such as `marginTop`), React will add `px` to the end for you.
 
 ## Exercises
 
@@ -140,6 +145,7 @@ Go to [Step 2 - Components](../02-components/).
 - [JSX in Depth](https://facebook.github.io/react/docs/jsx-in-depth.html)
 - [React without JSX](https://facebook.github.io/react/docs/react-without-jsx.html)
 - [Babel REPL](http://babeljs.io/repl/)
+- [Inline Styles](https://facebook.github.io/react/docs/dom-elements.html#style)
 
 ## Questions
 
