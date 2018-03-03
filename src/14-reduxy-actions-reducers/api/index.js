@@ -24,13 +24,13 @@ export const getEmails = () =>
   // Make a GET request
   _fetchJson(API_BASE_URL);
 
-export const setUnread = (emailId, unread = true) =>
-  // Make a PUT request to update unread state
+export const setRead = (emailId, read = true) =>
+  // Make a PUT request to update read state
   _fetchJson(`${API_BASE_URL}/${emailId}`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({unread})
+    body: JSON.stringify({read})
   });
