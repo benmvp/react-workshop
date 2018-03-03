@@ -57,7 +57,7 @@ router.route('/emails')
             var newEmail = assign({
                     id: Date.now(),
                     date: new Date() + '',
-                    unread: true
+                    read: true
                 }, req.body),
                 newEmails = emails.concat(newEmail);
 
@@ -106,7 +106,7 @@ router.route('/emails/:emailId')
                     if (email.id === emailIdToUpdate) {
                         // make a copy of the email to update before updating
                         return assign({}, email, {
-                            unread: !!req.body.unread
+                            read: !!req.body.read
                         });
                     }
 
