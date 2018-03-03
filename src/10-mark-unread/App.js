@@ -167,7 +167,7 @@ export default class App extends Component {
         if (success) {
           this.setState(({emails}) => {
             // Map over all of the emails and when we find the match
-            // override its `unread` property with the new value by
+            // override its `read` property with the new value by
             // doing object spread
             let newEmails = emails.map(
               email => (email.id === emailId ? {...email, read} : email)
