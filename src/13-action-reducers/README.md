@@ -73,7 +73,7 @@ export const addEmail = (emails, newEmail) =>
           ...newEmail,
           id: Date.now(),
           date: `${new Date()}`,
-          unread: true
+          read: false
         },
         ...emails
       ];
