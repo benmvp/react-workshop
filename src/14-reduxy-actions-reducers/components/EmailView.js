@@ -6,15 +6,15 @@ import {EMAIL_PROP_TYPE} from './constants';
 import './EmailView.css';
 
 const EmailViewButtonBar = ({
-  unread,
+  read,
   onDelete,
   onClose,
   onMarkUnread,
   onMarkRead
 }) => {
-  let markUnreadReadButton = unread
-    ? <button onClick={onMarkRead}>Mark Read</button>
-    : <button onClick={onMarkUnread}>Mark Unread</button>;
+  let markUnreadReadButton = read
+    ? (<button onClick={onMarkUnread}>Mark Unread</button>)
+    : (<button onClick={onMarkRead}>Mark Read</button>);
 
   return (
     <div className="email-view__button-bar">
@@ -61,23 +61,17 @@ export default class EmailView extends Component {
   }
 
   render() {
-    let {email: {subject, from, date, message, unread}} = this.props;
+    let {email: {subject, from, date, message, read}} = this.props;
     let rawMessage = {__html: message};
 
     return (
       <section className="email-view">
-        <h1>
-          {subject}
-        </h1>
-        <h2>
-          From: <a href={`mailto:${from}`}>{from}</a>
-        </h2>
-        <h3>
-          {date}
-        </h3>
+        <h1>{subject}</h1>
+        <h2>From: <a href={`mailto:${from}`}>{from}</a></h2>
+        <h3>{date}</h3>
         <div dangerouslySetInnerHTML={rawMessage} />
         <EmailViewButtonBar
-          unread={unread}
+          read={read}
           onClose={this._handleClose}
           onDelete={this._handleDelete}
           onMarkUnread={this._handleMarkUnread}

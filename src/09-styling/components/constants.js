@@ -5,5 +5,5 @@ export const EMAIL_PROP_TYPE = PropTypes.shape({
   from: PropTypes.string.isRequired,
   subject: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
-  unread: PropTypes.bool
+  read: PropTypes.bool
 });

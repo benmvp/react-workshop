@@ -2,28 +2,28 @@ import {
   addEmail as addEmailApi,
   getEmails as getEmailsApi,
   deleteEmail as deleteEmailApi,
-  setUnread as setUnreadApi
+  setRead as setReadApi
 } from '../api';
 
-const _setUnread = (emails, emailId, unread) =>
-  setUnreadApi(emailId, unread).then(({success}) => {
-    if (success) {
-      return emails.map(
-        email => (email.id === emailId ? {...email, unread} : email)
-      );
-    }
+const _setRead = (emails, emailId, read) =>
+  setReadApi(emailId, read).then(({success}) => {
+      if (success) {
+        return emails.map(
+          email => (email.id === emailId ? {...email, read} : email)
+        );
+      }
 
-    throw new Error(
-      `Unable to set email ID# ${emailId} unread state to ${unread}.`
-    );
-  });
+      throw new Error(
+        `Unable to set email ID# ${emailId} read state to ${read}.`
+      );
+    });
 
 export const getEmails = getEmailsApi;
 
-export const markRead = (emails, emailId) => _setUnread(emails, emailId, false);
+export const markRead = (emails, emailId) => _setRead(emails, emailId, true);
 
 export const markUnread = (emails, emailId) =>
-  _setUnread(emails, emailId, true);
+  _setRead(emails, emailId, false);
 
 export const deleteEmail = (emails, emailId) =>
   deleteEmailApi(emailId).then(({success}) => {
@@ -42,7 +42,7 @@ export const addEmail = (emails, newEmail) =>
           ...newEmail,
           id: Date.now(),
           date: `${new Date()}`,
-          unread: true
+          read: false,
         },
         ...emails
       ];

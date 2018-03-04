@@ -6,10 +6,10 @@ import {EMAIL_PROP_TYPE} from './constants';
 
 import './EmailListItem.css';
 
-const EmailListItemStatus = ({isSelected, unread, onDelete, onMarkUnread}) => {
+const EmailListItemStatus = ({isSelected, read, onDelete, onMarkUnread}) => {
   let markUnreadButton;
 
-  if (isSelected && !unread) {
+  if (isSelected && read) {
     markUnreadButton = <button onClick={onMarkUnread}>Mark unread</button>;
   }
 
@@ -51,23 +51,19 @@ export default class EmailListItem extends Component {
   }
 
   render() {
-    let {email: {from, subject, unread}, isSelected} = this.props;
+    let {email: {from, subject, read}, isSelected} = this.props;
     let className = classNames('email-list-item', {
       'email-list-item--selected': isSelected,
-      'email-list-item--unread': unread
+      'email-list-item--unread': !read
     });
 
     return (
       <div className={className} onClick={this._handleClick}>
-        <span className="email-list-item__from">
-          {from}
-        </span>
-        <span className="email-list-item__subject">
-          {subject}
-        </span>
+        <span className="email-list-item__from">{from}</span>
+        <span className="email-list-item__subject">{subject}</span>
         <EmailListItemStatus
           isSelected={isSelected}
-          unread={unread}
+          read={read}
           onDelete={this._handleDelete}
           onMarkUnread={this._handleMarkUnread}
         />

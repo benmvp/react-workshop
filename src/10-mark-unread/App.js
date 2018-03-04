@@ -106,14 +106,14 @@ export default class App extends Component {
             // comes back, the server-side list will update. This is mainly
             // here to demonstrate immutable updating of data structures
 
-            // Create a full email info by spreading in `id`, `date` & `unread`
+            // Create a full email info by spreading in `id`, `date` & `read`
             // Then spread to front of emails state (since it's the newest)
             let newEmails = [
               {
                 ...newEmail,
                 id: Date.now(),
                 date: `${new Date()}`,
-                unread: true
+                read: false,
               },
               ...emails
             ];
@@ -151,15 +151,15 @@ export default class App extends Component {
       .catch(ex => console.error(ex));
   }
 
-  _setUnread = (emailId, unread = true) => {
-    // Make a PUT request to update unread state
+  _setRead = (emailId, read = true) => {
+    // Make a PUT request to update read state
     fetch(`//localhost:9090/emails/${emailId}`, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({unread})
+      body: JSON.stringify({read})
     })
       .then(res => res.json())
       // optimistic updating (see _handleFormSubmit for more info)
@@ -167,17 +167,17 @@ export default class App extends Component {
         if (success) {
           this.setState(({emails}) => {
             // Map over all of the emails and when we find the match
-            // override its `unread` property with the new value by
+            // override its `read` property with the new value by
             // doing object spread
             let newEmails = emails.map(
-              email => (email.id === emailId ? {...email, unread} : email)
+              email => (email.id === emailId ? {...email, read} : email)
             );
 
             return {emails: newEmails};
           });
         } else {
           throw new Error(
-            `Unable to set email ID# ${emailId} unread state to ${unread}.`
+            `Unable to set email ID# ${emailId} read state to ${read}.`
           );
         }
       })
@@ -185,11 +185,11 @@ export default class App extends Component {
   }
 
   _handleItemMarkUnread = (emailId) => {
-    this._setUnread(emailId);
+    this._setRead(emailId, false);
   }
 
   _handleItemMarkRead = (emailId) => {
-    this._setUnread(emailId, false);
+    this._setRead(emailId);
   }
 
   render() {

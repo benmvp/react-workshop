@@ -83,14 +83,13 @@ export default class App extends Component {
             // comes back, the server-side list will update. This is mainly
             // here to demonstrate immutable updating of data structures
 
-            // Create a full email info by spreading in `id`, `date` & `unread`
+            // Create a full email info by spreading in `id` & `date`
             // Then spread to front of emails state (since it's the newest)
             let newEmails = [
               {
                 ...newEmail,
                 id: Date.now(),
                 date: `${new Date()}`,
-                unread: true
               },
               ...emails
             ];

@@ -1,5 +1,5 @@
 import {
-    SET_EMAIL_UNREAD,
+    SET_EMAIL_READ,
     DELETE_EMAIL,
     ADD_EMAIL,
     UPDATE_EMAILS,
@@ -16,9 +16,9 @@ export const emails = (state = [], action) => {
         nextState = nextState.filter(email => email.id !== action.payload);
     }
 
-    if (action.type === SET_EMAIL_UNREAD) {
+    if (action.type === SET_EMAIL_READ) {
         nextState = nextState.map((email) => (
-            email.id === action.payload.emailId ? {...email, unread: action.payload.unread} : email
+            email.id === action.payload.emailId ? {...email, read: action.payload.read} : email
         ))
     }
 
@@ -28,7 +28,7 @@ export const emails = (state = [], action) => {
                 ...action.payload,
                 id: Date.now(),
                 date: `${new Date()}`,
-                unread: true
+                read: false
             },
             ...nextState,
         ]

@@ -56,7 +56,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## Tasks
 
-Add "Mark Unread" & "Mark Read" buttons to `EmailView` that when clicked will call the (newly added) `onMarkUnread` & `onMarkRead` props, respectively. Only one button should show at a given time based on the `unread` property within `this.props.email`:
+Add "Mark Unread" & "Mark Read" buttons to `EmailView` that when clicked will call the (newly added) `onMarkUnread` & `onMarkRead` props, respectively. Only one button should show at a given time based on the `read` property within `this.props.email`:
 
 ```js
 export default class EmailView extends Component {
@@ -87,11 +87,11 @@ export default class EmailView extends Component {
   }
 
   render() {
-    let {email: {subject, from, date, message, unread}} = this.props;
+    let {email: {subject, from, date, message, read}} = this.props;
     let rawMessage = {__html: message};
-    let markUnreadReadButton = unread
-      ? (<button onClick={this._handleMarkRead}>Mark Read</button>)
-      : (<button onClick={this._handleMarkUnread}>Mark Unread</button>);
+    let markUnreadReadButton = read
+      ? (<button onClick={this._handleMarkUnread}>Mark Unread</button>)
+      : (<button onClick={this._handleMarkRead}>Mark Read</button>);
 
     return (
       <section className="email-view">
@@ -142,21 +142,21 @@ export default class App extends Component {
 
   // other helper methods
 
-  _setUnread = (emailId, unread = true) => {
-    // Make a PUT request to update unread state
+  _setUnread = (emailId, read = true) => {
+    // Make a PUT request to update read state
     fetch(`//localhost:9090/emails/${emailId}`, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({unread})
+      body: JSON.stringify({read})
     })
       .then(res => res.json())
       .then(({success}) => {
         if (!success) {
           throw new Error(
-            `Unable to set email ID# ${emailId} unread state to ${unread}.`
+            `Unable to set email ID# ${emailId} read state to ${read}.`
           );
         }
       })
