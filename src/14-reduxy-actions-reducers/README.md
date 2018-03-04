@@ -66,17 +66,17 @@ After the app is initially built, a new browser window should open up at [http:/
 
 Create two new folders and files [`actions/index.js`](actions/index.js) and [`reducers/index.js`](reducers/index.js). We want to separate the `markRead()` action-reducer into separate a separate action and reducer.
 
-First, pull over `markRead()` into `actions/index.js`. But since the helper it calls (`_setUnread()`) involves calling an API (an async action), we are going to need to `redux-thunk`-ify the action.
+First, pull over `markRead()` into `actions/index.js`. But since the helper it calls (`_setRead()`) involves calling an API (an async action), we are going to need to `redux-thunk`-ify the action.
 
 ```js
 // actions/index.js
 
 export const markRead = (emailId) => (
-    (dispatch) => _setUnread(dispatch, emailId, false)
+    (dispatch) => _setRead(dispatch, emailId, true)
 )
 ```
 
-We are essentially wrapping the call to `_setUnread()` inside a redux-thunk action creator, exposing `dispatch()` to our helper. Below is a simple example showcasing what is going on here:
+We are essentially wrapping the call to `_setRead()` inside a redux-thunk action creator, exposing `dispatch()` to our helper. Below is a simple example showcasing what is going on here:
 
 ```js
 // example
@@ -91,60 +91,60 @@ const myActionCreator = (argumentFromComponent) => (
 )
 ```
 
-Now that we have our action creator made, lets pull over `_setUnread()` (excluding the state logic).
+Now that we have our action creator made, lets pull over `_setRead()` (excluding the state logic).
 
 ```js
 // actions/index.js
 
-import {setUnread as setUnreadApi} from '../api'
+import {setRead as setReadApi} from '../api'
 
-const _setUnread = (dispatch, emailId, unread) => (
-    setUnreadApi(emailId, unread).then(({success}) => {
+const _setRead = (dispatch, emailId, read) => (
+    setReadApi(emailId, read).then(({success}) => {
         if (success) {
             return dispatch(actionToBeDefined())
         }
 
         throw new Error(
-            `Unable to set email ID# ${emailId} unread state to ${unread}.`
+            `Unable to set email ID# ${emailId} read state to ${read}.`
         )
     }
 )
 
 export const markRead = (emailId) => (
-    (dispatch) => _setUnread(dispatch, emailId, false)
+    (dispatch) => _setRead(dispatch, emailId, true)
 )
 ```
 
-Now we have `_setUnread()` making the API call to our server, and replaced any state logic with a call to `dispatch()`. Now we want `dispatch()` to actually fire an action signifying what state change needs to occur. Add the action that will be fired, and have `dispatch()` call it properly:
+Now we have `_setRead()` making the API call to our server, and replaced any state logic with a call to `dispatch()`. Now we want `dispatch()` to actually fire an action signifying what state change needs to occur. Add the action that will be fired, and have `dispatch()` call it properly:
 
 ```js
 // actions/index.js
 
-import {setUnread as setUnreadApi} from '../api';
+import {setRead as setReadApi} from '../api';
 
-const SET_EMAIL_UNREAD = 'setEmailUnread';
-const setEmailUnread = (emailId, unread) => ({
-    type: SET_EMAIL_UNREAD,
+const SET_EMAIL_READ = 'setEmailRead';
+const setEmailRead = (emailId, read) => ({
+    type: SET_EMAIL_READ,
     payload: {
         emailId,
-        unread
+        read
     },
 })
 
-const _setUnread = (dispatch, emailId, unread) => (
-    setUnreadApi(emailId, unread).then(({success}) => {
+const _setRead = (dispatch, emailId, read) => (
+    setReadApi(emailId, read).then(({success}) => {
         if (success) {
-            return dispatch(setEmailUnread(emailId, unread))
+            return dispatch(setEmailRead(emailId, read))
         }
 
         throw new Error(
-            `Unable to set email ID# ${emailId} unread state to ${unread}.`
+            `Unable to set email ID# ${emailId} read state to ${read}.`
         );
     }
 )
 
 export const markRead = (emailId) => (
-    (dispatch) => _setUnread(dispatch, emailId, false)
+    (dispatch) => _setRead(dispatch, emailId, true)
 )
 ```
 
@@ -167,19 +167,19 @@ const emails = (state, action) => {
 }
 ```
 
-Because `emails` is an array, we can take advantage of argument defaults to set it to an empty array. Next, import the action type we exported in `actions/index.js`. Lastly, when the `action.type` matches `SET_EMAIL_UNREAD`, perform the state update that was previously in `_setUnread()` (when it was an action-reducer).
+Because `emails` is an array, we can take advantage of argument defaults to set it to an empty array. Next, import the action type we exported in `actions/index.js`. Lastly, when the `action.type` matches `SET_EMAIL_READ`, perform the state update that was previously in `_setRead()` (when it was an action-reducer).
 
 ```js
 // reducers/index.js
 
-import {SET_EMAIL_UNREAD} from '../actions';
+import {SET_EMAIL_READ} from '../actions';
 
 const emails = (state = [], action) => {
     let nextState = state;
 
-    if (action.type === SET_EMAIL_UNREAD) {
+    if (action.type === SET_EMAIL_READ) {
         nextState = nextState.map((email) => (
-            email.id === action.payload.emailId ? {...email, unread: action.payload.unread} : email
+            email.id === action.payload.emailId ? {...email, read: action.payload.read} : email
         )
     }
 
@@ -187,21 +187,21 @@ const emails = (state = [], action) => {
 }
 ```
 
-With the above, our state tree has a single key: `emails`, which will listen for actions of type `SET_EMAIL_UNREAD`, and return a new state tree with the appropriate modifications applied.
+With the above, our state tree has a single key: `emails`, which will listen for actions of type `SET_EMAIL_READ`, and return a new state tree with the appropriate modifications applied.
 
-Lastly, since `emails` are the only non-ui state in our app we can export this reducer directly.
+Lastly, since `emails` are the only non-UI state in our app we can export this reducer directly.
 
 ```js
 // reducers/index.js
 
-import {SET_EMAIL_UNREAD} from '../actions';
+import {SET_EMAIL_READ} from '../actions';
 
 export const emails = (state = [], action) => {
     let nextState = state;
 
-    if (action.type === SET_EMAIL_UNREAD) {
+    if (action.type === SET_EMAIL_READ) {
         nextState = nextState.map((email) => (
-            email.id === action.payload.emailId ? {...email, unread: action.payload.unread} : email
+            email.id === action.payload.emailId ? {...email, read: action.payload.read} : email
         )
     }
 

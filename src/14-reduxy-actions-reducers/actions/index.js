@@ -2,7 +2,7 @@ import {
   addEmail as addEmailApi,
   getEmails as getEmailsApi,
   deleteEmail as deleteEmailApi,
-  setUnread as setUnreadApi
+  setRead as setReadApi
 } from '../api'
 
 export const UPDATE_EMAILS = 'updateEmails';
@@ -18,33 +18,33 @@ export const getEmails = () => (
     )
 )
 
-export const SET_EMAIL_UNREAD = 'setEmailUnread';
-const setEmailUnread = (emailId, unread) => ({
-    type: SET_EMAIL_UNREAD,
+export const SET_EMAIL_READ = 'setEmailRead';
+const setEmailRead = (emailId, read) => ({
+    type: SET_EMAIL_READ,
     payload: {
         emailId,
-        unread,
+        read,
     },
 })
 
-const _setUnread = (dispatch, emailId, unread) => (
-    setUnreadApi(emailId, unread).then(({success}) => {
+const _setRead = (dispatch, emailId, read) => (
+    setReadApi(emailId, read).then(({success}) => {
         if (success) {
-            return dispatch(setEmailUnread(emailId, unread))
+            return dispatch(setEmailRead(emailId, read))
         }
 
         throw new Error(
-            `Unable to set email ID# ${emailId} unread state to ${unread}.`
+            `Unable to set email ID# ${emailId} read state to ${read}.`
         )
     }
 ))
 
 export const markUnread = (emailId) => (
-    (dispatch) => _setUnread(dispatch, emailId, true)
+    (dispatch) => _setRead(dispatch, emailId, false)
 )
 
 export const markRead = (emailId) => (
-    (dispatch) => _setUnread(dispatch, emailId, false)
+    (dispatch) => _setRead(dispatch, emailId, true)
 )
 
 
