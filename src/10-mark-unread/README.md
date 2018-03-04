@@ -90,8 +90,8 @@ export default class EmailView extends Component {
     let {email: {subject, from, date, message, read}} = this.props;
     let rawMessage = {__html: message};
     let markUnreadReadButton = read
-      ? (<button onClick={onMarkUnread}>Mark Unread</button>)
-      : (<button onClick={onMarkRead}>Mark Read</button>);
+      ? (<button onClick={this._handleMarkUnread}>Mark Unread</button>)
+      : (<button onClick={this._handleMarkRead}>Mark Read</button>);
 
     return (
       <section className="email-view">

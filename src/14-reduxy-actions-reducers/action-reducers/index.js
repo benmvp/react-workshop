@@ -6,7 +6,7 @@ import {
 } from '../api';
 
 const _setRead = (emails, emailId, read) =>
-setReadApi(emailId, read).then(({success}) => {
+  setReadApi(emailId, read).then(({success}) => {
     if (success) {
       return emails.map(
         email => (email.id === emailId ? {...email, read} : email)

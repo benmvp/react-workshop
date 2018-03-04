@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import {addEmail, getEmails, deleteEmail, setUnread} from './api';
+import {addEmail, getEmails, deleteEmail, setRead} from './api';
 
 import EmailList from './components/EmailList';
 import EmailView from './components/EmailView';
@@ -164,15 +164,7 @@ export default class App extends Component {
   }
 
   _setRead = (emailId, read = true) => {
-    // Make a PUT request to update read state
-    fetch(`//localhost:9090/emails/${emailId}`, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({read})
-    })
+    setRead(emailId, read)
       .then(res => res.json())
       // optimistic updating (see _handleFormSubmit for more info)
       .then(({success}) => {
