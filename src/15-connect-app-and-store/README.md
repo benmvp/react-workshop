@@ -17,6 +17,15 @@ In this step we are going to finish the remaining tasks in order to connect our 
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
+## Jump Around
+
+[Concepts](#concepts) | [Restart Setup](#restart-setup) | [Tasks](#tasks) | [Resources](#resources)
+
+## Concepts
+
+- Setting up a Redux store
+- Connecting React to Redux
+
 ## Restart Setup
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.

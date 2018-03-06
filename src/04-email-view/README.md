@@ -2,14 +2,21 @@
 
 The goal of this step is to build some interactivity into the app by responding to user interactions. [Handling events](https://facebook.github.io/react/docs/handling-events.html) within React elements is very similar to handling events on DOM elements. Event handlers will be passed instances of [`SyntheticEvent`](https://reactjs.org/docs/events.html), a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event (including` stopPropagation()` and `preventDefault()`) except the events work identically across all browsers!
 
-Ultimately, we want to click on an email list item and have its details displayed in the email view. While this a relatively simple user interaction, we'll ultimately learn about four key parts of React development:
-
-- Maintaining state
-- Passing event handlers down the compnoent hierarchy
-- Conditionally rendering components
-- Rendering unencoded content
+Ultimately, we want to click on an email list item and have its details displayed in the email view.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
+
+## Jump Around
+
+[Concepts](#concepts) | [Restart Setup](#restart-setup) | [Tasks](#tasks) | [Resources](#resources)
+
+## Concepts
+
+- Maintaining application and UI state
+- Handling user interaction
+- Passing event handlers down the component hierarchy
+- Conditionally rendering components
+- Rendering unencoded content
 
 ## Restart Setup
 

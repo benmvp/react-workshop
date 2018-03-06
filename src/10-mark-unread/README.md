@@ -4,6 +4,16 @@ The goal of this step is to add support for marking an email read or unread by s
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
+## Jump Around
+
+[Concepts](#concepts) | [Restart Setup](#restart-setup) | [Tasks](#tasks) | [Resources](#resources)
+
+## Concepts
+
+- Making API calls
+- Combining sections of UI into helper components
+- Handling user interaction
+
 ## Restart Setup
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.

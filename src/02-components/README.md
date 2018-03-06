@@ -6,6 +6,16 @@ Conceptually, components are like JavaScript functions. They accept arbitrary in
 
 Once again, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
+## Jump Around
+
+[Concepts](#concepts) | [Restart Setup](#restart-setup) | [Tasks](#tasks) | [Resources](#resources)
+
+## Concepts
+
+- Creating and composing React components
+- Configuring components via passing props
+- Typechecking props
+
 ## Restart Setup
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
@@ -194,7 +204,7 @@ const EmailListItem = ({from, subject}) => (
 );
 ```
 
-But we'll continue to use the `class` syntax so that we can define [`propTypes`](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) for `EmailListItem` (and to manage `state` later on):
+The are called "stateless" function because they don't maintain their own state. We'll cover state in [Step 4](../04-email-view/). But we'll continue to use the `class` syntax so that we can define [`propTypes`](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) for `EmailListItem` (and to manage `state` later on):
 
 ```js
 // back up top add new import of `prop-types` lib

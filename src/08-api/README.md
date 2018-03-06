@@ -4,6 +4,16 @@ The goal of this step is to move away from the hard-coded `EMAILS` constant to i
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
+## Jump Around
+
+[Concepts](#concepts) | [Restart Setup](#restart-setup) | [API Setup](#api-setup) | [Tasks](#tasks) | [Resources](#resources)
+
+## Concepts
+
+- Making API calls
+- Using Promises
+- Hooking into the component lifecycle
+
 ## Restart Setup
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
