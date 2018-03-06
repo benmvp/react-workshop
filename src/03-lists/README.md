@@ -4,6 +4,15 @@ The goal of this step is to practice transforming lists of data into lists of co
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
+## Jump Around
+
+[Concepts](#concepts) | [Restart Setup](#restart-setup) | [Tasks](#tasks) | [Resources](#resources)
+
+## Concepts
+
+- Rendering dynamic lists of data
+- Handling special `key` prop
+
 ## Restart Setup
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.

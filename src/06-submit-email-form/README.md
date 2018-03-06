@@ -4,6 +4,17 @@ The goal of this step is to "send" the email and have it added to the email list
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
+## Jump Around
+
+[Concepts](#concepts) | [Restart Setup](#restart-setup) | [Tasks](#tasks) | [Resources](#resources)
+
+## Concepts
+
+- Handling client-side form submission
+- Working with the "Virtual DOM"
+- Leveraging ES6+ to maintain application state
+
+
 ## Restart Setup
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.

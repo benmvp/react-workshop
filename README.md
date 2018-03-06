@@ -9,7 +9,7 @@
 [![Star on GitHub](https://img.shields.io/github/stars/benmvp/react-workshop.svg?style=social)](https://github.com/benmvp/react-workshop/stargazers)
 [![Tweet](https://img.shields.io/twitter/url/https/github.com/benmvp/react-workshop.svg?style=social)](https://twitter.com/intent/tweet?text=Check%20out%20React%20Fundamentals%20Workshop%20by%20%40benmvp!%0A%0Ahttps%3A%2F%2Fgithub.com%2Fbenmvp%2Freact-workshop)
 
-A step-by-step workshop for learning React fundamentals. Best if accompanied with live facilitation. 🙂
+A step-by-step workshop to build a React application, all while learning React fundamentals. Best if accompanied with live facilitation. 🙂
 
 ## Many thanks!
 
@@ -87,6 +87,22 @@ You can start at the [beginning](src/00-begin/) to get setup. Afterwards follow 
 1. [Action-Reducers](src/13-action-reducers/)
 1. [Redux-y Actions and Reducers](src/14-reduxy-actions-reducers/)
 1. [Connect App and Store](src/15-connect-app-and-store/)
+
+## FUNdamental Concepts
+
+- Using JSX syntax ([Step 1](src/01-jsx/))
+- Writing readable, reusable and composable components ([Step 2](src/02-components/))
+- Maintaining component state ([Step 4](src/04-email-view/))
+- Handling user interaction ([Step 4](src/04-email-view/))
+- Handling HTML forms & form elements ([Step 5](src/05-email-form/))
+- Leveraging ES6+ to maintain application state ([Step 6](src/06-submit-email-form/))
+- Making API calls ([Step 8](src/08-api/))
+- Hooking into the component lifecycle ([Step 8](src/08-api/))
+- Applying component styling with CSS classes ([Step 9](src/09-styling/))
+- Factoring out logic from components ([Step 12](src/12-api-lib/))
+- Creating "action-reducers" ([Step 13](src/13-action-reducers/))
+- Defining Redux actions & reducers ([Step 14](src/14-reduxy-actions-reducers/))
+- Conect React to Redux store ([Step 15](src/15-connect-app-and-store/))
 
 ## Questions
 

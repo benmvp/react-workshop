@@ -8,6 +8,16 @@ Unlike browser DOM elements, React elements are plain objects, and are cheap to 
 
 If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
+## Jump Around
+
+[Concepts](#concepts) | [Tasks](#tasks) | [Resources](#resources)
+
+## Concepts
+
+- Rendering elements with JSX
+- Handling special element attribute names
+- Adding inline styles
+
 ## Tasks
 
 In [`App.js`](App.js), replace `null` with JSX markup. For example:

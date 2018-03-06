@@ -4,6 +4,15 @@ Now that we've built out all of the UI functionality, the `App` component is doi
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
+## Jump Around
+
+[Concepts](#concepts) | [Restart Setup](#restart-setup) | [Tasks](#tasks) | [Resources](#resources)
+
+## Concepts
+
+- Factoring out logic from components
+- Centralizing API calls
+
 ## Restart Setup
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.

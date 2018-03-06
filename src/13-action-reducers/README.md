@@ -6,6 +6,15 @@ The goal of these action-reducer is to perform an API call and then return a `Pr
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
+## Jump Around
+
+[Concepts](#concepts) | [Restart Setup](#restart-setup) | [Tasks](#tasks) | [Resources](#resources)
+
+## Concepts
+
+- Factoring out logic from components
+- Creating "action-reducers"
+
 ## Restart Setup
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
