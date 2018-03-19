@@ -63,11 +63,11 @@ export default class EmailForm extends Component {
       <form className="email-form">
         <fieldset>
           <label htmlFor="from">From:</label>
-          <input type="email" id="from" value="" placeholder="jill@me.com" />
+          <input type="email" id="from" defaultValue="" placeholder="jill@me.com" />
         </fieldset>
         <fieldset>
           <label htmlFor="message">Message:</label>
-          <textarea id="message" value="" placeholder="[Insert message here]" />
+          <textarea id="message" defaultValue="" placeholder="[Insert message here]" />
         </fieldset>
       </form>
     );
@@ -75,7 +75,9 @@ export default class EmailForm extends Component {
 }
 ```
 
-As of now, the DOM is maintaining the state of the input fields; React has no idea what the values of the fields are. They are currently ["uncontrolled components"](https://reactjs.org/docs/uncontrolled-components.html). We want to make them "controlled components" so we can keep track of their state within `EmailForm`.
+Notice the use of `defaultValue` prop to set the initial value of the input fields instead of `value`, which is how you would normally initialize an HTML `<input>`. As of now, the DOM is maintaining the state of the input fields; React has no idea what the values of the fields are. They are currently ["uncontrolled components"](https://reactjs.org/docs/uncontrolled-components.html). We want to make them "controlled components" so we can keep track of their state within `EmailForm`.
+
+> NOTE: If you were to set the `value` prop of the input fields, you wouldn't be able to type at all because setting `value` signals to React that you want React to control the values of the input fields.
 
 Add new state properties for `from` & `message` and pass those state properties as the `value` of the corresponding input fields. Then `onChange` of the fields, update the corresponding state properties.
 
@@ -90,11 +92,11 @@ export default class EmailForm extends Component {
     this.setState({[name]: e.target.value});
   }
 
-  _handleFromChanged(e) {
+  _handleFromChanged = (e) => {
     this._updateFormFieldState('from', e);
   }
 
-  _handleMessageChanged(e) {
+  _handleMessageChanged = (e) => {
     this._updateFormFieldState('message', e);
   }
 
@@ -128,12 +130,17 @@ export default class EmailForm extends Component {
 }
 ```
 
+When you using input fields you can take one of two approaches:
+
+1. Set the `defaultValue` property to make the input an "uncontrolled" component. React doesn't control the value of the input. The browser maintains the value of the input
+1. Set the `value` & `onChange` properties to make the input a "controlled" component. React **does** control the value of the input because you explicitly maintain its value in `state`. Every `onChange`, you update the state and reset its `value`.
+
 
 ## Exercises
 
 - Use the [React Developer Tools](https://github.com/facebook/react-devtools#installation) to watch the `state` of `EmailForm` update as you type into the fields
 - Add **to** & **subject** form fields in between **from** & **message**
-- **BONUS:** Leveraging [`Function.prototype.bind()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind), call `this._updateFormFieldState` directly in the `onChange` handlers for each input to keep the code DRY
+- **BONUS:** Get rid of the individual `_handle*Change` methods. Leveraging [`Function.prototype.bind()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind), call `this._updateFormFieldState` directly in the `onChange` handlers for each input to keep the code DRY.
 
 ## Next
 
