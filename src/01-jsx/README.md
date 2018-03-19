@@ -83,7 +83,7 @@ return (
     <p className="large" style={{backgroundColor: 'lightgrey'}}>This is a paragraph of text written in React</p>
     <aside>
       <label htmlFor="input" style={{display: 'block'}}>Input label</label>
-      <input type="text" id="input" placeholder="Fill me in please" style={{color: 'blue', marginTop: '30'}} />
+      <input type="text" id="input" placeholder="Fill me in please" style={{color: 'darkblue', marginTop: 30}} />
     </aside>
   </div>
 );
