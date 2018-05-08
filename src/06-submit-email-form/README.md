@@ -66,6 +66,7 @@ export default class EmailForm extends Component {
   // other helper methods
 
   _handleSubmit = (e) => {
+    // prevent the form from doing an actual page submit
     e.preventDefault();
 
     let {from, to, subject, message} = this.state;
@@ -221,7 +222,7 @@ export default class App extends Component {
 }
 ```
 
-> NOTE: Your first thought might be to update the `EMAILS` constant, but updating it will not cause React to call `render()` like calling `setState` does.
+> NOTE: Your first thought might be to update the `EMAILS` constant with the newly added email, but updating it will not cause React to call `render()` like calling `setState` does.
 
 Now within `render()`, instead of rendering from `EMAILS`, we'll render from `this.state.emails`:
 
