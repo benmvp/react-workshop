@@ -6,7 +6,7 @@ A step-by-step workshop to build a React application, all while learning React f
 
 All of the exercises make use of [ES6](http://www.benmvp.com/learning-es6-series/), so you may need to brush up on the new JavaScript features if they are unfamiliar. Each step in the workshop builds on top of the previous one. If at any point you get stuck, you can find the answers in the source code of the current step. Any  step can be used as a starting point to continue on to the remaining steps.
 
-You can start at the [beginning](00-begin/) to get setup. Afterwards follow these steps:
+You can start at the [beginning](00-begin/) to get set up. Afterwards follow these steps:
 
 1. [JSX](01-jsx/)
 1. [Components](02-components/)
@@ -21,8 +21,6 @@ You can start at the [beginning](00-begin/) to get setup. Afterwards follow thes
 1. [Email Form Modal](11-email-form-modal/)
 1. [API lib](12-api-lib/)
 1. [Action-Reducers](13-action-reducers/)
-1. [Redux-y Actions and Reducers](14-reduxy-actions-reducers/)
-1. [Connect App and Store](15-connect-app-and-store/)
 
 ## FUNdamental Concepts
 
@@ -37,5 +35,3 @@ You can start at the [beginning](00-begin/) to get setup. Afterwards follow thes
 - Applying component styling with CSS classes ([Step 9](09-styling/))
 - Factoring out logic from components ([Step 12](12-api-lib/))
 - Creating "action-reducers" ([Step 13](13-action-reducers/))
-- Defining Redux actions & reducers ([Step 14](14-reduxy-actions-reducers/))
-- Conect React to Redux store ([Step 15](15-connect-app-and-store/))
