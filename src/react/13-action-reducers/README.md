@@ -131,7 +131,7 @@ _handleFormSubmit = (newEmail) => {
 
 ## Next
 
-Go to [Step 14 - Redux-y Actions and Reducers](../14-reduxy-actions-reducers/).
+You're done! Your code should mirror the [Completed React App](../end/).
 
 ## Resources
 

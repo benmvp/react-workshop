@@ -1,4 +1,4 @@
-# Step 14 - Redux-y Actions and Reducers
+# Step 1 - Actions and Reducers
 
 Our goal in [Step 13](../13-action-reducers) was to separate the app state from the display logic by moving the business logic into a set of actions (api calls) and reducers (state changes). This, however, wasn't in true Redux-y fashion. The goal of this step and [Step 15](../15-connect-app-and-store) is make that final jump and turn this application into a full [Redux](http://redux.js.org/) app.
 
@@ -228,7 +228,7 @@ Once we add the remaining actions and logic into the reducer it is ready to be c
 
 ## Next
 
-As of now our app is not calling or utilizing the actions we have created. Go to [Step 15 - Connect App and Store](../15-connect-app-and-store/) to actually create the store and properly hydrate our app using our store and reducers.
+As of now our app is not calling or utilizing the actions we have created. Go to [Step 2 - Connect App and Store](../02-connect-app-and-store/) to actually create the store and properly hydrate our app using our store and reducers.
 
 ## Resources
 

@@ -1,4 +1,4 @@
-# Completed App
+# Completed Redux App
 
 You need [node](https://nodejs.org/en/) version 6 or higher. You can [install `nvm`](https://github.com/creationix/nvm#install-script) to manage multiple versions of node.
 
@@ -18,10 +18,10 @@ yarn
 npm install
 ```
 
-Update [`src/index.js`](src/index.js#L3) to point to the `end` App:
+Update [`src/index.js`](../../index.js#L3) to point to the `end` App:
 
 ```js
-import App from './end/App';
+import App from './redux/end/App';
 ```
 
 Start the API server (running at [http://localhost:9090/](http://localhost:9090/)):

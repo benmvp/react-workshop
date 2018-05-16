@@ -1,6 +1,6 @@
-# Step 15 - Connect App and Store
+# Step 2 - Connect App and Store
 
-In [step 14](../14-reduxy-action-reducers) we separated out our "action-reducers" into distinct "actions" and "reducers". As of now, these "actions" and "reducers" are not being consumed by any part of our app. We are still relying on the "action-reducers" from before. Our goal in this step is to actually connect our [Redux](http://redux.js.org/)-y "reducers" and "actions" to our React application by hydrating the data via a Redux [`store`](http://redux.js.org/docs/api/Store.html).
+In [step 1](../01-reduxy-action-reducers) we separated out our "action-reducers" into distinct "actions" and "reducers". As of now, these "actions" and "reducers" are not being consumed by any part of our app. We are still relying on the "action-reducers" from before. Our goal in this step is to actually connect our [Redux](http://redux.js.org/)-y "reducers" and "actions" to our React application by hydrating the data via a Redux [`store`](http://redux.js.org/docs/api/Store.html).
 
 In order to actually connect the two, we will be using some helpers provided by [`react-redux`](https://github.com/reactjs/react-redux), namely: [`<Provider/>`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#provider-store) and [`connect()`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options). The docs provide invaluable insight into their behavior, but in short terms:
 * **Provider**: The top level component in your application, makes the `store` accessible via calls to `connect()` for all children components
@@ -456,7 +456,7 @@ Within `<Page />` there are still many references to our previous version of "ac
 
 ## Next
 
-You're done! Your code should mirror the [Completed App](../end/).
+You're done! Your code should mirror the [Completed Redux App](../end/).
 
 ## Resources
 

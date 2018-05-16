@@ -1,4 +1,4 @@
-# Step 0 - Begin Workshop
+# Step 0 - Begin React Workshop
 
 The goal of this step is just to get everything set up with a running (but blank) app. We will be working in a step-by-step fashion to build an email application. Visit the [final step](../end/) to install and run the finished app locally.
 
@@ -26,13 +26,13 @@ Copy the [`00-begin`](./) directory, name it `workshop`:
 
 ```sh
 cd react-workshop
-cp -r src/00-begin src/workshop
+cp -r src/react/00-begin src/workshop
 ```
 
-Ensure [`src/index.js`](../index.js#L3) is pointing to the `workshop` App:
+Ensure [`src/index.js`](../../index.js#L3) is pointing to the `workshop` App:
 
 ```js
-import App from './workshop/App';
+import App from './workshop/react/App';
 ```
 
 Start the app:
@@ -57,6 +57,5 @@ Go to [Step 1 - JSX](../01-jsx/).
 ## Resources
 
 - [_Learning ES6_ series](http://www.benmvp.com/learning-es6-series/)
-- [Fork A Repo on Github](https://help.github.com/articles/fork-a-repo/)
 - [`git-clone`](https://git-scm.com/docs/git-clone)
 - [Create React App](https://github.com/facebookincubator/create-react-app)
