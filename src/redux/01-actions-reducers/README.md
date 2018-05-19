@@ -14,63 +14,13 @@ As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exer
 
 ## Jump Around
 
-[Concepts](#concepts) | [Restart Setup](#restart-setup) | [Tasks](#tasks) | [Resources](#resources)
+[Concepts](#concepts) | [Tasks](#tasks) | [Resources](#resources)
 
 ## Concepts
 
 - Defining Redux actions & action creators
 - Defining Redux reducers
 - Using `redux-thunk` for asynchronous actions
-
-## Restart Setup
-
-If you didn't successfully complete the previous step, you can jump right in by copying the step.
-
-Ensure you're in the root folder of the repo:
-
-```sh
-cd react-workshop
-```
-
-Remove the existing workshop directory if you had previously started elsewhere:
-
-```sh
-rm -rf src/workshop
-```
-
-Copy the previous step as a starting point:
-
-```sh
-cp -r src/redux/01-action-reducers src/workshop
-```
-
-Ensure [`src/index.js`](../index.js#L3) is still pointing to the `workshop` App:
-
-```js
-import App from './workshop/App';
-```
-
-Start API server (running at [http://localhost:9090/](http://localhost:9090/)):
-
-```sh
-# Yarn
-yarn run start:api
-
-# ...or NPM
-npm run start:api
-```
-
-In a **separate terminal window/tab**, making sure you're still in the repo root directory, start the app:
-
-```sh
-# Yarn
-yarn start
-
-# ...or NPM
-npm start
-```
-
-After the app is initially built, a new browser window should open up at [http://localhost:3000/](http://localhost:3000/), and you should be able to continue on with the tasks below.
 
 ## Tasks
 

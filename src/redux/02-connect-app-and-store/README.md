@@ -45,10 +45,10 @@ rm -rf src/workshop
 Copy the previous step as a starting point:
 
 ```sh
-cp -r src/redux/02-connect-app-and-store src/workshop
+cp -r src/redux/01-actions-reducers src/workshop
 ```
 
-Ensure [`src/index.js`](../index.js#L3) is still pointing to the `workshop` App:
+Ensure [`src/index.js`](../../index.js#L3) is still pointing to the `workshop` App:
 
 ```js
 import App from './workshop/App';

@@ -34,7 +34,7 @@ Copy the previous step as a starting point:
 cp -r src/react/04-email-view src/workshop
 ```
 
-Ensure [`src/index.js`](../index.js#L3) is still pointing to the `workshop` App:
+Ensure [`src/index.js`](../../index.js#L3) is still pointing to the `workshop` App:
 
 ```js
 import App from './workshop/App';
