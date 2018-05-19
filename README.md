@@ -22,7 +22,7 @@ Step-by-step workshops related to building React applications, all while learnin
 
 - [React FUNdamentals](src/react/)
 - [Redux FUNdamentals](src/redux/)
-- [React - Redux Testing FUNdamentals](src/testing/)
+- [React / Redux Testing FUNdamentals](src/testing/)
 
 ## Questions
 

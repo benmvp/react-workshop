@@ -32,7 +32,7 @@ cp -r src/redux/00-begin src/workshop
 Ensure [`src/index.js`](../../index.js#L3) is pointing to the `workshop` App:
 
 ```js
-import App from './workshop/redux/App';
+import App from './workshop/App';
 ```
 
 Start the app:
