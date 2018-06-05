@@ -16,7 +16,7 @@ Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred)
 
 ```sh
 # Yarn
-yarn
+yarn install
 
 # ...or NPM
 npm install
