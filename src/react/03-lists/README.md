@@ -182,9 +182,10 @@ export default class EmailListItem extends Component {
 
 - Move the `EMAILS` out of `EmailList` into the top-level `App`
 - Pass `EMAILS` in `App` as the `emails` prop to `<EmailList>`
-- Declare a new `emails` prop type using `PropTypes.arrayOf()` in `EmailList` (you can share common prop types with `EmailListItem` in a [`components/constants.js`](components/constants.js) file)
+- Declare a new `emails` prop type using `PropTypes.arrayOf()` in `EmailList`
 - Use `this.props.emails` (instead of `EMAILS`) in the `map()` within `render()` of `EmailList`
 - Import component CSS for [`App.js`](App.js), [`EmailForm.js`](components/EmailForm.js) and [`EmailView.js`](components/EmailView.js)
+- **BONUS:** Share a common prop type between `EmailListItem` & `EmailList` in a new [`components/constants.js`](components/constants.js) file
 
 ## Next
 
