@@ -41,7 +41,15 @@ Ensure [`src/index.js`](../../index.js#L3) is pointing to the `workshop` App:
 import App from './workshop/App';
 ```
 
-Start the app:
+```sh
+# Yarn
+yarn run start:api
+
+# ...or NPM
+npm run start:api
+```
+
+In a **separate terminal window/tab**, making sure you're still in the repo root directory, start the app:
 
 ```sh
 # Yarn
@@ -53,8 +61,7 @@ npm start
 
 ## Exercises
 
-- Visit [http://localhost:3000/](http://localhost:3000/) and you should see an empty page
-- Install [React Developer Tools](https://github.com/facebook/react-devtools#installation) for your browser
+- Visit [http://localhost:3000/](http://localhost:3000/) and you should see a fully-functioning "email app"
 - Install a JSX-friendly code editor, such as [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Next

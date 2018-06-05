@@ -20,6 +20,8 @@ Once again, if you run into trouble with the [tasks](#tasks) or [exercises](#exe
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
 
+Complete the [setup instructions](../00-begin) if you have not yet followed them.
+
 Ensure you're in the root folder of the repo:
 
 ```sh
