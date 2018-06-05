@@ -49,6 +49,7 @@ npm start
 
 - Visit [http://localhost:3000/](http://localhost:3000/) and you should see an empty page
 - Install [React Developer Tools](https://github.com/facebook/react-devtools#installation) for your browser
+- Install a JSX-friendly code editor, such as [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Next
 
