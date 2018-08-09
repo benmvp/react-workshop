@@ -22,10 +22,12 @@ it('creates an EmailListItem for each email', () => {
   expect(emailListItems).toHaveLength(EMAILS.length);
 
   emailListItems.forEach((emailListItem, index) => {
-    expect(emailListItem).toHaveProp('email', EMAILS[index]);
-    expect(emailListItem).toHaveProp('onSelect', onItemSelect);
-    expect(emailListItem).toHaveProp('onDelete', onItemDelete);
-    expect(emailListItem).toHaveProp('onMarkUnread', onItemMarkUnread);
+    expect(emailListItem).toHaveProp({
+      email: EMAILS[index],
+      onSelect: onItemSelect,
+      onDelete: onItemDelete,
+      onMarkUnread: onItemMarkUnread
+    });
   });
 });
 
