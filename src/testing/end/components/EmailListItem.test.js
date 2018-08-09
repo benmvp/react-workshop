@@ -108,7 +108,7 @@ describe('event handling', () => {
   
       // verify onMarkUnread is called only once with the email ID
       expect(onMarkUnread).toHaveBeenCalledTimes(1);
-      expect(onMarkUnread).toHaveBeenCalledWith(DEFAULT_EMAIL.id);
+      expect(onMarkUnread).toHaveBeenCalledWith(READ_EMAIL.id);
     });
   });
 

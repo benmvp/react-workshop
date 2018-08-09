@@ -10,5 +10,11 @@ export const DEFAULT_EMAIL = {
 
 export const READ_EMAIL = {
   ...DEFAULT_EMAIL,
+  id: 23,
   read: true,
 };
+
+export const EMAILS = [
+  DEFAULT_EMAIL,
+  READ_EMAIL,
+];
