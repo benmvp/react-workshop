@@ -58,14 +58,14 @@ export default class EmailForm extends Component {
 
     if (onCancel) {
       cancelButton = (
-        <button type="button" onClick={this._handleCancel}>
+        <button type="button" onClick={this._handleCancel} data-test="email-form-cancel">
           Cancel
         </button>
       );
     }
 
     return (
-      <form className="email-form" onSubmit={this._handleSubmit}>
+      <form className="email-form" onSubmit={this._handleSubmit} data-test="email-form-form">
         <fieldset className="email-form__field">
           <label className="email-form__label" htmlFor="from">
             From:
@@ -77,6 +77,7 @@ export default class EmailForm extends Component {
             value={from}
             placeholder="jill@me.com"
             onChange={this._updateFormFieldState.bind(this, 'from')}
+            data-test="email-form-from"
           />
         </fieldset>
         <fieldset className="email-form__field">
@@ -90,6 +91,7 @@ export default class EmailForm extends Component {
             value={to}
             placeholder="me@me.com"
             onChange={this._updateFormFieldState.bind(this, 'to')}
+            data-test="email-form-to"
           />
         </fieldset>
         <fieldset className="email-form__field">
@@ -103,6 +105,7 @@ export default class EmailForm extends Component {
             value={subject}
             placeholder="Awesome React workshop!"
             onChange={this._updateFormFieldState.bind(this, 'subject')}
+            data-test="email-form-subject"
           />
         </fieldset>
         <fieldset className="email-form__field">
@@ -115,6 +118,7 @@ export default class EmailForm extends Component {
             value={message}
             placeholder="[Insert message here]"
             onChange={this._updateFormFieldState.bind(this, 'message')}
+            data-test="email-form-message"
           />
         </fieldset>
 
