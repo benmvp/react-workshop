@@ -10,13 +10,13 @@ const EmailListItemStatus = ({isSelected, read, onDelete, onMarkUnread}) => {
   let markUnreadButton;
 
   if (isSelected && read) {
-    markUnreadButton = <button onClick={onMarkUnread} data-spec="email-list-item-mark-unread">Mark unread</button>;
+    markUnreadButton = <button onClick={onMarkUnread} data-test="email-list-item-mark-unread">Mark unread</button>;
   }
 
   return (
     <span className="email-list-item__status">
       {markUnreadButton}
-      <button onClick={onDelete} data-spec="email-list-item-delete">Delete</button>
+      <button onClick={onDelete} data-test="email-list-item-delete">Delete</button>
     </span>
   );
 };
@@ -58,7 +58,7 @@ export default class EmailListItem extends Component {
     });
 
     return (
-      <div className={className} onClick={this._handleClick} data-spec="email-list-item">
+      <div className={className} onClick={this._handleClick} data-test="email-list-item">
         <span className="email-list-item__from">{from}</span>
         <span className="email-list-item__subject">{subject}</span>
         <EmailListItemStatus

@@ -4,7 +4,7 @@ import EmailList from './EmailList';
 import EmailListItem from './EmailListItem';
 import {EMAILS} from './__fixtures__';
 
-it('creates an EmailListItem for each email', () => {
+test('creates an EmailListItem for each email', () => {
   const onItemSelect = jest.fn();
   const onItemDelete = jest.fn();
   const onItemMarkUnread = jest.fn();
@@ -31,7 +31,7 @@ it('creates an EmailListItem for each email', () => {
   });
 });
 
-it('passes isSelected=true for matching selectedEmailId prop', () => {
+test('passes isSelected=true for matching selectedEmailId prop', () => {
   const component = mount(
     <EmailList
       emails={EMAILS}

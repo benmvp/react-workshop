@@ -13,14 +13,14 @@ const EmailViewButtonBar = ({
   onMarkRead
 }) => {
   let markUnreadReadButton = read
-    ? (<button onClick={onMarkUnread} data-spec="email-view-mark-unread">Mark Unread</button>)
-    : (<button onClick={onMarkRead} data-spec="email-view-mark-read">Mark Read</button>);
+    ? (<button onClick={onMarkUnread} data-test="email-view-mark-unread">Mark Unread</button>)
+    : (<button onClick={onMarkRead} data-test="email-view-mark-read">Mark Read</button>);
 
   return (
     <div className="email-view__button-bar">
       {markUnreadReadButton}
-      <button onClick={onDelete} data-spec="email-view-delete">Delete</button>
-      <button onClick={onClose} data-spec="email-view-close">Close</button>
+      <button onClick={onDelete} data-test="email-view-delete">Delete</button>
+      <button onClick={onClose} data-test="email-view-close">Close</button>
     </div>
   );
 };
@@ -69,7 +69,7 @@ export default class EmailView extends Component {
         <h1>{subject}</h1>
         <h2>From: <a href={`mailto:${from}`}>{from}</a></h2>
         <h3>{date}</h3>
-        <div dangerouslySetInnerHTML={rawMessage} data-spec="email-view-message" />
+        <div dangerouslySetInnerHTML={rawMessage} data-test="email-view-message" />
         <EmailViewButtonBar
           read={read}
           onClose={this._handleClose}

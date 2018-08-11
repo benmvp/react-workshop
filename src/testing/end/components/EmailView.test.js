@@ -12,21 +12,21 @@ const getComponent = (props = {}) => (
       {...props}
     />
   )
-)
+);
 
 describe('prop rendering', () => {
   describe('email', () => {
     it('does *not* encode HTML in the message', () => {
       const component = getComponent();
-      const message = component.find('[data-spec="email-view-message"]');
+      const message = component.find('[data-test="email-view-message"]');
 
       expect(message.html()).toContain('<br>');
     });
 
     it('displays mark read button if email is unread', () => {
       const component = getComponent();
-      const markReadButton = component.find('[data-spec="email-view-mark-read"]');
-      const markUnreadButton = component.find('[data-spec="email-view-mark-unread"]');
+      const markReadButton = component.find('[data-test="email-view-mark-read"]');
+      const markUnreadButton = component.find('[data-test="email-view-mark-unread"]');
 
       expect(markReadButton).toExist();
       expect(markUnreadButton).not.toExist();
@@ -34,8 +34,8 @@ describe('prop rendering', () => {
 
     it('displays mark unread button if email is read', () => {
       const component = getComponent({email: READ_EMAIL});
-      const markReadButton = component.find('[data-spec="email-view-mark-read"]');
-      const markUnreadButton = component.find('[data-spec="email-view-mark-unread"]');
+      const markReadButton = component.find('[data-test="email-view-mark-read"]');
+      const markUnreadButton = component.find('[data-test="email-view-mark-unread"]');
 
       expect(markUnreadButton).toExist();
       expect(markReadButton).not.toExist();
@@ -49,7 +49,7 @@ describe('event handling', () => {
       const onClose = jest.fn();
       const stopPropagation = jest.fn();
       const component = getComponent({onClose});
-      const deleteButton = component.find('[data-spec="email-view-close"]');
+      const deleteButton = component.find('[data-test="email-view-close"]');
   
       // sanity check that the callback hasn't been called yet
       expect(onClose).toHaveBeenCalledTimes(0);
@@ -70,7 +70,7 @@ describe('event handling', () => {
       const onDelete = jest.fn();
       const stopPropagation = jest.fn();
       const component = getComponent({onDelete});
-      const deleteButton = component.find('[data-spec="email-view-delete"]');
+      const deleteButton = component.find('[data-test="email-view-delete"]');
   
       // sanity check that the callback hasn't been called yet
       expect(onDelete).toHaveBeenCalledTimes(0);
@@ -91,7 +91,7 @@ describe('event handling', () => {
       const onMarkRead = jest.fn();
       const stopPropagation = jest.fn();
       const component = getComponent({onMarkRead});
-      const markReadButton = component.find('[data-spec="email-view-mark-read"]');
+      const markReadButton = component.find('[data-test="email-view-mark-read"]');
     
       // sanity check that the callback hasn't been called yet
       expect(onMarkRead).toHaveBeenCalledTimes(0);
@@ -108,7 +108,7 @@ describe('event handling', () => {
 
     it('does nothing when onMarkRead is not specified', () => {
       const component = getComponent();
-      const markReadButton = component.find('[data-spec="email-view-mark-read"]');
+      const markReadButton = component.find('[data-test="email-view-mark-read"]');
   
       // simulating a click even shouldn't cause an error
       expect(() => {
@@ -122,7 +122,7 @@ describe('event handling', () => {
       const onMarkUnread = jest.fn();
       const stopPropagation = jest.fn();
       const component = getComponent({email: READ_EMAIL, onMarkUnread});
-      const markUnreadButton = component.find('[data-spec="email-view-mark-unread"]');
+      const markUnreadButton = component.find('[data-test="email-view-mark-unread"]');
     
       // sanity check that the callback hasn't been called yet
       expect(onMarkUnread).toHaveBeenCalledTimes(0);
@@ -139,7 +139,7 @@ describe('event handling', () => {
 
     it('does nothing when onMarkUnread is not specified', () => {
       const component = getComponent({email: READ_EMAIL});
-      const markUnreadButton = component.find('[data-spec="email-view-mark-unread"]');
+      const markUnreadButton = component.find('[data-test="email-view-mark-unread"]');
   
       // simulating a click even shouldn't cause an error
       expect(() => {

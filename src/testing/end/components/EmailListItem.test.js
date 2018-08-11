@@ -12,7 +12,7 @@ const getComponent = (props = {}) => (
       {...props}
     />
   )
-)
+);
 
 it('renders without crashing', () => {
   expect(() => getComponent()).not.toThrow();
@@ -22,7 +22,7 @@ describe('prop rendering', () => {
   describe('isSelected', () => {
     it('includes "email-list-item--selected" class on container when `isSelected` prop is true', () => {
       const component = getComponent({isSelected: true});
-      const container = component.find('[data-spec="email-list-item"]');
+      const container = component.find('[data-test="email-list-item"]');
 
       expect(container).toHaveClassName('email-list-item--selected');
     });
@@ -30,7 +30,7 @@ describe('prop rendering', () => {
 
     it('excludes "email-list-item--selected" class on container when `isSelected` prop is true', () => {
       const component = getComponent();
-      const container = component.find('[data-spec="email-list-item"]');
+      const container = component.find('[data-test="email-list-item"]');
 
       expect(container).not.toHaveClassName('email-list-item--selected');
     });
@@ -39,8 +39,8 @@ describe('prop rendering', () => {
   describe('email', () => {
     it('includes "email-list-item--unread" class on container when `email.read` property is false', () => {
       const component = getComponent();
-      const container = component.find('[data-spec="email-list-item"]');
-      const markUnreadButton = component.find('[data-spec="email-list-item-mark-unread"]');
+      const container = component.find('[data-test="email-list-item"]');
+      const markUnreadButton = component.find('[data-test="email-list-item-mark-unread"]');
 
       expect(container).toHaveClassName('email-list-item--unread');
       expect(markUnreadButton).not.toExist();
@@ -49,8 +49,8 @@ describe('prop rendering', () => {
 
     it('excludes "email-list-item--unread" class on container when `email.read` property is true', () => {
       const component = getComponent({email: READ_EMAIL});
-      const container = component.find('[data-spec="email-list-item"]');
-      const markUnreadButton = component.find('[data-spec="email-list-item-mark-unread"]');
+      const container = component.find('[data-test="email-list-item"]');
+      const markUnreadButton = component.find('[data-test="email-list-item-mark-unread"]');
 
       expect(container).not.toHaveClassName('email-list-item--unread');
       expect(markUnreadButton).not.toExist();
@@ -58,7 +58,7 @@ describe('prop rendering', () => {
 
     it('includes mark unread button when both `email.read` property and `isSelected` prop are true', () => {
       const component = getComponent({email: READ_EMAIL, isSelected: true});
-      const markUnread = component.find('[data-spec="email-list-item-mark-unread"]');
+      const markUnread = component.find('[data-test="email-list-item-mark-unread"]');
 
       expect(markUnread).toExist();
     });
@@ -71,7 +71,7 @@ describe('event handling', () => {
       const onSelect = jest.fn();
       const stopPropagation = jest.fn();
       const component = getComponent({onSelect});
-      const container = component.find('[data-spec="email-list-item"]');
+      const container = component.find('[data-test="email-list-item"]');
   
       // sanity check that the callback hasn't been called yet
       expect(onSelect).toHaveBeenCalledTimes(0);
@@ -89,7 +89,7 @@ describe('event handling', () => {
 
     it('does nothing when onSelect is not specified', () => {
       const component = getComponent();
-      const container = component.find('[data-spec="email-list-item"]');
+      const container = component.find('[data-test="email-list-item"]');
   
       // simulating a click even shouldn't cause an error
       expect(() => {
@@ -103,7 +103,7 @@ describe('event handling', () => {
       const onMarkUnread = jest.fn();
       const stopPropagation = jest.fn();
       const component = getComponent({email: READ_EMAIL, isSelected: true, onMarkUnread});
-      const markUnreadButton = component.find('[data-spec="email-list-item-mark-unread"]');
+      const markUnreadButton = component.find('[data-test="email-list-item-mark-unread"]');
     
       // sanity check that the callback hasn't been called yet
       expect(onMarkUnread).toHaveBeenCalledTimes(0);
@@ -125,7 +125,7 @@ describe('event handling', () => {
       const onDelete = jest.fn();
       const stopPropagation = jest.fn();
       const component = getComponent({onDelete});
-      const deleteButton = component.find('[data-spec="email-list-item-delete"]');
+      const deleteButton = component.find('[data-test="email-list-item-delete"]');
   
       // sanity check that the callback hasn't been called yet
       expect(onDelete).toHaveBeenCalledTimes(0);
