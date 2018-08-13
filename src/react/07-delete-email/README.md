@@ -94,7 +94,7 @@ In `EmailList`, add a new `onItemDelete` prop that is passed to each `<EmailList
 ```js
 export default class EmailList extends Component {
   static propTypes = {
-    emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
+    emails: PropTypes.arrayOf(EMAIL_PROP_TYPE).isRequired,
     onItemDelete: PropTypes.func.isRequired,
     onItemSelect: PropTypes.func.isRequired
   };

@@ -8,7 +8,7 @@ import './EmailList.css';
 
 export default class EmailList extends Component {
   static propTypes = {
-    emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
+    emails: PropTypes.arrayOf(EMAIL_PROP_TYPE).isRequired,
     onItemDelete: PropTypes.func.isRequired,
     onItemSelect: PropTypes.func.isRequired,
     onItemMarkUnread: PropTypes.func.isRequired,
