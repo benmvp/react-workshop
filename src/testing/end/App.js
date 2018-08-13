@@ -3,7 +3,7 @@ import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 
-import Page from './containers/Page';
+import ConnectedPage from './containers/ConnectedPage';
 
 import {emails} from './reducers';
 
@@ -13,7 +13,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Page pollInterval={5000} />
+        <ConnectedPage pollInterval={5000} />
       </Provider>
     );
   }

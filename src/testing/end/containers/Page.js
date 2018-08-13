@@ -1,19 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 
 import EmailList from '../components/EmailList';
 import EmailView from '../components/EmailView';
 import EmailForm from '../components/EmailForm';
 import {EMAIL_PROP_TYPE} from '../components/constants';
-
-import {
-  getEmails as getEmailsAction,
-  addEmail as addEmailAction,
-  deleteEmail as deleteEmailAction,
-  markRead as markReadAction,
-  markUnread as markUnreadAction
-} from '../actions';
 
 import './Page.css';
 
@@ -28,7 +19,7 @@ const EmailViewWrapper = ({
 
   if (selectedEmail) {
     component = (
-      <article className="page__view">
+      <article className="page__view" data-test="page-view">
         <EmailView
           email={selectedEmail}
           onClose={onClose}
@@ -48,7 +39,7 @@ const EmailFormWrapper = ({showForm, onSubmit, onCancel}) => {
 
   if (showForm) {
     component = (
-      <div className="page__form-modal">
+      <div className="page__form-modal" data-test="page-form-modal">
         <div className="page__form">
           <EmailForm onSubmit={onSubmit} onCancel={onCancel} />
         </div>
@@ -59,7 +50,7 @@ const EmailFormWrapper = ({showForm, onSubmit, onCancel}) => {
   return component;
 };
 
-class Page extends Component {
+export default class Page extends Component {
   static propTypes = {
     emails: PropTypes.arrayOf(EMAIL_PROP_TYPE).isRequired,
     addEmail: PropTypes.func.isRequired,
@@ -187,16 +178,3 @@ class Page extends Component {
     );
   }
 }
-
-export default connect(
-  //_mapStateToProps
-  state => ({emails: state}),
-  //_mapDispatchToProps
-  {
-    getEmails: getEmailsAction,
-    addEmail: addEmailAction,
-    deleteEmail: deleteEmailAction,
-    markRead: markReadAction,
-    markUnread: markUnreadAction
-  }
-)(Page);

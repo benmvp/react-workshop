@@ -17,4 +17,9 @@
     - Creating mocks with `jest.fn()`
   * Exercise: finish remaining
   * Bonus: factor out `getComponent()` helpers
-1. Testing state updtes
+1. Testing state updates
+  * Write out all the test cases for each component, but only live-implement some
+    - Verifying after `setState`
+  * Isolating tests
+    - Just one file
+    - Just one `describe` or `it` with focused tests
