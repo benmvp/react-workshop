@@ -61,13 +61,13 @@ const EmailFormWrapper = ({showForm, onSubmit, onCancel}) => {
 
 class Page extends Component {
   static propTypes = {
-    pollInterval: PropTypes.number,
     emails: PropTypes.arrayOf(EMAIL_PROP_TYPE).isRequired,
-    addEmail: PropTypes.func,
-    getEmails: PropTypes.func,
-    deleteEmail: PropTypes.func,
-    markRead: PropTypes.func,
-    markUnread: PropTypes.func
+    addEmail: PropTypes.func.isRequired,
+    getEmails: PropTypes.func.isRequired,
+    deleteEmail: PropTypes.func.isRequired,
+    markRead: PropTypes.func.isRequired,
+    markUnread: PropTypes.func.isRequired,
+    pollInterval: PropTypes.number,
   };
 
   static defaultProps = {
