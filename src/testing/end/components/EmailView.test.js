@@ -52,7 +52,7 @@ describe('event handling', () => {
       const deleteButton = component.find('[data-test="email-view-close"]');
   
       // sanity check that the callback hasn't been called yet
-      expect(onClose).toHaveBeenCalledTimes(0);
+      expect(onClose).not.toHaveBeenCalled();
   
       // simulate a fake click event
       deleteButton.simulate('click', {stopPropagation});
@@ -73,7 +73,7 @@ describe('event handling', () => {
       const deleteButton = component.find('[data-test="email-view-delete"]');
   
       // sanity check that the callback hasn't been called yet
-      expect(onDelete).toHaveBeenCalledTimes(0);
+      expect(onDelete).not.toHaveBeenCalled();
   
       // simulate a fake click event
       deleteButton.simulate('click', {stopPropagation});
@@ -94,7 +94,7 @@ describe('event handling', () => {
       const markReadButton = component.find('[data-test="email-view-mark-read"]');
     
       // sanity check that the callback hasn't been called yet
-      expect(onMarkRead).toHaveBeenCalledTimes(0);
+      expect(onMarkRead).not.toHaveBeenCalled();
   
       // simulate a fake click event
       markReadButton.simulate('click', {stopPropagation});
@@ -125,7 +125,7 @@ describe('event handling', () => {
       const markUnreadButton = component.find('[data-test="email-view-mark-unread"]');
     
       // sanity check that the callback hasn't been called yet
-      expect(onMarkUnread).toHaveBeenCalledTimes(0);
+      expect(onMarkUnread).not.toHaveBeenCalled();
   
       // simulate a fake click event
       markUnreadButton.simulate('click', {stopPropagation});

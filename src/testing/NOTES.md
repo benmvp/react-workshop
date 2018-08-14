@@ -7,7 +7,7 @@
     - Rendering & finding w/ Enzyme
       + Use `mount()`
       + Search by `data-test`
-    - Asserting with `jest-enzyme`
+    - Asserting with `enzyme` + `jest`, then with `jest-enzyme`
     - Debugging with `.debug()` & `.html()`
   * Create `__fixtures__`
   * Exercise: finish remaining
@@ -23,3 +23,4 @@
   * Isolating tests
     - Just one file
     - Just one `describe` or `it` with focused tests
+1. Mocking timers

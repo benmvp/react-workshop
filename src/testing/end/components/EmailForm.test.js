@@ -39,7 +39,7 @@ describe('event handling', () => {
       const cancelButton = component.find('[data-test="email-form-cancel"]');
   
       // sanity check that the callback hasn't been called yet
-      expect(onCancel).toHaveBeenCalledTimes(0);
+      expect(onCancel).not.toHaveBeenCalled();
 
       // simulate a fake click event
       cancelButton.simulate('click');
@@ -57,7 +57,7 @@ describe('event handling', () => {
       const form = component.find('[data-test="email-form-form"]');
 
       // sanity check that the callback hasn't been called yet
-      expect(onSubmit).toHaveBeenCalledTimes(0);
+      expect(onSubmit).not.toHaveBeenCalled();
 
       // simulate filling in fields
       component.find('[data-test="email-form-from"]').simulate('change', {target: {value: DEFAULT_EMAIL.from}});
@@ -94,7 +94,7 @@ describe('event handling', () => {
       // simulate form submission
       form.simulate('submit', {preventDefault});
 
-      expect(onSubmit).toHaveBeenCalledTimes(0);
+      expect(onSubmit).not.toHaveBeenCalled();
 
       // verify that the alert was called to display error message string
       expect(window.alert).toHaveBeenCalledTimes(1);

@@ -74,7 +74,7 @@ describe('event handling', () => {
       const container = component.find('[data-test="email-list-item"]');
   
       // sanity check that the callback hasn't been called yet
-      expect(onSelect).toHaveBeenCalledTimes(0);
+      expect(onSelect).not.toHaveBeenCalled();
   
       // simulate a fake click event
       container.simulate('click', {stopPropagation});
@@ -106,7 +106,7 @@ describe('event handling', () => {
       const markUnreadButton = component.find('[data-test="email-list-item-mark-unread"]');
     
       // sanity check that the callback hasn't been called yet
-      expect(onMarkUnread).toHaveBeenCalledTimes(0);
+      expect(onMarkUnread).not.toHaveBeenCalled();
   
       // simulate a fake click event
       markUnreadButton.simulate('click', {stopPropagation});
@@ -128,7 +128,7 @@ describe('event handling', () => {
       const deleteButton = component.find('[data-test="email-list-item-delete"]');
   
       // sanity check that the callback hasn't been called yet
-      expect(onDelete).toHaveBeenCalledTimes(0);
+      expect(onDelete).not.toHaveBeenCalled();
   
       // simulate a fake click event
       deleteButton.simulate('click', {stopPropagation});
