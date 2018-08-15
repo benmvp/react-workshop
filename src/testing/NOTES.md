@@ -10,13 +10,14 @@
     - Asserting with `enzyme` + `jest`, then with `jest-enzyme`
     - Debugging with `.debug()` & `.html()`
   * Create `__fixtures__`
+  * Look at snapshots
   * Exercise: finish remaining
-  * Bonus: Create a utility for searching by `data-test`
+  * Bonus: Factor out `getTestWrapper()` utility
 1. Testing callbacks
   * Write out all the test cases for each component, but only live-implement some
     - Creating mocks with `jest.fn()`
   * Exercise: finish remaining
-  * Bonus: factor out `getComponent()` helpers
+  * Bonus: factor out `getComponent()` utility
 1. Testing state updates
   * Write out all the test cases for each component, but only live-implement some
     - Verifying after `setState`
@@ -24,3 +25,9 @@
     - Just one file
     - Just one `describe` or `it` with focused tests
 1. Mocking timers
+1. Testing Redux actions
+  * Mocking async dispatch
+  * Mocking fetch
+  * Exercise: Finish remaining
+  * Bonus: factor out `stub()` utility
+1. Testing Redux reducers
