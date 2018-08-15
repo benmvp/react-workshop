@@ -1,6 +1,6 @@
 import * as actions from './';
 import * as api from '../api';
-import {EMAILS, DEFAULT_EMAIL} from '../components/__fixtures__';
+import {EMAILS, DEFAULT_EMAIL} from '../__fixtures__';
 
 
 describe('updateEmails', () => {

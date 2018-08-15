@@ -4,7 +4,7 @@ import Page from './Page';
 import EmailList from '../components/EmailList';
 import EmailView from '../components/EmailView';
 import EmailForm from '../components/EmailForm';
-import {EMAILS, DEFAULT_EMAIL} from '../components/__fixtures__';
+import {EMAILS, DEFAULT_EMAIL} from '../__fixtures__';
 
 const getComponent = (props = {}) => (
   mount(

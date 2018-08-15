@@ -2,7 +2,7 @@ import React from 'react';
 import {mount} from 'enzyme';
 import EmailList from './EmailList';
 import EmailListItem from './EmailListItem';
-import {EMAILS} from './__fixtures__';
+import {EMAILS} from '../__fixtures__';
 
 test('creates an EmailListItem for each email', () => {
   const onItemSelect = jest.fn();

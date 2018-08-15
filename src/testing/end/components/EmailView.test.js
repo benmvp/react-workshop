@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
 import EmailView from './EmailView';
-import {DEFAULT_EMAIL, READ_EMAIL} from './__fixtures__';
+import {DEFAULT_EMAIL, READ_EMAIL} from '../__fixtures__';
 
 const getComponent = (props = {}) => (
   mount(

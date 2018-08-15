@@ -5,7 +5,7 @@ import {
   ADD_EMAIL,
   UPDATE_EMAILS,
 } from '../actions';
-import {EMAILS, DEFAULT_EMAIL, READ_EMAIL} from '../components/__fixtures__';
+import {EMAILS, DEFAULT_EMAIL, READ_EMAIL} from '../__fixtures__';
 
 describe('emails', () => {
   describe('initialization', () => {

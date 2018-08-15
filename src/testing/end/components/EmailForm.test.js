@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
 import EmailForm from './EmailForm';
-import {DEFAULT_EMAIL} from './__fixtures__';
+import {DEFAULT_EMAIL} from '../__fixtures__';
 
 const getComponent = (props = {}) => (
   mount(
