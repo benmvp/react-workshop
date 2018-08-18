@@ -10,7 +10,7 @@ const EmailListItemStatus = ({isSelected, read, onDelete, onMarkUnread}) => {
   let markUnreadButton;
 
   if (isSelected && read) {
-    markUnreadButton = <button onClick={onMarkUnread} data-test="email-list-item-mark-unread">Mark unread</button>;
+    markUnreadButton = (<button onClick={onMarkUnread} data-test="email-list-item-mark-unread">Mark unread</button>);
   }
 
   return (

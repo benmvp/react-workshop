@@ -14,7 +14,7 @@ const getComponent = (props = {}) => (
   )
 );
 
-it('renders without crashing', () => {
+test('renders without crashing', () => {
   expect(() => getComponent()).not.toThrow();
 });
 
@@ -28,7 +28,7 @@ describe('prop rendering', () => {
     });
 
 
-    it('excludes "email-list-item--selected" class on container when `isSelected` prop is true', () => {
+    it('excludes "email-list-item--selected" class on container when `isSelected` prop is false', () => {
       const component = getComponent();
       const container = component.find('[data-test="email-list-item"]');
 
@@ -37,7 +37,7 @@ describe('prop rendering', () => {
   });
 
   describe('email', () => {
-    it('includes "email-list-item--unread" class on container when `email.read` property is false', () => {
+    it('includes "email-list-item--unread" class on container & hides "mark unread" button when `email.read` property is false', () => {
       const component = getComponent();
       const container = component.find('[data-test="email-list-item"]');
       const markUnreadButton = component.find('[data-test="email-list-item-mark-unread"]');
@@ -47,7 +47,7 @@ describe('prop rendering', () => {
     });
 
 
-    it('excludes "email-list-item--unread" class on container when `email.read` property is true', () => {
+    it('excludes "email-list-item--unread" class on container & hides "mark unread" button when `email.read` property is true', () => {
       const component = getComponent({email: READ_EMAIL});
       const container = component.find('[data-test="email-list-item"]');
       const markUnreadButton = component.find('[data-test="email-list-item-mark-unread"]');
@@ -56,11 +56,13 @@ describe('prop rendering', () => {
       expect(markUnreadButton).not.toExist();
     });
 
-    it('includes mark unread button when both `email.read` property and `isSelected` prop are true', () => {
+    it('includes "mark unread" button when both `email.read` property and `isSelected` prop are true', () => {
       const component = getComponent({email: READ_EMAIL, isSelected: true});
-      const markUnread = component.find('[data-test="email-list-item-mark-unread"]');
+      const container = component.find('[data-test="email-list-item"]');
+      const markUnreadButton = component.find('[data-test="email-list-item-mark-unread"]');
 
-      expect(markUnread).toExist();
+      expect(container).not.toHaveClassName('email-list-item--unread');
+      expect(markUnreadButton).toExist();
     });
   });
 });

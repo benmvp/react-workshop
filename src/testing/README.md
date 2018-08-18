@@ -8,7 +8,7 @@ All of the exercises assume existing knowledge of React, so you may want to foll
 
 You can start at the [beginning](00-begin/) to get set up. Afterwards follow these steps:
 
-TBD...
+1. [Testing Email List Item render](01-email-list-item-render/)
 
 ## FUNdamental Concepts
 

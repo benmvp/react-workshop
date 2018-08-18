@@ -68,7 +68,7 @@ npm start
 
 ## Next
 
-TBD...
+Go to [Step 1 - Testing Email List Item render](../01-email-list-item-render/).
 
 ## Resources
 
