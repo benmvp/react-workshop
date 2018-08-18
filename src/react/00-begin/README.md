@@ -6,7 +6,7 @@ The goal of this step is just to get everything set up with a running (but blank
 
 You need [node](https://nodejs.org/en/) version 6 or higher. Check your node version:
 
-```
+```sh
 node -v
 ```
 

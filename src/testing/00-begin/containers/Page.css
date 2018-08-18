@@ -1,0 +1,66 @@
+.page {
+  background: #f2f2f2;
+  box-sizing: border-box;
+}
+
+.page__page {
+  box-sizing: border-box;
+  display: flex;
+  height: 100vh;
+  margin: 0 auto;
+  /* max-width: 1080px; */
+  overflow: hidden;
+  padding: 20px 50px 20px 20px;
+  position: relative;
+}
+
+.page__list {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.page__view {
+  background: white;
+  border: 1px solid #222;
+  border-radius: 10px;
+  box-sizing: border-box;
+  flex-basis: 55%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-left: 20px;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.page__form-modal {
+  align-items: center;
+  background: rgba(255, 255, 255, .75);
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  justify-content: center;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.page__form {
+  background: white;
+  border: 1px solid #000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
+  box-sizing: border-box;
+  min-width: 300px;
+  padding: 20px;
+  width: 50%;
+}
+
+.page__new-email {
+  bottom: 10px;
+  cursor: pointer;
+  font-size: 1.5em;
+  position: absolute;
+  right: 10px;
+}

@@ -1,8 +1,10 @@
-# Step 0 - Begin Redux Workshop
+# Step 0 - Begin Testing Workshop
 
-The goal of this step is to use the [end](../../react/end) of the React workshop as a starting point for learning Redux. We will be working in a step-by-step fashion to convert the data layer to use Redux. Visit the [final step](../end/) to install and run the finished app locally.
+The goal of this step is to use the [end](../../redux/end) of the Redux workshop as a starting point for learning how to test a React/Redux application. We will be working in a step-by-step fashion to test various parts of the React components and Redux data layer. Visit the [final step](../end/) to install and run all the tests locally.
 
 ## Tasks
+
+Before writing tests for the application, you should familiarize yourself with it by running it and playing around with it.
 
 You need [node](https://nodejs.org/en/) version 6 or higher. Check your node version:
 
@@ -32,7 +34,7 @@ Copy the [`00-begin`](./) directory, name it `workshop`:
 
 ```sh
 cd react-workshop
-cp -r src/redux/00-begin src/workshop
+cp -r src/testing/00-begin src/workshop
 ```
 
 Ensure [`src/index.js`](../../index.js#L3) is pointing to the `workshop` App:
@@ -66,7 +68,7 @@ npm start
 
 ## Next
 
-Go to [Step 1 - Actions and Reducers](../01-actions-reducers/).
+TBD...
 
 ## Resources
 
