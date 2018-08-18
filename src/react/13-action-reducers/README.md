@@ -133,7 +133,7 @@ _handleFormSubmit = (newEmail) => {
 
 ## Next
 
-You're done! Your code should mirror the [Completed React App](../end/).
+You're done! Your code should mirror the [Completed React App](../end/). Interested in learning more? Check out the [Redux FUNdamentals workshop](../../redux/), which transforms out a data layer of this application using Redux.
 
 ## Resources
 

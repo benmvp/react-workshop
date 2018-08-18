@@ -458,7 +458,7 @@ Within `<Page />` there are still many references to our previous version of "ac
 
 ## Next
 
-You're done! Your code should mirror the [Completed Redux App](../end/).
+You're done! Your code should mirror the [Completed Redux App](../end/). Interested in learning more? Check out the [React & Redux Testing FUNdamentals workshop](../../testing/), which adds tests for this React application using Redux.
 
 ## Resources
 
