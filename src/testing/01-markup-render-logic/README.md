@@ -362,7 +362,7 @@ describe('email', () => {
   });
 ```
 
-Let's add the final test for when both `email.read` property and `isSelected` prop are `true`:
+Let's add the final test for when both the `email.read` property and `isSelected` prop are `true`:
 
 ```js
 describe('email', () => {
