@@ -14,7 +14,7 @@ As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exer
 
 ## Jump Around
 
-[Concepts](#concepts) | [Tasks](#tasks) | [Resources](#resources)
+[Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
 ## Concepts
 
