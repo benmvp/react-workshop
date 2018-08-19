@@ -8,7 +8,8 @@ All of the exercises assume existing knowledge of React, so you may want to foll
 
 You can start at the [beginning](00-begin/) to get set up. Afterwards follow these steps:
 
-1. [Testing markup render logic](01-markup-render-logic/)
+1. [Markup render logic](01-markup-render-logic/)
+1. [Child component render logic](../02-component-render-logic/)
 
 ## FUNdamental Concepts
 

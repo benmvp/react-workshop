@@ -1,4 +1,4 @@
-# Step 1 - Testing markup render logic
+# Step 1 - Markup render logic
 
 The goal of this step is to test the `render()` methods of components, focusing on any conditional logic used to render the its markup. We _can_ test static markup, but it's of very little benefit.
 
@@ -22,8 +22,10 @@ We will be using [Jest](https://jestjs.io/), [Enzyme](http://airbnb.io/enzyme/),
 Let's start with Jest. Create a test file for `EmailListItem` at [`components/EmailListItem.test.js`](components/EmailListItem.test.js) and let's create a dummy test:
 
 ```js
-test('1 plus 1 equals 2', () => {
-  expect(1 + 1).toBe(2);
+const sum = (a, b) => a + b;
+
+test('adds 1 plus 2 tp equal 3', () => {
+  expect(sum(1, 2)).toBe(3);
 });
 ```
 
@@ -39,11 +41,13 @@ npm test
 
 Jest will start up in "watch mode", run our test (which should) pass, and then wait for tests to change so that it can run again automatically.
 
-Now, update the test to make it fail, by changing the expected value to `3`:
+Now, update the test to make it fail, by changing the expected value to `2`:
 
 ```js
-test('1 plus 1 equals 2', () => {
-  expect(1 + 1).toBe(3);
+const sum = (a, b) => a + b;
+
+test('adds 1 plus 2 tp equal 3', () => {
+  expect(sum(1, 2)).toBe(2);
 });
 ```
 
@@ -51,21 +55,21 @@ Jest should re-run automatically, and the test should fail with an output like:
 
 ```sh
  FAIL  src/testing/01-rendering-logic/components/EmailListItem.test.js
-  ● 1 plus 1 equals 2
+  ● adds 1 plus 2 tp equal 3
 
     expect(received).toBe(expected)
 
     Expected value to be (using ===):
-      3
-    Received:
       2
+    Received:
+      3
 ```
 
-For more on Jest, check out [Getting Started with Jest](https://jestjs.io/docs/en/getting-started).
+_For more on Jest, check out [Using Matchers](https://jestjs.io/docs/en/using-matchers) in Jest._
 
 Now let's start testing the `EmailListItem` component. First peruse the [`components/EmailListItem.js`](components/EmailListItem.js) file, looking at the `propTypes` & `render()` of `EmailListItem`. We can see that it conditionally adds classes to the container `<div />` based upon the `isSelected` prop and the `read` property of the `email` prop. It also conditionally renders the "Mark unread" button based on the same two props. This is the logic we want to test.
 
-Let's create a test skeleton of all the test cases:
+Let's replace the file contents and create a test skeleton of all the test cases:
 
 ```js
 describe('prop rendering', () => {
@@ -406,15 +410,15 @@ describe('email', () => {
 
 ## Next
 
-TBD
+Go to [Step 2 - Testing child component render logic](../02-component-render-logic/).
 
 ## Resources
 
-- [Getting started with Jest](https://jestjs.io/docs/en/getting-started)
+- [Using Matchers in Jest](https://jestjs.io/docs/en/using-matchers)
 - [Testing React apps in Jest](https://jestjs.io/docs/en/tutorial-react)
 - [Full DOM Rendering in Enzyme](http://airbnb.io/enzyme/docs/api/mount.html)
 - [Jest assertion matchers for Enzyme](https://github.com/FormidableLabs/enzyme-matchers)
-- [Supported Enzyme selector syntax](http://airbnb.io/enzyme/docs/api/selector.html)
+- [Enzyme support for CSS selectors](http://airbnb.io/enzyme/docs/api/selector.html#1-a-valid-css-selector)
 
 ## Questions
 
