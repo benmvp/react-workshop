@@ -58,7 +58,7 @@ export default class EmailForm extends Component {
 
     if (onCancel) {
       cancelButton = (
-        <button type="button" onClick={this._handleCancel}>
+        <button type="button" onClick={this._handleCancel} data-test="email-form-cancel">
           Cancel
         </button>
       );

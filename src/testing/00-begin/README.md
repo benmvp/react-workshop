@@ -68,7 +68,7 @@ npm start
 
 ## Next
 
-Go to [Step 1 - Testing Email List Item render](../01-email-list-item-render/).
+Go to [Step 1 - Testing markup render logic](../01-markup-render-logic/).
 
 ## Resources
 

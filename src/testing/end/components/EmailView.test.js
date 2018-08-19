@@ -23,7 +23,7 @@ describe('prop rendering', () => {
       expect(message.html()).toContain('<br>');
     });
 
-    it('displays mark read button if email is unread', () => {
+    it('displays "mark read" button if email is unread', () => {
       const component = getComponent();
       const markReadButton = component.find('[data-test="email-view-mark-read"]');
       const markUnreadButton = component.find('[data-test="email-view-mark-unread"]');
@@ -32,7 +32,7 @@ describe('prop rendering', () => {
       expect(markUnreadButton).not.toExist();
     });
 
-    it('displays mark unread button if email is read', () => {
+    it('displays "mark unread" button if email is read', () => {
       const component = getComponent({email: READ_EMAIL});
       const markReadButton = component.find('[data-test="email-view-mark-read"]');
       const markUnreadButton = component.find('[data-test="email-view-mark-unread"]');

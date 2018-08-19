@@ -1,6 +1,6 @@
-# Step 1 - Testing Email List Item render
+# Step 1 - Testing markup render logic
 
-The goal of this step is to test the `render()` method of the `EmailListItem` component, focusing on any conditional logic used to render the its UI. We _can_ test static markup, but it's of very little benefit.
+The goal of this step is to test the `render()` methods of components, focusing on any conditional logic used to render the its markup. We _can_ test static markup, but it's of very little benefit.
 
 If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
@@ -12,7 +12,7 @@ If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you
 
 - Rendering components for testing
 - Finding HTML elements
-- Asserting presence of elements and CSS classes
+- Asserting presence of HTML elements and CSS classes
 - Debugging rendered components
 
 ## Tasks
@@ -362,9 +362,47 @@ describe('email', () => {
   });
 ```
 
+Let's add the final test for when both `email.read` property and `isSelected` prop are `true`:
+
+```js
+describe('email', () => {
+  it('includes "email-list-item--unread" class on container & hides "mark unread" button when `email.read` property is false', () => {
+    const component = mount(<EmailListItem email={DEFAULT_EMAIL} />);
+    const container = component.find('[data-test="email-list-item"]');
+    const markUnreadButton = component.find('[data-test="email-list-item-mark-unread"]');
+
+    expect(container).toHaveClassName('email-list-item--unread');
+    expect(markUnreadButton).not.toExist();
+  });
+
+  it('excludes "email-list-item--unread" class on container & hides "mark unread" button when `email.read` property is true', () => {
+    const component = mount(<EmailListItem email={READ_EMAIL} />);
+    const container = component.find('[data-test="email-list-item"]');
+    const markUnreadButton = component.find('[data-test="email-list-item-mark-unread"]');
+
+    expect(container).not.toHaveClassName('email-list-item--unread');
+    expect(markUnreadButton).not.toExist();
+  });
+
+  it('includes "mark unread" button when both `email.read` property and `isSelected` prop are true', () => {
+    const component = mount(<EmailListItem email={READ_EMAIL} isSelected={true} />);
+    const container = component.find('[data-test="email-list-item"]');
+    const markUnreadButton = component.find('[data-test="email-list-item-mark-unread"]');
+
+    expect(container).not.toHaveClassName('email-list-item--unread');
+    expect(markUnreadButton).toExist();
+  });
+});
+```
+
 ## Exercises
 
-- Write the final test for when both `email.read` property and `isSelected` prop are `true`
+- Create [`components/EmailView.test.js`](components/EmailView.test.js) to test render logic for the [`EmailView`](components/EmailView.js) component
+  - displays "mark read" button if email is unread
+  - displays "mark unread" button if email is read
+  - does **not** encode HTML in the message
+- Create [`components/EmailForm.test.js`](components/EmailForm.test.js) to test render logic for the cancel button hide/show within the [`EmailForm`](components/EmailForm.js) component
+- **BONUS:** Create a [`__fixtures__/index.js`](__fixtures__/index.js) file that `export`s `DEFAULT_EMAIL` & `READ_EMAIL` so that it can be shared between the `EmailListItem`, `EmailView` & `EmailForm` tests
 
 ## Next
 
