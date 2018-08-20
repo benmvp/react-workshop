@@ -88,7 +88,7 @@ test('creates an EmailListItem for each email', () => {
 });
 ```
 
-_NOTE: Once again, we'll cleanup the prop type warnings for `onItemDelete`, `onItemSelect` & `onItemMarkUnread` in Step 3 when we learn to test callback handlers._
+_NOTE: Once again, we'll cleanup the prop type warnings for `onItemDelete`, `onItemSelect` & `onItemMarkUnread` in [Step 3 - Callbacks](../03-callbacks/) when we learn to test callback handlers._
 
 Jest has a feature called [snapshot testing](https://jestjs.io/docs/en/snapshot-testing) that makes it really easy to write assertions:
 
@@ -136,12 +136,12 @@ Instead of using [`.find()`](http://airbnb.io/enzyme/docs/api/ReactWrapper/find.
 
 ## Next
 
-TBD
+Go to [Step 3 - Callbacks](../03-callbacks/).
 
 ## Resources
 
 - [Snapshot testing](https://jestjs.io/docs/en/snapshot-testing)
-- [Jest matcherts](https://jestjs.io/docs/en/expect#tohavelengthnumber)
+- [Jest matchers](https://jestjs.io/docs/en/expect#tohavelengthnumber)
 - [Jest assertion matchers for Enzyme](https://github.com/FormidableLabs/enzyme-matchers)
 - [Enzyme support for selecting by React Component Constructor](http://airbnb.io/enzyme/docs/api/selector.html#3-a-react-component-constructor)
 

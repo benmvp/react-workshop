@@ -150,7 +150,7 @@ describe('prop rendering', () => {
 });
 ```
 
-_NOTE: We'll cleanup the prop type warnings for `onDelete` & `onMarkUnread` in Step 3 when we learn to test callback handlers._
+_NOTE: We'll cleanup the prop type warnings for `onDelete` & `onMarkUnread` in [Step 3 - Callbacks](../03-callbacks/) when we learn to test callback handlers._
 
 The object we get back from `mount()` is an Enzyme wrapper, which has a jQuery-like interface for inspecting the component. For now, let's log out so debug information:
 
@@ -402,9 +402,9 @@ describe('email', () => {
 ## Exercises
 
 - Create [`components/EmailView.test.js`](components/EmailView.test.js) to test render logic for the [`EmailView`](components/EmailView.js) component
-  - displays "mark read" button if email is unread
-  - displays "mark unread" button if email is read
-  - does **not** encode HTML in the message
+  * displays "mark read" button if email is unread
+  * displays "mark unread" button if email is read
+  * does **not** encode HTML in the message
 - Create [`components/EmailForm.test.js`](components/EmailForm.test.js) to test render logic for the cancel button hide/show within the [`EmailForm`](components/EmailForm.js) component
 - **BONUS:** Create a [`__fixtures__/index.js`](__fixtures__/index.js) file that `export`s `DEFAULT_EMAIL` & `READ_EMAIL` so that it can be shared between the `EmailListItem`, `EmailView` & `EmailForm` tests
 

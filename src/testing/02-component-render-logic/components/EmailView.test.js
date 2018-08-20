@@ -3,17 +3,6 @@ import {mount} from 'enzyme';
 import EmailView from './EmailView';
 import {DEFAULT_EMAIL, READ_EMAIL} from '../__fixtures__';
 
-const getComponent = (props = {}) => (
-  mount(
-    <EmailView
-      email={DEFAULT_EMAIL}
-      onDelete={jest.fn()}
-      onClose={jest.fn()}
-      {...props}
-    />
-  )
-);
-
 describe('prop rendering', () => {
   describe('email', () => {
     it('does *not* encode HTML in the message', () => {
