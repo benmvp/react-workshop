@@ -68,7 +68,7 @@ npm start
 
 ## Next
 
-Go to [Step 1 - Testing markup render logic](../01-markup-render-logic/).
+Go to [Step 1 - Render (markup)](../01-render-markup/).
 
 ## Resources
 

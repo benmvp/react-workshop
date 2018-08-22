@@ -1,8 +1,8 @@
-# Step 3 - Callbacks
+# Step 3 - Callbacks (markup)
 
 The goal of this step is to test prop callback functions (aka event handlers). These props don't usually impact rendering, but are called as a result of some sort of action within a component (like user click) so that an ancestor component can do something in response. For these prop callback functions, we verify that they were called at the expected time and with the expected arguments.
 
-If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
+As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
 ## Jump Around
 
@@ -33,7 +33,7 @@ rm -rf src/workshop
 Copy the previous step as a starting point:
 
 ```sh
-cp -r src/testing/02-component-render-logic src/workshop
+cp -r src/testing/02-render-components src/workshop
 ```
 
 Ensure [`src/index.js`](../../index.js#L3) is still pointing to the `workshop` App:
@@ -212,7 +212,7 @@ Do the same for each of the input fields. For example, for the `from` field, add
 
 ## Exercises
 
-- Write remaining event handling tests for `EmailListItem`
+- Add remaining event handling tests for `EmailListItem`
   * calls `onMarkUnread` handler with email ID when "mark unread" button is clicked
   * calls `onDelete` handler with email ID when delete button is clicked
   * Pass dummy `jest.fn()` for the `onMarkUnread` & `onDelete` props for the other tests since the props are required. There should be no more missing prop warnings
@@ -220,12 +220,12 @@ Do the same for each of the input fields. For example, for the `from` field, add
 - Update existing `EmailList` tests
   * Update first test to verify that `onItemSelect`, `onItemDelete` & `onItemMarkUnread` props are passed to each `<EmailListItem />`
   * Update second test to pass dummy `jest.fn()` for `onItemSelect`, `onItemDelete` & `onItemMarkUnread` to remove missing prop warnings
-- Write remaining event handling tests for `EmailForm`
+- Add remaining event handling tests for `EmailForm`
   * calls `onCancel` when the cancel button is clicked
   * does not call `onSubmit` when the form is submitted and the fields are *not* all filled (_HINT:_ You will need to mock `window.alert`)
   * Pass dummy `jest.fn()` for the `onSubmit` prop for the other tests since it's required. There should be no more missing prop warnings
   * **BONUS:** Factor out all the `mount(<EmailForm />)` calls into a `getComponent()` helper that will specify default values for required props
-- Write event handling tests for `EmailView`
+- Add event handling tests for `EmailView`
   * calls `onClose` handler when close button is clicked
   * calls `onDelete` handler when delete button is clicked
   * calls `onMarkRead` handler on click when specified

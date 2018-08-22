@@ -1,4 +1,4 @@
-# Step 1 - Markup render logic
+# Step 1 - Render (markup)
 
 The goal of this step is to test the `render()` methods of components, focusing on any conditional logic used to render the its markup. We _can_ test static markup, but it's of very little benefit.
 
@@ -150,7 +150,7 @@ describe('prop rendering', () => {
 });
 ```
 
-_NOTE: We'll cleanup the prop type warnings for `onDelete` & `onMarkUnread` in [Step 3 - Callbacks](../03-callbacks/) when we learn to test callback handlers._
+_NOTE: We'll cleanup the prop type warnings for `onDelete` & `onMarkUnread` in [Step 3 - Callbacks (markup)](../03-callbacks-markup/) when we learn to test callback handlers._
 
 The object we get back from `mount()` is an Enzyme wrapper, which has a jQuery-like interface for inspecting the component. For now, let's log out so debug information:
 
@@ -410,7 +410,7 @@ describe('email', () => {
 
 ## Next
 
-Go to [Step 2 - Testing child component render logic](../02-component-render-logic/).
+Go to [Step 2 - Render (components)](../02-render-components/).
 
 ## Resources
 

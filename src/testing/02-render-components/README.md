@@ -1,6 +1,6 @@
 # Step 2 - Child component render logic
 
-In [Step 1](../01-markup-render-logic/) we learned how to test logic for rendering HTML markup. The goal of this step is to test logic for rendering child components.
+In [Step 1](../01-render-markup/) we learned how to test logic for rendering HTML markup. The goal of this step is to test logic for rendering child components.
 
 If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
@@ -33,7 +33,7 @@ rm -rf src/workshop
 Copy the previous step as a starting point:
 
 ```sh
-cp -r src/testing/01-markup-render-logic src/workshop
+cp -r src/testing/01-render-markup src/workshop
 ```
 
 Ensure [`src/index.js`](../../index.js#L3) is still pointing to the `workshop` App:
@@ -88,7 +88,7 @@ test('creates an EmailListItem for each email', () => {
 });
 ```
 
-_NOTE: Once again, we'll cleanup the prop type warnings for `onItemDelete`, `onItemSelect` & `onItemMarkUnread` in [Step 3 - Callbacks](../03-callbacks/) when we learn to test callback handlers._
+_NOTE: Once again, we'll cleanup the prop type warnings for `onItemDelete`, `onItemSelect` & `onItemMarkUnread` in [Step 3 - Callbacks (markup)](../03-callbacks-markup/) when we learn to test callback handlers._
 
 Jest has a feature called [snapshot testing](https://jestjs.io/docs/en/snapshot-testing) that makes it really easy to write assertions:
 
@@ -136,7 +136,7 @@ Instead of using [`.find()`](http://airbnb.io/enzyme/docs/api/ReactWrapper/find.
 
 ## Next
 
-Go to [Step 3 - Callbacks](../03-callbacks/).
+Go to [Step 3 - Callbacks (markup)](../03-callbacks-markup/).
 
 ## Resources
 
