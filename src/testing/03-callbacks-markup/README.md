@@ -1,6 +1,6 @@
 # Step 3 - Callbacks (markup)
 
-The goal of this step is to test prop callback functions (aka event handlers). These props don't usually impact rendering, but are called as a result of some sort of action within a component (like user click) so that an ancestor component can do something in response. For these prop callback functions, we verify that they were called at the expected time and with the expected arguments.
+The goal of this step is to test prop callback functions (aka event handlers) triggered by an event on an HTML element (like user click) so that an ancestor component can do something in response. For these prop callback functions, we verify after the event that they were called at the expected time and with the expected arguments.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
@@ -10,7 +10,9 @@ As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exer
 
 ## Concepts
 
-- Assert that prop callback functions are called at the right time and with the right arguments
+- Simulating DOM events
+- Using mock functions
+- Verifying prop callback functions
 
 ## Restart Setup
 
@@ -237,7 +239,7 @@ Do the same for each of the input fields. For example, for the `from` field, add
 
 ## Next
 
-Coming soon...
+Go to [Step 4 - Callbacks (components)](../04-callbacks-components/).
 
 ## Resources
 

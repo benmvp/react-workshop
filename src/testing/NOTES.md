@@ -7,7 +7,6 @@
     - Just one file
     - Just one `describe` or `it` with focused tests
   * Bonus: Factor out `getTestWrapper()` utility
-1. Mocking timers
 1. Testing Redux actions
   * Mocking async dispatch
   * Mocking fetch

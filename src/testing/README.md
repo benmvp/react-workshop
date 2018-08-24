@@ -11,6 +11,7 @@ You can start at the [beginning](00-begin/) to get set up. Afterwards follow the
 1. [Render (markup)](01-render-markup/)
 1. [Render (components)](../02-render-components/)
 1. [Callbacks (markup)](../03-callbacks-markup/)
+1. [Callbacks (components)](../04-callbacks-components/)
 
 ## FUNdamental Concepts
 
