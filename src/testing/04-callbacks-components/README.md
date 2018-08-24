@@ -316,11 +316,11 @@ We make use of [`jest.useFakeTimers()`](https://jestjs.io/docs/en/jest-object#je
 - Add remaining `getEmails` tests
   * calls `getEmails` every `X` seconds after component mount based on passing in `pollInterval`
   * stops polling after component unmount (hint use [Enzyme `.unmount()`](http://airbnb.io/enzyme/docs/api/ReactWrapper/unmount.html))
-- Any missed exercises from [Step 3](../03-callbacks-markup)!
+- Any missed exercises from [Step 3](../03-callbacks-markup)! 😉
 
 ## Next
 
-Coming soon...
+Go to [Step 5 - State](../05-state/).
 
 ## Resources
 
