@@ -1,6 +1,6 @@
 # Step 6 - Redux Actions
 
-In this step, we will start testing the Redux data layer. The goal of this step is to test both synchronous and asynchronous Redux actions.
+In this step, we will start testing the Redux data layer. The goal of this step is to test both synchronous and asynchronous [Redux actions](https://redux.js.org/basics/actions), the payloads of information that send data from the app to the store.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
@@ -12,7 +12,7 @@ As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exer
 
 - Verify Redux synchronous actions
 - Verify Redux asynchronous actions
-- Mocking API calls
+- Mock API calls
 
 ## Restart Setup
 
@@ -267,7 +267,7 @@ We mock out the `addEmail` API to resolve a `Promise` that has `{success: false}
 
 ## Next
 
-Coming soon...
+Go to [Step 7 - Redux Reducers](../07-reducers/).
 
 ## Resources
 
