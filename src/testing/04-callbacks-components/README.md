@@ -320,7 +320,7 @@ We make use of [`jest.useFakeTimers()`](https://jestjs.io/docs/en/jest-object#je
 
 ## Next
 
-Go to [Step 5 - State](../05-state/).
+Go to [Step 5 - UI State](../05-ui-state/).
 
 ## Resources
 

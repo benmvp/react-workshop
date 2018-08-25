@@ -1,4 +1,4 @@
-# Step 5 - State
+# Step 5 - UI State
 
 Internal React state is used to build interactivity within a React component; some interaction happens, the state changes, the component re-renders, and the component feels interactive. Typically there is logic that determines what the new state should be based on the interaction and the current state. It's _that_ data transformation logic that we want to test. But state is _internal_ to a component and should be free to be changed/refactored without breaking tests.
 

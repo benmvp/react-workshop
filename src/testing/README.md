@@ -12,13 +12,13 @@ You can start at the [beginning](00-begin/) to get set up. Afterwards follow the
 1. [Render (components)](02-render-components/)
 1. [Callbacks (markup)](03-callbacks-markup/)
 1. [Callbacks (components)](04-callbacks-components/)
-1. [State](05-state/)
+1. [UI State](05-ui-state/)
 1. [Redux Actions](06-actions/)
 
 ## FUNdamental Concepts
 
 - Testing rendered content ([Step 1](01-render-markup/) & [Step 2](02-render-components/))
 - Testing event handlers ([Step 3](03-callbacks-markup/) & [Step 4](04-callbacks-components/))
-- Testing UI state ([Step 5](05-state/))
+- Testing UI state ([Step 5](05-ui-state/))
 - Testing Redux actions ([Step 6](06-actions/))
 
