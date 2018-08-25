@@ -137,6 +137,7 @@ describe('markRead', () => {
 
     api.setRead.mockRestore();
   });
+  
   it('calls the setRead API and dispatches SET_READ_EMAIL action on API success', async () => {
     // mock the API response to be successful
     jest.spyOn(api, 'setRead').mockReturnValue(Promise.resolve({success: true}));

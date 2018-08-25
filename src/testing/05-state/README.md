@@ -283,7 +283,7 @@ First we simulate an email item being selected, and then tell Enzyme to update a
 
 ## Next
 
-Coming soon...
+Go to [Step 6 - Redux Actions](../06-actions).
 
 ## Resources
 
