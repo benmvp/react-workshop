@@ -143,7 +143,9 @@ We make a quick verification that the list of emails is one fewer. Then we also 
 
 ## Next
 
-Coming soon...
+You're done! Your code should mirror the [Completed Test Suite](../end/). 
+
+Check out [Step 8 - Functional testing](../08-functional/) for a preview of future steps walking through other types of testing.
 
 ## Resources
 
