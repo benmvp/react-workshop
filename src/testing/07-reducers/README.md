@@ -151,6 +151,7 @@ Check out [Step 8 - Functional testing](../08-functional/) for a preview of futu
 
 - [Jest matchers](https://jestjs.io/docs/en/expect)
 - [Snapshot testing](https://jestjs.io/docs/en/snapshot-testing)
+- [Redux reducers](https://redux.js.org/basics/reducers)
 
 ## Questions
 

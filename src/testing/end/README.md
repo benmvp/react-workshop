@@ -24,4 +24,20 @@ yarn install
 npm install
 ```
 
-Coming soon...
+Ensure [`src/index.js`](../../index.js#L3) is still pointing to the `end` App:
+
+```js
+import App from './end/App';
+```
+
+Run the tests:
+
+```sh
+# Yarn
+yarn test
+
+# ...or NPM
+npm test
+```
+
+Jest will start up in "watch mode", run the existing tests, and then wait for tests to change so that it can run again automatically.

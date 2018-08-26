@@ -14,6 +14,9 @@ You can start at the [beginning](00-begin/) to get set up. Afterwards follow the
 1. [Callbacks (components)](04-callbacks-components/)
 1. [UI State](05-ui-state/)
 1. [Redux Actions](06-actions/)
+1. [Redux Reducers](07-reducers/)
+1. [Functional testing](08-functional/)
+1. [End-to-end testing](09-e2e/)
 
 ## FUNdamental Concepts
 
@@ -21,4 +24,7 @@ You can start at the [beginning](00-begin/) to get set up. Afterwards follow the
 - Testing event handlers ([Step 3](03-callbacks-markup/) & [Step 4](04-callbacks-components/))
 - Testing UI state ([Step 5](05-ui-state/))
 - Testing Redux actions ([Step 6](06-actions/))
+- Testing Redux reducers ([Step 7](07-reducers/))
+- Functional testing ([Step 8](08-functional/))
+- End-to-end testing ([Step 9](09-e2e/))
 

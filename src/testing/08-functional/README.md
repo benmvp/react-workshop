@@ -72,7 +72,7 @@ Go to [Step 9 - End-to-end testing](../09-e2e/).
 
 ## Resources
 
-[`fetch-mock`](http://www.wheresrhys.co.uk/fetch-mock/)
+- [`fetch-mock`](http://www.wheresrhys.co.uk/fetch-mock/)
 
 ## Questions
 

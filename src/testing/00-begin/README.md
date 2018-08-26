@@ -43,6 +43,8 @@ Ensure [`src/index.js`](../../index.js#L3) is pointing to the `workshop` App:
 import App from './workshop/App';
 ```
 
+Start the API server (running at [http://localhost:9090/](http://localhost:9090/)):
+
 ```sh
 # Yarn
 yarn run start:api

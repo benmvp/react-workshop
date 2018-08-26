@@ -273,6 +273,7 @@ Go to [Step 7 - Redux Reducers](../07-reducers/).
 
 - [Testing Asynchronous Code](https://jestjs.io/docs/en/asynchronous)
 - [`redux-thunk`](https://github.com/reduxjs/redux-thunk)
+- [Redux actions](https://redux.js.org/basics/actions)
 
 ## Questions
 
