@@ -57,11 +57,9 @@ describe('prop rendering', () => {
     });
 
     it('includes "mark unread" button when both `email.read` property and `isSelected` prop are true', () => {
-      const component = getComponent({email: READ_EMAIL, isSelected: true});
-      const container = component.find('[data-test="email-list-item"]');
+      const component = mount(<EmailListItem email={READ_EMAIL} isSelected={true} />);
       const markUnreadButton = component.find('[data-test="email-list-item-mark-unread"]');
 
-      expect(container).not.toHaveClassName('email-list-item--unread');
       expect(markUnreadButton).toExist();
     });
   });

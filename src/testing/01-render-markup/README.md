@@ -220,7 +220,7 @@ describe('prop rendering', () => {
 });
 ```
 
-The test should pass, but what happens if you had mistyped the class name incorrectly and had put `'email-list-item--select'`? The failure would look something like:
+The test should pass, but what happens if you had mistyped the class name within `EmailListItem` incorrectly and had put `'email-list-item--select'`? The failure would look something like:
 
 ```sh
 ● prop rendering › isSelected › includes "email-list-item--selected" class on container when `isSelected` prop is true
@@ -242,7 +242,7 @@ describe('prop rendering', () => {
       const component = mount(<EmailListItem email={DEFAULT_EMAIL} isSelected={true} />);
       const container = component.find('[data-test="email-list-item"]');
 
-      expect(container).toHaveClassName('email-list-item--select'));
+      expect(container).toHaveClassName('email-list-item--selected'));
     });
 
     it('excludes "email-list-item--selected" class on container when `isSelected` prop is false', () => {
@@ -257,28 +257,11 @@ The test still fails, but the failure message is far more helpful:
 ```sh
 ● prop rendering › isSelected › includes "email-list-item--selected" class on container when `isSelected` prop is true
 
-  Expected <div> to have className of ".email-list-item--select" but instead found "email-list-item email-list-item--selected email-list-item--unread"
+  Expected <div> to have className of ".email-list-item--selected" but instead found "email-list-item email-list-item--select email-list-item--unread"
   Found node output: <div class="email-list-item email-list-item--selected email-list-item--unread" data-test="email-list-item"><span class="email-list-item__from">amurray1@mit.edu</span><span class="email-list-item__subject">Mauris ullamcorper purus sit amet nulla.</span><span class="email-list-item__status"><button>Delete</button></span></div>
 ```
 
-Fix the test to be passing again:
-
-```js
-describe('prop rendering', () => {
-  describe('isSelected', () => {
-    it('includes "email-list-item--selected" class on container when `isSelected` prop is true', () => {
-      const component = mount(<EmailListItem email={DEFAULT_EMAIL} isSelected={true} />);
-      const container = component.find('[data-test="email-list-item"]');
-
-      expect(container).toHaveClassName('email-list-item--selected');
-    });
-
-    it('excludes "email-list-item--selected" class on container when `isSelected` prop is false', () => {
-      
-    });
-  });
-});
-```
+Fix the test to be passing again by fixing `EmailListItem` to have the correct `email-list-item--selected` class again.
 
 For the next test, we want to verify that the `"email-list-item--selected"` class is not included when `isSelected` is false (the default):
 
@@ -397,10 +380,8 @@ describe('email', () => {
 
   it('includes "mark unread" button when both `email.read` property and `isSelected` prop are true', () => {
     const component = mount(<EmailListItem email={READ_EMAIL} isSelected={true} />);
-    const container = component.find('[data-test="email-list-item"]');
     const markUnreadButton = component.find('[data-test="email-list-item-mark-unread"]');
 
-    expect(container).not.toHaveClassName('email-list-item--unread');
     expect(markUnreadButton).toExist();
   });
 });
