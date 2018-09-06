@@ -18,6 +18,12 @@ Clone the [`react-workshop`](https://github.com/benmvp/react-workshop) repo:
 git clone https://github.com/benmvp/react-workshop.git
 ```
 
+Change into the `react-workshop` directory:
+
+```sh
+cd react-workshop
+```
+
 Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred):
 
 ```sh
@@ -31,7 +37,6 @@ npm install
 Copy the [`00-begin`](./) directory, name it `workshop`:
 
 ```sh
-cd react-workshop
 cp -r src/redux/00-begin src/workshop
 ```
 
