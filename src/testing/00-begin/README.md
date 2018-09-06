@@ -18,7 +18,7 @@ Clone the [`react-workshop`](https://github.com/benmvp/react-workshop) repo:
 
 ```sh
 git clone https://github.com/benmvp/react-workshop.git
-```
+``` 
 
 Change into the `react-workshop` directory:
 
@@ -71,6 +71,8 @@ npm start
 ## Exercises
 
 - Visit [http://localhost:3000/](http://localhost:3000/) and you should see a fully-functioning "email app"
+  * Play around with the app to familiarize yourself with the functionality
+  * Look through the source code of the [React components](components/), [Redux actions](actions/), and [Redux reducers](reducers/) to understand what you'll be testing
 - Install a JSX-friendly code editor, such as [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Next

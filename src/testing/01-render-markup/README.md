@@ -39,7 +39,14 @@ yarn test
 npm test
 ```
 
-Jest will start up in "watch mode", run our test (which should) pass, and then wait for tests to change so that it can run again automatically.
+Jest will start up in "watch mode", looking for test files that have been added since the last git commit. But since our `workshop` folder is git-ignored, Jest will tell you that no tests were found:
+
+```sh
+No tests found related to files changd since last commit.
+Press `a` to run all tests, or run Jest with `--watchAll`.
+```
+
+So in the interactive terminal type the `p` key for `filter by filename regex pattern`. Then enter `/workshop` as the pattern. Jest should now run our test (which should) pass, and then wait for tests to change so that it can run again automatically.
 
 Now, update the test to make it fail, by changing the expected value to `2`:
 
