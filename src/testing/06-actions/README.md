@@ -89,7 +89,7 @@ Let's work our way through the test. First let's set up the test to just call th
 
 ```js
 describe('getEmails', () => {
-  it('calls the getEmails API and dispatches UPDATE_EMAILS action on API success', async () => {
+  it('calls the getEmails API and dispatches UPDATE_EMAILS action on API success', () => {
     actions.getEmails();
   });
 });
@@ -99,7 +99,7 @@ The first thing we want to test is that it is calling the `getEmails` API. But t
 
 ```js
 describe('getEmails', () => {
-  it('calls the getEmails API and dispatches UPDATE_EMAILS action on API success', async () => {
+  it('calls the getEmails API and dispatches UPDATE_EMAILS action on API success', () => {
     const mockDispatch = jest.fn();
 
     // Call action with the mock dispatch
@@ -129,7 +129,7 @@ describe('updateEmails', () => {
 });
 
 describe('getEmails', () => {
-  it('calls the getEmails API and dispatches UPDATE_EMAILS action on API success', async () => {
+  it('calls the getEmails API and dispatches UPDATE_EMAILS action on API success', () => {
     // mock the API response to be successful, returning emails response
     jest.spyOn(api, 'getEmails').mockReturnValue(Promise.resolve(EMAILS));
 
@@ -155,7 +155,7 @@ The last thing we want to verify is that the `mockDispatch` is called with the e
 
 ```js
 describe('getEmails', () => {
-  it('calls the getEmails API and dispatches UPDATE_EMAILS action on API success', async () => {
+  it('calls the getEmails API and dispatches UPDATE_EMAILS action on API success', () => {
     // mock the API response to be successful, returning emails response
     jest.spyOn(api, 'getEmails').mockReturnValue(Promise.resolve(EMAILS));
 
