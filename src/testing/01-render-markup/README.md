@@ -24,7 +24,7 @@ Let's start with Jest. Create a test file for `EmailListItem` at [`components/Em
 ```js
 const sum = (a, b) => a + b;
 
-test('adds 1 plus 2 tp equal 3', () => {
+test('adds 1 plus 2 to equal 3', () => {
   expect(sum(1, 2)).toBe(3);
 });
 ```
@@ -53,7 +53,7 @@ Now, update the test to make it fail, by changing the expected value to `2`:
 ```js
 const sum = (a, b) => a + b;
 
-test('adds 1 plus 2 tp equal 3', () => {
+test('adds 1 plus 2 to equal 3', () => {
   expect(sum(1, 2)).toBe(2);
 });
 ```
@@ -62,7 +62,7 @@ Jest should re-run automatically, and the test should fail with an output like:
 
 ```sh
  FAIL  src/testing/01-rendering-logic/components/EmailListItem.test.js
-  ● adds 1 plus 2 tp equal 3
+  ● adds 1 plus 2 to equal 3
 
     expect(received).toBe(expected)
 
