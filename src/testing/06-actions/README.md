@@ -162,7 +162,7 @@ describe('getEmails', () => {
     const mockDispatch = jest.fn();
 
     // Call action with the mock dispatch
-    actions.getEmails()(mockDispatch);
+    await actions.getEmails()(mockDispatch);
 
     // verify that the API was called with the expected arguments
     expect(api.getEmails).toHaveBeenCalledTimes(1);
