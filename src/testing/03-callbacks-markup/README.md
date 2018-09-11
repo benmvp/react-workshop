@@ -129,7 +129,7 @@ it('calls onSelect handler with email ID on click when specified', () => {
 });
 ```
 
-Lastly, the `_handleClick` does not try to call the `onSelect` prop when it isn't passed. We can verify that it does nothing by asserting that `.stopPropagation()` is never called **and** that we don't get any errors from trying to call the `undefined` `onSelect` prop:
+Lastly, the `_handleClick` does not try to call the `onSelect` prop when the prop isn't passed. We can verify that it does nothing by asserting that `.stopPropagation()` is never called **and** that we don't get any errors from trying to call the would-be-`undefined` `onSelect` prop:
 
 ```js
   describe('onSelect', () => {
@@ -142,7 +142,7 @@ Lastly, the `_handleClick` does not try to call the `onSelect` prop when it isn'
       const component = mount(<EmailListItem email={DEFAULT_EMAIL} />);
       const container = component.find('[data-test="email-list-item"]');
   
-      // simulating a click even shouldn't cause an error when onSelect
+      // simulating a click event shouldn't cause an error when onSelect
       // isn't passed
       expect(() => {
         container.simulate('click', {stopPropagation});

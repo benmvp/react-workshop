@@ -58,7 +58,7 @@ Jest will start up in "watch mode", run the existing tests, and then wait for te
 
 ## Tasks
 
-Let's return to testing the `EmailForm` component by opening [`components/EmailForm.test.js`](components/EmailForm.test.js). The four input fields, `from`, `to`, `subject` & `message`, are ["controlled components"](https://facebook.github.io/react/docs/forms.html#controlled-components). React maintains their value in `state` and re-renders them with their new value when their values change.
+Let's return to testing the `EmailForm` component by opening [`components/EmailForm.test.js`](components/EmailForm.test.js). The four input fields, `from`, `to`, `subject` & `message`, are ["controlled components"](https://facebook.github.io/react/docs/forms.html#controlled-components). We maintain their value in `state` and re-renders them with their new value when their values change.
 
 Write a test to verify that the `from` field gets a new value when the `'change'` event is triggered:
 
@@ -129,6 +129,8 @@ describe('state updating', () => {
 });
 ```
 
+So we never test directly the `state` or even the helper function that resets the form field values. By testing indrectly, we're testing the intended _user experience_ which should be able to remain the same even if the code is refactored.
+
 To be extra safe, ensure that the fields aren't accidentally reset on unsuccessful form submission:
 
 ```js
@@ -161,7 +163,7 @@ There is an [exercise](#exercise) to test for cancelled submission.
 
 Let's revisit the tests for `Page`. There are two pieces of UI state, `selectedEmailId` and `showForm`, that we want to test how they update. Again, we use indirection to verify that the state was updated correctly, but analyzing if the new UI has been rendered correctly.
 
-The main piece of state is `selectedEmailId`. It is updated in many different ways to build interactive in the email app. It defaults to `-1` signaling that nothing is selected and the `<EmailView />` should not display. Let's verify this case:
+The main piece of state is `selectedEmailId`. It is updated in many different ways to build interactivity in the email app. It defaults to `-1` signaling that nothing is selected and the `<EmailView />` should not display. Let's verify this case:
 
 ```js
 describe('state updates + callbacks', () => {
@@ -223,7 +225,7 @@ describe('selected email', () => {
 });
 ```
 
-We simulate an email item being selected by invoking the `onItemSelect` prop on the `<EmailList />`. This triggers a re-render, but because we didn't trigger it via Enzyme's [`.simulate()`](http://airbnb.io/enzyme/docs/api/ReactWrapper/simulate.html), we have to manually tell the component to update. After which we verify `<EmailList />` has the write selected email ID, is displaying the `<EmailView />` with the selected email, and that the `markRead` callback handler was called with the selected email ID. This is the result of the simple `setState()` in `_handleItemSelect`.
+We simulate an email item being selected by invoking the `onItemSelect` prop on the `<EmailList />`. This triggers a re-render, but because we didn't trigger it via Enzyme's [`.simulate()`](http://airbnb.io/enzyme/docs/api/ReactWrapper/simulate.html), we have to manually tell the component to update. After which we verify `<EmailList />` has the correct selected email ID, is displaying the `<EmailView />` with the selected email, and that the `markRead` callback handler was called with the selected email ID. This is the result of the simple `setState()` in `_handleItemSelect`.
 
 Finally, let's test what happens when the email view is closed:
 

@@ -110,7 +110,7 @@ describe('event handling', () => {
       const component = getComponent();
       const markReadButton = component.find('[data-test="email-view-mark-read"]');
   
-      // simulating a click even shouldn't cause an error
+      // simulating a click event shouldn't cause an error
       expect(() => {
         markReadButton.simulate('click');
       }).not.toThrow();
@@ -141,7 +141,7 @@ describe('event handling', () => {
       const component = getComponent({email: READ_EMAIL});
       const markUnreadButton = component.find('[data-test="email-view-mark-unread"]');
   
-      // simulating a click even shouldn't cause an error
+      // simulating a click event shouldn't cause an error
       expect(() => {
         markUnreadButton.simulate('click');
       }).not.toThrow();

@@ -58,7 +58,7 @@ Jest will start up in "watch mode", run the existing tests, and then wait for te
 
 ## Tasks
 
-Let's finally write tests for the `Page` container component. It has very little DOM, but acts as a coordinator for all of the other child components within it.
+Let's finally write tests for the `Page` container component. It has very little DOM, but acts as a coordinator for all of the other child components within it. It operates exclusively off of event handlers for its child components.
 
 Create [`containers/Page.test.js`](containers/Page.test.js) and let's create some tests for the simple action event handlers it receives:
 
@@ -113,7 +113,7 @@ You'll noticed that the test **fails**:
   Invariant Violation: Could not find "store"in either the context or props of "Connect(Page)". Either wrap the root component in a <Provider>, or explicitly pass "store" as a prop to "Connect(Page)".
 ```
 
-The `connect()` function within [`Page.js`](containers/Page.js) is expected the Redux store to be in the `context`. We use `<Provider>` in [`App.js`](App.js) to provide the Redux store when our app runs, but we don't do it when we're running our tests. But for the purposes of the test, we don't _really_ need Redux at all; we can test `Page` in isolation like we've been testing our other components.
+The `connect()` function within [`Page.js`](containers/Page.js) is expecting the Redux store to be in the `context`. We use `<Provider>` in [`App.js`](App.js) to provide the Redux store when our app runs, but we don't want to do it when we're running our tests. It's way too much to create a fake store, fake reducers & fake actions, just to test our container component. But for the purposes of the test, we don't _really_ need Redux at all; we can test `Page` in isolation like we've been testing our other components.
 
 So we'll first need to make `Page` more easily testable, by separating the Redux `connect()` from the component itself.
 

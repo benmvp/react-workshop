@@ -92,7 +92,7 @@ describe('event handling', () => {
       const component = getComponent();
       const container = component.find('[data-test="email-list-item"]');
   
-      // simulating a click even shouldn't cause an error when onSelect
+      // simulating a click event shouldn't cause an error when onSelect
       // isn't passed
       expect(() => {
         container.simulate('click', {stopPropagation});

@@ -249,14 +249,14 @@ describe('addEmail', () => {
 });
 ```
 
-We mock out the `addEmail` API to resolve a `Promise` that has `{success: false}` (failure to add). In order to verify that the action fails and throws an `Error`, we use [`.rejects`](https://jestjs.io/docs/en/expect#rejects) and then add the matcher to an instance of `Error` to the end.
+We mock out the `addEmail` API to resolve a `Promise` that has `{success: false}` (a failure to add an email). In order to verify that the action fails and throws an `Error`, we use [`.rejects`](https://jestjs.io/docs/en/expect#rejects) and then add the matcher to an instance of `Error` to the end.
 
 ## Exercises
 
 - Add remaining test for `addEmail` that it calls the `addEmail` API and dispatches `ADD_EMAIL` action on API success
 - Add tests for `deleteEmail`
   * calls the `deleteEmail` API and throws an error on API failure
-  * calls the `deleEmail` API and dispatches `DELETE_EMAIL` action on API success
+  * calls the `deleteEmail` API and dispatches `DELETE_EMAIL` action on API success
 - Add tests for `markRead`
   * calls the `setRead` API and throws an error on API failure
   * calls the `setRead` API and dispatches `SET_READ_EMAIL` action on API success

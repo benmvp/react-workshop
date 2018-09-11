@@ -133,6 +133,7 @@ Instead of using [`.find()`](http://airbnb.io/enzyme/docs/api/ReactWrapper/find.
 
 - Finish the second test verifying that `<EmailListItem />` receives `isSelected=true` for a matching `selectedEmailId` prop 
 - Move `EMAILS` constant into [`__fixtures__/index.js`](__fixtures__/index.js)
+- Any missed exercises from [Step 1](../01-render-markup)! 😉
 
 ## Next
 

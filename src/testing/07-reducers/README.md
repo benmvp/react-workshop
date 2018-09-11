@@ -140,6 +140,7 @@ We make a quick verification that the list of emails is one fewer. Then we also 
 
 - Add `ADD_EMAIL` action test that it prepends the new email to the beginning of the list
 - Add `UPDATE_EMAILS` action test that it replaces the emails list
+- Any missed exercises from [Step 6](../06-actions)! 😉
 
 ## Next
 
