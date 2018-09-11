@@ -8,5 +8,5 @@ node_js:
 # Cache dependencies in $HOME/.yarn-cache across builds
 cache: yarn
 
-# Run the dummy test
+# Run the tests
 script: yarn test
