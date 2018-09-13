@@ -110,7 +110,7 @@ You'll noticed that the test **fails**:
 ```sh
   ● simple actions › markUnread › calls `markUnread` action when Mark Unread is clicked in email view
 
-  Invariant Violation: Could not find "store"in either the context or props of "Connect(Page)". Either wrap the root component in a <Provider>, or explicitly pass "store" as a prop to "Connect(Page)".
+  Invariant Violation: Could not find "store" in either the context or props of "Connect(Page)". Either wrap the root component in a <Provider>, or explicitly pass "store" as a prop to "Connect(Page)".
 ```
 
 The `connect()` function within [`Page.js`](containers/Page.js) is expecting the Redux store to be in the `context`. We use `<Provider>` in [`App.js`](App.js) to provide the Redux store when our app runs, but we don't want to do it when we're running our tests. It's way too much to create a fake store, fake reducers & fake actions, just to test our container component. But for the purposes of the test, we don't _really_ need Redux at all; we can test `Page` in isolation like we've been testing our other components.
@@ -209,7 +209,7 @@ describe('simple actions', () => {
 });
 ```
 
-We simulate events, not my simulating DOM actions, but by invoking the prop functions of child components. We select an item, but calling `onItemSelect` on the `<EmailList />` child component. From the standpoint of the `Page` unit test, we don't care how `<EmailList />` ends up causing the email list item to be selected. The interface for item selection between `Page` and its child `<EmailList />` is the `onItemSelect` prop.
+We simulate events, not by simulating DOM actions, but by invoking the prop functions of child components. We select an item, but calling `onItemSelect` on the `<EmailList />` child component. From the standpoint of the `Page` unit test, we don't care how `<EmailList />` ends up causing the email list item to be selected. The interface for item selection between `Page` and its child `<EmailList />` is the `onItemSelect` prop.
 
 Similarly, we simulate clicking the "Mark Unread" button by just invoking the `onMarkUnread` prop on the `<EmailView />` child component. This calls the `markUnread` action with the selected email ID. This is ultimately what we verify.
 
