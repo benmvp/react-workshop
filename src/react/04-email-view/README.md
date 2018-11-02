@@ -340,7 +340,7 @@ export default class App extends Component {
 }
 ```
 
-Whenever we call `setStatae`, React calls the `render()` method again for us so that the state that was just updated can be rendered in the UI. This is how interactivity in `App` is built in React:
+Whenever we call `setState`, React calls the `render()` method again for us so that the state that was just updated can be rendered in the UI. This is how interactivity in `App` is built in React:
 
 1. Initialize `state` to the default values you would like to render
 1. React calls `render()` to display the UI
