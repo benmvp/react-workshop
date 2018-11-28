@@ -13,8 +13,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
-    "react-scripts": "^1.1.5",
-    "redux": "^3.7.2",
+    "react-scripts": "^2.1.1",
+    "redux": "^4.0.1",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
@@ -27,7 +27,7 @@
   "devDependencies": {
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "jest-enzyme": "^6.0.2",
+    "jest-enzyme": "^7.0.1",
     "react-test-renderer": "^16.4.2"
   }
 }
