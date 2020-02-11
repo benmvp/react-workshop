@@ -239,7 +239,7 @@ export default class Page extends Component {
 
   static propTypes = {
     pollInterval: PropTypes.number,
-    emails: PropTypes.arraOf(EMAIL_PROP_TYPE),
+    emails: PropTypes.arrayOf(EMAIL_PROP_TYPE),
   }
 
   // default props
