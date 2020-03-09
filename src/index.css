@@ -1,9 +1,4 @@
-/* TODO: Include reset, root for rem */
-html {
-  font-size: 100%;
-}
 body {
   margin: 0;
-  padding: 0;
-  font-family: Roboto, sans-serif;
+  padding: 1rem;
 }
