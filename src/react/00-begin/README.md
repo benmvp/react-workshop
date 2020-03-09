@@ -4,14 +4,13 @@ The goal of this step is just to get everything set up with a running (but blank
 
 ## Tasks
 
-You need [node](https://nodejs.org/en/) version 6 or higher. Check your node version:
+You need [node](https://nodejs.org/en/) version 10 or higher. Check your node version:
 
 ```sh
 node -v
 ```
 
-If your node version is version 5 or lower, you can [install `nvm`](https://github.com/creationix/nvm#install-script) to manage multiple versions of node.
-
+If your node version is version 9 or lower, you can [install `nvm`](https://github.com/creationix/nvm#install-script) to manage multiple versions of node.
 
 Clone the [`react-workshop`](https://github.com/benmvp/react-workshop) repo:
 
@@ -25,13 +24,9 @@ Change into the `react-workshop` directory:
 cd react-workshop
 ```
 
-Install all of the dependencies ([`yarn`](https://yarnpkg.com/en/) is preferred):
+Install all of the dependencies using [npm](http://npmjs.org/):
 
 ```sh
-# Yarn
-yarn install
-
-# ...or NPM
 npm install
 ```
 
@@ -41,26 +36,22 @@ Copy the [`00-begin`](./) directory, name it `workshop`:
 cp -r src/react/00-begin src/workshop
 ```
 
-Ensure [`src/index.js`](../../index.js#L3) is pointing to the `workshop` App:
+Ensure [`src/index.js`](../../index.js#L3) is pointing to the new `workshop` App:
 
 ```js
-import App from './workshop/App';
+import App from './workshop/App'
 ```
 
 Start the app:
 
 ```sh
-# Yarn
-yarn start
-
-# ...or NPM
 npm start
 ```
 
 ## Exercises
 
 - Visit [http://localhost:3000/](http://localhost:3000/) and you should see an empty page
-- Install [React Developer Tools](https://github.com/facebook/react-devtools#installation) for your browser
+- Install React Developer Tools for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) or [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
 - Install a JSX-friendly code editor, such as [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Next

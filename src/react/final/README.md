@@ -17,7 +17,6 @@ git clone https://github.com/benmvp/react-workshop.git
 Install all of the dependencies using [npm](http://npmjs.org/):
 
 ```sh
-# ...or NPM
 npm install
 ```
 
