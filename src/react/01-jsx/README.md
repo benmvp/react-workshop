@@ -10,7 +10,7 @@ If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you
 
 ## Jump Around
 
-[Concepts](#concepts) | [Tasks](#tasks) | [Resources](#resources)
+[Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
 ## Concepts
 
@@ -140,7 +140,7 @@ const App = () => {
 
 ## Next
 
-Go to [Step 2 - Components](../02-components/).
+Go to [Step 2 - Query Field](../02-query-field/).
 
 ## Resources
 

@@ -21,7 +21,7 @@ Rendering giphy search results
 
 4.  Form Submit
 
-- Add form wrapper
+- Add `onSubmit`
 - Add Go submit button
 - Add `useState` for searchQuery to switch from instant results
 - Exercise/Bonus: instant search checkbox
