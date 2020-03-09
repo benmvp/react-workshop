@@ -21,9 +21,11 @@ export const getResults = async ({
     )
     const data = await resp.json()
 
-    return data.data.map((item) => ({
-      url: item.url,
-      imageUrl: item.images.preview.mp4,
+    return data.data.map(({ url, images, title, id }) => ({
+      id,
+      title,
+      url,
+      imageUrl: images.preview.mp4,
     }))
   } catch (ex) {
     console.error(ex)

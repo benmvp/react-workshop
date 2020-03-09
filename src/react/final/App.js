@@ -44,7 +44,7 @@ const App = ({
   }
 
   return (
-    <section className="app">
+    <main className="app">
       <h1>Giphy Search!</h1>
 
       <form onSubmit={handleSubmit}>
@@ -125,7 +125,7 @@ const App = ({
           ))}
         </section>
       </section>
-    </section>
+    </main>
   )
 }
 
