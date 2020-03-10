@@ -15,24 +15,24 @@ Rendering giphy search results
 
 - `useEffect` to call API
 - Promise-based approach first
-- async-based approach next
 - `console.log` the results
-- Exercise:
+- async-based approach next
 
-4.  Form Submit
-
-- Add `onSubmit`
-- Add Go submit button
-- Add `useState` for searchQuery to switch from instant results
-- Exercise/Bonus: instant search checkbox
-
-5.  Lists
+4.  Lists
 
 - Display `<video>` for each result
 - Use `key`
 - Exercise: Add limits <select>
 - Bonus: Add rating radio
 - Notice: When we change limits, the UI doesn't re-render
+- Exercise:
+
+5.  Form Submit
+
+- Add `onSubmit`
+- Add Go submit button
+- Add `useState` for searchQuery to switch from instant results
+- Exercise/Bonus: instant search checkbox
 
 6.  Components
 
@@ -61,9 +61,9 @@ Rendering giphy search results
 - Explain why we're not clearing the results when loading (see: https://kentcdodds.com/blog/stop-using-isloading-booleans)
 - Exercise: Display error state w/o clearing results
 
-10. Pagination
+Quiz / Homework: Pagination
 
 - Exercise build a pagination component to display above and below results
 - Has "Next" & "Previous" buttons/links
 - Hook it into `offset` of `useGiphy`
-- Bonus: Show first, last and some pages to jump to based (on `total_count` from API)
+- Bonus: Show first, last and some pages to jump to (based on `total_count` from API)

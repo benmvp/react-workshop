@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import App from './react/02-query-field/App'
+import App from './react/03-api/App'
 
 import './index.css'
 

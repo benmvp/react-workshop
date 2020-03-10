@@ -36,6 +36,8 @@ import React from 'react'
 const App = () => {
   return <main>Giphy Search!</main>
 }
+
+export default App
 ```
 
 This is because JSX elements are transpiled to regular `React.createElement()` calls:
@@ -46,6 +48,8 @@ import React from 'react'
 const App = () => {
   return React.createElement('main', null, 'Giphy Search!')
 }
+
+export default App
 ```
 
 Add nested JSX markup. For example:
@@ -91,7 +95,7 @@ const App = () => {
         Input label
         <input type="text" id="input" placeholder="Fill me in please" />
       </label>
-    </m>
+    </main>
   )
 }
 ```
