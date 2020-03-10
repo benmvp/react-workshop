@@ -8,17 +8,8 @@ Ultimately, we want to keep the current value of the search query field in UI st
 
 If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
-## Jump Around
-
-[Concepts](#concepts) | [Restart Setup](#restart-setup) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
-
-## Concepts
-
-- Maintaining UI state with the `useState` hook
-- Handling user interaction
-- Handling HTML form elements
-
-## Restart Setup
+<details>
+  <summary><b>Help! I didn't finish the previous step!</b></summary>
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
 
@@ -55,6 +46,18 @@ npm start
 ```
 
 After the app is initially built, a new browser window should open up at [http://localhost:3000/](http://localhost:3000/), and you should be able to continue on with the tasks below.
+
+</details>
+
+## Jump Around
+
+[Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
+
+## Concepts
+
+- Maintaining UI state with the `useState` hook
+- Handling user interaction
+- Handling HTML form elements
 
 ## Tasks
 

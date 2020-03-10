@@ -22,17 +22,17 @@ Rendering giphy search results
 
 - Display `<video>` for each result
 - Use `key`
+- Exercise: Link title to URL & display rating
 - Exercise: Add limits <select>
-- Bonus: Add rating radio
 - Notice: When we change limits, the UI doesn't re-render
-- Exercise:
 
 5.  Form Submit
 
 - Add `onSubmit`
 - Add Go submit button
 - Add `useState` for searchQuery to switch from instant results
-- Exercise/Bonus: instant search checkbox
+- Exercise: instant search checkbox
+- Bonus: Add rating radio
 
 6.  Components
 
@@ -42,16 +42,11 @@ Rendering giphy search results
 - Exercise: Add props to App
 - Exercise: Make `InputField`, `SelectField`, `RadioGroup` & `Checkbox` components
 - Bonus: Clicking on `GiphyItem` stops auto-loop
+- Bonus: Make `GiphyItem` look different when paused (use `classnames` lib)
 
 7.  Custom Hook
 
 - Create `useGiphy` hook, that takes in params, wraps `useState` + `useEffect`, returns results
-
-8.  Styling
-
-- Layout the `SearchForm` nicely
-- Layout the `GiphyResults` in flex-wrap
-- Make `GiphyItem` look different when paused (use `classnames` lib)
 
 9.  Loading States
 

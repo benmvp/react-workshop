@@ -44,8 +44,8 @@ export const getResults = async ({
       id,
       title,
       url,
-      rating,
-      imageUrl: images.preview.mp4,
+      rating: rating.toUpperCase(),
+      imageUrl: images['fixed_height'].url,
     }))
   } catch (ex) {
     console.error(ex)
