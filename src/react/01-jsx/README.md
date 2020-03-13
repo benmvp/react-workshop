@@ -102,6 +102,31 @@ const App = () => {
 
 Notice that instead of `class` it's `className` and `htmlFor` instead of just `for`.
 
+There is a slightly different syntax to pass variables to props:
+
+```js
+const App = () => {
+  const contents = 'This is a paragraph of text written in React'
+  const inputId = 'input'
+  const numItems = 3
+
+  return (
+    <main>
+      <h1>Giphy Search!</h1>
+      <p className="text-center">{contents}</p>
+      <label htmlFor={inputId}>
+        Input label
+        <input
+          type="text"
+          id={inputId}
+          placeholder={`Search ${numItems} items`}
+        />
+      </label>
+    </main>
+  )
+}
+```
+
 Lastly, add inline styles to some elements by passing an object to the `style` prop:
 
 ```js
