@@ -88,8 +88,14 @@ const App = () => {
       </form>
 
       <section className="callout primary">
-        {results.map((result) => (
-          <img key={result.id} src={result.imageUrl} alt={result.imageUrl} />
+        {results.map((item) => (
+          <video
+            key={item.id}
+            src={item.previewUrl}
+            alt={item.title}
+            loop
+            autoPlay
+          />
         ))}
       </section>
     </main>
@@ -107,8 +113,14 @@ let resultsUi
 if (results.length > 0) {
   resultsUi = (
     <section className="callout primary">
-      {results.map((result) => (
-        <img key={result.id} src={result.imageUrl} alt={result.imageUrl} />
+      {results.map((item) => (
+        <video
+          key={item.id}
+          src={item.previewUrl}
+          alt={item.title}
+          loop
+          autoPlay
+        />
       ))}
     </section>
   )
@@ -140,8 +152,14 @@ The `resultsUi` contains the JSX, and we render it just like any other variable.
 {
   results.length > 0 && (
     <section className="callout primary">
-      {results.map((result) => (
-        <img key={result.id} src={result.imageUrl} alt={result.imageUrl} />
+      {results.map((item) => (
+        <video
+          key={item.id}
+          src={item.previewUrl}
+          alt={item.title}
+          loop
+          autoPlay
+        />
       ))}
     </section>
   )
@@ -156,9 +174,9 @@ Let's add some additional markup and classes around the `<img />` so we can incl
 {
   results.length > 0 && (
     <section className="callout primary">
-      {results.map((result) => (
+      {results.map((item) => (
         <section
-          key={result.id}
+          key={item.id}
           className="card"
           style={{
             width: '300px',
@@ -166,9 +184,9 @@ Let's add some additional markup and classes around the `<img />` so we can incl
             marginRight: '16px',
           }}
         >
-          <img src={result.imageUrl} alt={result.imageUrl} />
+          <video src={item.previewUrl} alt={item.title} loop autoPlay />
           <section className="card-section">
-            <h5>{result.title}</h5>
+            <h5>{item.title}</h5>
           </section>
         </section>
       ))}
@@ -184,9 +202,9 @@ Let's add some additional markup and classes around the `<img />` so we can incl
 - Make the displayed title (`result.title`) link to the Giphy URL (`result.url`)
 - Display the Giphy Rating (`result.rating`)
 - Add a `<select>` to the search form to change the number of Giphy images displayed (the `limit` search param)
-  - Map over a `const LIMITS = [5, 10, 15, 20, 25]` constant to generate the `<option value={limit}>` tags within the `<select>`
+  - Map over a `const LIMITS = [6, 12, 18, 24, 30]` constant to generate the `<option value={limit}>` tags within the `<select>`
   - The props should be `<select value={searchLimit} onChange={(e) => { ... }}>`
-  - The default should remain `10`
+  - The default should remain `12`
 - Open the Developer Tools, on the Elements tab, and monitor how the markup changes when changing limits
 
 ## Next

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { getResults } from './api'
 
-const LIMITS = [5, 10, 15, 20, 25]
+const LIMITS = [6, 12, 18, 24, 30]
 
 const App = () => {
   const [inputValue, setInputValue] = useState('')
-  const [searchLimit, setSearchLimit] = useState(10)
+  const [searchLimit, setSearchLimit] = useState(12)
   const [results, setResults] = useState([])
 
   useEffect(() => {
@@ -48,9 +48,9 @@ const App = () => {
 
       {results.length > 0 && (
         <section className="callout primary">
-          {results.map((result) => (
+          {results.map((items) => (
             <section
-              key={result.id}
+              key={items.id}
               className="card"
               style={{
                 width: '300px',
@@ -58,17 +58,13 @@ const App = () => {
                 marginRight: '16px',
               }}
             >
-              <img src={result.imageUrl} alt={result.imageUrl} />
+              <video src={item.previewUrl} alt={item.title} loop autoPlay />
               <section className="card-section">
                 <h5>
-                  <a
-                    href={result.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {result.title}
+                  <a href={items.url} target="_blank" rel="noopener noreferrer">
+                    {items.title}
                   </a>{' '}
-                  ({result.rating})
+                  ({items.rating})
                 </h5>
               </section>
             </section>

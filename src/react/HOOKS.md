@@ -36,13 +36,14 @@ Rendering giphy search results
 
 6.  Components
 
+- Create `Results`
 - Create `SearchForm` with `onChange` handler returning params (updated `useState`)
-- Create `GiphyResults` & `GiphyItem` components
+  - Mention `InputField`, `SelectField`, `RadioGroup` & `Checkbox` components would come from a component library
 - Add PropTypes
-- Exercise: Add props to App
-- Exercise: Make `InputField`, `SelectField`, `RadioGroup` & `Checkbox` components
-- Bonus: Clicking on `GiphyItem` stops auto-loop
-- Bonus: Make `GiphyItem` look different when paused (use `classnames` lib)
+- Exercise: Add `ResultsItem` component + Prop types
+- Exercise: Add form field props to `SearchForm`
+- Bonus: Clicking on `ResultsItem` stops auto-loop
+- Bonus: Make `ResultsItem` look different when paused (use `classnames` lib)
 
 7.  Custom Hook
 

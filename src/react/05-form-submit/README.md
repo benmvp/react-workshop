@@ -64,7 +64,7 @@ Add a new state variable to maintain the submitted search query (calling it `sea
 ```js
 const [inputValue, setInputValue] = useState('')
 const [searchQuery, setSearchQuery] = useState('')
-const [searchLimit, setSearchLimit] = useState(10)
+const [searchLimit, setSearchLimit] = useState(12)
 const [results, setResults] = useState([])
 ```
 
@@ -165,13 +165,13 @@ Go to [Step 6 - Components](../06-components/).
 - [Forms](https://reactjs.org/docs/forms.html)
 - [Fragments](https://reactjs.org/docs/fragments.html)
 - [DOM Elements](https://reactjs.org/docs/dom-elements.html)
-- [Foundation for sites](https://get.foundation/sites/docs/)
-- [`classnames` library](https://github.com/JedWatson/classnames)
-- [Introduction to BEM](http://getbem.com/introduction/)
-- [`glamorous` library](https://github.com/paypal/glamorous)
 - [Inline Styles](https://reactjs.org/docs/dom-elements.html#style)
-- [CSS Modules: Welcome to the Future](http://glenmaddern.com/articles/css-modules)
-- [Using CSS flexible boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes)
+  - [Foundation for sites](https://get.foundation/sites/docs/)
+  - [`classnames` library](https://github.com/JedWatson/classnames)
+  - [Introduction to BEM](http://getbem.com/introduction/)
+  - [`glamorous` library](https://github.com/paypal/glamorous)
+  - [CSS Modules: Welcome to the Future](http://glenmaddern.com/articles/css-modules)
+  - [Using CSS flexible boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes)
 
 ## Questions
 

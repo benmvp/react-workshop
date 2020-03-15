@@ -141,10 +141,10 @@ Go to [Step 4 - Lists](../04-lists/).
 
 - [Using the Effect Hook](https://reactjs.org/docs/hooks-effect.html)
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) & Github's [`fetch` polyfill](https://github.com/github/fetch)
-- [Learning ES6: Promises](http://www.benmvp.com/learning-es6-promises/)
-- [Async functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
-- [HTTP Methods](http://restfulapi.net/http-methods/)
-- [Postman](https://www.getpostman.com/)
+  - [Learning ES6: Promises](http://www.benmvp.com/learning-es6-promises/)
+  - [Async functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+  - [HTTP Methods](http://restfulapi.net/http-methods/)
+  - [Postman](https://www.getpostman.com/)
 
 ## Questions
 
