@@ -12,12 +12,15 @@ import { formatUrl } from 'url-lib'
  * @property {Rating} rating The MPAA-style rating for the GIF
  * @property {string} previewUrl The URL for the GIF in .MP4 format
  *
+ * @typedef SearchParams
+ * @type {object}
+ * @property {string} [params.searchQuery=''] Search query term or phrase
+ * @property {RatingFilter} [params.rating=''] Filters results by specified rating. Not specifying a rating, returns all possible ratings
+ * @property {number} [params.limit=12] The maximum number of images to return
+ * @property {number} [params.offset=0] Specifies the starting position of the results.
+ *
  * Retrieves a list of giphy image info matching the specified search parameters
- * @param {object} [params] Search parameters
- * @param {string} [params.searchQuery=''] Search query term or phrase
- * @param {RatingFilter} [params.rating=''] Filters results by specified rating. Not specifying a rating, returns all possible ratings
- * @param {number} [params.limit=12] The maximum number of images to return
- * @param {number} [params.offset=0] Specifies the starting position of the results.
+ * @param {SearchParams} [params] Search parameters
  * @returns {Promise<GiphyResult[]>} The results wrapped in a promise
  */
 export const getResults = async ({

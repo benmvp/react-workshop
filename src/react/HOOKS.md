@@ -49,7 +49,7 @@ Rendering giphy search results
 
 - Create `useGiphy` hook, that takes in params, wraps `useState` + `useEffect`, returns results
 
-9.  Loading States
+8.  Loading States
 
 - Switch over to `useReducer` (feels like overkill)
 - Add in `status` + `error`, return object in `useGiphy`
