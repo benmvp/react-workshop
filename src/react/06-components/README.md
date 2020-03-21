@@ -57,7 +57,6 @@ After the app is initially built, a new browser window should open up at [http:/
 
 - Creating and composing React components
 - Configuring components via passing props
-- Type-checking props
 
 ## Tasks
 
@@ -299,77 +298,18 @@ const SearchForm = (pros) => {
 
 > NOTE: `SearchForm` has an `<input type="search">` element for the query search field, an `<input type="checkbox">` element for the instant results toggle, multiple connected `<input type="radio">` elements for the rating picker, and a `<select>` for the number of results switcher. Normally you would use a component library like [Material-UI](https://material-ui.com/) that would have those reusable components for you.
 
----
-
-### `PropTypes`
-
-Using the [`prop-types`](https://reactjs.org/docs/typechecking-with-proptypes.html) package, add a prop type in `SearchForm` for the `onChange` callback prop:
-
-```js
-import React, { Fragment, useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
-
-...
-
-const SearchForm = (props) => {
-  const { onChange } = props
-
-  ...
-}
-
-SearchForm.propTypes = {
-  onChange: PropTypes.func.isRequired,
-}
-
-export default SearchForm
-```
-
-Now add a prop type in `Results` for the `items` prop:
-
-```js
-import React from 'react'
-import PropTypes from 'prop-types'
-
-const Results = (props) => {
-  const { items } = props
-
-  ...
-
-}
-
-Results.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      title: PropTypes.string,
-      url: PropTypes.string,
-      rating: PropTypes.oneOf(['G', 'PG', 'PG-13', 'R']),
-      previewUrl: PropTypes.string,
-    }),
-  ),
-}
-
-export default Results
-```
-
 ## Exercises
 
-- From `Results`, pull out a `ResultsItem` component into `ResultsItem.js` with 5 **required** props: `id`, `title`, `url`, `rating` & `previewUrl`.
-- Add 4 additional _optional_ props to `SearchForm`: `initialSearchQuery`, `initialShowInstant`, `initialRating` & `initialLimit`
-  - These will set the initial values of the corresponding state variables (`useState(XXX)`)
-  - _HINT:_ Use [`defaultProps`](https://reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values) to set the default values when the props are not specified
+- From `Results`, pull out a `ResultsItem` component into `ResultsItem.js` with 5 props: `id`, `title`, `url`, `rating` & `previewUrl`.
 - Use the React Developer Tools to inspect the component hierarchy, including the props being passed to the `SearchForm` & `ResultsItem` components.
-  - Add some of the `initial*` props to `<SearchForm />` in `App` to see how the initial UI changes
 
 ## Next
 
-Go to [Step 7 - Custom Hook](../07-custom-hook/).
+Go to [Step 7 - Prop Types](../07-prop-types/).
 
 ## Resources
 
 - [Components and Props](https://reactjs.org/docs/components-and-props.html)
-- [Typechecking with PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html)
-  - [Custom Prop Types](https://github.com/airbnb/prop-types)
 - [Material-UI](https://material-ui.com/)
   - [React + Foundation](https://react.foundation/)
   - [React Bootstrap](https://react-bootstrap.github.io/)

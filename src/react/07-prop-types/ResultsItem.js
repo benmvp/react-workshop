@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const ResultsItem = ({ id, title, url, rating, previewUrl }) => {
   return (
@@ -22,6 +23,14 @@ const ResultsItem = ({ id, title, url, rating, previewUrl }) => {
       </section>
     </section>
   )
+}
+
+ResultsItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  rating: PropTypes.oneOf(['G', 'PG', 'PG-13', 'R']).isRequired,
+  previewUrl: PropTypes.string.isRequired,
 }
 
 export default ResultsItem

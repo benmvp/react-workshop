@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 const RATINGS = [
   { value: '', label: 'All' },
@@ -101,6 +102,20 @@ const SearchForm = ({
       </label>
     </form>
   )
+}
+
+SearchForm.propTypes = {
+  initialLimit: PropTypes.number,
+  initialRating: PropTypes.string,
+  initialSearchQuery: PropTypes.string,
+  initialShowInstant: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+}
+SearchForm.defaultProps = {
+  initialLimit: 12,
+  initialRating: '',
+  initialSearchQuery: '',
+  initialShowInstant: false,
 }
 
 export default SearchForm

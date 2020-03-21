@@ -39,23 +39,28 @@ Rendering giphy search results
 - Create `Results`
 - Create `SearchForm` with `onChange` handler returning params (updated `useState`)
   - Mention `InputField`, `SelectField`, `RadioGroup` & `Checkbox` components would come from a component library
-- Add PropTypes
-- Exercise: Add `ResultsItem` component + Prop types
-- Exercise: Add form field props to `SearchForm`
+- Exercise: Add `ResultsItem` component
 - Bonus: Clicking on `ResultsItem` stops auto-loop
 - Bonus: Make `ResultsItem` look different when paused (use `classnames` lib)
 
-7.  Custom Hook
+7. Prop Types
+
+- Add PropTypes
+- Exercise: ResultsItem Prop types
+- Exercise: Add form field props to `SearchForm`
+
+8.  Custom Hook
 
 - Create `useGiphy` hook, that takes in params, wraps `useState` + `useEffect`, returns results
 
-8.  Loading States
+9.  Loading States
 
 - Switch over to `useReducer` (feels like overkill)
 - Add in `status` + `error`, return object in `useGiphy`
 - Display loading state in UI (use slower API function)
 - Explain why we're not clearing the results when loading (see: https://kentcdodds.com/blog/stop-using-isloading-booleans)
 - Exercise: Display error state w/o clearing results
+- Exercise: Add derived props
 
 Quiz / Homework: Pagination
 
