@@ -1,4 +1,4 @@
-# Step 7 - Custom Hook
+# Step 8 - Custom Hook
 
 We've been able to greatly reduce the scope of the top-level `App` by breaking it down into several components. However, it still directly makes the API call in order to maintain the app-level state.
 
@@ -28,7 +28,7 @@ rm -rf src/workshop
 Copy the previous step as a starting point:
 
 ```sh
-cp -r src/react/06-components src/workshop
+cp -r src/react/07-prop-types src/workshop
 ```
 
 Ensure [`src/index.js`](../../index.js#L3) is still pointing to the `workshop` App:
@@ -127,7 +127,7 @@ Now `useGiphy()` can easily be used w/in other components because all of the sta
 
 ## Next
 
-Go to [Step 8 - Loading States](../08-loading-states/).
+Go to [Step 9 - Loading States](../09-loading-states/).
 
 ## Resources
 
