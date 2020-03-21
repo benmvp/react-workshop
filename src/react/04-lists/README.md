@@ -105,7 +105,7 @@ const App = () => {
 
 > NOTE: Be sure to include the [`key` prop](https://reactjs.org/docs/lists-and-keys.html) on the `<li>` elements.
 
-Notice how when there is no filter, we still get the empty blue box because the `<section className="callout primary">` is still being rendered even if there are no results. We need to only render the `<section>` when there are results. There are a number of different ways to [conditionally render JSX](https://reactjs.org/docs/conditional-rendering.html). One ways is to conditionally store the JSX in a variable:
+We need to only render the `<section>` when there are results. There are a number of different ways to [conditionally render JSX](https://reactjs.org/docs/conditional-rendering.html). One ways is to conditionally store the JSX in a variable:
 
 ```js
 let resultsUi
@@ -146,7 +146,7 @@ return (
 )
 ```
 
-The `resultsUi` contains the JSX, and we render it just like any other variable. But when `results` is empty, `resultsUi` will be `undefined` and nothing will display. This approach is verbose, but makes the final render simpler, especially when there is a lot of conditional JSX. In fact, the JSX can be factored out into a helper function. However, the most common approach is:
+However, the most common approach is:
 
 ```js
 {
@@ -165,8 +165,6 @@ The `resultsUi` contains the JSX, and we render it just like any other variable.
   )
 }
 ```
-
-If results is empty, `false` is returned, which will React won't render as well.
 
 Let's add some additional markup and classes around the `<img />` so we can include the giphy title:
 

@@ -91,11 +91,6 @@ const useGiphy = () => {
 }
 ```
 
-Now that we've separated the logic from the UI, we've renamed `formValues` -> `searchParams` and `setFormValues` -> `setSearchParams` because in the context of `useGiphy` they are really search parameters. And we return back the two pieces of information we'll need in `App`:
-
-1. the results
-1. the function to update the search parameters (which triggers a new API request)
-
 Back in `App` make use of `useGiphy`:
 
 ```js

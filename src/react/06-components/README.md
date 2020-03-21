@@ -131,9 +131,7 @@ return (
 )
 ```
 
-Notice that we're passing the `results` state variable to `<Results />` as its `items` prop. This is how we're able to pass data down to child components that we've created.
-
-We need to update `Results.js` to support this new prop:
+We need to update `Results.js` to support this new `items` prop:
 
 ```js
 const Results = (props) => {
@@ -150,8 +148,6 @@ const Results = (props) => {
   )
 }
 ```
-
-`Results` now accepts a `props` argument which is an object of all the props its parent passes to it. In this case we want to retrieve the `items` prop out of it. Then we use it to render out the UI.
 
 ---
 
@@ -246,9 +242,7 @@ return (
 )
 ```
 
-You will notice that `App` no longer has the `realSearchQuery`, `searchLimit` & `searchRating` variables needed for the call to `useEffect()`. `App` needs to get them from its rendered `<SearchForm />`. Parent components can receive values from rendered children components by passing callback handlers (similar to `onChange` we passed to the form elements).
-
-Add a new `formValues` state variable and new `onChange` handler for `<SearchFor />`:
+Add a new `formValues` state variable and new `onChange` handler for `<SearchForm />`:
 
 ```js
 const App = () => {
@@ -274,9 +268,7 @@ const App = () => {
 }
 ```
 
-`App` no longer maintains all the UI for the search form and results, but offloads it to the corresponding components. It now is only responsible for maintaining the `results` app state. We'll make this separation even clearer in the [next step](../07-custom-hook/).
-
-But first, we now need `SearchForm` to have a new `onChange` prop that it calls whenever the fields change, passing the same object properties that `getResults` expects (`searchQuery`, `limit` & `rating`):
+We now need `SearchForm` to have a new `onChange` prop that it calls whenever its fields change, passing the same object properties that `getResults` expects (`searchQuery`, `limit` & `rating`):
 
 ```js
 const SearchForm = (pros) => {
@@ -305,15 +297,11 @@ const SearchForm = (pros) => {
 }
 ```
 
-`SearchForm` now defines the `onChange` prop. We use it within a `useEffect()` call that is very similar to the `useEffect()` we had in `App`, except this time we're calling the `onChange()` prop with the three pieces of information in an object: `searchForm`, `rating` & `limit`.
-
-`SearchForm` has an `<input type="search">` element for the query search field, an `<input type="checkbox">` element for the instant results toggle, multiple connected `<input type="radio">` elements for the rating picker, and a `<select>` for the number of results switcher. Normally you would use a component library like [Material-UI](https://material-ui.com/) that would have those reusable components for you.
+> NOTE: `SearchForm` has an `<input type="search">` element for the query search field, an `<input type="checkbox">` element for the instant results toggle, multiple connected `<input type="radio">` elements for the rating picker, and a `<select>` for the number of results switcher. Normally you would use a component library like [Material-UI](https://material-ui.com/) that would have those reusable components for you.
 
 ---
 
 ### `PropTypes`
-
-Components that accept props will define the types of props they accept. This serves two purposes: 1) declare the public API of the component; and 2) validate the props being passed in by the parent.
 
 Using the [`prop-types`](https://reactjs.org/docs/typechecking-with-proptypes.html) package, add a prop type in `SearchForm` for the `onChange` callback prop:
 
@@ -335,8 +323,6 @@ SearchForm.propTypes = {
 
 export default SearchForm
 ```
-
-This dictates that the `onChange` prop must always be passed and must be a function. Prop types unfortunately doesn't describe the parameters and return value of the function.
 
 Now add a prop type in `Results` for the `items` prop:
 
@@ -365,8 +351,6 @@ Results.propTypes = {
 
 export default Results
 ```
-
-This dictates that the `items` prop is required to be passed and is an array of objects. Going deeper, each object has 5 properties, `id`, `title`, `url`, `rating` & `previewUrl`, all of which are required to be in each object. The `rating` prop is limited to only 4 strings: `'G'`, `'PG'`, `'PG-13'`, and `'R'`.
 
 ## Exercises
 

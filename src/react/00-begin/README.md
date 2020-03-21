@@ -51,7 +51,7 @@ npm start
 ## Exercises
 
 - Visit [http://localhost:3000/](http://localhost:3000/) and you should see an empty page
-- Install React Developer Tools for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) or [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
+- Install React Developer Tools for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) (recommended) or [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
 - Install a JSX-friendly code editor, such as [Visual Studio Code](https://code.visualstudio.com/)
 - Checkout the [final app](https://react-workshop.benmvp.com/) to get a sense of what you'll be building
 

@@ -95,7 +95,7 @@ return (
 )
 ```
 
-We set the `searchQuery` state variable whenever the form submits, which we can trigger by pressing ENTER within the search query field. Use the Developer Tools to see how the `inputValue` & `searchQuery` state variables update at different times.
+Use the Developer Tools to see how the `inputValue` & `searchQuery` state variables update at different times.
 
 > NOTE: We need to make sure to call `e.preventDefault()` in the handler, otherwise the browser will try to do a server-side form submission.
 
@@ -111,9 +111,7 @@ useEffect(() => {
 }, [searchQuery, searchLimit])
 ```
 
-`useEffect()` will now be called whenever `searchQuery` changes (i.e. when the form is submitted) instead of when `inputValue` changes (aka typing in the field). As a result, the results are only retrieved when the form is submitted (and number of results field changes). The API is no longer being hammered.
-
-It's not easily discoverable that you have to press ENTER to submit the search query field. Let's add a submit button by wrapping the search query field in additional markup:
+It's not easily discoverable that you have to press ENTER to submit the search query field. Add a submit button by wrapping the search query field in additional markup:
 
 ```js
 <section className="input-group">

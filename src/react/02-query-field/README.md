@@ -77,9 +77,7 @@ const App = () => {
 }
 ```
 
-Notice the use of `defaultValue` prop to set the initial value of the input fields instead of `value`, which is how you would normally initialize an HTML `<input>`. As of now, the DOM is maintaining the state of the input fields; React has no idea what the values of the fields are. They are currently ["uncontrolled components"](https://reactjs.org/docs/uncontrolled-components.html). We want to make them "controlled components" so we can keep track of their state within the app.
-
-> NOTE: If you were to set the `value` prop of the input fields, you wouldn't be able to type at all because setting `value` signals to React that you want React to control the values of the input fields.
+As of now, the DOM is maintaining the state of the input fields; React has no idea what the values of the fields are. They are currently ["uncontrolled components"](https://reactjs.org/docs/uncontrolled-components.html). We want to make them "controlled components" so we can keep track of their state within the app.
 
 Using the [`useState` hook](https://reactjs.org/docs/hooks-state.html), add a new state variable for the query field and pass its properties as the `value` of the `<input>`. Then for `onChange`, update the state.
 
@@ -109,11 +107,6 @@ const App = () => {
 ```
 
 > NOTE: Be sure to import `useState` from the `react` package at the top.
-
-When you using input fields you can take one of two approaches:
-
-1. Set the `defaultValue` property to make the input an "uncontrolled" component. React doesn't control the value of the input. The browser maintains the value of the input
-1. Set the `value` & `onChange` properties to make the input a "controlled" component. React **does** control the value of the input because you explicitly maintain its value in `state`. Every `onChange`, you update the state and reset its `value`.
 
 ## Exercises
 
