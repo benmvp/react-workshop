@@ -1,6 +1,6 @@
 # React FUNdamentals Workshop
 
-A step-by-step workshop to build a React application, all while learning React fundamentals. Best if accompanied with live facilitation. 🙂
+A step-by-step workshop to build a React application, all while learning React fundamentals. Best if accompanied with live facilitation by me 🙂.
 
 ## Exercises
 

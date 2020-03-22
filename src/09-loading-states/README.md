@@ -55,6 +55,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 - Managing loading & error states
 - Using `useReducer`
+- Leveraging ES6+ to maintain application state
 
 ## Tasks
 

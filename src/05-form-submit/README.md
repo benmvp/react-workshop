@@ -151,7 +151,7 @@ We're making use of [Foundation](https://get.foundation/sites/docs/forms.html) c
       name="instant-results"
       checked={ ... }
       onChange={(e) => {
-        // e.target.checked
+        // use e.target.checked
       }}
     />
     <label htmlFor="instant-results">Show instant results?</label>

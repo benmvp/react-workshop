@@ -52,7 +52,7 @@ After the app is initially built, a new browser window should open up at [http:/
 ## Concepts
 
 - Making API calls with the `useEffect` hook
-- Using Promises
+- Using Promises & `async`/`await`
 - Maintaining app state with the `useState` hook
 
 ## Tasks
