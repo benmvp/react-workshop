@@ -1,4 +1,4 @@
-# Step 10 - Final Quiz
+# Step 10 - Final Quiz!
 
 Until now, we've only been able to see the first page of results from the Giphy API. We need pagination UI in order to see more results.
 

@@ -26,7 +26,7 @@ You can start at the [beginning](src/00-begin/) to get set up. Afterwards follow
 1. [Prop Types](src/07-prop-types/)
 1. [Custom Hook](src/08-custom-hook/)
 1. [Loading States](src/09-loading-states/)
-1. [Final Quiz](src/10-quizd/)
+1. [Final Quiz!](src/10-quiz/)
 
 ## FUNdamental Concepts
 
