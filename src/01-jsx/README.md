@@ -24,7 +24,7 @@ In [`App.js`](App.js), replace `null` with JSX markup. For example:
 
 ```js
 const App = () => {
-  return <div>Giphy Search!</div>
+  return <main>Giphy Search!</main>
 }
 ```
 
@@ -35,18 +35,6 @@ import React from 'react'
 
 const App = () => {
   return <main>Giphy Search!</main>
-}
-
-export default App
-```
-
-This is because JSX elements are transpiled to regular `React.createElement()` calls:
-
-```js
-import React from 'react'
-
-const App = () => {
-  return React.createElement('main', null, 'Giphy Search!')
 }
 
 export default App
@@ -100,8 +88,6 @@ const App = () => {
 }
 ```
 
-Notice that instead of `class` it's `className` and `htmlFor` instead of just `for`.
-
 There is a slightly different syntax to pass variables to props:
 
 ```js
@@ -150,8 +136,6 @@ const App = () => {
   )
 }
 ```
-
-The `style` prop in React JSX takes an **object**, not a string like the HTML style property. The property names within the object are `camelCase` like JavaScript DOM notation (such as `backgroundColor`), instead of `kebab-case` like the property names in traditional CSS (such as `background-color`). If you pass a number to a property that takes a unit (such as `marginTop`), React will add `px` to the end for you if you specify a number for a size property.
 
 ## Exercises
 
