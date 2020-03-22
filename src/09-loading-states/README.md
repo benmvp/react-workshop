@@ -28,7 +28,7 @@ rm -rf src/workshop
 Copy the previous step as a starting point:
 
 ```sh
-cp -r src/react/08-custom-hook src/workshop
+cp -r src/08-custom-hook src/workshop
 ```
 
 Ensure [`src/index.js`](../index.js#L3) is still pointing to the `workshop` App:

@@ -33,7 +33,7 @@ npm install
 Copy the [`00-begin`](./) directory, name it `workshop`:
 
 ```sh
-cp -r src/react/00-begin src/workshop
+cp -r src/00-begin src/workshop
 ```
 
 Ensure [`src/index.js`](../index.js#L3) is pointing to the new `workshop` App:
