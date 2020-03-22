@@ -60,9 +60,9 @@ Rendering giphy search results
 - Display loading state in UI (use slower API function)
 - Explain why we're not clearing the results when loading (see: https://kentcdodds.com/blog/stop-using-isloading-booleans)
 - Exercise: Display error state w/o clearing results
-- Exercise: Add derived props
+- Bonus: Add searchParams to reducer state
 
-Quiz / Homework: Pagination
+10. Quiz / Homework: Pagination
 
 - Exercise build a pagination component to display above and below results
 - Has "Next" & "Previous" buttons/links

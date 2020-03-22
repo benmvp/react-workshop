@@ -103,7 +103,7 @@ Results.propTypes = {
       rating: PropTypes.oneOf(['G', 'PG', 'PG-13', 'R']),
       previewUrl: PropTypes.string,
     }),
-  ),
+  ).isRequired,
 }
 
 export default Results

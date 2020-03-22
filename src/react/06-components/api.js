@@ -1,6 +1,17 @@
 import { formatUrl } from 'url-lib'
 
 /**
+ * Waits the specified amount of time and returns a resolved Promise when done
+ * @param {number} waitTimeMs The amount of time to wait in milliseconds
+ * @returns {Promise} Signal that waiting is done
+ */
+const wait = (waitTimeMs = 0) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, waitTimeMs)
+  })
+}
+
+/**
  * @typedef {'' | 'g' | 'pg' | 'pg-13' | 'r'} RatingFiler The MPAA-style rating for a GIF
  * @typedef {'G' | 'PG' | 'PG-13' | 'R'} Rating The MPAA-style rating for a GIF
  *
@@ -29,30 +40,28 @@ export const getResults = async ({
   limit = 12,
   offset = 0,
 } = {}) => {
-  try {
-    const resp = await fetch(
-      formatUrl(
-        'https://api.giphy.com/v1/gifs/search?api_key=7B4oce3a0BmGU5YC22uOFOVg7JJtWcpH',
-        {
-          q: searchQuery,
-          rating,
-          limit,
-          offset,
-          lang: 'en',
-        },
-      ),
-    )
-    const data = await resp.json()
+  // Increase the number below to give the appearance of a slow API response
+  await wait(0)
 
-    return data.data.map(({ id, title, url, images, rating }) => ({
-      id,
-      title,
-      url,
-      rating: rating.toUpperCase(),
-      previewUrl: images.preview.mp4,
-    }))
-  } catch (ex) {
-    console.error(ex)
-  }
-  return []
+  const resp = await fetch(
+    formatUrl(
+      'https://api.giphy.com/v1/gifs/search?api_key=7B4oce3a0BmGU5YC22uOFOVg7JJtWcpH',
+      {
+        q: searchQuery,
+        rating,
+        limit,
+        offset,
+        lang: 'en',
+      },
+    ),
+  )
+  const data = await resp.json()
+
+  return data.data.map(({ id, title, url, images, rating }) => ({
+    id,
+    title,
+    url,
+    rating: rating.toUpperCase(),
+    previewUrl: images.preview.mp4,
+  }))
 }

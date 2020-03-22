@@ -29,8 +29,8 @@ Results.propTypes = {
       url: PropTypes.string.isRequired,
       rating: PropTypes.oneOf(['G', 'PG', 'PG-13', 'R']).isRequired,
       previewUrl: PropTypes.string.isRequired,
-    }).isRequired,
-  ),
+    }),
+  ).isRequired,
 }
 
 export default Results

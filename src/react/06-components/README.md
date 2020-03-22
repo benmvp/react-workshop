@@ -250,7 +250,13 @@ const App = () => {
 
   useEffect(() => {
     const fetchResults = async () => {
-      setResults(await getResults(formValues))
+      try {
+        const apiResults = await getResults(formValues)
+
+        setResults(apiResults)
+      } catch (err) {
+        console.error(err)
+      }
     }
 
     fetchResults()

@@ -104,7 +104,13 @@ Now, update the `useEffect()` call to pass the `searchQuery` state variable to t
 ```js
 useEffect(() => {
   const fetchResults = async () => {
-    setResults(await getResults({ searchQuery, limit: searchLimit }))
+    try {
+      const apiResults = await getResults({ searchQuery, limit: searchLimit })
+
+      setResults(apiResults)
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   fetchResults()

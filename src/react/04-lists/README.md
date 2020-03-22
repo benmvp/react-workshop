@@ -66,7 +66,13 @@ const App = () => {
 
   useEffect(() => {
     const fetchResults = async () => {
-      setResults(await getResults({ searchQuery: inputValue }))
+      try {
+        const apiResults = await getResults({ searchQuery: inputValue })
+
+        setResults(apiResults)
+      } catch (err) {
+        console.error(err)
+      }
     }
 
     fetchResults()
