@@ -10,9 +10,9 @@ const App = () => {
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        const apiResults = await getResults(formValues)
+        const apiResponse = await getResults(formValues)
 
-        setResults(apiResults)
+        setResults(apiResponse.results)
       } catch (err) {
         console.error(err)
       }

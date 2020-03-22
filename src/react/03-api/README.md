@@ -114,9 +114,9 @@ If you prefer to use [`async` functions](https://developer.mozilla.org/en-US/doc
 useEffect(() => {
   const fetchResults = async () => {
     try {
-      const apiResults = await getResults({ searchQuery: inputValue })
+      const apiResponse = await getResults({ searchQuery: inputValue })
 
-      setResults(apiResults)
+      setResults(apiResponse.results)
     } catch (err) {
       console.error(err)
     }

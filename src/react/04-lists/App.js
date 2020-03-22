@@ -11,12 +11,12 @@ const App = () => {
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        const apiResults = await getResults({
+        const apiResponse = await getResults({
           searchQuery: inputValue,
           limit: searchLimit,
         })
 
-        setResults(apiResults)
+        setResults(apiResponse.results)
       } catch (err) {
         console.error(err)
       }
@@ -55,9 +55,9 @@ const App = () => {
 
       {results.length > 0 && (
         <section className="callout primary">
-          {results.map((items) => (
+          {results.map((item) => (
             <section
-              key={items.id}
+              key={item.id}
               className="card"
               style={{
                 width: '300px',
@@ -68,10 +68,10 @@ const App = () => {
               <video src={item.previewUrl} alt={item.title} loop autoPlay />
               <section className="card-section">
                 <h5>
-                  <a href={items.url} target="_blank" rel="noopener noreferrer">
-                    {items.title}
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                    {item.title}
                   </a>{' '}
-                  ({items.rating})
+                  ({item.rating})
                 </h5>
               </section>
             </section>

@@ -73,9 +73,9 @@ const useGiphy = () => {
       try {
         setStatus('pending')
 
-        const apiResults = await getResults(searchParams)
+        const apiResponse = await getResults(searchParams)
 
-        setResults(apiResults)
+        setResults(apiResponse.results)
         setStatus('resolved')
       } catch (err) {
         console.error(err)
@@ -212,7 +212,7 @@ const useGiphy = () => {
       try {
         dispatch({ type: 'started' })
 
-        const apiResults = await getResults(searchParams)
+        const apiResponse = await getResults(searchParams)
 
         dispatch({ type: 'success', results: apiResults })
       } catch (err) {

@@ -22,13 +22,13 @@ const App = () => {
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        const apiResults = await getResults({
+        const apiResponse = await getResults({
           searchQuery: realSearchQuery,
           limit: searchLimit,
           rating: searchRating,
         })
 
-        setResults(apiResults)
+        setResults(apiResponse.results)
       } catch (err) {
         console.error(err)
       }

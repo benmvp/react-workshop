@@ -79,9 +79,9 @@ const useGiphy = () => {
       try {
         dispatch({ type: 'started' })
 
-        const apiResults = await getResults(searchParams)
+        const apiResponse = await getResults(searchParams)
 
-        dispatch({ type: 'success', results: apiResults })
+        dispatch({ type: 'success', results: apiResponse.results })
       } catch (err) {
         dispatch({ type: 'error', error: err })
       }

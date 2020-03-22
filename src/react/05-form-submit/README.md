@@ -1,6 +1,6 @@
 # Step 5 - Form Submit
 
-You will notice that so far we've been getting instant results when typing in the search query field. This means that while we're typing a search query, we're getting intermediate results for word partials. In the real word, this could hammer an API unnecessarily.
+You will notice that so far we've been getting "instant" results when typing in the search query field. This means that while we're typing a search query, we're getting intermediate results for word partials. In the real word, this could hammer an API unnecessarily. In addition, by the time we get the results, we've already typed the next character so the UI feels a bit jumpy.
 
 So the goal of this step is to require submitting the search query field in order to trigger retrieval of new results.
 
@@ -105,9 +105,9 @@ Now, update the `useEffect()` call to pass the `searchQuery` state variable to t
 useEffect(() => {
   const fetchResults = async () => {
     try {
-      const apiResults = await getResults({ searchQuery, limit: searchLimit })
+      const apiResponse = await getResults({ searchQuery, limit: searchLimit })
 
-      setResults(apiResults)
+      setResults(apiResponse.results)
     } catch (err) {
       console.error(err)
     }

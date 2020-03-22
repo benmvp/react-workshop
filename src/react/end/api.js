@@ -32,7 +32,7 @@ const wait = (waitTimeMs = 0) => {
  *
  * Retrieves a list of giphy image info matching the specified search parameters
  * @param {SearchParams} [params] Search parameters
- * @returns {Promise<GiphyResult[]>} The results wrapped in a promise
+ * @returns {{results: GiphyResult[], total: number}}
  */
 export const getResults = async ({
   searchQuery = '',
@@ -61,12 +61,13 @@ export const getResults = async ({
     ),
   )
   const data = await resp.json()
-
-  return data.data.map(({ id, title, url, images, rating }) => ({
+  const results = data.data.map(({ id, title, url, images, rating }) => ({
     id,
     title,
     url,
     rating: rating.toUpperCase(),
     previewUrl: images.preview.mp4,
   }))
+
+  return { results, total: data.pagination['total_count'] }
 }

@@ -20,9 +20,9 @@ const useGiphy = () => {
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        const apiResults = await getResults(searchParams)
+        const apiResponse = await getResults(searchParams)
 
-        setResults(apiResults)
+        setResults(apiResponse.results)
       } catch (err) {
         console.error(err)
       }
