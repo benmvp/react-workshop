@@ -22,7 +22,7 @@ You can start at the [beginning](src/00-begin/) to get set up. Afterwards follow
 1. [API](src/03-api/)
 1. [Lists](src/04-lists/)
 1. [Form Submit](src/05-form-submit/)
-1. [Component](src/06-components/)
+1. [Components](src/06-components/)
 1. [Prop Types](src/07-prop-types/)
 1. [Custom Hook](src/08-custom-hook/)
 1. [Loading States](src/09-loading-states/)
