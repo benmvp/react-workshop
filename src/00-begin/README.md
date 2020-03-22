@@ -36,7 +36,7 @@ Copy the [`00-begin`](./) directory, name it `workshop`:
 cp -r src/react/00-begin src/workshop
 ```
 
-Ensure [`src/index.js`](../../index.js#L3) is pointing to the new `workshop` App:
+Ensure [`src/index.js`](../index.js#L3) is pointing to the new `workshop` App:
 
 ```js
 import App from './workshop/App'

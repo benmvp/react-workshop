@@ -20,7 +20,7 @@ Install all of the dependencies using [npm](http://npmjs.org/):
 npm install
 ```
 
-Update [`src/index.js`](../../index.js#L3) to point to the `end` App:
+Update [`src/index.js`](../index.js#L3) to point to the `end` App:
 
 ```js
 import App from './react/end/App'

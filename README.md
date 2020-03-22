@@ -17,16 +17,16 @@ All of the exercises make use of [ES.next](http://www.benmvp.com/learning-es6-se
 
 You can start at the [beginning](src/00-begin/) to get set up. Afterwards follow these steps:
 
-1. [JSX](01-jsx/)
-1. [Query Field](02-query-field/)
-1. [API](03-api/)
-1. [Lists](04-lists/)
-1. [Form Submit](05-form-submit/)
-1. [Component](06-components/)
-1. [Prop Types](07-prop-types/)
-1. [Custom Hook](08-custom-hook/)
-1. [Loading States](09-loading-states/)
-1. [Final Quiz](10-quizd/)
+1. [JSX](src/01-jsx/)
+1. [Query Field](src/02-query-field/)
+1. [API](src/03-api/)
+1. [Lists](src/04-lists/)
+1. [Form Submit](src/05-form-submit/)
+1. [Component](src/06-components/)
+1. [Prop Types](src/07-prop-types/)
+1. [Custom Hook](src/08-custom-hook/)
+1. [Loading States](src/09-loading-states/)
+1. [Final Quiz](src/10-quizd/)
 
 ## FUNdamental Concepts
 

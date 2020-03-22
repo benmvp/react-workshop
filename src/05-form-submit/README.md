@@ -31,7 +31,7 @@ Copy the previous step as a starting point:
 cp -r src/react/04-lists src/workshop
 ```
 
-Ensure [`src/index.js`](../../index.js#L3) is still pointing to the `workshop` App:
+Ensure [`src/index.js`](../index.js#L3) is still pointing to the `workshop` App:
 
 ```js
 import App from './workshop/App'
@@ -138,7 +138,7 @@ It's not easily discoverable that you have to press ENTER to submit the search q
 </section>
 ```
 
-We're making use of [Foundation](https://get.foundation/sites/docs/forms.html) classes available for [forms](https://get.foundation/sites/docs/forms.html). The Foundation CSS is included in the [`index.html`](../../../public/index.html).
+We're making use of [Foundation](https://get.foundation/sites/docs/forms.html) classes available for [forms](https://get.foundation/sites/docs/forms.html). The Foundation CSS is included in the [`index.html`](../../public/index.html).
 
 ## Exercises
 
