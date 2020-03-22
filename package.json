@@ -1,33 +1,36 @@
 {
   "name": "react-workshop",
-  "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=6"
-  },
-  "dependencies": {
-    "body-parser": "^1.17.2",
-    "classnames": "^2.2.5",
-    "express": "^4.15.4",
-    "lodash": "^4.17.4",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
-    "react-scripts": "^1.1.5",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "node": ">=10"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "start:api": "node api-server.js"
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1",
+    "url-lib": "^3.0.3"
   },
   "devDependencies": {
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "jest-enzyme": "^6.0.2",
-    "react-test-renderer": "^16.4.2"
+    "prettier": "2.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

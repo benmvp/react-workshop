@@ -1,0 +1,23 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  main:
+    name: Test app build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v1
+
+      - name: Use Node 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Run app build
+        run: npm run build
