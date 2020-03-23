@@ -7,7 +7,7 @@ So the goal of this step is to require submitting the search query field in orde
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
 <details>
-  <summary><b>Help! I didn't finish the previous step!</b></summary>
+  <summary><b>Help! I didn't finish the previous step! 🚨</b></summary>
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
 
@@ -47,17 +47,17 @@ After the app is initially built, a new browser window should open up at [http:/
 
 </details>
 
-## Jump Around
+## 🐇 Jump Around
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## Concepts
+## 🧠 Concepts
 
 - Handling client-side form submission
 - Maintaining UI state
 - Applying component styling with CSS classes
 
-## Tasks
+## 📝 Tasks
 
 Add a new state variable to maintain the submitted search query (calling it `searchQuery`):
 
@@ -140,7 +140,7 @@ It's not easily discoverable that you have to press ENTER to submit the search q
 
 We're making use of [Foundation](https://get.foundation/sites/docs/forms.html) classes available for [forms](https://get.foundation/sites/docs/forms.html). The Foundation CSS is included in the [`index.html`](../../public/index.html).
 
-## Exercises
+## 💡 Exercises
 
 - Add a checkbox to the search box that toggles on/off "instant search" results
   ```js
@@ -160,11 +160,11 @@ We're making use of [Foundation](https://get.foundation/sites/docs/forms.html) c
 - Add dividers (`<hr />`) between the form fields
 - **BONUS:** Add a radio button group that allows for filtering the search results by `rating`. Options: All (empty string), `g`, `pg`, `pg-13` & `r`
 
-## Next
+## 👉🏾 Next
 
 Go to [Step 6 - Components](../06-components/).
 
-## Resources
+## 📕 Resources
 
 - [Forms](https://reactjs.org/docs/forms.html)
 - [Fragments](https://reactjs.org/docs/fragments.html)
@@ -177,6 +177,6 @@ Go to [Step 6 - Components](../06-components/).
   - [CSS Modules: Welcome to the Future](http://glenmaddern.com/articles/css-modules)
   - [Using CSS flexible boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes)
 
-## Questions
+## ❓ Questions
 
 Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

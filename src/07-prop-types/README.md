@@ -10,7 +10,7 @@ The goal of this step is to learn how to define prop types for a component.
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
 <details>
-  <summary><b>Help! I didn't finish the previous step!</b></summary>
+  <summary><b>Help! I didn't finish the previous step! 🚨</b></summary>
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
 
@@ -50,15 +50,15 @@ After the app is initially built, a new browser window should open up at [http:/
 
 </details>
 
-## Jump Around
+## 🐇 Jump Around
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## Concepts
+## 🧠 Concepts
 
 - Type-checking props
 
-## Tasks
+## 📝 Tasks
 
 Using the [`prop-types`](https://reactjs.org/docs/typechecking-with-proptypes.html) package, add a prop type in `SearchForm` for the `onChange` callback prop:
 
@@ -109,7 +109,7 @@ Results.propTypes = {
 export default Results
 ```
 
-## Exercises
+## 💡 Exercises
 
 - Add make all of the props for `ResultsItem` required
 - Add 4 additional _optional_ props to `SearchForm`: `initialSearchQuery`, `initialShowInstant`, `initialRating` & `initialLimit`
@@ -117,15 +117,15 @@ export default Results
   - _HINT:_ Use [`defaultProps`](https://reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values) to set the default values when the props are not specified
 - Use the React Developer Tools to add some of the `initial*` props to `<SearchForm />` in `App` to see how the initial UI changes
 
-## Next
+## 👉🏾 Next
 
 Go to [Step 8 - Custom Hook](../08-custom-hook/).
 
-## Resources
+## 📕 Resources
 
 - [Typechecking with PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html)
 - [Custom Prop Types](https://github.com/airbnb/prop-types)
 
-## Questions
+## ❓ Questions
 
 Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

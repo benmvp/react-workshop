@@ -7,7 +7,7 @@ The goal of this step is to learn how to create our own custom hooks composed of
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
 <details>
-  <summary><b>Help! I didn't finish the previous step!</b></summary>
+  <summary><b>Help! I didn't finish the previous step! 🚨</b></summary>
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
 
@@ -47,15 +47,15 @@ After the app is initially built, a new browser window should open up at [http:/
 
 </details>
 
-## Jump Around
+## 🐇 Jump Around
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## Concepts
+## 🧠 Concepts
 
 - Creating async custom hooks
 
-## Tasks
+## 📝 Tasks
 
 Create a new file called `useGiphy.js` which will contain our custom hook that will take in search parameters, make an API call and return results:
 
@@ -127,18 +127,18 @@ export default App
 
 Now `useGiphy()` can easily be used w/in other components because all of the state management and side-effect API logic have been abstracted away.
 
-## Exercises
+## 💡 Exercises
 
 - Compare the current version of [`App.js`](./App.js) with the [Step 5 `App.js`](../05-form-submit/App.js)
 
-## Next
+## 👉🏾 Next
 
 Go to [Step 9 - Loading States](../09-loading-states/).
 
-## Resources
+## 📕 Resources
 
 - [Building Your Own Hooks](https://reactjs.org/docs/hooks-custom.html)
 
-## Questions
+## ❓ Questions
 
 Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

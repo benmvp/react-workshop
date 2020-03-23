@@ -8,17 +8,17 @@ Unlike browser DOM elements, React elements are plain objects, and are cheap to 
 
 If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
-## Jump Around
+## 🐇 Jump Around
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## Concepts
+## 🧠 Concepts
 
 - Rendering elements with JSX
 - Handling special element attribute names
 - Adding inline styles
 
-## Tasks
+## 📝 Tasks
 
 In [`App.js`](App.js), replace `null` with JSX markup. For example:
 
@@ -137,7 +137,7 @@ const App = () => {
 }
 ```
 
-## Exercises
+## 💡 Exercises
 
 Remove all the practice JSX, leaving the skeleton of our Giphy search app:
 
@@ -151,11 +151,11 @@ const App = () => {
 }
 ```
 
-## Next
+## 👉🏾 Next
 
 Go to [Step 2 - Query Field](../02-query-field/).
 
-## Resources
+## 📕 Resources
 
 - [Rendering Elements](https://reactjs.org/docs/rendering-elements.html)
 - [Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)
@@ -164,6 +164,6 @@ Go to [Step 2 - Query Field](../02-query-field/).
 - [Babel REPL](http://babeljs.io/repl/)
 - [Inline Styles](https://reactjs.org/docs/dom-elements.html#style)
 
-## Questions
+## ❓ Questions
 
 Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

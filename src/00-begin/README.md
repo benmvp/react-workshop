@@ -2,7 +2,7 @@
 
 The goal of this step is just to get everything set up with a running (but blank) app. We will be working in a step-by-step fashion to build a [Giphy search app](https://react-workshop.benmvp.com/).
 
-## Tasks
+## 📝 Tasks
 
 You need [node](https://nodejs.org/en/) version 10 or higher. Check your node version:
 
@@ -48,18 +48,18 @@ Start the app:
 npm start
 ```
 
-## Exercises
+## 💡 Exercises
 
 - Visit [http://localhost:3000/](http://localhost:3000/) and you should see an empty page
 - Install React Developer Tools for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) (recommended) or [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
 - Install a JSX-friendly code editor, such as [Visual Studio Code](https://code.visualstudio.com/)
 - Checkout the [final app](https://react-workshop.benmvp.com/) to get a sense of what you'll be building
 
-## Next
+## 👉🏾 Next
 
 Go to [Step 1 - JSX](../01-jsx/).
 
-## Resources
+## 📕 Resources
 
 - [_Learning ES6_ series](http://www.benmvp.com/learning-es6-series/)
 - [`git-clone`](https://git-scm.com/docs/git-clone)

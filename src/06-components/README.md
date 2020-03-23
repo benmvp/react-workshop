@@ -9,7 +9,7 @@ Conceptually, components are like JavaScript functions. They accept arbitrary in
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
 <details>
-  <summary><b>Help! I didn't finish the previous step!</b></summary>
+  <summary><b>Help! I didn't finish the previous step! 🚨</b></summary>
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
 
@@ -49,16 +49,16 @@ After the app is initially built, a new browser window should open up at [http:/
 
 </details>
 
-## Jump Around
+## 🐇 Jump Around
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## Concepts
+## 🧠 Concepts
 
 - Creating and composing React components
 - Configuring components via passing props
 
-## Tasks
+## 📝 Tasks
 
 ### `Results`
 
@@ -304,16 +304,16 @@ const SearchForm = (pros) => {
 
 > NOTE: `SearchForm` has an `<input type="search">` element for the query search field, an `<input type="checkbox">` element for the instant results toggle, multiple connected `<input type="radio">` elements for the rating picker, and a `<select>` for the number of results switcher. Normally you would use a component library like [Material-UI](https://material-ui.com/) that would have those reusable components for you.
 
-## Exercises
+## 💡 Exercises
 
 - From `Results`, pull out a `ResultsItem` component into `ResultsItem.js` with 5 props: `id`, `title`, `url`, `rating` & `previewUrl`.
 - Use the React Developer Tools to inspect the component hierarchy, including the props being passed to the `SearchForm` & `ResultsItem` components.
 
-## Next
+## 👉🏾 Next
 
 Go to [Step 7 - Prop Types](../07-prop-types/).
 
-## Resources
+## 📕 Resources
 
 - [Components and Props](https://reactjs.org/docs/components-and-props.html)
 - [Material-UI](https://material-ui.com/)
@@ -321,6 +321,6 @@ Go to [Step 7 - Prop Types](../07-prop-types/).
   - [React Bootstrap](https://react-bootstrap.github.io/)
   - [Tailwind CSS](https://tailwindcss.com/)
 
-## Questions
+## ❓ Questions
 
 Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

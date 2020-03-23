@@ -9,7 +9,7 @@ Ultimately, we want to keep the current value of the search query field in UI st
 If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
 <details>
-  <summary><b>Help! I didn't finish the previous step!</b></summary>
+  <summary><b>Help! I didn't finish the previous step! 🚨</b></summary>
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
 
@@ -49,17 +49,17 @@ After the app is initially built, a new browser window should open up at [http:/
 
 </details>
 
-## Jump Around
+## 🐇 Jump Around
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## Concepts
+## 🧠 Concepts
 
 - Maintaining UI state with the `useState` hook
 - Handling user interaction
 - Handling HTML form elements
 
-## Tasks
+## 📝 Tasks
 
 Add a search form with a query field:
 
@@ -108,15 +108,15 @@ const App = () => {
 
 > NOTE: Be sure to import `useState` from the `react` package at the top.
 
-## Exercises
+## 💡 Exercises
 
 - Use the React Developer Tools to watch the `state` of `App` update as you type into the fields
 
-## Next
+## 👉🏾 Next
 
 Go to [Step 3 - API](../03-api/).
 
-## Resources
+## 📕 Resources
 
 - [Using the State Hook](https://reactjs.org/docs/hooks-state.html)
 - [Rules of Hooks](https://reactjs.org/docs/hooks-rules.html)
@@ -126,6 +126,6 @@ Go to [Step 3 - API](../03-api/).
 - [Forms](https://reactjs.org/docs/forms.html)
 - [DOM Elements](https://reactjs.org/docs/dom-elements.html)
 
-## Questions
+## ❓ Questions
 
 Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

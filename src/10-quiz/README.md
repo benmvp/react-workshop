@@ -5,7 +5,7 @@ Until now, we've only been able to see the first page of results from the Giphy 
 The goal of this final step, the quiz, is to solidify your learning by applying it to build your own pagination component.
 
 <details>
-  <summary><b>Help! I didn't finish the previous step!</b></summary>
+  <summary><b>Help! I didn't finish the previous step! 🚨</b></summary>
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
 
@@ -55,10 +55,10 @@ After the app is initially built, a new browser window should open up at [http:/
 - **BONUS:** Disable the "Previous" & "Next" links/buttons when there are no previous/next pages
 - **BONUS:** Use the Foundation [Pagination](https://get.foundation/sites/docs/pagination.html) as your HTML & CSS to support jumping to specific pages
 
-## Next
+## 👉🏾 Next
 
 Go to the [End](../end/).
 
-## Questions
+## ❓ Questions
 
 Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

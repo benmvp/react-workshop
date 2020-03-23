@@ -5,7 +5,7 @@ The goal of this step is to retrieve a list of giphy images based on the query t
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
 <details>
-  <summary><b>Help! I didn't finish the previous step!</b></summary>
+  <summary><b>Help! I didn't finish the previous step! 🚨</b></summary>
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
 
@@ -45,17 +45,17 @@ After the app is initially built, a new browser window should open up at [http:/
 
 </details>
 
-## Jump Around
+## 🐇 Jump Around
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## Concepts
+## 🧠 Concepts
 
 - Making API calls with the `useEffect` hook
 - Using Promises & `async`/`await`
 - Maintaining app state with the `useState` hook
 
-## Tasks
+## 📝 Tasks
 
 Import the `getResults` API helper with `useEffect` from React, and call `getResults` within `useEffect`, passing in the value of the input field:
 
@@ -128,16 +128,16 @@ useEffect(() => {
 console.log({ inputValue, results })
 ```
 
-## Exercises
+## 💡 Exercises
 
 - Type in different search queries and verify the results by digging into the log and navigating to URLs
 - Take a look at [`api.js`](./api.js) and see what the API helper does, particularly the other search filters it supports
 
-## Next
+## 👉🏾 Next
 
 Go to [Step 4 - Lists](../04-lists/).
 
-## Resources
+## 📕 Resources
 
 - [Using the Effect Hook](https://reactjs.org/docs/hooks-effect.html)
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) & Github's [`fetch` polyfill](https://github.com/github/fetch)
@@ -146,6 +146,6 @@ Go to [Step 4 - Lists](../04-lists/).
   - [HTTP Methods](http://restfulapi.net/http-methods/)
   - [Postman](https://www.getpostman.com/)
 
-## Questions
+## ❓ Questions
 
 Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!

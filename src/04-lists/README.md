@@ -5,7 +5,7 @@ The goal of this step is to practice transforming lists of data into lists of co
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
 <details>
-  <summary><b>Help! I didn't finish the previous step!</b></summary>
+  <summary><b>Help! I didn't finish the previous step! 🚨</b></summary>
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
 
@@ -45,17 +45,17 @@ After the app is initially built, a new browser window should open up at [http:/
 
 </details>
 
-## Jump Around
+## 🐇 Jump Around
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## Concepts
+## 🧠 Concepts
 
 - Rendering dynamic lists of data
 - Handling special `key` prop
 - Conditionally rendering components
 
-## Tasks
+## 📝 Tasks
 
 Use [`Array.prototype.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) to convert the array of results into an array of components so that we can render the giphy images:
 
@@ -201,7 +201,7 @@ Let's add some additional markup and classes around the `<img />` so we can incl
 
 > NOTE: Be sure to move the `key` prop to the containing `<section>` within the `.map()`.
 
-## Exercises
+## 💡 Exercises
 
 - Make the displayed title (`result.title`) link to the Giphy URL (`result.url`)
 - Display the Giphy Rating (`result.rating`)
@@ -211,16 +211,16 @@ Let's add some additional markup and classes around the `<img />` so we can incl
   - The default should remain `12`
 - Open the Developer Tools, on the Elements tab, and monitor how the markup changes when changing limits
 
-## Next
+## 👉🏾 Next
 
 Go to [Step 5 - Form Submit](../05-form-submit/).
 
-## Resources
+## 📕 Resources
 
 - [Lists and Keys](https://reactjs.org/docs/lists-and-keys.html)
 - [Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html)
 - [`Array.prototype.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 
-## Questions
+## ❓ Questions
 
 Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!
