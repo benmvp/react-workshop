@@ -2,7 +2,7 @@
 
 [![Maintenance Status](https://img.shields.io/badge/status-maintained-brightgreen.svg)](https://github.com/benmvp/react-workshop/pulse)
 [![Build Status](https://github.com/benmvp/react-workshop/workflows/CI/badge.svg)](https://github.com/benmvp/react-workshop/actions)
-[![license](https://img.shields.io/github/license/benmvp/react-workshop.svg)](LICENSE)
+[![license](https://img.shields.io/github/license/benmvp/react-workshop.svg)](http://www.gnu.org/licenses/gpl-3.0-standalone.html)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 [![Watch on GitHub](https://img.shields.io/github/watchers/benmvp/react-workshop.svg?style=social)](https://github.com/benmvp/react-workshop/watchers)
@@ -11,22 +11,106 @@
 
 A step-by-step workshop to build a React application, all while learning React fundamentals. Best if accompanied with live facilitation by me 🙂.
 
-## Exercises
+## Pre-Workshop Instructions
 
-All of the exercises make use of [ES.next](http://www.benmvp.com/learning-es6-series/), so you may need to brush up on the new JavaScript features if they are unfamiliar. Each step in the workshop builds on top of the previous one. If at any point you get stuck, you can find the answers in the source code of the current step. Any step can be used as a starting point to continue on to the remaining steps.
+In order to maximize our time _during_ the workshop, please complete the following tasks in advance:
 
-You can start at the [beginning](src/00-begin/) to get set up. Afterwards follow these steps:
+- [ ] Set up the project (follow setup instructions below)
+- [ ] Install and run [Zoom](https://zoom.us/) on the computer you'll be developing with during the workshop (remote workshops only)
+- [ ] Install React Developer Tools for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) (recommended) or [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
+- [ ] Install a JSX-friendly code editor, such as [Visual Studio Code](https://code.visualstudio.com/)
+- [ ] Brush up on modern [ES.next](http://www.benmvp.com/learning-es6-series/) features, if they are unfamiliar to you
+- [ ] Have experience building websites with HTML, CSS, and JavaScript DOM APIs
 
-1. [JSX](src/01-jsx/)
-1. [Query Field](src/02-query-field/)
-1. [API](src/03-api/)
-1. [Lists](src/04-lists/)
-1. [Form Submit](src/05-form-submit/)
-1. [Components](src/06-components/)
-1. [Prop Types](src/07-prop-types/)
-1. [Custom Hook](src/08-custom-hook/)
-1. [Loading States](src/09-loading-states/)
-1. [Final Quiz!](src/10-quiz/)
+The more prepared you are for the workshop, the better it will go for you! 👍🏾
+
+## System Requirements
+
+- [git](https://git-scm.com/) v2 or higher
+- [Node.js](https://nodejs.org/en/) v10 or higher
+- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) v6 or higher
+
+All of these must also be available in your `PATH` in order to be run globally. To verify things are set up properly, run:
+
+```sh
+git --version
+node --version
+npm --version
+```
+
+If your node version is version 9 or lower, you can [install `nvm`](https://github.com/creationix/nvm#install-script) to manage multiple versions of node.
+
+If you have trouble with any of these, learn more about the `PATH` environment variable and how to fix it here for [Windows](https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/) or [Mac/Linux](http://stackoverflow.com/a/24322978/971592).
+
+## Setup
+
+After you have verified that you have the proper tools installed (and at the proper versions), getting setup _should_ be a breeze. Run the following commands:
+
+```sh
+git clone https://github.com/benmvp/react-workshop.git
+cd react-workshop
+npm install
+```
+
+This will clone this repo, install all of the JavaScript dependencies to build our app, and likely take **a few minutes** to run.
+
+If it fails, please read through the error logs and see if you can figure out what the problem is. Double check that you have the proper [system requirements](#system-requirements) installed. If you are unable to figure out the problem on your own, please feel free to [file an issue](https://github.com/benmvp/react-workshop/issues/new) with _everything_ (and I mean everything) from the output of the commands you ran.
+
+## Running the app
+
+We will be build a Giphy search app step-by-step in this workshop. To verify that everything has been installed correctly, you can run the finished app locally:
+
+```sh
+npm start
+```
+
+The app should be running at http://localhost:3000/. The app is a standard app bootstrapped by [Create React App](https://create-react-app.dev/).
+
+You can also check out the app deployed online at: https://react-workshop.benmvp.com/.
+
+## Workshop Outline
+
+Let's learn some React! ⚛️
+
+### About Me
+
+Hiya! 👋🏾 My name is Ben Ilegbodu. 😄
+
+- Christian, Husband, Father of 👌🏾
+- Pittsburg, California
+- Principal Frontend Engineer at [Stitch Fix](https://www.stitchfix.com/) (and yes [we're hiring](https://www.stitchfix.com/careers/jobs)!)
+- www.benmvp.com
+- [@benmvp](https://twitter.com/benmvp)
+- Go Rockets! 🚀🏀
+
+### Schedule
+
+Each step in the workshop builds on top of the previous one. If at any point you get stuck, you can find the answers in the source code of the current step. Any step can be used as a starting point to continue on to the remaining steps.
+
+- Setup / Logistics / Intro
+- [Step 0 - Begin](src/00-begin/)
+- [Step 1 - JSX](src/01-jsx/)
+- [Step 2 - Query Field](src/02-query-field/)
+- [Step 3 - API](src/03-api/)
+- [Step 4 - Lists](src/04-lists/)
+- [Step 5 - Form Submit](src/05-form-submit/)
+- [Step 6 - Components](src/06-components/)
+- [Step 7 - Prop Types](src/07-prop-types/)
+- [Step 8 - Custom Hook](src/08-custom-hook/)
+- [Step 9 - Loading States](src/09-loading-states/)
+- Q & A
+- [Step 10 - Final Quiz!](src/10-quiz/)
+
+### Questions
+
+- Please interrupt me and ask question!
+- However, unrelated questions are better served for [my AMA](http://www.benmvp.com/ama)
+
+### Zoom Hygiene (for remote workshops only)
+
+- Keep your video on (if possible) to make it feel more human
+- Keep your microphone muted unless your talking
+- Use breakout rooms to get help
 
 ## FUNdamental Concepts
 
@@ -43,10 +127,10 @@ You can start at the [beginning](src/00-begin/) to get set up. Afterwards follow
 - Leveraging ES6+ to maintain application state with `useReducer` hook ([Step 9](src/09-loading-states/))
 - Applying component styling with CSS classes (throughout)
 
-## Questions
+## ❓ Questions
 
 Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!
 
 ## License
 
-[MIT](LICENSE)
+All of the workshop material is available for **private, non-commercial use** under the [GPL version 3](http://www.gnu.org/licenses/gpl-3.0-standalone.html) license. If you would like to use this workshop to conduct your own workshop, please contact me first at ben@benmvp.com.

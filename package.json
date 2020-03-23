@@ -1,8 +1,12 @@
 {
   "name": "react-workshop",
   "private": true,
+  "description": "A step-by-step workshop for learning React fundamentals.",
+  "homepage": "https://react-workshop.benmvp.com/",
+  "license": "GPL-3.0-only",
   "engines": {
-    "node": ">=10"
+    "node": ">=10",
+    "npm": ">=6"
   },
   "scripts": {
     "start": "react-scripts start",
