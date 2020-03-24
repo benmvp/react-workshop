@@ -72,7 +72,7 @@ You can also check out the app deployed online at: https://react-workshop.benmvp
 
 Let's learn the React fundamentals! ⚛️
 
-### About Me
+### 🧔🏾 About Me
 
 Hiya! 👋🏾 My name is Ben Ilegbodu. 😄
 
@@ -83,7 +83,7 @@ Hiya! 👋🏾 My name is Ben Ilegbodu. 😄
 - [@benmvp](https://twitter.com/benmvp)
 - Go Rockets! 🚀🏀
 
-### Schedule
+### 🕘 Schedule
 
 Each step in the workshop builds on top of the previous one. If at any point you get stuck, you can find the answers in the source code of the current step. Any step can be used as a starting point to continue on to the remaining steps.
 
@@ -106,19 +106,19 @@ Each step in the workshop builds on top of the previous one. If at any point you
 - [Step 10 - Final Quiz!](src/10-quiz/)
 - 👋🏾 Goodbye!
 
-### Asking Questions
+### ❓ Asking Questions
 
 - Please **interrupt me** and ask questions! Others likely will have the same question.
 - However, unrelated questions are better sent to [Twitter](https://twitter.com/benmvp) or [my AMA](http://www.benmvp.com/ama)
 
-### Zoom Hygiene (for remote workshops)
+### 🖥️ Zoom Hygiene (for remote workshops)
 
 - Keep your video on (if possible) to make it feel more human
 - Keep your microphone muted unless your talking
 - Answer each other's questions in the chat
 - Use breakout rooms to help each other
 
-## FUNdamental Concepts
+### ⭐ FUNdamental Concepts
 
 Here is what you'll come away knowing at the end of the workshop...
 
@@ -135,9 +135,15 @@ Here is what you'll come away knowing at the end of the workshop...
 - Leveraging ES6+ to maintain application state with `useReducer` hook ([Step 9](src/09-loading-states/))
 - Applying component styling with CSS classes (throughout)
 
-## ❓ Questions
+## 🧠 Elaboration & Feedback
 
-Got questions? Need further clarification? Feel free to post a question in [Ben Ilegbodu's AMA](http://www.benmvp.com/ama/)!
+Each step has an Elaboration & Feedback link at the end. After you're done with the exercise and before jumping to the next step, please fill that out to solidify your learning.
+
+At the end of the workshop, I would greatly appreciate your overall feedback. [Share your workshop feedback](https://bit.ly/react-fun-ws-feedbck)
+
+### 👉🏾 First Step
+
+Go to [Step 0 - Begin](src/00-begin/).
 
 ## License
 

@@ -53,7 +53,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## 🧠 Concepts
+## ⭐ Concepts
 
 - Creating and composing React components
 - Configuring components via passing props
@@ -309,7 +309,11 @@ const SearchForm = (pros) => {
 - From `Results`, pull out a `ResultsItem` component into `ResultsItem.js` with 5 props: `id`, `title`, `url`, `rating` & `previewUrl`.
 - Use the React Developer Tools to inspect the component hierarchy, including the props being passed to the `SearchForm` & `ResultsItem` components.
 
-## 👉🏾 Next
+## 🧠 Elaboration & Feedback
+
+After you're done with the exercise and before jumping to the next step, please fill out the [elaboration & feedback form](https://docs.google.com/forms/d/e/1FAIpQLScRocWvtbrl4XmT5_NRiE8bSK3CMZil-ZQByBAt8lpsurcRmw/viewform?usp=pp_url&entry.1671251225=React+FUNdamentals+Workshop&entry.1984987236=Step+6+-+Components)
+
+## 👉🏾 Next Step
 
 Go to [Step 7 - Prop Types](../07-prop-types/).
 

@@ -29,7 +29,7 @@ npm start
 - Install a JSX-friendly code editor, such as [Visual Studio Code](https://code.visualstudio.com/)
 - Checkout the [final app](https://react-workshop.benmvp.com/) to get a sense of what you'll be building
 
-## 👉🏾 Next
+## 👉🏾 Next Step
 
 Go to [Step 1 - JSX](../01-jsx/).
 

@@ -12,7 +12,7 @@ If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## 🧠 Concepts
+## ⭐ Concepts
 
 - Rendering elements with JSX
 - Handling special element attribute names
@@ -151,7 +151,11 @@ const App = () => {
 }
 ```
 
-## 👉🏾 Next
+## 🧠 Elaboration & Feedback
+
+After you're done with the exercise and before jumping to the next step, please fill out the [elaboration & feedback form](https://docs.google.com/forms/d/e/1FAIpQLScRocWvtbrl4XmT5_NRiE8bSK3CMZil-ZQByBAt8lpsurcRmw/viewform?usp=pp_url&entry.1671251225=React+FUNdamentals+Workshop&entry.1984987236=Step+1+-+JSX)
+
+## 👉🏾 Next Step
 
 Go to [Step 2 - Query Field](../02-query-field/).
 

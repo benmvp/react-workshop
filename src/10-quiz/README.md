@@ -55,7 +55,11 @@ After the app is initially built, a new browser window should open up at [http:/
 - 🤓 **BONUS:** Disable the "Previous" & "Next" links/buttons when there are no previous/next pages
 - 🤓 **BONUS:** Use the Foundation [Pagination](https://get.foundation/sites/docs/pagination.html) as your HTML & CSS to support jumping to specific pages
 
-## 👉🏾 Next
+## 🧠 Elaboration & Feedback
+
+After you're done with the exercise and before jumping to the next step, please fill out the [elaboration & feedback form](https://docs.google.com/forms/d/e/1FAIpQLScRocWvtbrl4XmT5_NRiE8bSK3CMZil-ZQByBAt8lpsurcRmw/viewform?usp=pp_url&entry.1671251225=React+FUNdamentals+Workshop&entry.1984987236=Step+10+-+Final+Quiz)
+
+## 👉🏾 Next Step
 
 Go to the [End](../end/).
 

@@ -53,7 +53,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## 🧠 Concepts
+## ⭐ Concepts
 
 - Maintaining UI state with the `useState` hook
 - Handling user interaction
@@ -112,7 +112,11 @@ const App = () => {
 
 - Use the React Developer Tools to watch the `state` of `App` update as you type into the fields
 
-## 👉🏾 Next
+## 🧠 Elaboration & Feedback
+
+After you're done with the exercise and before jumping to the next step, please fill out the [elaboration & feedback form](https://docs.google.com/forms/d/e/1FAIpQLScRocWvtbrl4XmT5_NRiE8bSK3CMZil-ZQByBAt8lpsurcRmw/viewform?usp=pp_url&entry.1671251225=React+FUNdamentals+Workshop&entry.1984987236=Step+2+-+Query+Field)
+
+## 👉🏾 Next Step
 
 Go to [Step 3 - API](../03-api/).
 

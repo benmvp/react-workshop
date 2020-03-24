@@ -1,35 +1,11 @@
-# Completed React App
+# The End
 
-You need [node](https://nodejs.org/en/) version 10 or higher. Check your node version:
+Congratulations! 🏅
 
-```
-node -v
-```
+You've reached the end of the React FUNdamentals workshop, learning JSX, `useState`, `useEffect`, custom hooks, and so much more!
 
-If your node version is version 9 or lower, you can [install `nvm`](https://github.com/creationix/nvm#install-script) to manage multiple versions of node.
+Hopefully, you'll get to apply this learning right away at your job or in a side project. But if not, I suggest you come back to this workshop in a week or two and review the content. Your brain likes to garbage collect unused knowledge and we want this to stick around!
 
-Clone the [`react-workshop`](https://github.com/benmvp/react-workshop) repo:
+## ❤️ Workshop Feedback
 
-```sh
-git clone https://github.com/benmvp/react-workshop.git
-```
-
-Install all of the dependencies using [npm](http://npmjs.org/):
-
-```sh
-npm install
-```
-
-Update [`src/index.js`](../index.js#L3) to point to the `end` App:
-
-```js
-import App from './react/end/App'
-```
-
-Start the app:
-
-```sh
-npm start
-```
-
-After the app's assets are bundled together, a new browser window should open up at [http://localhost:3000/](http://localhost:3000/).
+Feedback is a gift. 🎁 Now that you're done with the workshop, I would greatly appreciate your overall feedback on the workshop to help make it even better for the next learners. [Share your workshop feedback](https://bit.ly/react-fun-ws-feedbck)

@@ -51,7 +51,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## 🧠 Concepts
+## ⭐ Concepts
 
 - Creating async custom hooks
 
@@ -131,7 +131,11 @@ Now `useGiphy()` can easily be used w/in other components because all of the sta
 
 - Compare the current version of [`App.js`](./App.js) with the [Step 5 `App.js`](../05-form-submit/App.js)
 
-## 👉🏾 Next
+## 🧠 Elaboration & Feedback
+
+After you're done with the exercise and before jumping to the next step, please fill out the [elaboration & feedback form](https://docs.google.com/forms/d/e/1FAIpQLScRocWvtbrl4XmT5_NRiE8bSK3CMZil-ZQByBAt8lpsurcRmw/viewform?usp=pp_url&entry.1671251225=React+FUNdamentals+Workshop&entry.1984987236=Step+8+-+Custom+Hook)
+
+## 👉🏾 Next Step
 
 Go to [Step 9 - Loading States](../09-loading-states/).
 

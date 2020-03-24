@@ -51,7 +51,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## 🧠 Concepts
+## ⭐ Concepts
 
 - Managing loading & error states
 - Using `useReducer`
@@ -235,7 +235,11 @@ const useGiphy = () => {
   - Use the `'rejected'` status
   - _Hint:_ `throw new Error('Fake error!')` in [`api.js`](./api.js) to simulate this case
 
-## 👉🏾 Next
+## 🧠 Elaboration & Feedback
+
+After you're done with the exercise and before jumping to the next step, please fill out the [elaboration & feedback form](https://docs.google.com/forms/d/e/1FAIpQLScRocWvtbrl4XmT5_NRiE8bSK3CMZil-ZQByBAt8lpsurcRmw/viewform?usp=pp_url&entry.1671251225=React+FUNdamentals+Workshop&entry.1984987236=Step+9+-+Loading+States)
+
+## 👉🏾 Next Step
 
 Go to [Step 10 - Quiz](../10-quiz/).
 

@@ -49,7 +49,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## 🧠 Concepts
+## ⭐ Concepts
 
 - Rendering dynamic lists of data
 - Handling special `key` prop
@@ -166,7 +166,11 @@ Let's add some additional markup and classes around the `<img />` so we can incl
   - The default should remain `12`
 - Open the Developer Tools, on the Elements tab, and monitor how the markup changes when changing limits
 
-## 👉🏾 Next
+## 🧠 Elaboration & Feedback
+
+After you're done with the exercise and before jumping to the next step, please fill out the [elaboration & feedback form](https://docs.google.com/forms/d/e/1FAIpQLScRocWvtbrl4XmT5_NRiE8bSK3CMZil-ZQByBAt8lpsurcRmw/viewform?usp=pp_url&entry.1671251225=React+FUNdamentals+Workshop&entry.1984987236=Step+4+-+Lists)
+
+## 👉🏾 Next Step
 
 Go to [Step 5 - Form Submit](../05-form-submit/).
 

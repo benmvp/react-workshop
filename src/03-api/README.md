@@ -49,7 +49,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## 🧠 Concepts
+## ⭐ Concepts
 
 - Making API calls with the `useEffect` hook
 - Using Promises & `async`/`await`
@@ -133,7 +133,11 @@ console.log({ inputValue, results })
 - Type in different search queries and verify the results by digging into the log and navigating to URLs
 - Take a look at [`api.js`](./api.js) and see what the API helper does, particularly the other search filters it supports
 
-## 👉🏾 Next
+## 🧠 Elaboration & Feedback
+
+After you're done with the exercise and before jumping to the next step, please fill out the [elaboration & feedback form](https://docs.google.com/forms/d/e/1FAIpQLScRocWvtbrl4XmT5_NRiE8bSK3CMZil-ZQByBAt8lpsurcRmw/viewform?usp=pp_url&entry.1671251225=React+FUNdamentals+Workshop&entry.1984987236=Step+3+-+API)
+
+## 👉🏾 Next Step
 
 Go to [Step 4 - Lists](../04-lists/).
 

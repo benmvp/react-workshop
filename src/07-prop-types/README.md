@@ -54,7 +54,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 [Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
 
-## 🧠 Concepts
+## ⭐ Concepts
 
 - Type-checking props
 
@@ -117,7 +117,11 @@ export default Results
   - _HINT:_ Use [`defaultProps`](https://reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values) to set the default values when the props are not specified
 - Use the React Developer Tools to add some of the `initial*` props to `<SearchForm />` in `App` to see how the initial UI changes
 
-## 👉🏾 Next
+## 🧠 Elaboration & Feedback
+
+After you're done with the exercise and before jumping to the next step, please fill out the [elaboration & feedback form](https://docs.google.com/forms/d/e/1FAIpQLScRocWvtbrl4XmT5_NRiE8bSK3CMZil-ZQByBAt8lpsurcRmw/viewform?usp=pp_url&entry.1671251225=React+FUNdamentals+Workshop&entry.1984987236=Step+7+-+Prop+Types)
+
+## 👉🏾 Next Step
 
 Go to [Step 8 - Custom Hook](../08-custom-hook/).
 
