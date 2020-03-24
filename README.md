@@ -52,7 +52,7 @@ cd react-workshop
 npm run setup
 ```
 
-This will likely take a **a few minutes** to run. It will clone the repo, install all of the JavaScript dependencies needed to build our app, and setup our workshop dev directory.
+This will likely take a **few minutes** to run. It will clone the repo, install all of the JavaScript dependencies needed to build our app, and setup our workshop dev directory.
 
 If it fails, please read through the error logs and see if you can figure out what the problem is. Double check that you have the proper [system requirements](#system-requirements) installed. If you are unable to figure out the problem on your own, please feel free to [file an issue](https://github.com/benmvp/react-workshop/issues/new) with _everything_ (and I mean everything) from the output of the commands you ran.
 
@@ -64,7 +64,7 @@ We will be build a Giphy search app step-by-step in this workshop. To get starte
 npm start
 ```
 
-The app should be running at http://localhost:3000/. The app should be **completely blank** because we haven't built anything yet! But you can check out the app [deployed online](https://react-workshop.benmvp.com/) to see what the final app will look like.
+The app should pop up in your default browser running at http://localhost:3000/. The app should be **completely blank** because we haven't built anything yet! But you can check out the app [deployed online](https://react-workshop.benmvp.com/) to see what the final state will look like.
 
 For those interested, the app is a standard app bootstrapped by [Create React App](https://create-react-app.dev/).
 
