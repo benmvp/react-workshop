@@ -13,7 +13,7 @@ If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
 
-Complete the [setup instructions](../00-begin) if you have not yet followed them.
+Complete the [setup instructions](../../#setup) if you have not yet followed them.
 
 Ensure you're in the root folder of the repo:
 

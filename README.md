@@ -49,10 +49,10 @@ After you have verified that you have the proper tools installed (and at the pro
 ```sh
 git clone https://github.com/benmvp/react-workshop.git
 cd react-workshop
-npm install
+npm run setup
 ```
 
-This will clone this repo, install all of the JavaScript dependencies to build our app, and likely take **a few minutes** to run.
+This will likely take a **a few minutes** to run. It will clone the repo, install all of the JavaScript dependencies needed to build our app, and setup our workshop dev directory.
 
 If it fails, please read through the error logs and see if you can figure out what the problem is. Double check that you have the proper [system requirements](#system-requirements) installed. If you are unable to figure out the problem on your own, please feel free to [file an issue](https://github.com/benmvp/react-workshop/issues/new) with _everything_ (and I mean everything) from the output of the commands you ran.
 
@@ -64,9 +64,9 @@ We will be build a Giphy search app step-by-step in this workshop. To verify tha
 npm start
 ```
 
-The app should be running at http://localhost:3000/. The app is a standard app bootstrapped by [Create React App](https://create-react-app.dev/).
+The app should be running at http://localhost:3000/. The app should be **completely blank** because we haven't built anything yet! But you can check out the app [deployed online](https://react-workshop.benmvp.com/) to see what the final app will look like.
 
-You can also check out the app deployed online at: https://react-workshop.benmvp.com/.
+For those interested, the app is a standard app bootstrapped by [Create React App](https://create-react-app.dev/).
 
 ## Workshop Outline
 
@@ -88,7 +88,6 @@ Hiya! 👋🏾 My name is Ben Ilegbodu. 😄
 Each step in the workshop builds on top of the previous one. If at any point you get stuck, you can find the answers in the source code of the current step. Any step can be used as a starting point to continue on to the remaining steps.
 
 - Setup / Logistics / Intro
-- [Step 0 - Begin](src/00-begin/)
 - [Step 1 - JSX](src/01-jsx/)
 - [Step 2 - Query Field](src/02-query-field/)
 - [Step 3 - API](src/03-api/)
@@ -143,7 +142,7 @@ At the end of the workshop, I would greatly appreciate your overall feedback. [S
 
 ### 👉🏾 First Step
 
-Go to [Step 0 - Begin](src/00-begin/).
+Go to [Step 1 - JSX](src/01-jsx/).
 
 ## License
 

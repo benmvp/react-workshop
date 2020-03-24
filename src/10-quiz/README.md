@@ -9,7 +9,7 @@ The goal of this final step, the quiz, is to solidify your learning by applying 
 
 If you didn't successfully complete the previous step, you can jump right in by copying the step.
 
-Complete the [setup instructions](../00-begin) if you have not yet followed them.
+Complete the [setup instructions](../../#setup) if you have not yet followed them.
 
 Ensure you're in the root folder of the repo:
 

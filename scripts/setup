@@ -1,0 +1,117 @@
+#!/usr/bin/env node
+
+const { resolve } = require('path')
+const { execSync, spawnSync } = require('child_process')
+const { blue, dim, red, green } = require('chalk')
+const { satisfies } = require('semver')
+
+const PACKAGE_INFO = require(resolve(process.cwd(), 'package.json'))
+const FAILURE = 'failure'
+const SUCCESS = 'success'
+
+const MESSAGES = {
+  node: (actual, desired) =>
+    `This computer has node@${actual} installed, but node@${desired} is required. Please update node with nvm:
+
+  https://github.com/creationix/nvm#install-script`,
+  npm: (actual, desired) =>
+    `This computer has npm@${actual} installed, but npm@${desired} is required. Please update npm by running:
+
+  npm install --global npm@${desired}`,
+}
+
+const validateVersion = (desired, command, message) => {
+  let actual = '0.0.0'
+
+  try {
+    actual = execSync(command).toString().trim()
+  } catch (error) {
+    return `There was an error running the command "${command}":
+${error.message}`
+  }
+
+  return satisfies(actual, desired) ? null : message(actual, desired)
+}
+
+const VALIDATORS = {
+  node: (desired) => validateVersion(desired, 'node --version', MESSAGES.node),
+  npm: (desired) => validateVersion(desired, 'npm --version', MESSAGES.npm),
+}
+
+const validateSystem = () => {
+  const errors = Object.keys(PACKAGE_INFO.engines)
+    .map((engine) => VALIDATORS[engine](PACKAGE_INFO.engines[engine]))
+    .filter(Boolean)
+
+  if (errors.length) {
+    console.error(`There were errors validating the compatibility of this computer:
+
+${errors.join('\n\n')}
+
+If you would like to ignore this error and continue on, you are free to do so and install dependencies like normal. Just know that things may not work properly if you do...`)
+
+    return { status: 1 }
+  }
+
+  return { status: 0 }
+}
+
+const run = (title, subtitle, command) => {
+  console.log(blue('▶️  Starting: ' + title))
+  console.log(dim('      ' + subtitle))
+  console.log(
+    dim(
+      '      Running the following command: ' +
+        (typeof command === 'function' ? command.name : command),
+    ),
+  )
+
+  const result =
+    typeof command === 'function'
+      ? command()
+      : spawnSync(command, { stdio: 'inherit', shell: true })
+
+  if (result.status !== 0) {
+    console.error(
+      red(
+        '🚨  Failure: ' +
+          title +
+          '. Please review the messages above for information on how to troubleshoot and resolve this issue.',
+      ),
+    )
+    process.exit(result.status)
+    return FAILURE
+  }
+
+  console.log(green('✅  Success: ' + title + '\n\n'))
+  return SUCCESS
+}
+
+const main = () => {
+  let result
+
+  result = run(
+    'System Validation',
+    'Ensuring the correct versions of tools are installed on this computer.',
+    validateSystem,
+  )
+  if (result === FAILURE) return
+
+  result = run(
+    'Dependency Installation',
+    'Installing third party code dependencies so the workshop works properly on this computer.',
+    'npm install --silent',
+  )
+  if (result === FAILURE) return
+
+  const FIND = '\\.\\/.*\\/App'
+  const REPLACE = '\\.\\/workshop\\/App'
+  result = run(
+    'Workshop Creation',
+    'Creating the workshop directory.',
+    `rm -rf src/workshop; cp -r src/00-begin src/workshop && sed -i -e 's/${FIND}/${REPLACE}/' src/index.js`,
+  )
+  if (result === FAILURE) return
+}
+
+main()
