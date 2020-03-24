@@ -1,117 +1,61 @@
 #!/usr/bin/env node
 
-const { resolve } = require('path')
-const { execSync, spawnSync } = require('child_process')
-const { blue, dim, red, green } = require('chalk')
-const { satisfies } = require('semver')
+const { spawnSync } = require('child_process')
 
-const PACKAGE_INFO = require(resolve(process.cwd(), 'package.json'))
-const FAILURE = 'failure'
-const SUCCESS = 'success'
-
-const MESSAGES = {
-  node: (actual, desired) =>
-    `This computer has node@${actual} installed, but node@${desired} is required. Please update node with nvm:
-
-  https://github.com/creationix/nvm#install-script`,
-  npm: (actual, desired) =>
-    `This computer has npm@${actual} installed, but npm@${desired} is required. Please update npm by running:
-
-  npm install --global npm@${desired}`,
+const COLOR_STYLES = {
+  blue: { open: '\u001b[34m', close: '\u001b[39m' },
+  dim: { open: '\u001b[2m', close: '\u001b[22m' },
+  red: { open: '\u001b[31m', close: '\u001b[39m' },
+  green: { open: '\u001b[32m', close: '\u001b[39m' },
 }
 
-const validateVersion = (desired, command, message) => {
-  let actual = '0.0.0'
-
-  try {
-    actual = execSync(command).toString().trim()
-  } catch (error) {
-    return `There was an error running the command "${command}":
-${error.message}`
-  }
-
-  return satisfies(actual, desired) ? null : message(actual, desired)
+const color = (modifier, message) => {
+  return COLOR_STYLES[modifier].open + message + COLOR_STYLES[modifier].close
 }
-
-const VALIDATORS = {
-  node: (desired) => validateVersion(desired, 'node --version', MESSAGES.node),
-  npm: (desired) => validateVersion(desired, 'npm --version', MESSAGES.npm),
-}
-
-const validateSystem = () => {
-  const errors = Object.keys(PACKAGE_INFO.engines)
-    .map((engine) => VALIDATORS[engine](PACKAGE_INFO.engines[engine]))
-    .filter(Boolean)
-
-  if (errors.length) {
-    console.error(`There were errors validating the compatibility of this computer:
-
-${errors.join('\n\n')}
-
-If you would like to ignore this error and continue on, you are free to do so and install dependencies like normal. Just know that things may not work properly if you do...`)
-
-    return { status: 1 }
-  }
-
-  return { status: 0 }
-}
+const blue = (message) => color('blue', message)
+const dim = (message) => color('dim', message)
+const red = (message) => color('red', message)
+const green = (message) => color('green', message)
 
 const run = (title, subtitle, command) => {
-  console.log(blue('▶️  Starting: ' + title))
-  console.log(dim('      ' + subtitle))
-  console.log(
-    dim(
-      '      Running the following command: ' +
-        (typeof command === 'function' ? command.name : command),
-    ),
-  )
+  console.log(blue(`▶️  Starting: ${title}`))
+  console.log(dim(`      ${subtitle}`))
+  console.log(dim(`      Running the following command: ${command}`))
 
-  const result =
-    typeof command === 'function'
-      ? command()
-      : spawnSync(command, { stdio: 'inherit', shell: true })
+  const result = spawnSync(command, { stdio: 'inherit', shell: true })
 
   if (result.status !== 0) {
     console.error(
       red(
-        '🚨  Failure: ' +
-          title +
-          '. Please review the messages above for information on how to troubleshoot and resolve this issue.',
+        `🚨  Failure: ${title}. Please review the messages above for information on how to troubleshoot and resolve this issue.`,
       ),
     )
     process.exit(result.status)
-    return FAILURE
   }
 
-  console.log(green('✅  Success: ' + title + '\n\n'))
-  return SUCCESS
+  console.log(green(`✅  Success: ${title}\n\n`))
 }
 
 const main = () => {
-  let result
-
-  result = run(
+  run(
     'System Validation',
     'Ensuring the correct versions of tools are installed on this computer.',
-    validateSystem,
+    'npx check-engine',
   )
-  if (result === FAILURE) return
 
-  result = run(
+  run(
     'Dependency Installation',
     'Installing third party code dependencies so the workshop works properly on this computer.',
     'npm install --silent',
   )
-  if (result === FAILURE) return
 
   const FIND = '\\.\\/.*\\/App'
   const REPLACE = '\\.\\/workshop\\/App'
-  result = run(
+  run(
     'Workshop Creation',
-    'Creating the workshop directory.',
-    `rm -rf src/workshop; cp -r src/00-begin src/workshop && sed -i -e 's/${FIND}/${REPLACE}/' src/index.js`,
+    'Creating workshop directory from initial starting point.',
+    `rm -rf src/workshop; cp -r src/00-begin src/workshop && sed -i '' -e 's/${FIND}/${REPLACE}/' src/index.js`,
   )
-  if (result === FAILURE) return
 }
 
 main()
