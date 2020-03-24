@@ -60,78 +60,6 @@ After the app is initially built, a new browser window should open up at [http:/
 Use [`Array.prototype.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) to convert the array of results into an array of components so that we can render the giphy images:
 
 ```js
-const App = () => {
-  const [inputValue, setInputValue] = useState('')
-  const [results, setResults] = useState([])
-
-  useEffect(() => {
-    const fetchResults = async () => {
-      try {
-        const apiResponse = await getResults({ searchQuery: inputValue })
-
-        setResults(apiResponse.results)
-      } catch (err) {
-        console.error(err)
-      }
-    }
-
-    fetchResults()
-  }, [inputValue])
-
-  return (
-    <main>
-      <h1>Giphy Search!</h1>
-
-      <form>
-        <input
-          type="search"
-          placeholder="Search Giphy"
-          value={inputValue}
-          onChange={(e) => {
-            setInputValue(e.target.value)
-          }}
-        />
-      </form>
-
-      <section className="callout primary">
-        {results.map((item) => (
-          <video
-            key={item.id}
-            src={item.previewUrl}
-            alt={item.title}
-            loop
-            autoPlay
-          />
-        ))}
-      </section>
-    </main>
-  )
-}
-```
-
-> NOTE: Be sure to include the [`key` prop](https://reactjs.org/docs/lists-and-keys.html) on the `<li>` elements.
-
-We need to only render the `<section>` when there are results. There are a number of different ways to [conditionally render JSX](https://reactjs.org/docs/conditional-rendering.html). One ways is to conditionally store the JSX in a variable:
-
-```js
-let resultsUi
-
-if (results.length > 0) {
-  resultsUi = (
-    <section className="callout primary">
-      {results.map((item) => (
-        <video
-          key={item.id}
-          src={item.previewUrl}
-          alt={item.title}
-          loop
-          autoPlay
-        />
-      ))}
-    </section>
-  )
-}
-
 return (
   <main>
     <h1>Giphy Search!</h1>
@@ -147,16 +75,6 @@ return (
       />
     </form>
 
-    {resultsUi}
-  </main>
-)
-```
-
-However, the most common approach is:
-
-```js
-{
-  results.length > 0 && (
     <section className="callout primary">
       {results.map((item) => (
         <video
@@ -168,8 +86,45 @@ However, the most common approach is:
         />
       ))}
     </section>
-  )
-}
+  </main>
+)
+```
+
+> NOTE: Be sure to include the [`key` prop](https://reactjs.org/docs/lists-and-keys.html) on the `<li>` elements.
+
+We need to only render the `<section>` when there are results. There are a number of different ways to [conditionally render JSX](https://reactjs.org/docs/conditional-rendering.html). The most common approach is:
+
+```js
+return (
+  <main>
+    <h1>Giphy Search!</h1>
+
+    <form>
+      <input
+        type="search"
+        placeholder="Search Giphy"
+        value={inputValue}
+        onChange={(e) => {
+          setInputValue(e.target.value)
+        }}
+      />
+    </form>
+
+    {results.length > 0 && (
+      <section className="callout primary">
+        {results.map((item) => (
+          <video
+            key={item.id}
+            src={item.previewUrl}
+            alt={item.title}
+            loop
+            autoPlay
+          />
+        ))}
+      </section>
+    )}
+  </main>
+)
 ```
 
 Let's add some additional markup and classes around the `<img />` so we can include the giphy title:

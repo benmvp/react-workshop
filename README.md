@@ -15,8 +15,8 @@ A step-by-step workshop to build a React application, all while learning React f
 
 In order to maximize our time _during_ the workshop, please complete the following tasks in advance:
 
-- [ ] Set up the project (follow setup instructions below)
-- [ ] Install and run [Zoom](https://zoom.us/) on the computer you'll be developing with during the workshop (remote workshops only)
+- [ ] Set up the project (follow [setup instructions](#system-requirements) below)
+- [ ] Install and run [Zoom](https://zoom.us/) on the computer you'll be developing with during the workshop (for remote workshops )
 - [ ] Install React Developer Tools for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) (recommended) or [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
 - [ ] Install a JSX-friendly code editor, such as [Visual Studio Code](https://code.visualstudio.com/)
 - [ ] Brush up on modern [ES.next](http://www.benmvp.com/learning-es6-series/) features, if they are unfamiliar to you
@@ -70,7 +70,7 @@ You can also check out the app deployed online at: https://react-workshop.benmvp
 
 ## Workshop Outline
 
-Let's learn some React! ⚛️
+Let's learn the React fundamentals! ⚛️
 
 ### About Me
 
@@ -92,27 +92,35 @@ Each step in the workshop builds on top of the previous one. If at any point you
 - [Step 1 - JSX](src/01-jsx/)
 - [Step 2 - Query Field](src/02-query-field/)
 - [Step 3 - API](src/03-api/)
+- 😴 15 minutes
 - [Step 4 - Lists](src/04-lists/)
 - [Step 5 - Form Submit](src/05-form-submit/)
+- 🍕 45 minutes
 - [Step 6 - Components](src/06-components/)
 - [Step 7 - Prop Types](src/07-prop-types/)
+- 😴 15 minutes
 - [Step 8 - Custom Hook](src/08-custom-hook/)
 - [Step 9 - Loading States](src/09-loading-states/)
-- Q & A
+- 😴 15 minutes
+- ❓ Q & A
 - [Step 10 - Final Quiz!](src/10-quiz/)
+- 👋🏾 Goodbye!
 
-### Questions
+### Asking Questions
 
-- Please interrupt me and ask question!
-- However, unrelated questions are better served for [my AMA](http://www.benmvp.com/ama)
+- Please **interrupt me** and ask questions! Others likely will have the same question.
+- However, unrelated questions are better sent to [Twitter](https://twitter.com/benmvp) or [my AMA](http://www.benmvp.com/ama)
 
-### Zoom Hygiene (for remote workshops only)
+### Zoom Hygiene (for remote workshops)
 
 - Keep your video on (if possible) to make it feel more human
 - Keep your microphone muted unless your talking
-- Use breakout rooms to get help
+- Answer each other's questions in the chat
+- Use breakout rooms to help each other
 
 ## FUNdamental Concepts
+
+Here is what you'll come away knowing at the end of the workshop...
 
 - Using JSX syntax ([Step 1](src/01-jsx/))
 - Maintaining component state with `useState` hook ([Step 2](src/02-query-field/))

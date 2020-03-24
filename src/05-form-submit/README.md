@@ -158,7 +158,8 @@ We're making use of [Foundation](https://get.foundation/sites/docs/forms.html) c
   </section>
   ```
 - Add dividers (`<hr />`) between the form fields
-- **BONUS:** Add a radio button group that allows for filtering the search results by `rating`. Options: All (empty string), `g`, `pg`, `pg-13` & `r`
+- 🤓 **BONUS:** Add a radio button group that allows for filtering the search results by `rating`
+  - Options: All (empty string), `g`, `pg`, `pg-13` & `r`
 
 ## 👉🏾 Next
 

@@ -4,9 +4,7 @@ The goal of this step is just to get everything set up with a running (but blank
 
 ## 📝 Tasks
 
-Follow the [setup instructions](../../#setup) if you have not already.
-
-Then, within the `react-workshop` directory, copy the [`00-begin`](./) directory and name it `workshop`:
+Follow the [setup instructions](https://github.com/benmvp/react-workshop#setup) if you have not already. Then, within the `react-workshop` directory, copy the [`00-begin`](./) directory and name it `workshop`:
 
 ```sh
 cp -r src/00-begin src/workshop

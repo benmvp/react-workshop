@@ -52,8 +52,8 @@ After the app is initially built, a new browser window should open up at [http:/
   - Display the `<Pagination />` both above and below the `<Results />`
   - Use the `offset` property in the call to `getResults()` to request subsequent pages of results
   - Use the `total` property in the return value from `getRequest()` to calculate how many pages there are
-- **BONUS:** Disable the "Previous" & "Next" links/buttons when there are no previous/next pages
-- **BONUS:** Use the Foundation [Pagination](https://get.foundation/sites/docs/pagination.html) as your HTML & CSS to support jumping to specific pages
+- 🤓 **BONUS:** Disable the "Previous" & "Next" links/buttons when there are no previous/next pages
+- 🤓 **BONUS:** Use the Foundation [Pagination](https://get.foundation/sites/docs/pagination.html) as your HTML & CSS to support jumping to specific pages
 
 ## 👉🏾 Next
 
