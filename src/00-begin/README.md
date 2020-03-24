@@ -4,7 +4,7 @@ The goal of this step is just to get everything set up with a running (but blank
 
 ## 📝 Tasks
 
-Complete the [setup instructions](../../#setup).
+Complete the [setup instructions](../../README.md#setup).
 
 ## 👉🏾 Next Step
 

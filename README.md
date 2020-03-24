@@ -58,7 +58,7 @@ If it fails, please read through the error logs and see if you can figure out wh
 
 ## Running the app
 
-We will be build a Giphy search app step-by-step in this workshop. To verify that everything has been installed correctly, you can run the finished app locally:
+We will be build a Giphy search app step-by-step in this workshop. To get started and verify that everything has been installed correctly, run:
 
 ```sh
 npm start
