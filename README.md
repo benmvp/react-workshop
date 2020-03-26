@@ -2,7 +2,7 @@
 
 [![Maintenance Status](https://img.shields.io/badge/status-maintained-brightgreen.svg)](https://github.com/benmvp/react-workshop/pulse)
 [![Build Status](https://github.com/benmvp/react-workshop/workflows/CI/badge.svg)](https://github.com/benmvp/react-workshop/actions)
-[![license](https://img.shields.io/github/license/benmvp/react-workshop.svg)](http://www.gnu.org/licenses/gpl-3.0-standalone.html)
+[![license](https://img.shields.io/badge/license-GPL%20v3-blue)](#license)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 [![Watch on GitHub](https://img.shields.io/github/watchers/benmvp/react-workshop.svg?style=social)](https://github.com/benmvp/react-workshop/watchers)
@@ -16,7 +16,8 @@ A step-by-step workshop to build a React application, all while learning React f
 In order to maximize our time _during_ the workshop, please complete the following tasks in advance:
 
 - [ ] Set up the project (follow [setup instructions](#system-requirements) below)
-- [ ] Install and run [Zoom](https://zoom.us/) on the computer you'll be developing with during the workshop (for remote workshops )
+- [ ] Install and run [Zoom](https://zoom.us/) on the computer you'll be developing with (for remote workshops)
+- [ ] Set up dual monitors, if possible (for remote workshops)
 - [ ] Install React Developer Tools for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) (recommended) or [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
 - [ ] Install a JSX-friendly code editor, such as [Visual Studio Code](https://code.visualstudio.com/)
 - [ ] Brush up on modern [ES.next](http://www.benmvp.com/learning-es6-series/) features, if they are unfamiliar to you
