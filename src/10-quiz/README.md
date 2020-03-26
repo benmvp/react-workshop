@@ -54,6 +54,7 @@ After the app is initially built, a new browser window should open up at [http:/
   - Use the `total` property in the return value from `getRequest()` to calculate how many pages there are
 - 🤓 **BONUS:** Disable the "Previous" & "Next" links/buttons when there are no previous/next pages
 - 🤓 **BONUS:** Use the Foundation [Pagination](https://get.foundation/sites/docs/pagination.html) as your HTML & CSS to support jumping to specific pages
+- Share your `Pagination` component and its use in `App` in a [gist](https://gist.github.com/) on [my AMA](http://www.benmvp.com/ama/)
 
 ## 🧠 Elaboration & Feedback
 

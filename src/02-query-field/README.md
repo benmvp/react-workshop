@@ -51,7 +51,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## 🐇 Jump Around
 
-[Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
+[Concepts](#-concepts) | [Tasks](#-tasks) | [Exercises](#-exercises) | [Elaboration & Feedback](#-elaboration--feedback) | [Resources](#-resources)
 
 ## ⭐ Concepts
 
@@ -111,6 +111,9 @@ const App = () => {
 ## 💡 Exercises
 
 - Use the React Developer Tools to watch the `state` of `App` update as you type into the fields
+- Add a `<p>` below that will display "You are typing **[value]** in the field." (with `[value]` in **bold**)
+- 🤓 **BONUS:** Add a button that when clicked will toggle the text in the `<p>` between being upper-cased and not
+  - _HINT:_ You will need to add a second `useState`
 
 ## 🧠 Elaboration & Feedback
 

@@ -10,7 +10,7 @@ If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you
 
 ## 🐇 Jump Around
 
-[Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
+[Concepts](#-concepts) | [Tasks](#-tasks) | [Exercises](#-exercises) | [Elaboration & Feedback](#-elaboration--feedback) | [Resources](#-resources)
 
 ## ⭐ Concepts
 
@@ -139,17 +139,22 @@ const App = () => {
 
 ## 💡 Exercises
 
-Remove all the practice JSX, leaving the skeleton of our Giphy search app:
-
-```js
-const App = () => {
-  return (
-    <main>
-      <h1>Giphy Search!</h1>
-    </main>
-  )
-}
-```
+- Create two `const` variables, `GIPHY_SRC` ([this url](https://media.giphy.com/media/l41lXGxBwXYFcJoJ2/giphy.gif)) and `GIPHY_LINK` ([this url](https://gph.is/1IOrWO2))
+  - Render an image with its `src` as `GIPHY_SRC`
+  - Link the image to its page using `GIPHY_LINK` and open a new
+- 🤓 **BONUS:** Render a `<p>`
+  - Create `const attrs = { style: {color: 'blue' }, children: 'Hello' }`
+  - Add `attrs` to the `<p>` **without** adding them individually
+- Remove all the practice JSX, leaving the skeleton of our Giphy search app:
+  ```js
+  const App = () => {
+    return (
+      <main>
+        <h1>Giphy Search!</h1>
+      </main>
+    )
+  }
+  ```
 
 ## 🧠 Elaboration & Feedback
 

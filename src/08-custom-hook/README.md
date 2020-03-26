@@ -49,7 +49,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## 🐇 Jump Around
 
-[Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
+[Concepts](#-concepts) | [Tasks](#-tasks) | [Exercises](#-exercises) | [Elaboration & Feedback](#-elaboration--feedback) | [Resources](#-resources)
 
 ## ⭐ Concepts
 
@@ -97,38 +97,11 @@ const useGiphy = () => {
 }
 ```
 
-Back in `App` make use of `useGiphy`:
-
-```js
-import React from 'react'
-import useGiphy from './useGiphy'
-import Results from './Results'
-import SearchForm from './SearchForm'
-
-const App = () => {
-  const [results, setSearchParams] = useGiphy()
-
-  return (
-    <main>
-      <h1>Giphy Search!</h1>
-
-      <SearchForm
-        onChange={setSearchParams}
-        initialSearchQuery="friend"
-        initialLimit={6}
-      />
-      <Results items={results} />
-    </main>
-  )
-}
-
-export default App
-```
-
 Now `useGiphy()` can easily be used w/in other components because all of the state management and side-effect API logic have been abstracted away.
 
 ## 💡 Exercises
 
+- Back in `App` make use of `useGiphy()`
 - Compare the current version of [`App.js`](./App.js) with the [Step 5 `App.js`](../05-form-submit/App.js)
 
 ## 🧠 Elaboration & Feedback

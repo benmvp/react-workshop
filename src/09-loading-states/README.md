@@ -49,7 +49,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## 🐇 Jump Around
 
-[Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
+[Concepts](#-concepts) | [Tasks](#-tasks) | [Exercises](#-exercises) | [Elaboration & Feedback](#-elaboration--feedback) | [Resources](#-resources)
 
 ## ⭐ Concepts
 

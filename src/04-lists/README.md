@@ -47,7 +47,7 @@ After the app is initially built, a new browser window should open up at [http:/
 
 ## 🐇 Jump Around
 
-[Concepts](#concepts) | [Tasks](#tasks) | [Exercises](#exercises) | [Resources](#resources)
+[Concepts](#-concepts) | [Tasks](#-tasks) | [Exercises](#-exercises) | [Elaboration & Feedback](#-elaboration--feedback) | [Resources](#-resources)
 
 ## ⭐ Concepts
 
@@ -158,12 +158,12 @@ Let's add some additional markup and classes around the `<img />` so we can incl
 
 ## 💡 Exercises
 
-- Make the displayed title (`result.title`) link to the Giphy URL (`result.url`)
-- Display the Giphy Rating (`result.rating`)
+- Make the displayed title (`item.title`) link to the Giphy URL (`item.url`)
+- Display the Giphy Rating (`item.rating`)
 - Add a `<select>` to the search form to change the number of Giphy images displayed (the `limit` search param)
   - Map over a `const LIMITS = [6, 12, 18, 24, 30]` constant to generate the `<option value={limit}>` tags within the `<select>`
   - The props should be `<select value={searchLimit} onChange={(e) => { ... }}>`
-  - The default should remain `12`
+  - The default should remain `6`
 - Open the Developer Tools, on the Elements tab, and monitor how the markup changes when changing limits
 
 ## 🧠 Elaboration & Feedback
