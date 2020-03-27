@@ -113,8 +113,8 @@ Each step in the workshop builds on top of the previous one. If at any point you
 
 ### 🖥️ Zoom Hygiene (for remote workshops)
 
-- Keep your video on (if possible) to make it feel more human
-- Keep your microphone muted unless your talking
+- Keep your **video on** (if possible) to make it feel more human and lively
+- Keep your **microphone muted** unless your talking to avoid background noise distractions
 - Answer each other's questions in the chat
 - Use breakout rooms to help each other
 
@@ -139,11 +139,11 @@ Here is what you'll come away knowing at the end of the workshop...
 
 Each step has an Elaboration & Feedback link at the end. After you're done with the exercise and before jumping to the next step, please fill that out to solidify your learning.
 
-At the end of the workshop, I would greatly appreciate your overall feedback. [Share your workshop feedback](https://bit.ly/react-fun-ws-feedbck)
+At the end of the workshop, I would greatly appreciate your overall feedback. [Share your workshop feedback](https://bit.ly/react-fun-ws-feedbck).
 
 ### 👉🏾 First Step
 
-Go to [Step 1 - JSX](src/01-jsx/).
+Go to [Step 0 - Begin](src/00-begin/).
 
 ## License
 

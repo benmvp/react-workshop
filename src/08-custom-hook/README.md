@@ -115,6 +115,7 @@ Go to [Step 9 - Loading States](../09-loading-states/).
 ## 📕 Resources
 
 - [Building Your Own Hooks](https://reactjs.org/docs/hooks-custom.html)
+- [How to test custom React hooks](https://kentcdodds.com/blog/how-to-test-custom-react-hooks)
 
 ## ❓ Questions
 

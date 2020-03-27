@@ -127,6 +127,7 @@ Go to [Step 3 - API](../03-api/).
 
 - [Using the State Hook](https://reactjs.org/docs/hooks-state.html)
 - [Rules of Hooks](https://reactjs.org/docs/hooks-rules.html)
+- [Why React hooks?](https://tylermcginnis.com/why-react-hooks/)
 - [Handling Events](https://reactjs.org/docs/handling-events.html)
 - [Lifting State Up](https://reactjs.org/docs/lifting-state-up.html)
 - [`SyntheticEvent`](https://reactjs.org/docs/events.html)
