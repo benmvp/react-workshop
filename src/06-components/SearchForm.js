@@ -9,18 +9,12 @@ const RATINGS = [
 ]
 const LIMITS = [6, 12, 18, 24, 30]
 
-const SearchForm = ({
-  initialLimit,
-  initialRating,
-  initialSearchQuery,
-  initialShowInstant,
-  onChange,
-}) => {
-  const [inputValue, setInputValue] = useState(initialSearchQuery)
-  const [searchQuery, setSearchQuery] = useState(initialSearchQuery)
-  const [showInstant, setShowInstant] = useState(initialShowInstant)
-  const [searchRating, setSearchRating] = useState(initialRating)
-  const [searchLimit, setSearchLimit] = useState(initialLimit)
+const SearchForm = ({ onChange }) => {
+  const [inputValue, setInputValue] = useState('')
+  const [searchQuery, setSearchQuery] = useState('')
+  const [showInstant, setShowInstant] = useState(false)
+  const [searchRating, setSearchRating] = useState('')
+  const [searchLimit, setSearchLimit] = useState(12)
   const realSearchQuery = showInstant ? inputValue : searchQuery
 
   useEffect(() => {

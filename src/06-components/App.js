@@ -25,11 +25,7 @@ const App = () => {
     <main>
       <h1>Giphy Search!</h1>
 
-      <SearchForm
-        onChange={setFormValues}
-        initialSearchQuery="friend"
-        initialLimit={6}
-      />
+      <SearchForm onChange={setFormValues} />
       <Results items={results} />
     </main>
   )
