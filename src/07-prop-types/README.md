@@ -114,7 +114,7 @@ export default Results
 - Add make all of the props for `ResultsItem` required
 - Add 4 additional _optional_ props to `SearchForm`: `initialSearchQuery`, `initialShowInstant`, `initialRating` & `initialLimit`
   - These will set the initial values of the corresponding state variables (`useState(XXX)`)
-  - _HINT:_ Use [`defaultProps`](https://reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values) to set the default values when the props are not specified
+  - 🔑 _HINT:_ Use [`defaultProps`](https://reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values) to set the default values when the props are not specified
 - Add some of the `initial*` props to `<SearchForm />` in `App` and use the React Developer Tools to see how the initial UI changes
 
 ## 🧠 Elaboration & Feedback
@@ -123,7 +123,7 @@ After you're done with the exercise and before jumping to the next step, please 
 
 ## 👉🏾 Next Step
 
-Go to [Step 8 - Custom Hook](../08-custom-hook/).
+Go to [Step 8 - Search Focus](../08-search-focus/).
 
 ## 📕 Resources
 

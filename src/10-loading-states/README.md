@@ -1,4 +1,4 @@
-# Step 9 - Loading States
+# Step 10 - Loading States
 
 Up to this point, we've assumed that the Giphy API will quickly respond and never fail. But no matter how great the uptime of an API is, the user's internet connection can determine how long it takes to get a response and if the request fails or not.
 
@@ -28,7 +28,7 @@ rm -rf src/workshop
 Copy the previous step as a starting point:
 
 ```sh
-cp -r src/08-custom-hook src/workshop
+cp -r src/09-custom-hook src/workshop
 ```
 
 Ensure [`src/index.js`](../index.js#L3) is still pointing to the `workshop` App:
@@ -118,6 +118,7 @@ Now display the loading indicator in `Results`:
 
 ```js
 const Results = ({ items, status }) => {
+  const containerEl = useRef(null)
   const isLoading = status === 'idle' || status === 'pending'
 
   if (isLoading) {
@@ -157,18 +158,7 @@ const Results = ({ items, status }) => {
         </section>
       )}
       {items.length > 0 && (
-        <section className="callout primary">
-          {items.map((item) => (
-            <ResultsItem
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              url={item.url}
-              rating={item.rating}
-              previewUrl={item.previewUrl}
-            />
-          ))}
-        </section>
+        ...
       )}
     </>
   )
@@ -233,15 +223,15 @@ const useGiphy = () => {
 - Display an error state if the API fails to successfully return
   - Can display with the previous results, but should hide when new results are requested
   - Use the `'rejected'` status
-  - _Hint:_ `throw new Error('Fake error!')` in [`api.js`](./api.js) to simulate this case
+  - 🔑 _HINT:_ `throw new Error('Fake error!')` in [`api.js`](./api.js) to simulate this case
 
 ## 🧠 Elaboration & Feedback
 
-After you're done with the exercise and before jumping to the next step, please fill out the [elaboration & feedback form](https://docs.google.com/forms/d/e/1FAIpQLScRocWvtbrl4XmT5_NRiE8bSK3CMZil-ZQByBAt8lpsurcRmw/viewform?usp=pp_url&entry.1671251225=React+FUNdamentals+Workshop&entry.1984987236=Step+9+-+Loading+States)
+After you're done with the exercise and before jumping to the next step, please fill out the [elaboration & feedback form](https://docs.google.com/forms/d/e/1FAIpQLScRocWvtbrl4XmT5_NRiE8bSK3CMZil-ZQByBAt8lpsurcRmw/viewform?usp=pp_url&entry.1671251225=React+FUNdamentals+Workshop&entry.1984987236=Step+10+-+Loading+States)
 
 ## 👉🏾 Next Step
 
-Go to [Step 10 - Quiz](../10-quiz/).
+Go to [Final Quiz!](../quiz/).
 
 ## 📕 Resources
 

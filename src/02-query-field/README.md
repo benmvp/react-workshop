@@ -113,7 +113,7 @@ const App = () => {
 - Use the React Developer Tools to watch the `state` of `App` update as you type into the fields
 - Add a `<p>` below that will display "You are typing **[value]** in the field." (with `[value]` in **bold**)
 - 🤓 **BONUS:** Add a button that when clicked will toggle the text in the `<p>` between being upper-cased and not
-  - _HINT:_ You will need to add a second `useState`
+  - 🔑 _HINT:_ You will need to add a second `useState`
 
 ## 🧠 Elaboration & Feedback
 

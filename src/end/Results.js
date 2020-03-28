@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import ResultsItem from './ResultsItem'
 
 const Results = ({ items, status }) => {
+  const containerEl = useRef(null)
   const isLoading = status === 'idle' || status === 'pending'
   const isRejected = status === 'rejected'
   let message
@@ -27,18 +28,31 @@ const Results = ({ items, status }) => {
     <>
       {message}
       {items.length > 0 && (
-        <section className="callout primary">
-          {items.map((item) => (
-            <ResultsItem
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              url={item.url}
-              rating={item.rating}
-              previewUrl={item.previewUrl}
-            />
-          ))}
-        </section>
+        <>
+          <section className="callout primary" ref={containerEl}>
+            {items.map((item) => (
+              <ResultsItem
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                url={item.url}
+                rating={item.rating}
+                previewUrl={item.previewUrl}
+              />
+            ))}
+          </section>
+          <footer className="text-center">
+            <button
+              type="button"
+              className="button"
+              onClick={() => {
+                containerEl.current.scrollIntoView(true)
+              }}
+            >
+              To top
+            </button>
+          </footer>
+        </>
       )}
     </>
   )

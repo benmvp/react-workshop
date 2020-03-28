@@ -98,9 +98,10 @@ Each step in the workshop builds on top of the previous one. If at any point you
 - 🍕 45 minutes
 - [Step 6 - Components](src/06-components/)
 - [Step 7 - Prop Types](src/07-prop-types/)
+- [Step 8 - Search Focus](src/08-search-focus/)
 - 😴 15 minutes
-- [Step 8 - Custom Hook](src/08-custom-hook/)
-- [Step 9 - Loading States](src/09-loading-states/)
+- [Step 9 - Custom Hook](src/09-custom-hook/)
+- [Step 10 - Loading States](src/10-loading-states/)
 - 😴 15 minutes
 - ❓ Q & A
 - [Step 10 - Final Quiz!](src/10-quiz/)
@@ -131,8 +132,9 @@ Here is what you'll come away knowing at the end of the workshop...
 - Handling HTML forms & form elements ([Step 5](src/05-form-submit/))
 - Writing readable, reusable and composable components ([Step 6](src/06-components/))
 - Type-checking props ([Step 7](src/07-prop-types/))
-- Factoring out logic from components into custom hooks ([Step 8](src/08-custom-hook/))
-- Leveraging ES6+ to maintain application state with `useReducer` hook ([Step 9](src/09-loading-states/))
+- Interacting with the DOM directly with `useRef` hook ([Step 8](src/08-search-focus/))
+- Factoring out logic from components into custom hooks ([Step 9](src/09-custom-hook/))
+- Leveraging ES6+ to maintain application state with `useReducer` hook ([Step 10](src/10-loading-states/))
 - Applying component styling with CSS classes (throughout)
 
 ## 🧠 Elaboration & Feedback

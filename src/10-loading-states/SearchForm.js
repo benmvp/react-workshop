@@ -53,7 +53,7 @@ const SearchForm = ({
             setInputValue(e.target.value)
           }}
           className="input-group-field"
-          ref={queryFieldEl}
+          ref={queryFieldEl} // ok?
         />
         <aside className="input-group-button">
           <button type="submit" className="button">

@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 const RATINGS = [
@@ -23,6 +23,7 @@ const SearchForm = ({
   const [searchRating, setSearchRating] = useState(initialRating)
   const [searchLimit, setSearchLimit] = useState(initialLimit)
   const realSearchQuery = showInstant ? inputValue : searchQuery
+  const queryFieldEl = useRef(null)
 
   useEffect(() => {
     onChange({
@@ -35,6 +36,10 @@ const SearchForm = ({
   const handleSubmit = (e) => {
     e.preventDefault()
     setSearchQuery(inputValue)
+
+    // focus the query field after submitting
+    // to make easier to quickly search again
+    queryFieldEl.current.focus()
   }
 
   return (
@@ -48,6 +53,7 @@ const SearchForm = ({
             setInputValue(e.target.value)
           }}
           className="input-group-field"
+          ref={queryFieldEl} // ok?
         />
         <aside className="input-group-button">
           <button type="submit" className="button">
