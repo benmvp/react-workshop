@@ -16,6 +16,20 @@ const App = () => {
         initialLimit={24}
       />
       <Results items={results} status={status} error={error} />
+
+      <hr />
+
+      <p className="text-center">
+        This is the app for the{' '}
+        <a
+          href="https://github.com/benmvp/react-workshop"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          React FUNdamentals Workshop with Ben Ilegbodu
+        </a>
+        .
+      </p>
     </main>
   )
 }
