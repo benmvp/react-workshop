@@ -28,7 +28,7 @@ const App = () => {
       <SearchForm
         onChange={setFormValues}
         initialSearchQuery="friend"
-        initialLimit={6}
+        initialLimit={24}
       />
       <Results items={results} />
     </main>

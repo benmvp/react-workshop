@@ -115,7 +115,7 @@ export default Results
 - Add 4 additional _optional_ props to `SearchForm`: `initialSearchQuery`, `initialShowInstant`, `initialRating` & `initialLimit`
   - These will set the initial values of the corresponding state variables (`useState(XXX)`)
   - _HINT:_ Use [`defaultProps`](https://reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values) to set the default values when the props are not specified
-- Use the React Developer Tools to add some of the `initial*` props to `<SearchForm />` in `App` to see how the initial UI changes
+- Add some of the `initial*` props to `<SearchForm />` in `App` and use the React Developer Tools to see how the initial UI changes
 
 ## 🧠 Elaboration & Feedback
 
