@@ -1,4 +1,4 @@
-# React FUNdamentals Workshop by Ben Ilegbodu
+# React FUNdamentals Workshop with Ben Ilegbodu
 
 [![Maintenance Status](https://img.shields.io/badge/status-maintained-brightgreen.svg)](https://github.com/benmvp/react-workshop/pulse)
 [![Build Status](https://github.com/benmvp/react-workshop/workflows/CI/badge.svg)](https://github.com/benmvp/react-workshop/actions)
