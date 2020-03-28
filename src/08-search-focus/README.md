@@ -126,6 +126,7 @@ Go to [Step 9 - Custom Hook](../09-custom-hook/).
 ## 📕 Resources
 
 - [`useRef` API Reference](https://reactjs.org/docs/hooks-reference.html#useref)
+- [Introduction to useRef Hook](https://dev.to/dinhhuyams/introduction-to-useref-hook-3m7n)
 - [Using `useRef` as an "instance variable"](https://reactjs.org/docs/hooks-faq.html#is-there-something-like-instance-variables)
 
 ## ❓ Questions

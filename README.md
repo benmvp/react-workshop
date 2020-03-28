@@ -104,7 +104,7 @@ Each step in the workshop builds on top of the previous one. If at any point you
 - [Step 10 - Loading States](src/10-loading-states/)
 - 😴 15 minutes
 - ❓ Q & A
-- [Step 10 - Final Quiz!](src/10-quiz/)
+- [Final Quiz!](src/quiz/)
 - 👋🏾 Goodbye!
 
 ### ❓ Asking Questions
