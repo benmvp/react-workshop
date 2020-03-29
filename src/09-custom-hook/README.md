@@ -19,7 +19,9 @@ Re-run the setup script, but use the previous step as a starting point:
 npm run setup -- src/08-search-focus
 ```
 
-Restart the app:
+This will also back up your `src/workshop` folder, saving your work.
+
+Now restart the app:
 
 ```sh
 npm start

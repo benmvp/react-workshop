@@ -20,7 +20,7 @@ If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you
 
 ## 📝 Tasks
 
-In [`App.js`](App.js), replace `null` with JSX markup. For example:
+In [`src/workshop/App.js`](App.js), replace `null` with JSX markup. For example:
 
 ```js
 const App = () => {

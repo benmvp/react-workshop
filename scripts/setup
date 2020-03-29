@@ -66,13 +66,25 @@ const main = async () => {
   )
 
   // Now that the dependencies have been installed we can use `fs-extra`
-  const { remove, copy, readFile, writeFile } = require('fs-extra')
+  const { pathExists, move, copy, readFile, writeFile } = require('fs-extra')
 
   const WORKSHOP_CREATION_TITLE = 'Workshop Folder Creation'
   const WORKSHOP_CREATION_SUBTITLE = `Creating workshop directory from ${exerciseToCopyPath}.`
 
   logRunStart(WORKSHOP_CREATION_TITLE, WORKSHOP_CREATION_SUBTITLE)
-  await remove(WORKSHOP_PATH)
+
+  // create a backup of the workshop folder if it exists
+  if (await pathExists(WORKSHOP_PATH)) {
+    const now = Date.now()
+
+    console.log(
+      dim(
+        `  Workshop folder already exists. Backing up to src/workshop-${now}`,
+      ),
+    )
+    await move(WORKSHOP_PATH, resolve(`${WORKSHOP_PATH}-${now}`))
+  }
+
   await copy(EXERCISE_PATH, WORKSHOP_PATH)
   await writeFile(
     INDEX_PATH,
@@ -81,6 +93,7 @@ const main = async () => {
       './workshop/App',
     ),
   )
+
   logRunSuccess(WORKSHOP_CREATION_TITLE)
 }
 
