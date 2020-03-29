@@ -4,7 +4,7 @@ Congratulations! 🏅
 
 You've reached the end of the React FUNdamentals workshop, learning JSX, `useState`, `useEffect`, custom hooks, and so much more!
 
-Hopefully, you'll get to apply this learning right away at your job or in a side project. But if not, I suggest you come back to this workshop in a week or two and review the content. Your brain likes to garbage collect unused knowledge and we want this to stick around!
+Hopefully, you'll get to apply this learning right away at your job or in a side project. But if not, I suggest you **come back to this workshop in a week or two** and review the content. Your brain likes to garbage collect unused knowledge and we want this to stick around! The content is all open-source.
 
 ## ❤️ Workshop Feedback
 
