@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import App from './workshop/App'
+import App from './end/App'
 
 import './index.css'
 
