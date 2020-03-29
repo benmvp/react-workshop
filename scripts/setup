@@ -1,6 +1,14 @@
 #!/usr/bin/env node
 
 const { spawnSync } = require('child_process')
+const { resolve } = require('path')
+
+const [, , exerciseToCopyPath = 'src/00-begin'] = process.argv
+
+const CWD = process.cwd()
+const WORKSHOP_PATH = resolve(CWD, 'src/workshop')
+const EXERCISE_PATH = resolve(CWD, exerciseToCopyPath)
+const INDEX_PATH = resolve(CWD, 'src/index.js')
 
 const COLOR_STYLES = {
   blue: { open: '\u001b[34m', close: '\u001b[39m' },
@@ -17,10 +25,18 @@ const dim = (message) => color('dim', message)
 const red = (message) => color('red', message)
 const green = (message) => color('green', message)
 
+const logRunStart = (title, subtitle) => {
+  console.log(blue(`▶️ Starting: ${title}`))
+  console.log(`  ${subtitle}`)
+}
+
+const logRunSuccess = (title) => {
+  console.log(green(`✅ Success: ${title}\n\n`))
+}
+
 const run = (title, subtitle, command) => {
-  console.log(blue(`▶️  Starting: ${title}`))
-  console.log(dim(`      ${subtitle}`))
-  console.log(dim(`      Running the following command: ${command}`))
+  logRunStart(title, subtitle)
+  console.log(dim(`  Running the following command: ${command}`))
 
   const result = spawnSync(command, { stdio: 'inherit', shell: true })
 
@@ -33,10 +49,10 @@ const run = (title, subtitle, command) => {
     process.exit(result.status)
   }
 
-  console.log(green(`✅  Success: ${title}\n\n`))
+  logRunSuccess(title)
 }
 
-const main = () => {
+const main = async () => {
   run(
     'System Validation',
     'Ensuring the correct versions of tools are installed on this computer.',
@@ -46,16 +62,26 @@ const main = () => {
   run(
     'Dependency Installation',
     'Installing third party code dependencies so the workshop works properly on this computer.',
-    'npm install --silent',
+    'npm install',
   )
 
-  const FIND = '\\.\\/.*\\/App'
-  const REPLACE = '\\.\\/workshop\\/App'
-  run(
-    'Workshop Creation',
-    'Creating workshop directory from initial starting point.',
-    `rm -rf src/workshop; cp -r src/00-begin src/workshop && sed -i '' -e 's/${FIND}/${REPLACE}/' src/index.js`,
+  // Now that the dependencies have been installed we can use `fs-extra`
+  const { remove, copy, readFile, writeFile } = require('fs-extra')
+
+  const WORKSHOP_CREATION_TITLE = 'Workshop Folder Creation'
+  const WORKSHOP_CREATION_SUBTITLE = `Creating workshop directory from ${exerciseToCopyPath}.`
+
+  logRunStart(WORKSHOP_CREATION_TITLE, WORKSHOP_CREATION_SUBTITLE)
+  await remove(WORKSHOP_PATH)
+  await copy(EXERCISE_PATH, WORKSHOP_PATH)
+  await writeFile(
+    INDEX_PATH,
+    (await readFile(INDEX_PATH, 'utf8')).replace(
+      /\.\/.*\/App/,
+      './workshop/App',
+    ),
   )
+  logRunSuccess(WORKSHOP_CREATION_TITLE)
 }
 
 main()

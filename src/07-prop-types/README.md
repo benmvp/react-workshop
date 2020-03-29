@@ -16,37 +16,19 @@ If you didn't successfully complete the previous step, you can jump right in by 
 
 Complete the [setup instructions](../../README.md#setup) if you have not yet followed them.
 
-Ensure you're in the root folder of the repo:
+Re-run the setup script, but use the previous step as a starting point:
 
 ```sh
-cd react-workshop
+npm run setup -- src/06-components
 ```
 
-Remove the existing workshop directory if you had previously started elsewhere:
-
-```sh
-rm -rf src/workshop
-```
-
-Copy the previous step as a starting point:
-
-```sh
-cp -r src/06-components src/workshop
-```
-
-Ensure [`src/index.js`](../index.js#L3) is still pointing to the `workshop` App:
-
-```js
-import App from './workshop/App'
-```
-
-Start the app:
+Restart the app:
 
 ```sh
 npm start
 ```
 
-After the app is initially built, a new browser window should open up at [http://localhost:3000/](http://localhost:3000/), and you should be able to continue on with the tasks below.
+After some initial compiling, a new browser window should open up at http://localhost:3000/, and you should be able to continue on with the tasks below.
 
 </details>
 
