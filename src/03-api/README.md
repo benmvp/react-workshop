@@ -1,6 +1,6 @@
 # Step 3 - API
 
-The goal of this step is to retrieve a list of giphy images based on the query typed in the query input field from [Step 2](../02-query-field). We'll do this by using the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and [ES6 Promises](http://www.benmvp.com/learning-es6-promises/) to retrieve the data from the [Giphy API](https://developers.giphy.com/docs/api/endpoint/), and then store the data in app state.
+🏅 The goal of this step is to retrieve a list of giphy images based on the query typed in the query input field from [Step 2](../02-query-field). We'll do this by using the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and [ES6 Promises](http://www.benmvp.com/learning-es6-promises/) to retrieve the data from the [Giphy API](https://developers.giphy.com/docs/api/endpoint/), and then store the data in app state.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 

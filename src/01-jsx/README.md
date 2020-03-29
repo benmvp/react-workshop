@@ -1,8 +1,10 @@
 # Step 1 - JSX
 
-The goal of this step is to practice with [JSX](https://reactjs.org/docs/jsx-in-depth.html), syntactic sugar for the plain JavaScript function [`React.createElement()`](https://reactjs.org/docs/react-api.html#createelement). React elements are the smallest building blocks of React apps that describe what you want to see on the screen.
+[JSX](https://reactjs.org/docs/jsx-in-depth.html) is syntactic sugar for the plain JavaScript function [`React.createElement()`](https://reactjs.org/docs/react-api.html#createelement). React elements are the smallest building blocks of React apps that describe what you want to see on the screen.
 
 Unlike browser DOM elements, React elements are plain objects, and are cheap to create. [`ReactDOM`](https://reactjs.org/docs/react-dom.html) takes care of updating the DOM to match the React elements.
+
+🏅 The goal of this step is to practice with JSX.
 
 > NOTE: One might confuse elements with a more widely known concept of "components." We will look closer at creating and composing components in the [Step 6](../06-components/). Elements are what components are "made of."
 

@@ -1,6 +1,6 @@
 # The End
 
-Congratulations! 🏅
+Congratulations! 🏆
 
 You've reached the end of the React FUNdamentals workshop, learning JSX, `useState`, `useEffect`, custom hooks, and so much more!
 

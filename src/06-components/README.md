@@ -2,7 +2,7 @@
 
 At this point we have a full app. It's a mini-app, but it's still fully-functional. However, in it's currently structure, as more features are added, maintaining it will become very challenging. This is because all the functionality is in the one `App` component. The form UI, results UI, app state, and API call all live within `App`. For such a small app, having everything in one place has been convenient, but it'll scale poorly.
 
-So, the goal of this step is to practice creating and composing [React components](https://reactjs.org/docs/components-and-props.html). Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. Components can refer to other components in their output. This lets us use the same component abstraction for any level of detail. A button, a form, a dialog, a screen, etc. In React apps, all of these are commonly expressed as components.
+🏅 So, the goal of this step is to practice creating and composing [React components](https://reactjs.org/docs/components-and-props.html). Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. Components can refer to other components in their output. This lets us use the same component abstraction for any level of detail. A button, a form, a dialog, a screen, etc. In React apps, all of these are commonly expressed as components.
 
 Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
 

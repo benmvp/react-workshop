@@ -2,7 +2,7 @@
 
 Until now, we've only been able to see the first page of results from the Giphy API. We need pagination UI in order to see more results.
 
-The goal of this final step, the quiz, is to solidify your learning by applying it to build your own pagination component.
+🏅 The goal of this final step, the quiz, is to solidify your learning by applying it to build your own pagination component.
 
 <details>
   <summary><b>Help! I didn't finish the previous step! 🚨</b></summary>

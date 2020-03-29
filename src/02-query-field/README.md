@@ -1,10 +1,10 @@
 # Step 2 - Query Field
 
-The goal of this step is learning how to deal with forms. HTML form elements work a little bit differently from other DOM elements in React, because form elements naturally keep some internal state. Regular HTML forms _do_ work in React, but in most cases, it's convenient to have React keep track of the data that the user has entered into a form. The standard way to achieve this is with a technique called ["controlled components"](https://reactjs.org/docs/forms.html#controlled-components).
+The goal of this step is learning how to deal with forms. HTML form elements work a little bit differently from other DOM elements in React, because form elements naturally keep some internal state. Regular HTML forms _do_ work in React, but in most cases, it's convenient to have React keep track of the input that the user has entered into a form. The standard way to achieve this is with a technique called ["controlled components"](https://reactjs.org/docs/forms.html#controlled-components).
 
-[Handling events](https://reactjs.org/docs/handling-events.html) within React elements is very similar to handling events on DOM elements. Event handlers will be passed instances of [`SyntheticEvent`](https://reactjs.org/docs/events.html), a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event (including`stopPropagation()` and `preventDefault()`) except the events work identically across all browsers!
+[Handling events](https://reactjs.org/docs/handling-events.html) within React elements is very similar to handling events on DOM elements. Event handlers will be passed instances of [`SyntheticEvent`](https://reactjs.org/docs/events.html), a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event (including`stopPropagation()` and `preventDefault()`), except the events work identically across all browsers!
 
-Ultimately, we want to keep the current value of the search query field in UI state.
+🏅 Ultimately, the goal of this step is to keep the current value of the search query field in UI state.
 
 If you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 

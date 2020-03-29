@@ -1,6 +1,6 @@
 # Step 4 - Lists
 
-The goal of this step is to practice transforming lists of data into lists of components which can be included in JSX. We'll take the `results` data we have in state in convert it to visible UI!
+🏅 The goal of this step is to practice transforming lists of data into lists of components which can be included in JSX. We'll take the `results` data we have in state in convert it to visible UI!
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 

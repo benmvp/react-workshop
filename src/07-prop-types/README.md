@@ -5,7 +5,7 @@ Components that accept props will define the types of props they accept. This se
 1. Declare the public API of the component
 2. Validate the props being passed in by the parent
 
-The goal of this step is to learn how to define prop types for a component.
+🏅 The goal of this step is to learn how to define prop types for a component.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 

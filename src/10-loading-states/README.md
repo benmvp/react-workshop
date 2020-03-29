@@ -2,7 +2,7 @@
 
 Up to this point, we've assumed that the Giphy API will quickly respond and never fail. But no matter how great the uptime of an API is, the user's internet connection can determine how long it takes to get a response and if the request fails or not.
 
-The goal of this exercise is to add loading and error states to our app.
+🏅 The goal of this exercise is to add loading and error states to our app.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 

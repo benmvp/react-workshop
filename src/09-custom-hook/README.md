@@ -2,7 +2,7 @@
 
 We've been able to greatly reduce the scope of the top-level `App` by breaking it down into several components. However, it still directly makes the API call in order to maintain the app-level state.
 
-The goal of this step is to learn how to create our own custom hooks composed of the base hooks like `useState` & `useEffect`. This allows us to extract component logic into reusable functions.
+🏅 The goal of this step is to learn how to create our own custom hooks composed of the base hooks like `useState` & `useEffect`. This allows us to extract component logic into reusable functions.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 

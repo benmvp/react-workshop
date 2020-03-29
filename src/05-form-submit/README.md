@@ -2,7 +2,7 @@
 
 You will notice that so far we've been getting "instant" results when typing in the search query field. This means that while we're typing a search query, we're getting intermediate results for word partials. In the real word, this could hammer an API unnecessarily. In addition, by the time we get the results, we've already typed the next character so the UI feels a bit jumpy.
 
-So the goal of this step is to require submitting the search query field in order to trigger retrieval of new results.
+🏅 So the goal of this step is to require submitting the search query field in order to trigger retrieval of new results.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 

@@ -4,7 +4,7 @@ When we submit the search form by clicking the "Search" button, the search butto
 
 By default, when we develop in React, we're never touching any actual DOM. Instead we're rendering UI that React efficiently applies to the DOM. But there are rare times where we'll need to interact with the DOM directly in order to mutate it in ways that the React allow doesn't support.
 
-So our goal in this step is to use this "escape hatch" in order to focus the search query imperatively.
+🏅 So the goal of this step is to use this "escape hatch" in order to focus the search query imperatively.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
