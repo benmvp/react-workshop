@@ -47,16 +47,16 @@ Add a new state variable to maintain the submitted search query (calling it `sea
 
 ```js
 const [inputValue, setInputValue] = useState('')
-const [searchQuery, setSearchQuery] = useState('')
+const [searchQuery, setSearchQuery] = useState('') // 👈🏾 NEW!
 const [searchLimit, setSearchLimit] = useState(12)
 const [results, setResults] = useState([])
 ```
 
-Add an `onSubmit` handler to the `<form>` tag:
+Add an `onSubmit` handler to the `<form>` tag, setting the search query to the current `inputValue`:
 
 ```js
 const handleSubmit = (e) => {
-  e.preventDefault()
+  e.preventDefault() // 👈🏾 IMPORTANT!
   setSearchQuery(inputValue)
 }
 
@@ -89,6 +89,7 @@ Now, update the `useEffect()` call to pass the `searchQuery` state variable to t
 useEffect(() => {
   const fetchResults = async () => {
     try {
+      // replace `inputValue` with `searchQuery` 👇🏾
       const apiResponse = await getResults({ searchQuery, limit: searchLimit })
 
       setResults(apiResponse.results)
@@ -122,7 +123,7 @@ It's not easily discoverable that you have to press ENTER to submit the search q
 </section>
 ```
 
-We're making use of [Foundation](https://get.foundation/sites/docs/forms.html) classes available for [forms](https://get.foundation/sites/docs/forms.html). The Foundation CSS is included in the [`index.html`](../../public/index.html).
+> NOTE: We're making use of [Foundation](https://get.foundation/sites/docs/forms.html) classes available for [forms](https://get.foundation/sites/docs/forms.html). The Foundation CSS is included in the [`index.html`](../../public/index.html).
 
 ## 💡 Exercises
 
@@ -142,7 +143,7 @@ We're making use of [Foundation](https://get.foundation/sites/docs/forms.html) c
   </section>
   ```
 - Add dividers (`<hr />`) between the form fields
-- 🤓 **BONUS:** Add a radio button group that allows for filtering the search results by `rating`
+- Add a radio button group that allows for filtering the search results by `rating`
   - Options: All (empty string), `g`, `pg`, `pg-13` & `r`
 
 ## 🧠 Elaboration & Feedback

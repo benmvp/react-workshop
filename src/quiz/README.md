@@ -1,6 +1,6 @@
 # Step 10 - Final Quiz!
 
-Until now, we've only been able to see the first page of results from the Giphy API. We need pagination UI in order to see more results.
+Until now, we've only been able to see the first page of results from the Giphy API. We need a pagination UI in order to see more results.
 
 🏅 The goal of this final step, the quiz, is to solidify your learning by applying it to build your own pagination component.
 
@@ -35,14 +35,14 @@ After some initial compiling, a new browser window should open up at http://loca
   - `Pagination` has "Previous" & "Next" links/buttons
   - Display the `<Pagination />` both above and below the `<Results />`
   - Use the `offset` property in the call to `getResults()` to request subsequent pages of results
-  - Use the `total` property in the return value from `getRequest()` to calculate how many pages there are
+  - Use the `total` property in the return value from `getResults()` to calculate how many pages there are
 - 🤓 **BONUS:** Disable the "Previous" & "Next" links/buttons when there are no previous/next pages
 - 🤓 **BONUS:** Use the Foundation [Pagination](https://get.foundation/sites/docs/pagination.html) as your HTML & CSS to support jumping to specific pages
 - Share your `Pagination` component and its use in `App` in a [gist](https://gist.github.com/) on [my AMA](http://www.benmvp.com/ama/)
 
 ## 🧠 Elaboration & Feedback
 
-After you're done with the exercise and before jumping to the next step, please fill out the [elaboration & feedback form](https://docs.google.com/forms/d/e/1FAIpQLScRocWvtbrl4XmT5_NRiE8bSK3CMZil-ZQByBAt8lpsurcRmw/viewform?usp=pp_url&entry.1671251225=React+FUNdamentals+Workshop&entry.1984987236=Final+Quiz). It will help seal in what you've learned.
+After you're done with the quiz, please fill out the [elaboration & feedback form](https://docs.google.com/forms/d/e/1FAIpQLScRocWvtbrl4XmT5_NRiE8bSK3CMZil-ZQByBAt8lpsurcRmw/viewform?usp=pp_url&entry.1671251225=React+FUNdamentals+Workshop&entry.1984987236=Final+Quiz). It will help seal in what you've learned.
 
 ## 👉🏾 Next Step
 

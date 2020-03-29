@@ -63,12 +63,13 @@ const App = () => {
 
 As of now, the DOM is maintaining the state of the input fields; React has no idea what the values of the fields are. They are currently ["uncontrolled components"](https://reactjs.org/docs/uncontrolled-components.html). We want to make them "controlled components" so we can keep track of their state within the app.
 
-Using the [`useState` hook](https://reactjs.org/docs/hooks-state.html), add a new state variable for the query field and pass its properties as the `value` of the `<input>`. Then for `onChange`, update the state.
+Using the [`useState` hook](https://reactjs.org/docs/hooks-state.html), add a new state variable for the query field and pass it as the `value` of the `<input>`. Then for `onChange`, update the state.
 
 ```js
-import React, { useState } from 'react'
+import React, { useState } from 'react' // 👈🏾 import `useState`
 
 const App = () => {
+  // new state variable 👇🏾
   const [inputValue, setInputValue] = useState('')
 
   return (
@@ -79,8 +80,9 @@ const App = () => {
         <input
           type="search"
           placeholder="Search Giphy"
-          value={inputValue}
+          value={inputValue} // 👈🏾 set value
           onChange={(e) => {
+            // 👆🏾 pass event handler
             setInputValue(e.target.value)
           }}
         />
@@ -95,7 +97,7 @@ const App = () => {
 ## 💡 Exercises
 
 - Use the React Developer Tools to watch the `state` of `App` update as you type into the fields
-- Add a `<p>` below that will display "You are typing **[value]** in the field." (with `[value]` in **bold**)
+- Add a `<p>` below that will display "You are typing **[inputValue]** in the field." (with the displayed value in **bold**)
 - 🤓 **BONUS:** Add a button that when clicked will toggle the text in the `<p>` between being upper-cased and not
   - 🔑 _HINT:_ You will need to add a second `useState`
 

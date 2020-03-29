@@ -48,7 +48,7 @@ Using the [`prop-types`](https://reactjs.org/docs/typechecking-with-proptypes.ht
 
 ```js
 import React, { Fragment, useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types' // 👈🏾 new import
 
 ...
 
@@ -58,6 +58,7 @@ const SearchForm = (props) => {
   ...
 }
 
+// define types of props 👇🏾
 SearchForm.propTypes = {
   onChange: PropTypes.func.isRequired,
 }
@@ -69,7 +70,7 @@ Now add a prop type in `Results` for the `items` prop:
 
 ```js
 import React from 'react'
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types' // 👈🏾 new import
 
 const Results = (props) => {
   const { items } = props
@@ -78,14 +79,15 @@ const Results = (props) => {
 
 }
 
+// define types of props 👇🏾
 Results.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
-      title: PropTypes.string,
-      url: PropTypes.string,
-      rating: PropTypes.oneOf(['G', 'PG', 'PG-13', 'R']),
-      previewUrl: PropTypes.string,
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+      rating: PropTypes.oneOf(['G', 'PG', 'PG-13', 'R']).isRequired,
+      previewUrl: PropTypes.string.isRequired,
     }),
   ).isRequired,
 }

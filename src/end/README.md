@@ -8,4 +8,4 @@ Hopefully, you'll get to apply this learning right away at your job or in a side
 
 ## ❤️ Workshop Feedback
 
-Feedback is a gift. 🎁 Now that you're done with the workshop, I would greatly appreciate your overall feedback on the workshop to help make it even better for the next learners. [Share your workshop feedback](https://bit.ly/react-fun-ws-feedbck)
+Feedback is a gift. 🎁 Now that you're done with the workshop, I would greatly appreciate your overall feedback on the workshop to help make it even better for the next learners. **[Share your workshop feedback](https://bit.ly/react-fun-ws-feedbck)**.

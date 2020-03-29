@@ -17,7 +17,7 @@ In order to maximize our time _during_ the workshop, please complete the followi
 
 - [ ] Set up the project (follow [setup instructions](#system-requirements) below)
 - [ ] Install and run [Zoom](https://zoom.us/) on the computer you'll be developing with (for remote workshops)
-- [ ] Set up dual monitors, if possible (for remote workshops)
+- [ ] Set up dual monitors for live coding, if possible (for remote workshops)
 - [ ] Install React Developer Tools for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) (recommended) or [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
 - [ ] Install a JSX-friendly code editor, such as [Visual Studio Code](https://code.visualstudio.com/)
 - [ ] Brush up on modern [ES.next](http://www.benmvp.com/learning-es6-series/) features, if they are unfamiliar to you
@@ -80,8 +80,8 @@ Hiya! 👋🏾 My name is Ben Ilegbodu. 😄
 - Christian, Husband, Father of 👌🏾
 - Pittsburg, California
 - Principal Frontend Engineer at [Stitch Fix](https://www.stitchfix.com/) (and yes [we're hiring](https://www.stitchfix.com/careers/jobs)!)
-- www.benmvp.com
 - [@benmvp](https://twitter.com/benmvp)
+- www.benmvp.com
 - Go Rockets! 🚀🏀
 
 ### 🕘 Schedule
@@ -139,7 +139,7 @@ Here is what you'll come away knowing at the end of the workshop...
 
 ## 🧠 Elaboration & Feedback
 
-Each step has an Elaboration & Feedback link at the end. After you're done with the exercise and before jumping to the next step, please fill that out to solidify your learning.
+Each step has an Elaboration & Feedback form link at the end. After you're done with the exercise and before jumping to the next step, please take a few minutes to fill that out to solidify your learning.
 
 At the end of the workshop, I would greatly appreciate your overall feedback. [Share your workshop feedback](https://bit.ly/react-fun-ws-feedbck).
 

@@ -1,8 +1,8 @@
 # Step 8 - Custom Hook
 
-We've been able to greatly reduce the scope of the top-level `App` by breaking it down into several components. However, it still directly makes the API call in order to maintain the app-level state.
+We've been able to greatly reduce the scope of the top-level `App` by breaking it down into several components. However, it still directly makes the API call in order to maintain the app-level state. `App` is just an orchestrator, it shouldn't really **do** any work.
 
-🏅 The goal of this step is to learn how to create our own custom hooks composed of the base hooks like `useState` & `useEffect`. This allows us to extract component logic into reusable functions.
+🏅 The goal of this step is to learn how to create our own custom hooks composed of the base hooks like `useState` & `useEffect`. This allows us to extract component logic into reusable (and testable) functions.
 
 As always, if you run into trouble with the [tasks](#tasks) or [exercises](#exercises), you can take a peek at the final [source code](./).
 
@@ -37,15 +37,15 @@ After some initial compiling, a new browser window should open up at http://loca
 
 ## ⭐ Concepts
 
-- Creating async custom hooks
+- Creating (async) custom hooks
 
 ## 📝 Tasks
 
-Create a new file called `useGiphy.js` which will contain our custom hook that will take in search parameters, make an API call and return results:
+Create a new file called `src/workshop/useGiphy.js` which will contain our custom hook that will take in search parameters, make an API call and return results:
 
 ```js
 import { useState, useEffect } from 'react'
-import { getResults } from './api'
+import { getResults } from './api' // 👈🏾 bring over API import
 
 const useGiphy = () => {
   return null
@@ -54,7 +54,7 @@ const useGiphy = () => {
 export default useGiphy
 ```
 
-A custom hook is a normal JavaScript function whose name starts with `use*` and may call other hooks like `useState` & `useEffect`.
+A custom hook is a normal JavaScript function whose name **must start** with `use*` and may call other hooks, like `useState` & `useEffect`.
 
 Copy over all the hooks-related code from `App.js` into `useGiphy.js`:
 
@@ -85,7 +85,7 @@ Now `useGiphy()` can easily be used w/in other components because all of the sta
 
 ## 💡 Exercises
 
-- Back in `App` make use of `useGiphy()`
+- Finish the feature by calling `useGiphy()` back in `App`
 - Compare the current version of [`App.js`](./App.js) with the [Step 5 `App.js`](../05-form-submit/App.js)
 
 ## 🧠 Elaboration & Feedback
@@ -100,6 +100,7 @@ Go to [Step 10 - Loading States](../10-loading-states/).
 
 - [Building Your Own Hooks](https://reactjs.org/docs/hooks-custom.html)
 - [How to test custom React hooks](https://kentcdodds.com/blog/how-to-test-custom-react-hooks)
+- [Rules of Hooks](https://reactjs.org/docs/hooks-rules.html)
 
 ## ❓ Questions
 

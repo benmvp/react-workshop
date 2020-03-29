@@ -41,15 +41,17 @@ After some initial compiling, a new browser window should open up at http://loca
 
 ## 📝 Tasks
 
-Import the `getResults` API helper with `useEffect` from React, and call `getResults` within `useEffect`, passing in the value of the input field:
+Import the `getResults` API helper along with `useEffect` from React. Then call `getResults()` within `useEffect()`, passing in the value of the input field:
 
 ```js
 import React, { useState, useEffect } from 'react'
 import { getResults } from './api'
+// 👆🏾 new imports
 
 const App = () => {
   const [inputValue, setInputValue] = useState('')
 
+  // 👇🏾 call API w/ useEffect
   useEffect(() => {
     getResults({ searchQuery: inputValue })
   }, [inputValue])
@@ -84,11 +86,14 @@ In order to render the giphy images we need to store the results in state, once 
 ```js
 const [inputValue, setInputValue] = useState('')
 const [results, setResults] = useState([])
+// 👆🏾 new state variable to contain the search results
 
 useEffect(() => {
+  // resolve the promise to get the results 👇🏾
   getResults({ searchQuery: inputValue }).then((results) => setResults(results))
 }, [inputValue])
 
+// 👇🏾 logging the results for now
 console.log({ inputValue, results })
 ```
 
@@ -97,7 +102,9 @@ If you prefer to use [`async` functions](https://developer.mozilla.org/en-US/doc
 ```js
 useEffect(() => {
   const fetchResults = async () => {
+    // add async 👆🏾
     try {
+      // 👆🏾 try above, 👇🏾 await below
       const apiResponse = await getResults({ searchQuery: inputValue })
 
       setResults(apiResponse.results)
@@ -116,6 +123,7 @@ console.log({ inputValue, results })
 
 - Type in different search queries and verify the results by digging into the log and navigating to URLs
 - Take a look at [`api.js`](./api.js) and see what the API helper does, particularly the other search filters it supports
+  - Pass in hard-coded values for the other search filters to `getResults()` and see how the logged data changes
 
 ## 🧠 Elaboration & Feedback
 

@@ -51,16 +51,19 @@ Update `useGiphy` to keep track of the `status` of the API response and return i
 const useGiphy = () => {
   const [searchParams, setSearchParams] = useState({})
   const [results, setResults] = useState([])
-  const [status, setStatus] = useState('idle')
+  const [status, setStatus] = useState('idle') // 👈🏾 NEW
 
   useEffect(() => {
     const fetchResults = async () => {
       try {
+        // 👇🏾 before API request
         setStatus('pending')
 
         const apiResponse = await getResults(searchParams)
 
         setResults(apiResponse.results)
+
+        // 👇🏾 after successful API request
         setStatus('resolved')
       } catch (err) {
         console.error(err)
@@ -70,7 +73,7 @@ const useGiphy = () => {
     fetchResults()
   }, [searchParams])
 
-  // returning `status` & `results` together as an object
+  // 👇🏾 returning `status` & `results` together as an object
   return [{ status, results }, setSearchParams]
 }
 ```
@@ -80,7 +83,7 @@ Update `App` with the new return value from `useGiphy()` and pass `status` to `<
 ```js
 const App = () => {
   // Converted to object literal destructuring in order to get
-  // out the 3 properties
+  // out the 3 properties 👇🏾
   const [{ status, results }, setSearchParams] = useGiphy()
 
   return (
@@ -92,6 +95,7 @@ const App = () => {
         initialSearchQuery="friend"
         initialLimit={24}
       />
+      {/* add status to Results 👇🏾 */}
       <Results items={results} status={status} />
     </main>
   )
@@ -101,10 +105,12 @@ const App = () => {
 Now display the loading indicator in `Results`:
 
 ```js
+// new `status` prop added 👇🏾
 const Results = ({ items, status }) => {
   const containerEl = useRef(null)
   const isLoading = status === 'idle' || status === 'pending'
 
+  // 👇🏾 new loading indicator
   if (isLoading) {
     return (
       <section className="callout warning text-center">
@@ -122,13 +128,14 @@ const Results = ({ items, status }) => {
 
 Results.propTypes = {
   items: ...,
+  // new prop type for `status` 👇🏾
   status: PropTypes.oneOf(['idle', 'pending', 'resolved']).isRequired,
 }
 ```
 
 > NOTE: You can change the value to `wait()` in [`api.js`](./api.js) to be higher to simulate a slow API response.
 
-Display the loading indicator as well as the previous results:
+Display the loading indicator as well as the previous results using a Fragment:
 
 ```js
 const Results = ({ items, status }) => {
@@ -156,6 +163,12 @@ const Results = ({ items, status }) => {
 In [`useGiphy.js`](./useGiphy.js), refactor the two `useState()` calls for `status` & `results` to a single call to `useReducer()`:
 
 ```js
+const INITIAL_STATE = {
+  status: 'idle',
+  results: [],
+}
+
+// 👇🏾 brand new reducer
 const reducer = (state, action) => {
   switch (action.type) {
     case 'started': {
@@ -180,15 +193,18 @@ const reducer = (state, action) => {
 
 const useGiphy = () => {
   const [searchParams, setSearchParams] = useState({})
+  // 👇🏾 new reducer state
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
 
   useEffect(() => {
     const fetchResults = async () => {
       try {
+        // 👇🏾 dispatch action instead of directly setting state
         dispatch({ type: 'started' })
 
         const apiResponse = await getResults(searchParams)
 
+        // 👇🏾 dispatched action will set two state properties
         dispatch({ type: 'success', results: apiResults })
       } catch (err) {
         console.error(err)
@@ -207,7 +223,7 @@ const useGiphy = () => {
 - Display an error state if the API fails to successfully return
   - Can display with the previous results, but should hide when new results are requested
   - Use the `'rejected'` status
-  - 🔑 _HINT:_ `throw new Error('Fake error!')` in [`api.js`](./api.js) to simulate this case
+  - 🔑 _HINT:_ `throw new Error('Fake error!')` in [`api.js`](./api.js) to easily simulate this case
 
 ## 🧠 Elaboration & Feedback
 

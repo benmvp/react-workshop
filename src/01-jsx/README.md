@@ -143,10 +143,18 @@ const App = () => {
 
 - Create two `const` variables, `GIPHY_SRC` ([this url](https://media.giphy.com/media/l41lXGxBwXYFcJoJ2/giphy.gif)) and `GIPHY_LINK` ([this url](https://gph.is/1IOrWO2))
   - Render an image with its `src` as `GIPHY_SRC`
-  - Link the image to its page using `GIPHY_LINK` and open a new
+  - Link the image to its page using `GIPHY_LINK` and open a new window
 - 🤓 **BONUS:** Render a `<p>`
-  - Create `const attrs = { style: {color: 'blue' }, children: 'Hello' }`
-  - Add `attrs` to the `<p>` **without** adding them individually
+  - Create
+    ```js
+    const attrs = {
+      id: 'main-text',
+      className: 'text-center',
+      style: { color: 'blue' },
+      children: 'Hello',
+    }
+    ```
+  - Add everything in `attrs` to the `<p>` **without** adding them individually
 - Remove all the practice JSX, leaving the skeleton of our Giphy search app:
   ```js
   const App = () => {

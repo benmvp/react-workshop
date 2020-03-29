@@ -1,8 +1,8 @@
 # Step 8 - Search Focus
 
-When we submit the search form by clicking the "Search" button, the search button now becomes the focused element. But we want the focus to go back to the query field so that it can be easy to search again.
+When we submit the search form by clicking the "Search" button, the search button now becomes the focused element. But we want the focus to go back to the query field so that we can easily type a new search.
 
-By default, when we develop in React, we're never touching any actual DOM. Instead we're rendering UI that React efficiently applies to the DOM. But there are rare times where we'll need to interact with the DOM directly in order to mutate it in ways that the React allow doesn't support.
+By default, when we develop in React, we're never touching any actual DOM. Instead we're rendering UI that React efficiently applies to the DOM. But there are rare times where we'll need to interact with the DOM directly in order to mutate it in ways that React doesn't support.
 
 🏅 So the goal of this step is to use this "escape hatch" in order to focus the search query imperatively.
 
@@ -46,7 +46,7 @@ After some initial compiling, a new browser window should open up at http://loca
 In [`SearchForm.js`](./SearchForm.js), Import the `useRef` hook from `react`:
 
 ```js
-import React, { Fragment, useState, useEffect, useRef } from 'react'
+import React, { Fragment, useState, useEffect, useRef } from 'react' // 👈🏾 new import
 ```
 
 Create a ref within `SearchForm` after all of the state variables:
@@ -74,7 +74,7 @@ Add the ref as the `ref` prop to the query field:
     setInputValue(e.target.value)
   }}
   className="input-group-field"
-  ref={queryFieldEl} // 👈🏾 right here
+  ref={queryFieldEl} // 👈🏾 ref is here
 />
 ```
 
@@ -87,6 +87,7 @@ const handleSubmit = (e) => {
 
   // focus the query field after submitting
   // to make easier to quickly search again
+  // 👇🏾
   queryFieldEl.current.focus()
 }
 ```

@@ -46,7 +46,7 @@ After some initial compiling, a new browser window should open up at http://loca
 
 ### `Results`
 
-Start by creating a new `Results.js` file to contain a new `Results` component:
+Start by creating a new `src/workshop/Results.js` file to contain a new `Results` component:
 
 ```js
 import React from 'react'
@@ -58,7 +58,7 @@ const Results = () => {
 export default Results
 ```
 
-Next, move over the results display code:
+Next, move over all the results UI code:
 
 ```js
 const Results = () => {
@@ -97,10 +97,10 @@ Back in `App.js`, we'll import `Results.js` at the top of the file:
 ```js
 import React, { useState, useEffect } from 'react'
 import { getResults } from './api'
-import Results from './Results'
+import Results from './Results' // 👈🏾 new import
 ```
 
-In place of where the results display code used to be, we'll render `<Results />`:
+In place of where the results display code used to be, we'll render `<Results />` passing the `results` as `items`:
 
 ```js
 return (
@@ -117,13 +117,13 @@ return (
 We need to update `Results.js` to support this new `items` prop:
 
 ```js
-const Results = (props) => {
-  const { items } = props
+const Results = (props) => { // 👈🏾 new `props` arg
+  const { items } = props // 👈🏾 new `items` prop
 
   return (
-    items.length > 0 && (
+    items.length > 0 && ( // `results` ➡️ `items`
       <section className="callout primary">
-        {items.map((item) => (
+        {items.map((item) => ( // `results` ➡️ `items`
           ...
         ))}
       </section>
@@ -136,7 +136,7 @@ const Results = (props) => {
 
 ### `SearchForm`
 
-Let's turn our attention to the search form. Start by creating a new `SearchForm.js` file to contain a new `SearchForm` component:
+Let's turn our attention to the search form. Start by creating a new `src/workshop/SearchForm.js` file to contain a new `SearchForm` component:
 
 ```js
 import React, { Fragment, useState } from 'react'
@@ -210,7 +210,7 @@ Back in `App.js`, we'll import the `SearchForm` component at the top of the file
 import React, { useState, useEffect } from 'react'
 import { getResults } from './api'
 import Results from './Results'
-import SearchForm from './SearchForm'
+import SearchForm from './SearchForm' // 👈🏾 new import
 ```
 
 And in place of the `<form>` tag we'll render `<SearchForm />`:
@@ -229,12 +229,13 @@ Add a new `formValues` state variable and new `onChange` handler for `<SearchFor
 
 ```js
 const App = () => {
-  const [formValues, setFormValues] = useState({})
+  const [formValues, setFormValues] = useState({}) // 👈🏾 NEW!
   const [results, setResults] = useState([])
 
   useEffect(() => {
     const fetchResults = async () => {
       try {
+        // pass single state variable object 👇🏾
         const apiResponse = await getResults(formValues)
 
         setResults(apiResponse.results)
@@ -261,7 +262,8 @@ We now need `SearchForm` to have a new `onChange` prop that it calls whenever it
 
 ```js
 const SearchForm = (pros) => {
-  const { onChange } = props
+  // new `props` arg
+  const { onChange } = props // 👈🏾 new `onChange` prop
   const [inputValue, setInputValue] = useState('')
   const [searchQuery, setSearchQuery] = useState('')
   const [showInstant, setShowInstant] = useState(false)
@@ -270,6 +272,8 @@ const SearchForm = (pros) => {
   const realSearchQuery = showInstant ? inputValue : searchQuery
 
   useEffect(() => {
+    // Call `onChange` prop in `useEffect()` that is
+    // similar to where we called `getResults()` in `App`
     onChange({
       searchQuery: realSearchQuery,
       rating: searchRating,
@@ -290,8 +294,8 @@ const SearchForm = (pros) => {
 
 ## 💡 Exercises
 
-- From `Results`, pull out a `ResultsItem` component into `ResultsItem.js` with 5 props: `id`, `title`, `url`, `rating` & `previewUrl`.
-- Use the React Developer Tools to inspect the component hierarchy, including the props being passed to the `SearchForm` & `ResultsItem` components.
+- From `Results`, pull out a `ResultsItem` component into `src/workshop/ResultsItem.js` with 5 props: `id`, `title`, `url`, `rating` & `previewUrl`.
+- Use the React Developer Tools to inspect the component hierarchy, including the props being passed to the `<SearchForm />` & `<ResultsItem />` components.
 
 ## 🧠 Elaboration & Feedback
 

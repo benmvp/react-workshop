@@ -41,7 +41,7 @@ After some initial compiling, a new browser window should open up at http://loca
 
 ## 📝 Tasks
 
-Use [`Array.prototype.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) to convert the array of results into an array of components so that we can render the giphy images:
+We need to convert the array of results into an array of components so that we can render the giphy images. There are several ways, but the most common approach is to use [`Array.prototype.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map):
 
 ```js
 return (
@@ -62,7 +62,7 @@ return (
     <section className="callout primary">
       {results.map((item) => (
         <video
-          key={item.id}
+          key={item.id} // 👈🏾 special `key` prop
           src={item.previewUrl}
           alt={item.title}
           loop
@@ -94,7 +94,7 @@ return (
       />
     </form>
 
-    {results.length > 0 && (
+    {results.length > 0 && ( // 👈🏾 inline if with &&
       <section className="callout primary">
         {results.map((item) => (
           <video
@@ -119,7 +119,7 @@ Let's add some additional markup and classes around the `<img />` so we can incl
     <section className="callout primary">
       {results.map((item) => (
         <section
-          key={item.id}
+          key={item.id} // 👈🏾 `key` moves here
           className="card"
           style={{
             width: '300px',
@@ -147,7 +147,7 @@ Let's add some additional markup and classes around the `<img />` so we can incl
 - Add a `<select>` to the search form to change the number of Giphy images displayed (the `limit` search param)
   - Map over a `const LIMITS = [6, 12, 18, 24, 30]` constant to generate the `<option value={limit}>` tags within the `<select>`
   - The props should be `<select value={searchLimit} onChange={(e) => { ... }}>`
-  - The default should remain `6`
+  - The default should remain `12`
 - Open the Developer Tools, on the Elements tab, and monitor how the markup changes when changing limits
 
 ## 🧠 Elaboration & Feedback
