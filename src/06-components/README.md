@@ -245,7 +245,7 @@ const App = () => {
     }
 
     fetchResults()
-  }, [formValues])
+  }, [formValues]) // 👈🏾 sole useEffect dependency
 
   return (
     <main>
@@ -261,7 +261,7 @@ const App = () => {
 We now need `SearchForm` to have a new `onChange` prop that it calls whenever its fields change, passing the same object properties that `getResults` expects (`searchQuery`, `limit` & `rating`):
 
 ```js
-const SearchForm = (pros) => {
+const SearchForm = (props) => {
   // new `props` arg
   const { onChange } = props // 👈🏾 new `onChange` prop
   const [inputValue, setInputValue] = useState('')
