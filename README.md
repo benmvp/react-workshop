@@ -110,11 +110,7 @@ Each step in the workshop builds on top of the previous one. If at any point you
 ### ❓ Asking Questions
 
 - Please **interrupt me** and ask questions! Others likely will have the same question.
-- However, unrelated questions are better sent to [Twitter](https://twitter.com/benmvp) or [my AMA](http://www.benmvp.com/ama)
-
-### 🤝 Code of Conduct
-
-All attendees, speakers, sponsors and volunteers at this workshop are required to agree with the [code of conduct](CODE_OF_CONDUCT.md). Organizers will enforce this code throughout the event. We expect cooperation from all participants to help ensure a safe environment for everybody.
+- However, unrelated questions are better sent to [Twitter](https://twitter.com/benmvp) or [my AMA](http://www.benmvp.com/ama).
 
 ### 🖥️ Zoom Hygiene (for remote workshops)
 
@@ -146,6 +142,10 @@ Here is what you'll come away knowing at the end of the workshop...
 Each step has an Elaboration & Feedback form link at the end. After you're done with the exercise and before jumping to the next step, please take a few minutes to fill that out to solidify your learning.
 
 At the end of the workshop, I would greatly appreciate your overall feedback. [Share your workshop feedback](https://bit.ly/react-fun-ws-feedbck).
+
+### 🤝 Code of Conduct
+
+All attendees, speakers, sponsors and volunteers at this workshop are required to agree with the [code of conduct](CODE_OF_CONDUCT.md). Organizers will enforce this code throughout the event. We expect cooperation from all participants to help ensure a safe environment for everybody.
 
 ### 👉🏾 First Step
 
