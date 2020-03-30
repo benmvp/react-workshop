@@ -90,7 +90,9 @@ const [results, setResults] = useState([])
 
 useEffect(() => {
   // resolve the promise to get the results 👇🏾
-  getResults({ searchQuery: inputValue }).then((results) => setResults(results))
+  getResults({ searchQuery: inputValue }).then((apiResponse) =>
+    setResults(apiResponse.results),
+  )
 }, [inputValue])
 
 // 👇🏾 logging the results for now
