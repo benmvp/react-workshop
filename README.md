@@ -112,6 +112,10 @@ Each step in the workshop builds on top of the previous one. If at any point you
 - Please **interrupt me** and ask questions! Others likely will have the same question.
 - However, unrelated questions are better sent to [Twitter](https://twitter.com/benmvp) or [my AMA](http://www.benmvp.com/ama)
 
+### 🤝 Code of Conduct
+
+All attendees, speakers, sponsors and volunteers at this workshop are required to agree with the [code of conduct](CODE_OF_CONDUCT.md). Organizers will enforce this code throughout the event. We expect cooperation from all participants to help ensure a safe environment for everybody.
+
 ### 🖥️ Zoom Hygiene (for remote workshops)
 
 - Keep your **video on** (if possible) to make it feel more human and lively
